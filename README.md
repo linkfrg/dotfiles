@@ -1,8 +1,8 @@
 # Setup
 
-<img src="/assets/1.png" alt="first screenshot" style="height: 100px; width:100px;"/>
-<img src="/assets/2.png" alt="second screenshot" style="height: 100px; width:100px;"/>
-<img src="/assets/3.png" alt="third screenshot" style="height: 100px; width:100px;"/>
+<img src="/assets/1.png" alt="first screenshot"/>
+<img src="/assets/2.png" alt="second screenshot"/>
+<img src="/assets/3.png" alt="third screenshot"/>
 
 
 ## Software
