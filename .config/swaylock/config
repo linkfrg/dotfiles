@@ -1,0 +1,57 @@
+#--------------------ПАРАМЕТРЫ---------------------------#
+daemonize
+show-failed-attempts
+clock
+screenshot
+ignore-empty-password
+indicator
+font=JetBrainsMono
+indicator-radius=200
+indicator-thickness=20
+
+
+#--------------------ЭФФЕКТЫ---------------------------#
+effect-blur=9x5
+effect-vignette=0.5:0.5
+
+
+#--------------------ЦВЕТА---------------------------#
+
+# Цвета индикатора
+
+# Обычные
+line-color=#c095b8
+ring-color=#c095b8
+inside-color=#0E050A
+text-color=#c095b8
+# При вводе пароля
+line-ver-color=#c095b8
+ring-ver-color=#c095b8
+inside-ver-color=#0E050A
+text-ver-color=#c095b8
+# При вводе неправильного пароля
+line-wrong-color=#c095b8
+ring-wrong-color=#c095b8
+inside-wrong-color=#0E050A
+text-wrong-color=#c095b8
+# При очистке пароля
+line-clear-color=#c095b8
+ring-clear-color=#c095b8
+inside-clear-color=#0E050A
+text-clear-color=#c095b8
+# Прочее
+bs-hl-color=31748f
+key-hl-color=#0E050A
+separator-color=#0E050A
+
+
+#--------------------ИГОНОРИРОВАНИЕ ВВОДА---------------------------#
+grace=2
+grace-no-mouse
+grace-no-touch
+
+
+#--------------------ВРЕМЯ И ДАТА---------------------------#
+datestr=%a,%e %B 
+timestr=%H:%M
+fade-in=0.2

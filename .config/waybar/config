@@ -1,0 +1,87 @@
+{
+// НАСТРОЙКИ БАРА
+    	"layer": "top",
+    	"position": "top",
+		"margin-top": 5,
+		"width": 1900,
+    	
+// МОДУЛИ
+		"modules-left": ["custom/logo", "hyprland/window"],
+		"modules-center": ["wlr/workspaces"],
+		"modules-right": ["tray", "hyprland/language", "custom/mako", "custom/cava", "pulseaudio", "clock"],
+
+
+// ЛОГО
+		"custom/logo": {
+			"format": "󰣇",
+			"on-click": "sleep 0.1 && ~/.config/hypr/scripts/powermenu.sh",
+			"tooltip": false
+		},
+
+// ТРЕЙ
+		"tray": {
+			"icon-size": 21,
+			"spacing": 10
+		},
+    
+// ЧАСЫ
+		"clock": {
+			"format": "{:%H:%M}",
+			"format-alt": "{:%A, %d %B, %Y (%R)}"
+		},
+    
+// ЗВУК
+    	"pulseaudio": {
+        	"format": "{icon} {volume}%",
+        	"format-bluetooth": "{icon} {volume}%",
+        	"format-bluetooth-muted": " {icon}",
+        	"format-muted": "",
+        	"format-icons": {
+            		"headphone": "",
+            		"hands-free": "",
+            		"headset": "",
+            		"phone": "",
+            		"portable": "",
+            		"car": "",
+            		"default": ["", "", ""]
+        	},
+        	"on-click": "pamixer --toggle-mute",
+			"on-click-right": "pavucontrol",
+			"tooltip": false
+    	},
+    	
+// ЗАГОЛОВОК ОКНА HYPRLAND
+    	"hyprland/window": {
+        	"format": "{}",
+        	"max-length": 60
+    	},
+    	
+// РАСКЛАДКА КЛАВИАТУРЫ HYPRLAND
+    	"hyprland/language": {
+        	"format": "{}",
+			"format-en": "en",
+			"format-ru": "ru",
+			"on-click": "hyprctl switchxkblayout company--usb-device- next"
+    	},
+    	
+// ВОРКСПЕЙСЫ
+    	"wlr/workspaces": {
+        	"format": "{name}",
+        	"on-click": "activate",
+        	"sort-by-number": true
+    	},
+		
+// CAVA
+		"custom/cava": {
+        	"exec": "cava -p ~/.config/cava/config1 | sed -u 's/;//g;s/0/▁/g;s/1/▂/g;s/2/▃/g;s/3/▄/g;s/4/▅/g;s/5/▆/g;s/6/▇/g;s/7/█/g;'",
+        	"tooltip": false
+		},
+
+// MAKO
+		"custom/mako": {
+			"exec": "~/.config/hypr/scripts/check_mako_mode.sh",
+			"on-click": "~/.config/hypr/scripts/do-not-disturb.sh",
+			"restart-interval": 1,
+			"tooltip": false
+		}
+}
