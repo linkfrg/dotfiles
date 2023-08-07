@@ -7,5 +7,4 @@ pkill waybar
 waybar &
 source $SCRIPT/hyprland.sh
 source $SCRIPT/mako.sh
-source $SCRIPT/swaylock.sh
 source $SCRIPT/gtk.sh

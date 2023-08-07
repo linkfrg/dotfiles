@@ -15,7 +15,7 @@
 - **Notifications** - [Mako](https://github.com/emersion/mako)
 - **Launcher** - [Rofi](https://github.com/lbonn/rofi)
 - **Wallpaper** - [swww](https://github.com/Horus645/swww)
-- **Screen locker** - [swaylock-effects](https://github.com/mortie/swaylock-effects)
+- **Screen locker** - [gtklock](https://github.com/jovanlanik/gtklock)
 
 ## Dependencies
 

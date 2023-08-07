@@ -18,10 +18,10 @@ case ${chosen} in
 		systemctl reboot
         ;;
     $lock)
-		swaylock
+		gtklock
         ;;
     $suspend)
-		swaylock && systemctl suspend
+		systemctl suspend && gtklock 
         ;;
     $logout)
 		hyprctl dispatch exit 0
