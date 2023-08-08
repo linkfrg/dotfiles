@@ -31,7 +31,7 @@ components="
     cava
     polkit-gnome
     swww
-    swaylock-effects
+    gtklock
     pamixer 
     cliphist
     python-pywal
