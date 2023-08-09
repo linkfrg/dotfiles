@@ -97,3 +97,6 @@ cp -R .zshrc ~/
 cp -R .oh-my-zsh ~/
 mkdir ~/.local/share/applications/
 cp .local/share/applications/code.desktop ~/.local/share/applications/
+
+# PYWAL COLORSCHEME
+wal -i ~/.wallpaper/wallpaper5.png -n -t
