@@ -35,6 +35,8 @@ components="
     pamixer 
     cliphist
     python-pywal
+    grim
+    slurp
 "
 
 soft="
