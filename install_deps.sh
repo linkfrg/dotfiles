@@ -37,6 +37,7 @@ components="
     python-pywal
     grim
     slurp
+    wl-clipboard
 "
 
 soft="
