@@ -21,26 +21,68 @@
 
 ### Hyprland(nvidia)
 ```
-hyprland-nvidia-git xdg-desktop-portal-hyprland xorg-xwayland qt5-wayland qt6-wayland qt5ct qt6ct libva nvidia-vaapi-driver-git linux-headers nvidia-dkms
+hyprland-nvidia-git
+xdg-desktop-portal-hyprland
+xorg-xwayland
+qt5-wayland
+qt6-wayland
+qt5ct
+qt6ct
+libva
+libva-nvidia-driver-git
+linux-headers 
+nvidia-dkms
 ```
 ### Pipewire
 ```
-pipewire pipewire-alsa pipewire-pulse pipewire-jack pavucontrol wireplumber
+pipewire 
+pipewire-alsa 
+pipewire-pulse 
+pipewire-jack 
+pavucontrol
+wireplumber
 ```
 ### Components
 ```
-mako jq waybar rofi-lbonn-wayland cava polkit-gnome swww swaylock-effects pamixer cliphist python-pywal
+mako
+jq
+waybar
+rofi-lbonn-wayland
+cava
+polkit-gnome
+swww
+gtklock
+pamixer 
+cliphist
+python-pywal
 ```
 ### Software
 ```
-network-manager-applet kitty thunar cmatrix neofetch hyprpicker-git firefox eog thunar-archive plugin file-roller nwg-look zsh sddm-git
+network-manager-applet 
+kitty
+thunar
+cmatrix
+neofetch
+hyprpicker-git
+firefox 
+eog
+thunar-archive-plugin 
+file-roller 
+nwg-look
+zsh
+sddm-git
 ```
 ### Misc
 ```
-gtk-engine-murrine gnome-themes-extra xdg-user-dirs ntfs-3g
+gtk-engine-murrine 
+gnome-themes-extra
+xdg-user-dirs
+ntfs-3g
 ```
 
 ### Font and icons
 ```
-ttf-jetbrains-mono ttf-nerd-fonts-symbols papirus-icon-theme
+ttf-jetbrains-mono
+ttf-nerd-fonts-symbols
+papirus-icon-theme
 ```

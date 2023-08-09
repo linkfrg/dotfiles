@@ -49,6 +49,7 @@ textbox-prompt-colon {
     padding: 10px 0 10 14px;
     background-color: inherit;
     text-color: inherit;
+    vertical-align: 0.5;
 }
 
 /*-ПРОМТ-*/

@@ -1,0 +1,18 @@
+[Desktop Entry]
+Name=Visual Studio Code
+Comment=Code Editing. Refined.
+GenericName=Text Editor
+Exec=/usr/bin/code --unity-launch %F --disable-gpu
+Icon=visual-studio-code
+Type=Application
+StartupNotify=false
+StartupWMClass=Code
+Categories=TextEditor;Development;IDE;
+MimeType=text/plain;inode/directory;application/x-code-workspace;
+Actions=new-empty-window;
+Keywords=vscode;
+
+[Desktop Action new-empty-window]
+Name=New Empty Window
+Exec=/usr/bin/code --new-window %F --disable-gpu
+Icon=visual-studio-code

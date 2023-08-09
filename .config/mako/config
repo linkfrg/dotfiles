@@ -9,10 +9,10 @@ height=200
 border-radius=10
 default-timeout=5000
 
-background-color=#0E050A
-text-color=#c095b8
-border-color=#c095b8
-progress-color=#c095b8
+background-color=#221f48
+text-color=#ddcde1
+border-color=#ddcde1
+progress-color=#ddcde1
 
 [urgency=low]
 default-timeout=2000

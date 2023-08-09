@@ -51,6 +51,7 @@ textbox-prompt-colon {
     str: "";
     background-color: inherit;
     text-color: inherit;
+    vertical-align: 0.5;
 }
 
 /*-ПРОМТ-*/

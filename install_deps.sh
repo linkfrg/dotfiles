@@ -9,7 +9,7 @@ hyprland_nvidia="
     qt5ct
     qt6ct
     libva
-    nvidia-vaapi-driver-git
+    libva-nvidia-driver-git
     linux-headers 
     nvidia-dkms
 "
@@ -74,7 +74,7 @@ sudo pacman -S --needed base-devel
 git clone https://aur.archlinux.org/paru.git
 cd paru
 makepkg -si
-rm -R ~/paru
+rm -R ./paru
 
 # INSTALL
 paru -S $hyprland_nvidia $pipewire_stage $components $soft $misc $font
@@ -86,18 +86,14 @@ xdg-user-dirs-update
 # PIPEWIRE
 systemctl --user enable --now pipewire.service pipewire.socket pipewire-pulse.service wireplumber.service
 
-
-# GRIMBLAST
-git clone https://github.com/hyprwm/contrib.git
-cd contrib/grimblast
-sudo make install
-rm ~/contrib
-
 # ZSH
 chsh -s /usr/bin/zsh
 
 # COPY CONFIG FILES
-cp -R ./.config/* ~/.config/
-cp -R ./.wallpaper ~/
-cp -R ./.p10k.zsh ~/
-cp -R ./.zshrc ~/
+cp -R .config/* ~/.config/
+cp -R .wallpaper ~/
+cp -R .p10k.zsh ~/
+cp -R .zshrc ~/
+cp -R .oh-my-zsh ~/
+mkdir ~/.local/share/applications/
+cp .local/share/applications/code.desktop ~/.local/share/applications/
