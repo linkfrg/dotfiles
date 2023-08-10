@@ -1,10 +1,33 @@
 #!/bin/bash
-SCRIPT=~/.config/hypr/scripts/monet
-source $SCRIPT/wallpaper.sh
+
+# Select file
+FILE=$(zenity --file-selection --file-filter='*.png *.jpg *.jpeg *.gif' --filename=".wallpaper/*")
+
+# if nothing selected then exit
+if [$FILE -eq ""]; then
+    exit 0
+fi
+
+# generate colorscheme
+wal -i $FILE -n -q -t
+
+# set selected wallpaper
+swww img $FILE --transition-fps 75 --transition-type wipe --transition-duration 2
+
+# sleep 2 seconds to avoid lags when setting wallpaper
 sleep 2
+
+# kill cava & restart waybar
 pkill cava
 pkill waybar
 waybar &
-source $SCRIPT/hyprland.sh
-source $SCRIPT/mako.sh
-source $SCRIPT/gtk.sh
+
+# restart mako
+makoctl reload
+
+# reset gtk theme
+gsettings set org.gnome.desktop.interface gtk-theme Adwaita
+gsettings set org.gnome.desktop.interface gtk-theme Monet
+
+
+source ~/.config/hypr/scripts/wal-telegram --wal

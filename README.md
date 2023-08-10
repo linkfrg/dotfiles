@@ -1,8 +1,9 @@
 # Setup
 
-<img src="/assets/1.png" alt="first screenshot"/>
-<img src="/assets/2.png" alt="second screenshot"/>
-<img src="/assets/3.png" alt="third screenshot"/>
+<img src="/assets/1.png"/>
+<img src="/assets/2.png"/>
+<img src="/assets/3.png"/>
+<img src="/assets/4.png"/>
 
 
 ## Software
@@ -19,70 +20,68 @@
 
 ## Dependencies
 
-### Hyprland(nvidia)
+### Hyprland Nvidia
 ```
-hyprland-nvidia-git
-xdg-desktop-portal-hyprland
-xorg-xwayland
-qt5-wayland
-qt6-wayland
-qt5ct
-qt6ct
-libva
-libva-nvidia-driver-git
-linux-headers 
-nvidia-dkms
-```
-### Pipewire
-```
-pipewire 
-pipewire-alsa 
-pipewire-pulse 
-pipewire-jack 
-pavucontrol
-wireplumber
-```
-### Components
-```
-mako
-jq
-waybar
-rofi-lbonn-wayland
-cava
-polkit-gnome
-swww
-gtklock
-pamixer 
-cliphist
-python-pywal
-```
-### Software
-```
-network-manager-applet 
-kitty
-thunar
-cmatrix
-neofetch
-hyprpicker-git
-firefox 
-eog
-thunar-archive-plugin 
-file-roller 
-nwg-look
-zsh
-sddm-git
-```
-### Misc
-```
-gtk-engine-murrine 
-gnome-themes-extra
-xdg-user-dirs
-ntfs-3g
+    hyprland-nvidia-git
+    libva-nvidia-driver-git
+    nvidia-dkms
 ```
 
-### Font and icons
+### Hyprland not nvidia
 ```
-ttf-jetbrains-mono
-ttf-nerd-fonts-symbols
-papirus-icon-theme
+    hyprland-git
+```
+
+### Hyprland base
+```
+    xdg-desktop-portal-hyprland
+    xorg-xwayland
+    qt5-wayland
+    qt6-wayland
+    qt5ct
+    qt6ct
+    libva
+    linux-headers 
+```
+
+### Pipewire
+```
+    pipewire 
+    pipewire-alsa 
+    pipewire-pulse 
+    pipewire-jack 
+    pavucontrol
+    wireplumber
+```
+
+### Components
+```
+    mako
+    jq
+    waybar
+    rofi-lbonn-wayland
+    cava
+    polkit-gnome
+    swww
+    gtklock
+    pamixer 
+    cliphist
+    python-pywal
+    grimblast-git
+    zenity
+    network-manager-applet 
+    kitty
+    thunar
+    thunar-archive-plugin 
+    file-roller 
+    gtk-engine-murrine 
+    gnome-themes-extra
+    xdg-user-dirs
+```
+
+### Font
+```
+    ttf-jetbrains-mono
+    ttf-nerd-fonts-symbols
+    papirus-icon-theme
 ```

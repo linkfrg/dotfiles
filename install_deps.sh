@@ -2,6 +2,15 @@
 
 hyprland_nvidia="
     hyprland-nvidia-git
+    libva-nvidia-driver-git
+    nvidia-dkms
+"
+
+hyprland_not_nvidia="
+    hyprland-git
+"
+
+hyprland_base="
     xdg-desktop-portal-hyprland
     xorg-xwayland
     qt5-wayland
@@ -9,9 +18,7 @@ hyprland_nvidia="
     qt5ct
     qt6ct
     libva
-    libva-nvidia-driver-git
     linux-headers 
-    nvidia-dkms
 "
 
 pipewire_stage="
@@ -35,32 +42,25 @@ components="
     pamixer 
     cliphist
     python-pywal
-    grim
-    slurp
-    wl-clipboard
-"
-
-soft="
+    grimblast-git
+    zenity
     network-manager-applet 
     kitty
     thunar
-    cmatrix
-    neofetch
-    hyprpicker-git
-    firefox 
-    eog
     thunar-archive-plugin 
     file-roller 
-    nwg-look
-    zsh
-    sddm-git
-"
-
-misc="
     gtk-engine-murrine 
     gnome-themes-extra
     xdg-user-dirs
-    ntfs-3g
+"
+
+additional_programs="
+    firefox 
+    eog
+    nwg-look
+    sddm-git
+    telegram-desktop
+    obs-studio
 "
 
 font="
@@ -69,37 +69,101 @@ font="
     papirus-icon-theme
 "
 
+read -rep $'Do you want to proceed with installation? (y, n) ' ANSWER
 
+if [[ $ANSWER == "Y" || $ANSWER == "y" ]]; then
+    read -rep $'Do you have nvidia gpu (y, n) ' ANSWER
+    if [[ $ANSWER == "Y" || $ANSWER == "y" ]]; then
+        NVIDIA=true
+    elif [[ $ANSWER == "N" || $ANSWER == "n" ]]; then
+        NVIDIA=false
+    else
+        echo "Error! type 'y' or 'n' Exit..."
+    fi
+else
+    echo "Exit..."
+    exit 0
+fi
 
 
 # PARU
-sudo pacman -S --needed base-devel
-git clone https://aur.archlinux.org/paru.git
-cd paru
-makepkg -si
-rm -R ./paru
+read -rep $'Install paru? (y, n) ' ANSWER
+if [[ $ANSWER == "Y" || $ANSWER == "y" ]]; then
+    sudo pacman -S --needed base-devel
+    git clone https://aur.archlinux.org/paru.git
+    cd paru
+    makepkg -si
+    rm -R ./paru
+elif [[ $ANSWER == "N" || $ANSWER == "n" ]]; then
+    echo "Skipping paru install..."
+else
+    echo "Error! type 'y' or 'n' Exit..."
+fi
 
-# INSTALL
-paru -S $hyprland_nvidia $pipewire_stage $components $soft $misc $font
-
-
-# USER DIRS
-xdg-user-dirs-update
-
-# PIPEWIRE
-systemctl --user enable --now pipewire.service pipewire.socket pipewire-pulse.service wireplumber.service
+# INSTALLING REQUIRED PACKAGES
+if [ $NVIDIA == true ]; then
+    echo "Installing hyprland for nvidia..."
+    paru -S --needed $hyprland_nvidia $pipewire_stage $hyprland_base $components $font
+    xdg-user-dirs-update
+    systemctl --user enable --now pipewire.service pipewire.socket pipewire-pulse.service wireplumber.service
+else
+    echo "Installing hyprland for not nvidia..."
+    paru -S --needed $hyprland_not_nvidia $pipewire_stage $hyprland_base $components $font
+    xdg-user-dirs-update
+    systemctl --user enable --now pipewire.service pipewire.socket pipewire-pulse.service wireplumber.service
+fi
 
 # ZSH
-chsh -s /usr/bin/zsh
+read -rep $'Install zsh? (y, n) ' ANSWER
+if [[ $ANSWER == "Y" || $ANSWER == "y" ]]; then
+    paru -S --needed zsh
+    cp ~/monet/.p10k.zsh ~/
+    cp ~/monet/.zshrc ~/
+    cp -R ~/monet/.oh-my-zsh ~/
+    chsh -s /usr/bin/zsh
+elif [[ $ANSWER == "N" || $ANSWER == "n" ]]; then
+    echo "Skipping zsh install..."
+else
+    echo "Error! type 'y' or 'n' Exit..."
+fi
 
-# COPY CONFIG FILES
-cp -R .config/* ~/.config/
-cp -R .wallpaper ~/
-cp -R .p10k.zsh ~/
-cp -R .zshrc ~/
-cp -R .oh-my-zsh ~/
-mkdir ~/.local/share/applications/
-cp .local/share/applications/code.desktop ~/.local/share/applications/
+# COPYING CONFIG FILES
+read -rep $'Copy config files? (y, n) ' ANSWER
+if [[ $ANSWER == "Y" || $ANSWER == "y" ]]; then
+    echo "Coping config files..."
+    cp -R ~/monet/.config/* ~/.config/
+    cp -R ~/monet/.wallpaper ~/
+elif [[ $ANSWER == "N" || $ANSWER == "n" ]]; then
+    echo "Skipping config files copy..."
+else
+    echo "Error! type 'y' or 'n' Exit..."
+fi
+
+# SDDM
+read -rep $'Install sddm? (y, n) ' ANSWER
+if [[ $ANSWER == "Y" || $ANSWER == "y" ]]; then
+    paru -S --needed sddm
+elif [[ $ANSWER == "N" || $ANSWER == "n" ]]; then
+    echo "Skipping sddm install..."
+else
+    echo "Error! type 'y' or 'n' Exit..."
+fi
+
+# ADDITIONAL PROGRAMS
+read -rep $'Install additional programs(firefox, eye of gnome, nwg-look, telegram, obs-studio)? (y, n) ' ANSWER
+if [[ $ANSWER == "Y" || $ANSWER == "y" ]]; then
+    paru -S --needed $additional_programs
+elif [[ $ANSWER == "N" || $ANSWER == "n" ]]; then
+    echo "Skipping additional programs installation..."
+else
+    echo "Error! type 'y' or 'n' Exit..."
+fi
 
 # PYWAL COLORSCHEME
 wal -i ~/.wallpaper/wallpaper5.png -n -t
+
+# SETTING UP THEME, FONT, ICONS
+
+gsettings set org.gnome.desktop.interface gtk-theme Monet
+gsettings set org.gnome.desktop.interface icon-theme Papirus
+gsettings set org.gnome.desktop.interface font-name "JetBrains Mono Regular 11"

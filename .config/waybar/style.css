@@ -49,7 +49,8 @@ tooltip label {
 #clock,
 #custom-logo,
 #workspaces button:hover,
-#workspaces button.active {
+#workspaces button.active,
+#workspaces button.urgent {
     background-color: @foreground;
     color: @background;
     border-radius: 20px;
