@@ -167,3 +167,6 @@ wal -i ~/.wallpaper/wallpaper5.png -n -t
 gsettings set org.gnome.desktop.interface gtk-theme Monet
 gsettings set org.gnome.desktop.interface icon-theme Papirus
 gsettings set org.gnome.desktop.interface font-name "JetBrains Mono Regular 11"
+
+mkdir ~/.config/mako
+ln -sf ~/.cache/wal/colors-mako ~/.config/mako/config
