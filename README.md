@@ -22,66 +22,73 @@
 
 ### Hyprland Nvidia
 ```
-    hyprland-nvidia-git
-    libva-nvidia-driver-git
-    nvidia-dkms
+hyprland-nvidia-git
+libva-nvidia-driver-git
+nvidia-dkms
 ```
 
 ### Hyprland not nvidia
 ```
-    hyprland-git
+hyprland-git
 ```
 
 ### Hyprland base
 ```
-    xdg-desktop-portal-hyprland
-    xorg-xwayland
-    qt5-wayland
-    qt6-wayland
-    qt5ct
-    qt6ct
-    libva
-    linux-headers 
+xdg-desktop-portal-hyprland
+xorg-xwayland
+qt5-wayland
+qt6-wayland
+qt5ct
+qt6ct
+libva
+linux-headers 
 ```
 
 ### Pipewire
 ```
-    pipewire 
-    pipewire-alsa 
-    pipewire-pulse 
-    pipewire-jack 
-    pavucontrol
-    wireplumber
+pipewire 
+pipewire-alsa 
+pipewire-pulse 
+pipewire-jack 
+pavucontrol
+wireplumber
 ```
 
 ### Components
 ```
-    mako
-    jq
-    waybar
-    rofi-lbonn-wayland
-    cava
-    polkit-gnome
-    swww
-    gtklock
-    pamixer 
-    cliphist
-    python-pywal
-    grimblast-git
-    zenity
-    network-manager-applet 
-    kitty
-    thunar
-    thunar-archive-plugin 
-    file-roller 
-    gtk-engine-murrine 
-    gnome-themes-extra
-    xdg-user-dirs
+mako
+jq
+waybar
+rofi-lbonn-wayland
+cava
+polkit-gnome
+swww
+gtklock
+pamixer 
+cliphist
+python-pywal
+grimblast-git
+zenity
+network-manager-applet 
+kitty
+thunar
+thunar-archive-plugin 
+file-roller 
+gtk-engine-murrine 
+gnome-themes-extra
+xdg-user-dirs
 ```
 
 ### Font
 ```
-    ttf-jetbrains-mono
-    ttf-nerd-fonts-symbols
-    papirus-icon-theme
+ttf-jetbrains-mono
+ttf-nerd-fonts-symbols
+papirus-icon-theme
+```
+
+## WARNING: MANDATORY
+```
+wal -i ~/.wallpaper/wallpaper5.png -n -t
+mkdir ~/.config/mako
+ln -sf ~/.cache/wal/colors-mako ~/.config/mako/config
 ```
