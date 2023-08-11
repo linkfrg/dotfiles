@@ -412,7 +412,7 @@ EOF
   cd "${pre}" || exit 1;
   if [[ -z $bg_ext ]]; then bg_ext="jpg"; fi
   if [[ -n $blur ]]; then blur="-blur $blur"; fi
-  if [[ "$bg_mode" = "tiled" ]]; then convert -size 256x256 "xc:$color0" tiled.jpg;
+  if [[ "$bg_mode" = "tiled" ]]; then convert -size 256x256 "xc:$color1" tiled.jpg;
   elif [[ "$bg_mode" = "background" ]]; then
     img_size=$(magick identify -format "%w" ${bg_mode}.${bg_ext})
     screen_size=$(xrandr | grep -P '(?<=connected)' | grep -oP '\d+x\d+\+\d+\+\d+' | sed 's/x/+/g' | awk -F '+' '{print $1}' | sort -ur | head -n 1)

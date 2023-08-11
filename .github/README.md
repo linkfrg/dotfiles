@@ -1,9 +1,9 @@
 # Setup
 
-<img src="/assets/1.png"/>
-<img src="/assets/2.png"/>
-<img src="/assets/3.png"/>
-<img src="/assets/4.png"/>
+<img src=".github/assets/1.png"/>
+<img src=".github/assets/2.png"/>
+<img src=".github/assets/3.png"/>
+<img src=".github/assets/4.png"/>
 
 
 ## Software
@@ -68,7 +68,7 @@ pamixer
 cliphist
 python-pywal
 grimblast-git
-zenity
+swayimg
 network-manager-applet 
 kitty
 thunar

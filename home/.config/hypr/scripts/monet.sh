@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Select file
-FILE=$(zenity --file-selection --file-filter='*.png *.jpg *.jpeg *.gif' --filename=".wallpaper/*")
+FILE=$(swayimg ~/.wallpaper/ -e "echo '%' && pkill swayimg")
 
 # if nothing selected then exit
 if [$FILE -eq ""]; then
@@ -30,4 +30,4 @@ gsettings set org.gnome.desktop.interface gtk-theme Adwaita
 gsettings set org.gnome.desktop.interface gtk-theme Monet
 
 
-source ~/.config/hypr/scripts/wal-telegram --wal
+source ~/.config/hypr/scripts/wal-telegram --wal -t

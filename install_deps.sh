@@ -43,7 +43,7 @@ components="
     cliphist
     python-pywal
     grimblast-git
-    zenity
+    swayimg
     network-manager-applet 
     kitty
     thunar
