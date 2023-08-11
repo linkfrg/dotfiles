@@ -160,7 +160,7 @@ else
 fi
 
 # PYWAL COLORSCHEME
-wal -i ~/.wallpaper/wallpaper5.png -n -t
+wal -i ~/.wallpaper/wallpaper3.png -n -t
 
 # SETTING UP THEME, FONT, ICONS
 
@@ -169,4 +169,6 @@ gsettings set org.gnome.desktop.interface icon-theme Papirus
 gsettings set org.gnome.desktop.interface font-name "JetBrains Mono Regular 11"
 
 mkdir ~/.config/mako
+mkdir ~/.config/swayimg
 ln -sf ~/.cache/wal/colors-mako ~/.config/mako/config
+ln -sf ~/.cache/wal/swayimg ~/.config/swayimg/config

@@ -3,7 +3,6 @@
 <img src="assets/1.png"/>
 <img src="assets/2.png"/>
 <img src="assets/3.png"/>
-<img src="assets/4.png"/>
 
 
 ## Software
@@ -88,7 +87,9 @@ papirus-icon-theme
 
 ## WARNING: MANDATORY
 ```
-wal -i ~/.wallpaper/wallpaper5.png -n -t
+wal -i ~/.wallpaper/wallpaper3.png -n -t
 mkdir ~/.config/mako
+mkdir ~/.config/swayimg
 ln -sf ~/.cache/wal/colors-mako ~/.config/mako/config
+ln -sf ~/.cache/wal/swayimg ~/.config/swayimg/config
 ```
