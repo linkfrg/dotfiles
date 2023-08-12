@@ -2,8 +2,6 @@
 // НАСТРОЙКИ БАРА
     	"layer": "top",
     	"position": "top",
-		"margin-top": 5,
-		"width": 1900,
     	
 // МОДУЛИ
 		"modules-left": ["custom/logo", "hyprland/window"],

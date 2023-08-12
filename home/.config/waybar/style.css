@@ -11,8 +11,7 @@
 /*---БАР--------------------------------------------------------*/
 
 window#waybar {
-    background-color: @background;
-    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0);
 }
 
 

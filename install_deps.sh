@@ -113,20 +113,6 @@ else
     systemctl --user enable --now pipewire.service pipewire.socket pipewire-pulse.service wireplumber.service
 fi
 
-# ZSH
-read -rep $'Install zsh? (y, n) ' ANSWER
-if [[ $ANSWER == "Y" || $ANSWER == "y" ]]; then
-    paru -S --needed zsh
-    cp ~/monet/.p10k.zsh ~/
-    cp ~/monet/.zshrc ~/
-    cp -R ~/monet/.oh-my-zsh ~/
-    chsh -s /usr/bin/zsh
-elif [[ $ANSWER == "N" || $ANSWER == "n" ]]; then
-    echo "Skipping zsh install..."
-else
-    echo "Error! type 'y' or 'n' Exit..."
-fi
-
 # COPYING CONFIG FILES
 read -rep $'Copy config files? (y, n) ' ANSWER
 if [[ $ANSWER == "Y" || $ANSWER == "y" ]]; then
