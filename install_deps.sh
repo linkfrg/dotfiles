@@ -117,8 +117,9 @@ fi
 read -rep $'Copy config files? (y, n) ' ANSWER
 if [[ $ANSWER == "Y" || $ANSWER == "y" ]]; then
     echo "Coping config files..."
-    cp -R ~/monet/.config/* ~/.config/
-    cp -R ~/monet/.wallpaper ~/
+    cp -R home/.config/* ~/.config/
+    cp -R home/.themes ~/
+    cp -R home/.wallpaper ~/
 elif [[ $ANSWER == "N" || $ANSWER == "n" ]]; then
     echo "Skipping config files copy..."
 else
