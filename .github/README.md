@@ -1,8 +1,8 @@
 <div align="center">
   <p><b><i>Material eww</i></b></p>
-  <img src="https://img.shields.io/github/last-commit/linkfrg/monet?color=%dba4a9&style=for-the-badge">
-  <img src="https://img.shields.io/github/repo-size/linkfrg/monet?color=%dba4a9&style=for-the-badge">
-  <img src="https://img.shields.io/github/stars/linkfrg/monet?color=%dba4a9&style=for-the-badge">
+  <img src="https://img.shields.io/github/last-commit/linkfrg/monet?color=%23c4a7e7&style=for-the-badge">
+  <img src="https://img.shields.io/github/repo-size/linkfrg/monet?color=%23c4a7e7&style=for-the-badge">
+  <img src="https://img.shields.io/github/stars/linkfrg/monet?color=%23c4a7e7&style=for-the-badge">
 </div>
 
 <img src="assets/1.png"/>
