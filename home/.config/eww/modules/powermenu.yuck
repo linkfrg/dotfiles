@@ -1,0 +1,38 @@
+(defwidget powermenu_widget []
+    (box :orientation "v" :space-evenly false :halign "center" :class "powermenu"
+        (box :orientation "v" :space-evenly false :halign "end" :class "powermenu-time"
+            (time_menu_clock)
+            (time_menu_date)
+        )
+        (box :orientation "v" :space-evenly false :halign "center" :class "powermenu-box"
+            (box :orientation "h" :space-evenly false :halign "center" :class "powermenu-row"
+                (box :orientation "v" :space-evenly false :halign "center" :class "powermenu-entry"
+                    (button :class "powermenu-button" :onclick "eww open bar && eww close powermenu && gtklock && sleep 1" "")
+                    (label :class "powermenu-text" :text "Заблокировать")
+                )
+                (box :orientation "v" :space-evenly false :halign "center" :class "powermenu-entry"
+                    (button :class "powermenu-button" :onclick "eww open bar && eww close powermenu && systemctl suspend && gtklock && sleep 1" "󰤄")
+                    (label :class "powermenu-text" :text "Спящий режим")
+                )
+                (box :orientation "v" :space-evenly false :halign "center" :class "powermenu-entry"
+                    (button :class "powermenu-button" :onclick "hyprctl dispatch exit 0" "󰗼")
+                    (label :class "powermenu-text" :text "Выйти")
+                )
+            )
+            (box :orientation "h" :space-evenly false :halign "center" :class "powermenu-row"
+                (box :orientation "v" :space-evenly false :halign "center" :class "powermenu-entry"
+                    (button :class "powermenu-button" :onclick "systemctl reboot" "󰜉")
+                    (label :class "powermenu-text" :text "Перезагрузка")
+                )
+                (box :orientation "v" :space-evenly false :halign "center" :class "powermenu-entry"
+                    (button :class "powermenu-button" :onclick "systemctl poweroff" "󰐥")
+                    (label :class "powermenu-text" :text "Выключение")
+                )
+                (box :orientation "v" :space-evenly false :halign "center" :class "powermenu-entry"
+                    (button :class "powermenu-button" :onclick "eww close powermenu && eww open bar" "")
+                    (label :class "powermenu-text" :text "Отмена")
+                )
+            )
+        )
+    )
+)

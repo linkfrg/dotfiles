@@ -1,0 +1,21 @@
+(defwidget music []
+    (box :orientation "h" :class "music-box" :visible {mpris_state == "" ? false : true} :space-evenly false :valign "center" :style "background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.8) 100%), url('${mpris.art}');"
+        (box :orientation "v" :class "music-body" :space-evenly false :valign "start"
+            (box :orientation "h" :class "music-icon-box" :space-evenly false :halign "start"
+                (label :text "󰗃" :class "music-icon")
+                (label :text {mpris.name} :class "music-player")
+            )
+            (box :orientation "v" :class "music-info" :space-evenly false :valign "start"
+                (box :orientation "h" :class "music-title" :space-evenly false :halign "start"
+                    (label :limit-width 25 :text {mpris.title})
+                )
+                (box :orientation "h" :class "music-artist" :space-evenly false :halign "start"
+                    (label :limit-width 20 :text {mpris.artist})
+                )
+            )
+        )
+        (box :orientation "h" :class "music-button-box" :space-evenly false :halign "start"
+                (button :class "music-button" :onclick "playerctl play-pause" {mpris.status == "Playing" ? "󰓛" : "󰐊"})
+        )
+    )
+)

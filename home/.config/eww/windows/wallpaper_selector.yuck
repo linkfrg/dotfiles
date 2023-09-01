@@ -1,0 +1,16 @@
+(defwindow wallpaper_selector
+    :monitor 0
+    :stacking "fg"
+    :geometry (geometry
+                    :anchor "center"
+                )
+    (wallpapers_widget)
+)
+
+(defwidget wallpapers_widget []
+    (eventbox :onscroll "scripts/scroll_wallpapers.sh {} ${current_wallpaper} ${arraylength(wallpapers)}" :onclick "scripts/monet.sh ${wallpapers[current_wallpaper]} &" :onhoverlost "eww close wallpaper_selector"
+        (box :orientation "h" :halign "start" :space-evenly false :class "wallpapers-box"
+            (image :path {wallpapers[current_wallpaper]} :image-width 1024 :image-height 1024)
+        )
+    )
+)

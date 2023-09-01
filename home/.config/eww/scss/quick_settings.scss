@@ -1,0 +1,34 @@
+.quick_settings_button,
+.quick_settings_button_toggled {
+    transition: 500ms;
+    background-color: $background;
+    color: #ffffff;
+    border-radius: 20px;
+    margin: 0.25rem;
+    padding: 10px;
+    min-width: 10rem;
+    min-height: 3rem;
+}
+
+.quick_settings_button_toggled {
+    background-color: $foreground;
+    color: #000000;
+}
+
+.quick_settings_box {
+    margin: 1rem;
+}
+
+.quick-settings-icon {
+    font-size: 1.3rem;
+    min-width: 1.3rem;
+}
+
+.quick-settings-info {
+    margin-left: 1rem;
+}
+
+.quick-settings-state {
+    font-size: 0.9rem;
+    color: #505050;
+}

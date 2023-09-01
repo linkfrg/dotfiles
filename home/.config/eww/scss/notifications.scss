@@ -1,0 +1,51 @@
+.notifications-body {
+    background-color: $background;
+    color: #ffffff;
+    border-radius: 20px;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+.notifications-apptime {
+    font-weight: normal;
+    color: #AAAAAA;
+}
+
+.notifications-circle {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    font-size: 0.5rem;
+}
+
+.notifications-info {
+    margin-top: 1rem;
+}
+
+.notifications-text {
+    margin-left: 1rem;
+}
+
+.notifications-summary {
+    font-size: 1.1rem;
+}
+
+.notifications-body-text {
+    color: #AAAAAA;
+    font-weight: normal;
+}
+
+.notifications-scroll {
+    min-width: 35rem;
+    min-height: 60rem;
+}
+
+.notifications-box-header {
+    font-size: 1.5rem;
+}
+
+.notifications-clear-button {
+    background-color: $foreground;
+    color: #000000;
+    padding: 0 1rem;
+    border-radius: 20px;
+}

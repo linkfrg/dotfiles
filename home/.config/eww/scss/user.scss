@@ -1,0 +1,42 @@
+.user-box {
+    margin-top: 1rem;
+}
+
+.username-box {
+    margin-left: 1rem;
+}
+
+.username {
+    font-size: 1.5rem;
+}
+
+.uptime {
+    font-weight: normal;
+    font-size: 1rem;
+}
+
+.user-image {
+    background-image: url("ava.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-height: 4rem;
+    min-width: 4rem;
+    border-radius: 100%;
+}
+
+.power-user {
+    margin-left: 10rem;
+}
+.open-powermenu-button,
+.lock-button {
+    border-radius: 20px;
+    font-size: 1.5rem;
+    margin: 1.5rem 0.5rem;
+    padding: 0 0.5rem;
+}
+
+.open-powermenu-button {
+    background-color: $foreground;
+    color: #000000;
+}

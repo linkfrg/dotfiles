@@ -1,0 +1,20 @@
+.weather-box {
+    background-color: $foreground;
+    margin-top: 1rem;
+    border-radius: 20px;
+    padding: 1rem;
+    color: #000000;
+}
+
+.weather-desc {
+    font-size: 1.3rem;
+}
+
+.weather-icon {
+    font-size: 3rem;
+}
+
+.weather-temp {
+    margin-left: 1rem;
+    font-size: 2rem;
+}

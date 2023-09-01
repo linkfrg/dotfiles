@@ -1,0 +1,80 @@
+; SIDEBAR STATE
+(defvar open_settings_menu false)
+(defvar open_notifications_menu false)
+(defvar open_time_menu false)
+
+; TIME
+
+(defpoll time :interval "10s"
+"date '+%H:%M'")
+
+(defpoll date :interval "10s"
+"date '+%a, %d %b.'")
+
+; KEYBOARD LAYOUT
+(defvar kb_layout "en")
+
+
+; QUICK SETTINGS
+
+(defvar do-not-disturb false)
+
+(defpoll current_shader :interval "1s"
+"hyprctl getoption decoration:screen_shader -j | jq -r '.str'")
+
+(defvar night_mode_shader "~/.config/hypr/shaders/night.frag")
+
+(defpoll recording :interval "1s"
+"pgrep 'wf-recorder' || echo false")
+
+(defpoll network :interval "1s"
+"nmcli device show | awk -F ': +' '/DEVICE/{device=$2} /CONNECTION/{connection=$2} device && connection{print connection; exit}'")
+
+; USER
+
+(defpoll username :interval "10h"
+"whoami")
+(defpoll uptime :interval "10s"
+"uptime | awk '{print $3}' | tr ',' ' '")
+
+; VOLUME
+
+(deflisten volume :initial "0"
+"scripts/volume.sh")
+
+; WEATHER
+(defpoll weather :interval "30m"
+"python scripts/weather.py")
+
+; WORKSPACES
+(deflisten current_workspace :initial "1"
+"scripts/get_active_workspace.sh")
+
+(defvar workspaces_list "[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]")
+
+; PLAYER
+
+(deflisten mpris :initial "None"
+"scripts/mpris.sh")
+
+(defpoll mpris_state :interval "5s"
+"playerctl -l")
+
+; NOTIFICATIONS
+
+(defvar notifications '{"count": 0, "notifications": [], "popups": []}')
+
+; WALLPAPERS
+
+(defpoll wallpapers :interval "10s"
+"scripts/get_wallpapers.sh")
+
+(defvar current_wallpaper 0)
+
+; APPS
+
+(defvar apps "{}")
+
+; CLIPBOARD HISTORY
+
+(defvar clipboard "[]")

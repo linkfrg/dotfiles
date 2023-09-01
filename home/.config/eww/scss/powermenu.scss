@@ -1,0 +1,33 @@
+.powermenu {
+    color: #ffffff;
+}
+
+.powermenu-box {
+    margin-top: 2rem;
+    min-width: 1920px;
+}
+
+.powermenu-button {
+    transition: 500ms;
+    background-color: $background;
+    color: #ffffff;
+    padding: 4rem;
+    min-width: 15rem;
+    margin: 1rem;
+    border-radius: 20px;
+    font-size: 4rem;
+    margin-top: 2rem;
+}
+
+.powermenu-button:hover {
+    background-color: $foreground;
+    color: #000000;
+}
+
+.powermenu-text {
+    font-size: 1.5rem;
+}
+
+.powermenu-time {
+    margin-right: 1rem;
+}

@@ -31,11 +31,9 @@ pipewire_stage="
 "
 
 components="
-    mako
+    dunst
     jq
-    waybar
-    rofi-lbonn-wayland
-    cava
+    eww-tray-wayland-git
     polkit-gnome
     swww
     gtklock
@@ -43,8 +41,7 @@ components="
     cliphist
     python-pywal
     grimblast-git
-    swayimg
-    network-manager-applet 
+    gnome-control-center
     kitty
     thunar
     thunar-archive-plugin 
@@ -52,15 +49,19 @@ components="
     gtk-engine-murrine 
     gnome-themes-extra
     xdg-user-dirs
+    wf-recorder
+    dbus-python
+    python-gobject
+    python-requests
+    socat
+    networkmanager
 "
 
 additional_programs="
     firefox 
     eog
     nwg-look
-    sddm-git
     telegram-desktop
-    obs-studio
 "
 
 font="
@@ -129,7 +130,7 @@ fi
 # SDDM
 read -rep $'Install sddm? (y, n) ' ANSWER
 if [[ $ANSWER == "Y" || $ANSWER == "y" ]]; then
-    paru -S --needed sddm
+    paru -S --needed sddm-git
 elif [[ $ANSWER == "N" || $ANSWER == "n" ]]; then
     echo "Skipping sddm install..."
 else
@@ -154,8 +155,3 @@ wal -i ~/.wallpaper/wallpaper3.png -n -t
 gsettings set org.gnome.desktop.interface gtk-theme Monet
 gsettings set org.gnome.desktop.interface icon-theme Papirus
 gsettings set org.gnome.desktop.interface font-name "JetBrains Mono Regular 11"
-
-mkdir ~/.config/mako
-mkdir ~/.config/swayimg
-ln -sf ~/.cache/wal/colors-mako ~/.config/mako/config
-ln -sf ~/.cache/wal/swayimg ~/.config/swayimg/config

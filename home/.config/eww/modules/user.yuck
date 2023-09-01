@@ -1,0 +1,23 @@
+(defwidget user []
+    (box :orientation "h" :space-evenly false :halign "start" :valign "center" :class "user-box"
+        (box :orientation "h" :space-evenly false :halign "start" :valign "center"
+            (box :orientation "h" :space-evenly false :halign "center" :valign "center" :class "user-image")
+        )
+        (box :orientation "v" :space-evenly false :halign "start" :valign "start" :class "username-box"
+            (box :orientation "h" :space-evenly false :halign "start" :valign "start" :class "username"
+                (label :text "${username}")
+            )
+
+            (box :orientation "h" :space-evenly false :halign "start" :valign "start" :class "uptime"
+                (label :wrap true :limit-width 10 :text "up ${uptime}")
+            )
+        )
+    )
+)
+
+(defwidget power_user []
+    (box :orientation "h" :space-evenly true :halign "end" :class "power-user"
+        (button :class "lock-button" :onclick "eww close settings_menu && gtklock && sleep 1" "")
+        (button :class "open-powermenu-button" :onclick "eww close bar && eww close settings_menu && eww open powermenu" "󰐥")
+    )
+)

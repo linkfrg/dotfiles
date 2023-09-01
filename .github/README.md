@@ -1,23 +1,26 @@
-# Setup
+<div align="center">
+  <p><b><i>Material eww</i></b></p>
+  <img src="https://img.shields.io/github/last-commit/linkfrg/monet?color=%dba4a9&style=for-the-badge">
+  <img src="https://img.shields.io/github/repo-size/linkfrg/monet?color=%dba4a9&style=for-the-badge">
+  <img src="https://img.shields.io/github/stars/linkfrg/monet?color=%dba4a9&style=for-the-badge">
+</div>
 
 <img src="assets/1.png"/>
 <img src="assets/2.png"/>
 <img src="assets/3.png"/>
+<img src="assets/4.png"/>
 
 
 ## Software
 - **Distro** - [Arch](https://archlinux.org/)
 - **Wayland compositor** - [Hyprland](https://hyprland.org/)
-- **Bar** - [Waybar](https://github.com/Alexays/Waybar)
+- **Widgets** - [Eww](https://github.com/elkowar/eww)
 - **File Manager** - [Thunar](https://gitlab.xfce.org/xfce/thunar)
 - **Terminal** - [Kitty](https://sw.kovidgoyal.net/kitty/)
-- **Shell** - [Zsh](https://www.zsh.org/)
-- **Notifications** - [Mako](https://github.com/emersion/mako)
-- **Launcher** - [Rofi](https://github.com/lbonn/rofi)
 - **Wallpaper** - [swww](https://github.com/Horus645/swww)
 - **Screen locker** - [gtklock](https://github.com/jovanlanik/gtklock)
 
-## Dependencies
+## Installation
 
 ### Hyprland Nvidia
 ```
@@ -55,11 +58,9 @@ wireplumber
 
 ### Components
 ```
-mako
+dunst
 jq
-waybar
-rofi-lbonn-wayland
-cava
+eww-tray-wayland-git
 polkit-gnome
 swww
 gtklock
@@ -67,8 +68,7 @@ pamixer
 cliphist
 python-pywal
 grimblast-git
-swayimg
-network-manager-applet 
+gnome-control-center
 kitty
 thunar
 thunar-archive-plugin 
@@ -76,6 +76,12 @@ file-roller
 gtk-engine-murrine 
 gnome-themes-extra
 xdg-user-dirs
+wf-recorder
+dbus-python
+python-gobject
+python-requests
+socat
+networkmanager
 ```
 
 ### Font
@@ -85,11 +91,7 @@ ttf-nerd-fonts-symbols
 papirus-icon-theme
 ```
 
-## WARNING: MANDATORY
+## WARNING: GENERATE PYWAL COLORSCHEME
 ```
 wal -i ~/.wallpaper/wallpaper3.png -n -t
-mkdir ~/.config/mako
-mkdir ~/.config/swayimg
-ln -sf ~/.cache/wal/colors-mako ~/.config/mako/config
-ln -sf ~/.cache/wal/swayimg ~/.config/swayimg/config
 ```

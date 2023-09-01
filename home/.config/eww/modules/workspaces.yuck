@@ -1,0 +1,9 @@
+(defwidget workspaces []
+    (eventbox :onscroll "scripts/change_active_workspace.sh {} ${current_workspace}"
+        (box :orientation "h" :halign "start" :space-evenly false :class "workspaces-widget"
+            (for workspace in workspaces_list
+                (button :class "workspaces-button ${current_workspace == workspace ? "workspaces-current" : ""}" :onclick "hyprctl dispatch workspace ${workspace}" workspace)
+            )
+        )
+    )
+)

@@ -1,0 +1,18 @@
+(defwidget clock []
+    (eventbox :onhover "scripts/toggle_time_menu.sh &"
+      (box :class "clock" :orientation "h" :space-evenly false :halign "end"
+        (label :text time)
+      )
+    )
+)
+
+(defwidget time_menu_clock []
+  (box :class "time-menu-clock" :orientation "h" :space-evenly false :halign "center"
+    (label :text time)
+  )
+)
+(defwidget time_menu_date []
+  (box :class "time-menu-date" :orientation "h" :space-evenly false :halign "center"
+    (label :text date)
+  )
+)

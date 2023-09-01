@@ -1,0 +1,51 @@
+(defwidget notifications_widget []
+    (box :orientation "v" :space-evenly false :valign "start" :class "notifications-box"
+        (box :orientation "h" :space-evenly true :valign "start" :class "notifications-box-header"
+            (box :orientation "h" :space-evenly false :halign "start"
+                (label :text "󰂚 ${notifications.count}")
+            )
+            (box :orientation "h" :space-evenly false :halign "center"
+                (label :text "Уведомления")
+            )
+            (box :orientation "h" :space-evenly false :halign "end"
+                (button :class "notifications-clear-button" :onclick "python ~/.config/eww/scripts/notifications.py clear &" "󰎟")
+            )
+        )
+        (scroll :vscroll true :class "notifications-scroll" :visible {notifications.notifications != "[]" ? true : false}
+            (box :orientation "v" :space-evenly false :valign "start"
+                (for notify in {notifications.notifications}
+                    (box :orientation "v" :space-evenly false :valign "start" :class "notifications-body"
+                        (box :orientation "h" :space-evenly false :halign "start" :class "notifications-apptime"
+                            (box :orientation "h" :space-evenly false :halign "start" :class "notifications-app" :visible {notify.app != "null" ? true :false}
+                                (label :text {notify.app})
+                            )
+                            (box :orientation "h" :space-evenly false :halign "start" :class "notifications-circle" :visible {notify.time != "null" ? true :false}
+                                (label :text "")
+                            )
+                            (box :orientation "h" :space-evenly false :halign "start" :class "notifications-time" :visible {notify.time != "null" ? true :false}
+                                (label :text {notify.time})
+                            )
+                        )
+
+                        (box :orientation "h" :space-evenly false :valign "start" :class "notifications-info"
+                            (box :orientation "h" :space-evenly false :halign "start" :class "notifications-image" :visible {notify.image != "null" ? true :false}
+                                (image :path {notify.image} :image-width 64 :image-height 64)
+                            )
+                            (box :orientation "v" :space-evenly false :valign "start" :class "notifications-text"
+                                (box :orientation "h" :space-evenly false :halign "start" :class "notifications-summary" :visible {notify.summary != "null" ? true :false}
+                                    (label :wrap true :text {notify.summary})
+                                )
+                                (box :orientation "h" :space-evenly false :halign "start" :class "notifications-body-text" :visible {notify.body != "null" ? true :false}
+                                    (label :wrap true :markup {notify.body})
+                                )
+                            )
+                        )
+                    )
+                )
+            )
+        )
+        (box :orientation "v" :valign "center" :class "notifications-scroll" :visible {notifications.notifications != "[]" ? false : true}
+            (label :text "Нет уведомлений")
+        )
+    )
+)
