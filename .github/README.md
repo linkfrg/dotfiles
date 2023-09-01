@@ -1,5 +1,5 @@
 <div align="center">
-  <h3><b><i>Material eww</i></b></h3>
+  <h2><b><i>Material eww</i></b></h2>
   <img src="https://img.shields.io/github/last-commit/linkfrg/monet?color=%23c4a7e7&style=for-the-badge">
   <img src="https://img.shields.io/github/repo-size/linkfrg/monet?color=%23c4a7e7&style=for-the-badge">
   <img src="https://img.shields.io/github/stars/linkfrg/monet?color=%23c4a7e7&style=for-the-badge">
