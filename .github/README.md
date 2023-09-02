@@ -1,24 +1,17 @@
-<div align="center">
-  <h2><b><i>Material eww</i></b></h2>
-  <img src="https://img.shields.io/github/last-commit/linkfrg/monet?color=%23c4a7e7&style=for-the-badge">
-  <img src="https://img.shields.io/github/repo-size/linkfrg/monet?color=%23c4a7e7&style=for-the-badge">
-  <img src="https://img.shields.io/github/stars/linkfrg/monet?color=%23c4a7e7&style=for-the-badge">
-</div>
+## Software
+- **Distro** - [Arch](https://archlinux.org/)
+- **Wayland compositor** - [Hyprland](https://hyprland.org/)
+- **Widgets** - [eww](https://github.com/elkowar/eww)
+- **Terminal** - [Kitty](https://sw.kovidgoyal.net/kitty/)
+
+<img src="https://img.shields.io/github/last-commit/linkfrg/dotfiles?color=%23c4a7e7&style=for-the-badge">
+<img src="https://img.shields.io/github/repo-size/linkfrg/dotfiles?color=%23c4a7e7&style=for-the-badge">
+<img src="https://img.shields.io/github/stars/linkfrg/dotfiles?color=%23c4a7e7&style=for-the-badge">
 
 <img src="assets/1.png"/>
 <img src="assets/2.png"/>
 <img src="assets/3.png"/>
 <img src="assets/4.png"/>
-
-
-## Software
-- **Distro** - [Arch](https://archlinux.org/)
-- **Wayland compositor** - [Hyprland](https://hyprland.org/)
-- **Widgets** - [Eww](https://github.com/elkowar/eww)
-- **File Manager** - [Thunar](https://gitlab.xfce.org/xfce/thunar)
-- **Terminal** - [Kitty](https://sw.kovidgoyal.net/kitty/)
-- **Wallpaper** - [swww](https://github.com/Horus645/swww)
-- **Screen locker** - [gtklock](https://github.com/jovanlanik/gtklock)
 
 ## Installation
 
