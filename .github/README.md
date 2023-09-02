@@ -4,9 +4,11 @@
 - **Widgets** - [eww](https://github.com/elkowar/eww)
 - **Terminal** - [Kitty](https://sw.kovidgoyal.net/kitty/)
 
-<img src="https://img.shields.io/github/last-commit/linkfrg/dotfiles?color=%23c4a7e7&style=for-the-badge">
-<img src="https://img.shields.io/github/repo-size/linkfrg/dotfiles?color=%23c4a7e7&style=for-the-badge">
-<img src="https://img.shields.io/github/stars/linkfrg/dotfiles?color=%23c4a7e7&style=for-the-badge">
+<div align="center">
+  <img src="https://img.shields.io/github/last-commit/linkfrg/dotfiles?color=%23c4a7e7&style=for-the-badge">
+  <img src="https://img.shields.io/github/repo-size/linkfrg/dotfiles?color=%23c4a7e7&style=for-the-badge">
+  <img src="https://img.shields.io/github/stars/linkfrg/dotfiles?color=%23c4a7e7&style=for-the-badge">
+</div>
 
 <img src="assets/1.png"/>
 <img src="assets/2.png"/>
