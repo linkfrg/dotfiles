@@ -1,0 +1,39 @@
+(defwidget powermenu []
+    (revealer :transition "slidedown" :reveal {open_powermenu == true ? true : false} :duration "700ms"
+        (box :orientation "v" :space-evenly false :valign "center" :halign "center" :class "powermenu-box"
+            (box :class "powermenu-label" :orientation "h" :halign "start"
+                (label :text "Питание")
+            )
+            (button :class "powermenu-button" :onclick "sleep 0.1 && gtklock &"
+                (box :orientation "h" :space-evenly false :halign "start"
+                    (label :class "powermenu-icon" :text "")
+                    (label :class "powermenu-text" :text "Заблокировать")
+                )
+            )
+            (button :class "powermenu-button" :onclick "sleep 0.1 && gtklock & systemctl suspend"
+                (box :orientation "h" :space-evenly false :halign "start"
+                    (label :class "powermenu-icon" :text "󰤄")
+                    (label :class "powermenu-text" :text "Спящий режим")
+                )
+            )
+            (button :class "powermenu-button" :onclick "hyprctl dispatch exit 0"
+                (box :orientation "h" :space-evenly false :halign "start"
+                    (label :class "powermenu-icon" :text "󰗼")
+                    (label :class "powermenu-text" :text "Выйти")
+                )
+            )
+            (button :class "powermenu-button" :onclick "systemctl reboot"
+                (box :orientation "h" :space-evenly false :halign "start"
+                    (label :class "powermenu-icon" :text "󰜉")
+                    (label :class "powermenu-text" :text "Перезагрузка")
+                )
+            )
+            (button :class "powermenu-button" :onclick "systemctl poweroff"
+                (box :orientation "h" :space-evenly false :halign "start"
+                    (label :class "powermenu-icon" :text "󰐥")
+                    (label :class "powermenu-text" :text "Выключение")
+                )
+            )
+        )
+    )
+)

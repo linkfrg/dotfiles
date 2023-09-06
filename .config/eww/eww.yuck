@@ -1,0 +1,27 @@
+(include "variables.yuck")
+
+(include "windows/bar.yuck")
+(include "windows/osd.yuck")
+(include "windows/notifications_popup.yuck")
+(include "windows/launcher.yuck")
+(include "windows/clipboard.yuck")
+
+(include "windows/notifications_menu.yuck")
+(include "windows/time_menu.yuck")
+(include "windows/settings_menu.yuck")
+
+
+(include "modules/clock.yuck")
+(include "modules/language.yuck")
+(include "modules/logo.yuck")
+(include "modules/tray.yuck")
+(include "modules/volume.yuck")
+(include "modules/workspaces.yuck")
+(include "modules/notifications.yuck")
+(include "modules/powermenu.yuck")
+(include "modules/quick_settings.yuck")
+(include "modules/music.yuck")
+(include "modules/user.yuck")
+(include "modules/weather.yuck")
+(include "modules/calendar.yuck")
+(include "modules/bar_state.yuck")

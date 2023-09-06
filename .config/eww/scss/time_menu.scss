@@ -1,0 +1,13 @@
+.time-menu-widget {
+    background-color: $surface;
+    border-radius: 20px;
+    margin-top: 10px;
+    padding: 1rem;
+    color: $onSurface;
+    font-size: 15px;
+    box-shadow: 0px 0px 2px $shadow, inset 0px 0px 2px $shadow;
+}
+
+.time-menu-left {
+    min-width: 20rem;
+}

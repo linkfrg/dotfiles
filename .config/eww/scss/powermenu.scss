@@ -1,0 +1,31 @@
+.powermenu-box {
+    background-color: $secondaryContainer;
+    padding: 1rem;
+    border-radius: 10px;
+    margin-top: 1rem;
+    min-width: 23rem;
+}
+
+.powermenu-button {
+    background-color: $secondary;
+    color: $onSecondary;
+    padding: 0.25rem;
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+    border-radius: 10px;
+    min-height: 2rem;
+}
+
+.powermenu-button:hover {
+    background-color: $tertiary;
+    color: $onTertiary;
+}
+
+.powermenu-icon {
+    min-width: 2rem;
+}
+
+.powermenu-label {
+    color: $onSecondaryContainer;
+    font-size: 1.3rem;
+}

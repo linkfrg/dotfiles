@@ -1,0 +1,5 @@
+(defwidget language []
+    (box :class "language" :orientation "h" :space-evenly false :halign "end"
+        (button :onclick "scripts/switch_kb_layout.sh" kb_layout)
+    )
+)

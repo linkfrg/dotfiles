@@ -1,0 +1,39 @@
+.quick_settings_button,
+.quick_settings_button_toggled {
+    transition: 500ms;
+    background-color: $surfaceVariant;
+    color: $onSurface;
+    border-radius: 20px;
+    margin: 0.25rem;
+    padding: 10px;
+    min-width: 10rem;
+    min-height: 3rem;
+}
+
+.quick_settings_button_toggled {
+    background-color: $primary;
+    color: $surface;
+}
+
+.quick_settings_box {
+    margin: 1rem;
+}
+
+.quick-settings-icon {
+    font-size: 1.3rem;
+    min-width: 1.3rem;
+}
+
+.quick-settings-info {
+    margin-left: 1rem;
+}
+
+.quick-settings-state-disabled {
+    font-size: 0.9rem;
+    color: $onSurfaceVariant;
+}
+
+.quick-settings-state-enabled {
+    font-size: 0.9rem;
+    color: $surfaceVariant;
+}

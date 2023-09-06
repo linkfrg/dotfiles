@@ -1,0 +1,32 @@
+.tray-box {
+    margin: 0.35rem;
+    padding: 0 0.5rem;
+}
+ 
+tooltip {
+    background-color: $surface;
+    color: $onSurface;
+    padding: 1rem;
+    border-radius: 20px;
+    box-shadow: 2px 2px 2px $shadow;
+}
+
+menu {
+    padding: 0.7rem;
+    background: $surface;
+    color: $onSurface;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px $shadow;
+}
+
+menu>menuitem {
+    padding: 0.4em 1rem;
+    background: transparent;
+    transition: 0.3s;
+    border-radius: 10px;
+}
+
+menu>menuitem:hover {
+    background-color: $primary;
+    color: $surface;
+}

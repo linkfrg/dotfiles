@@ -1,0 +1,39 @@
+.volume-osd {
+    background-color: $surface;
+    padding: 1rem;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.volume-sidebar {
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+.volume-scale trough,
+.volume-scale trough {
+    background-color: $surfaceVariant;
+    border-radius: 10px;
+    min-height: 1.5rem;
+    min-width: 20rem;
+}
+
+
+.volume-scale trough highlight,
+.volume-scale trough progress {
+    background-color: $primary;
+    border-radius: 10px;
+    min-height: 1.5rem;
+}
+
+.volume-icon {
+    color: $onSurface;
+    margin-right: 1rem;
+    min-width: 2rem;
+    font-size: 30px;
+}
+
+.volume-bar {
+    margin: 0.35rem;
+    padding: 0 0.5rem;
+}

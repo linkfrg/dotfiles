@@ -1,0 +1,7 @@
+(defwindow osd
+    :monitor 0
+    :stacking "fg"
+    :geometry (geometry 
+                    :anchor "top center")
+    (volume_osd)
+)

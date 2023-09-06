@@ -1,0 +1,41 @@
+(defwidget bar_state []
+    (box :orientation "h" :halign "start" :space-evenly false
+        (recorder_icon)
+        (network_icon)
+        (do-not-disturb_icon)
+        (night_mode_icon)
+    )
+)
+
+
+(defwidget do-not-disturb_icon []
+    (eventbox :onclick "scripts/toggle_settings_menu.sh &"
+        (box :class "state-icon" :orientation "h" :space-evenly false :halign "start" :valign "center" :visible {do-not-disturb == false ? false : true}
+            (label :text "󰍷")
+        )
+    )
+)
+
+(defwidget network_icon []
+    (eventbox :onclick "scripts/toggle_settings_menu.sh &"
+        (box :class "state-icon" :orientation "h" :space-evenly false :halign "start" :valign "center"
+            (label :text {network == "lo" ? "󰣽" : "󰤯"})
+        )
+    )
+)
+
+(defwidget recorder_icon []
+    (eventbox :onclick "scripts/toggle_settings_menu.sh &"
+        (box :class "state-icon" :orientation "h" :space-evenly false :halign "start" :valign "center" :visible {recording != false ? true : false}
+            (label :text "󰻃")
+        )
+    )
+)
+
+(defwidget night_mode_icon []
+    (eventbox :onclick "scripts/toggle_settings_menu.sh &"
+        (box :class "state-icon" :orientation "h" :space-evenly false :halign "start" :valign "center" :visible {current_shader == night_mode_shader ? true : false}
+            (label :text "󰤄")
+        )
+    )
+)

@@ -1,0 +1,15 @@
+.workspaces-widget {
+    margin: 0.35rem;
+    padding: 0 0.5rem;
+}
+
+.workspaces-button {
+    padding: 0rem 0.5rem;
+    margin: 0.25rem;
+}
+
+.workspaces-current {
+    background-color: $primary;
+    color: $surface;
+    border-radius: 20px;
+}

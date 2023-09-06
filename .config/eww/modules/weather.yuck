@@ -1,0 +1,17 @@
+(defwidget weather []
+    (box :orientation "h" :class "weather-box" :space-evenly false :valign "start"
+        (box :orientation "v" :class "weather-body" :space-evenly false :halign "start" :visible {weather != "" ? true : false}
+            (box :orientation "h" :class "weather-desc" :space-evenly false :halign "start"
+                (label :text {weather.desc})
+            )
+            (box :orientation "h" :class "weather-info" :space-evenly false :halign "start"
+                (label :class "weather-icon" :text {weather.icon})
+                (label :class "weather-temp" :text {weather.temp})
+            )
+        )
+        (box :orientation "h" :class "weather-no-data" :space-evenly false :halign "center" :visible {weather != "" ? false : true}
+            (label :text "󰖩 Updating...")
+        )
+    )
+
+)

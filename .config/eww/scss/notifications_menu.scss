@@ -1,0 +1,11 @@
+.notifications-menu-box {
+    background-color: $surface;
+    border-radius: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    padding: 1rem;
+    font-size: 15px;
+    color: $onSurface;
+    box-shadow: 0px 0px 2px $shadow, inset 0px 0px 2px $shadow;
+}

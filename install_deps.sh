@@ -39,7 +39,6 @@ components="
     gtklock
     pamixer 
     cliphist
-    python-pywal
     grimblast-git
     gnome-control-center
     kitty
@@ -53,6 +52,9 @@ components="
     dbus-python
     python-gobject
     python-requests
+    python-jinja
+    python-material-color-utilities
+    zenity
     socat
     networkmanager
 "
@@ -118,9 +120,9 @@ fi
 read -rep $'Copy config files? (y, n) ' ANSWER
 if [[ $ANSWER == "Y" || $ANSWER == "y" ]]; then
     echo "Coping config files..."
-    cp -R home/.config/* ~/.config/
-    cp -R home/.themes ~/
-    cp -R home/.wallpaper ~/
+    cp -R .config/* ~/.config/
+    cp -R .themes ~/
+    cp -R .wallpaper ~/
 elif [[ $ANSWER == "N" || $ANSWER == "n" ]]; then
     echo "Skipping config files copy..."
 else
@@ -146,9 +148,6 @@ elif [[ $ANSWER == "N" || $ANSWER == "n" ]]; then
 else
     echo "Error! type 'y' or 'n' Exit..."
 fi
-
-# PYWAL COLORSCHEME
-wal -i ~/.wallpaper/wallpaper3.png -n -t
 
 # SETTING UP THEME, FONT, ICONS
 

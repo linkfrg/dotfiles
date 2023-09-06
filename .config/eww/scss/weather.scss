@@ -1,0 +1,20 @@
+.weather-box {
+    background-color: $surfaceVariant;
+    margin-top: 1rem;
+    border-radius: 20px;
+    padding: 1rem;
+    color: $onSurfaceVariant;
+}
+
+.weather-desc {
+    font-size: 1.3rem;
+}
+
+.weather-icon {
+    font-size: 3rem;
+}
+
+.weather-temp {
+    margin-left: 1rem;
+    font-size: 2rem;
+}

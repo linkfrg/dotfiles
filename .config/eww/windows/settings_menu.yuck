@@ -1,0 +1,27 @@
+(defwindow settings_menu
+    :monitor 0
+    :stacking "fg"
+    :geometry (geometry
+                    :anchor "top right"
+                )
+    (settings_menu_widget)
+)
+
+(defwidget settings_menu_widget []
+    (revealer :transition "slideleft" :reveal {open_settings_menu == true ? true : false} :duration "700ms"
+        (eventbox :onhoverlost "scripts/toggle_settings_menu.sh &"
+            (box :orientation "v" :space-evenly false :valign "start" :class "settings-menu-box"
+                (box :orientation "h" :space-evenly false :halign "center"
+                    (user)
+                    (power_user)
+                )
+                (box :orientation "v" :space-evenly false :valign "start"
+                    (powermenu)
+                    (volume_sidebar)
+                    (quick_settings)
+                    (music)
+                )
+            )
+        )
+    )
+)

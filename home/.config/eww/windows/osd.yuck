@@ -1,9 +1,0 @@
-(defwindow osd
-    :monitor 0
-    :geometry (geometry :x "0px" 
-                        :y "50px" 
-                        :height "5%"
-                        :width "15%"
-                        :anchor "center bottom")
-    (volume_osd)
-)

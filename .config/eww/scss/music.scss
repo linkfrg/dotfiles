@@ -1,0 +1,47 @@
+.music-box {
+    padding: 1rem;
+    margin-top: 1rem;
+    border-radius: 10px;
+    min-height: 5rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-width: 20rem;
+    color: #ffffff;
+}
+
+.music-button-box {
+    min-width: 1rem;
+    margin-left: 1rem;
+}
+
+.music-body {
+    min-width: 19rem;
+}
+
+.music-button {
+    background-color: $primary;
+    color: $surface;
+    font-size: 2rem;
+    border-radius: 20px;
+    margin: 1.1rem 0;
+    padding: 0 1rem;
+}
+
+.music-player {
+    margin-left: 0.5rem;
+}
+
+.music-icon {
+    font-size: 1.5rem;
+}
+
+.music-info {
+    margin-top: 0.5rem;
+}
+
+.music-artist {
+    font-size: 0.9rem;
+    font-weight: normal;
+    margin-top: 0.2rem;
+}

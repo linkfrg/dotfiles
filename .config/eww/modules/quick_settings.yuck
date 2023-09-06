@@ -1,0 +1,83 @@
+(defwidget quick_settings []
+    (box :orientation "v" :class "quick_settings_box" :space-evenly false :halign "center" :valign "center"
+        (box :orientation "h" :class "quick_settings_row" :space-evenly false :halign "center" :valign "center"
+            (network)
+            (do-not-disturb_mode)
+        )
+        (box :orientation "h" :class "quick_settings_row" :space-evenly false :halign "center" :valign "center"
+            (theme)
+            (recorder)
+        )
+    )
+)
+
+(defwidget quick_settings_button [condition action1 action2 icon1 icon2 label1 label2]
+    (eventbox :onclick {condition ? action1 : action2}
+        (box :orientation "h" :class "quick_settings_row" :space-evenly false :halign "start" :class {condition ? "quick_settings_button" : "quick_settings_button_toggled"}
+            (label :class "quick-settings-icon" :text {condition ? icon1 : icon2})
+            (box :orientation "v" :class "quick-settings-info" :space-evenly false :valign "start"
+                (box :orientation "h" :space-evenly false :halign "start"
+                    (label :class "quick-settings-text" :text {condition ? label1 : label2})
+                )
+                (box :orientation "h" :space-evenly false :halign "start"
+                    (label :class {condition ? "quick-settings-state-disabled" : "quick-settings-state-enabled"} :text {condition ? "Откл." : "Вкл."})
+                )
+            )
+        )
+    )
+)
+
+(defwidget network []
+    (quick_settings_button  :condition {network == "lo"} 
+                            :action1 "XDG_CURRENT_DESKTOP='gnome' gnome-control-center wifi &"  
+                            :action2 "nmcli connection down id '${network}'"
+                            :icon1 "󰣽"
+                            :icon2 "󰤯"
+                            :label1 "Не подключено"
+                            :label2 {network}
+    )
+)
+
+(defwidget do-not-disturb_mode []
+    (quick_settings_button  :condition {do-not-disturb == false} 
+                            :action1 "eww update do-not-disturb=true"  
+                            :action2 "eww update do-not-disturb=false"
+                            :icon1 "󰍷"
+                            :icon2 "󰍷"
+                            :label1 "Не беспокоить"
+                            :label2 "Не беспокоить"
+    )
+)
+
+(defwidget night_mode []
+    (quick_settings_button  :condition {current_shader != night_mode_shader} 
+                            :action1 "hyprctl keyword decoration:screen_shader '~/.config/hypr/shaders/night.frag'"
+                            :action2 "hyprctl keyword decoration:screen_shader '' && hyprctl reload"
+                            :icon1 "󰤄"
+                            :icon2 "󰤄"
+                            :label1 "Ночной режим"
+                            :label2 "Ночной режим"
+    )
+)
+
+(defwidget recorder []
+    (quick_settings_button  :condition {recording == false} 
+                            :action1 "~/.config/eww/scripts/record.sh"
+                            :action2 "pkill -INT wf-recorder && notify-send 'Запись сохранена'"
+                            :icon1 "󰻃"
+                            :icon2 "󰻃"
+                            :label1 "Запись экрана"
+                            :label2 "Запись экрана"
+    )
+)
+
+(defwidget theme []
+    (quick_settings_button  :condition {current_theme == "light"} 
+                            :action1 "scripts/generate_colors.py --toggle &"
+                            :action2 "scripts/generate_colors.py --toggle &"
+                            :icon1 "󱎖"
+                            :icon2 "󱎖"
+                            :label1 "Темная тема"
+                            :label2 "Темная тема"
+    )
+)
