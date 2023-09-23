@@ -1,20 +1,63 @@
-.weather-box {
+.weather {
     background-color: $surfaceVariant;
+    border-radius: 1rem;
     margin-top: 1rem;
-    border-radius: 20px;
     padding: 1rem;
-    color: $onSurfaceVariant;
 }
 
-.weather-desc {
-    font-size: 1.3rem;
-}
-
-.weather-icon {
+.weather-current-icon {
     font-size: 3rem;
 }
 
-.weather-temp {
-    margin-left: 1rem;
+.weather-location {
+    font-size: 1.25rem;
+    font-weight: normal;
+    color: $primary;
+}
+
+.weather-current-text {
+    font-size: 1.5rem;
+    color: $primary;
+}
+
+.weather-info {
+    margin-top: 0.5rem;
+}
+
+.weather-current-temp {
+    font-size: 2.5rem;
+    color: $primary;
+}
+
+.weather-current-maxtemp {
+    color: $primary;
+    font-size: 1.25rem;
+}
+
+.weather-current-mintemp {
+    font-size: 1.25rem;
+    margin-left: 0.5rem;
+    color: $onSurfaceVariant;
+}
+
+.weather-hour {
+    margin: 0 0.5rem;
+}
+
+.weather-hour-icon {
     font-size: 2rem;
+    margin: 0.25rem 0;
+}
+
+.weather-hour-temp {
+    color: $onSurfaceVariant;
+    font-size: 1.1rem;
+}
+
+.weather-hour-time {
+    color: $onSurfaceVariant;
+}
+
+.weather-connection-error {
+    font-size: 1.1rem;
 }

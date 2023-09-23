@@ -1,34 +1,24 @@
 (defwindow bar
     :monitor 0
-    :geometry (geometry :x "0%"
-                        :y "0%"
-                        :width "100%"
-                        :height "35px"
-                        :anchor "top center")
+    :geometry (geometry :height "100%"
+                        :anchor "left center")
     :exclusive true
-    :namespace "eww"
-    (centerbox :orientation "h"
-      (modules_left)
-      (modules_center)
-      (modules_right)))
+    (box :class "bar-widget" :orientation "v" (modules_up) (modules_center) (modules_down)))
   
-(defwidget modules_left []
-    (box :class "sidebar_button" :orientation "h" :space-evenly false :halign "start"
+(defwidget modules_up []
+    (box :orientation "v" :space-evenly false :valign "start"
         (logo)
         (workspaces)
     )
 )
 (defwidget modules_center []
-    (box :class "sidebar_button" :orientation "h" :space-evenly false :halign "center"
+    (box :orientation "v" :space-evenly false :valign "center"
         (clock)
     )
 )
-(defwidget modules_right []
-    (box :class "sidebar_button" :orientation "h" :space-evenly false :halign "end"
+(defwidget modules_down []
+    (box :orientation "v" :space-evenly false :valign "end"
         (tray)
-        (language)
         (bar_state)
-        (volume_bar)
-        (logo_power)
     )
 )

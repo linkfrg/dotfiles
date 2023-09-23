@@ -1,0 +1,35 @@
+.monitoring-item {
+    background-color: $surfaceVariant;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+.monitoring-box {
+    margin-top: 1rem;
+}
+
+circular-progress {
+    background-color: $onPrimary;
+    color: $primary;
+}
+
+.monitoring-icon {
+    font-size: 1.5rem;
+    padding: 1.5rem;
+}
+
+.cpu {
+    margin-right: 0.25rem;
+}
+
+.ram {
+    margin: 0 0.25rem;
+}
+
+.disk {
+    margin: 0 0.25rem;
+}
+
+.temp {
+    margin-left: 0.25rem;
+}

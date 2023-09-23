@@ -1,39 +1,49 @@
 .volume-osd {
-    background-color: $surface;
-    padding: 1rem;
-    border-radius: 10px;
-    margin-top: 10px;
+   @include window;
+   min-width: 25rem;
+   background-color: transparent;
+   padding: 0rem;
 }
 
-.volume-sidebar {
-    padding: 1rem;
+.volume-control-center {
     margin-top: 1rem;
 }
 
-.volume-scale trough,
 .volume-scale trough {
     background-color: $surfaceVariant;
-    border-radius: 10px;
-    min-height: 1.5rem;
-    min-width: 20rem;
+    border-radius: 1rem;
+    min-height: 2.25rem;
 }
 
 
-.volume-scale trough highlight,
-.volume-scale trough progress {
+.volume-scale trough highlight {
     background-color: $primary;
-    border-radius: 10px;
-    min-height: 1.5rem;
+    border-radius: 1rem;
+    min-height: 2.25rem;
 }
 
 .volume-icon {
-    color: $onSurface;
-    margin-right: 1rem;
-    min-width: 2rem;
-    font-size: 30px;
+    margin-left: 0.75rem;
+    font-size: 1.5rem;
+
+    &.less {
+        color: $onSurface;
+    };
+
+    &.more {
+        color: $surface;
+    };
 }
 
-.volume-bar {
-    margin: 0.35rem;
-    padding: 0 0.5rem;
+.volume-arrow {
+    background-color: $surfaceVariant;
+    margin-left: 0.5rem;
+    font-size: 2rem;
+    min-width: 2.25rem;
+    border-radius: 1rem;
+    transition: 0.3s;
+}
+
+.volume-arrow:hover {
+    background-color: mix($surfaceVariant, $onSurfaceVariant, 70%);
 }

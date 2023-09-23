@@ -1,39 +1,34 @@
+(defwidget powermenu_entry [label icon onclick]
+    (button :class "powermenu-button" :onclick {onclick}
+        (box :orientation "h" :space-evenly false
+            (label :class "powermenu-icon" :text {icon})
+            (label :class "powermenu-text" :text {label})
+        )
+    )
+)
+
 (defwidget powermenu []
-    (revealer :transition "slidedown" :reveal {open_powermenu == true ? true : false} :duration "700ms"
-        (box :orientation "v" :space-evenly false :valign "center" :halign "center" :class "powermenu-box"
-            (box :class "powermenu-label" :orientation "h" :halign "start"
-                (label :text "Питание")
-            )
-            (button :class "powermenu-button" :onclick "sleep 0.1 && gtklock &"
-                (box :orientation "h" :space-evenly false :halign "start"
-                    (label :class "powermenu-icon" :text "")
-                    (label :class "powermenu-text" :text "Заблокировать")
-                )
-            )
-            (button :class "powermenu-button" :onclick "sleep 0.1 && gtklock & systemctl suspend"
-                (box :orientation "h" :space-evenly false :halign "start"
-                    (label :class "powermenu-icon" :text "󰤄")
-                    (label :class "powermenu-text" :text "Спящий режим")
-                )
-            )
-            (button :class "powermenu-button" :onclick "hyprctl dispatch exit 0"
-                (box :orientation "h" :space-evenly false :halign "start"
-                    (label :class "powermenu-icon" :text "󰗼")
-                    (label :class "powermenu-text" :text "Выйти")
-                )
-            )
-            (button :class "powermenu-button" :onclick "systemctl reboot"
-                (box :orientation "h" :space-evenly false :halign "start"
-                    (label :class "powermenu-icon" :text "󰜉")
-                    (label :class "powermenu-text" :text "Перезагрузка")
-                )
-            )
-            (button :class "powermenu-button" :onclick "systemctl poweroff"
-                (box :orientation "h" :space-evenly false :halign "start"
-                    (label :class "powermenu-icon" :text "󰐥")
-                    (label :class "powermenu-text" :text "Выключение")
-                )
-            )
+    (revealer :transition "slideright" :reveal {open_powermenu == true ? true : false} :duration "700ms"
+        (box :orientation "v" :space-evenly false :valign "center" :class "powermenu"
+            (powermenu_entry    :label "Lock" 
+                                :icon "" 
+                                :onclick "sleep 0.1 && gtklock &")
+
+            (powermenu_entry    :label "Suspend" 
+                                :icon "󰤄" 
+                                :onclick "sleep 0.1 && gtklock & systemctl suspend")
+                                
+            (powermenu_entry    :label "Exit" 
+                                :icon "󰗼" 
+                                :onclick "hyprctl dispatch exit 0")
+
+            (powermenu_entry    :label "Reboot" 
+                                :icon "󰜉" 
+                                :onclick "systemctl reboot")
+
+            (powermenu_entry    :label "Shutdown" 
+                                :icon "󰐥" 
+                                :onclick "systemctl poweroff")
         )
     )
 )

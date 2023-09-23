@@ -1,150 +1,183 @@
 #!/usr/bin/python
-
 import gi
-import datetime
-import typing
-import os
-import json
-import sys
-import subprocess
 gi.require_version("GdkPixbuf", "2.0")
 gi.require_version("Gtk", "3.0")
 
 import dbus
+import dbus.service
 from dbus.mainloop.glib import DBusGMainLoop
-from gi.repository import GdkPixbuf, Gio, GLib, Gtk
+from gi.repository import GLib
+import datetime
+import os
+import typing
+import sys
+import json
+from gi.repository import Gtk, GdkPixbuf
+import subprocess
 
-cache_dir = os.path.expanduser("~/.cache/image_data")
-log_file = os.path.expanduser("~/.cache/notifications.json")
+cache_dir = f"{os.getenv('HOME')}/.cache/notify_img_data"
+log_file = f"{os.getenv('HOME')}/.cache/notifications.json"
 os.makedirs(cache_dir, exist_ok=True)
 active_popups = {}
 
-def save_img_byte(px_args: typing.Iterable, save_path: str):
-    GdkPixbuf.Pixbuf.new_from_bytes(
-        width=px_args[0],
-        height=px_args[1],
-        has_alpha=px_args[3],
-        data=GLib.Bytes(px_args[6]),
-        colorspace=GdkPixbuf.Colorspace.RGB,
-        rowstride=px_args[2],
-        bits_per_sample=px_args[4],
-    ).savev(save_path, "png")
+# RECIEVE NOTIFICATIONS
 
-def get_gtk_icon(icon_name):
-    theme = Gtk.IconTheme.get_default()
-    icon_info = theme.lookup_icon(icon_name, 128, 0)
+class NotificationDaemon(dbus.service.Object):
+    def __init__(self):
+        bus_name = dbus.service.BusName("org.freedesktop.Notifications", dbus.SessionBus())
+        dbus.service.Object.__init__(self, bus_name, "/org/freedesktop/Notifications")
+        self.notification_id = 0
 
-    if icon_info is not None:
-        return icon_info.get_filename()
-
-
-
-def notification_callback(bus, message):
-    args = message.get_args_list()
-    details = {
-        "id": datetime.datetime.now().strftime("%s"),
-        "app": str(args[0]) or None,
-        "summary": str(args[3]) or None,
-        "body": str(args[4]) or None,
-        "time": datetime.datetime.now().strftime("%H:%M"),
-    }
-
-    if args[2].strip():
-        if os.path.isfile(args[2]) or args[2].startswith("file://"):
-            details["image"] = args[2]
+    @dbus.service.method("org.freedesktop.Notifications", in_signature="susssasa{sv}i", out_signature="u")
+    def Notify(self, app_name, replaces_id, app_icon, summary, body, actions, hints, timeout):
+        if int(replaces_id) != 0:
+            id = int(replaces_id)
         else:
-            details["image"] = get_gtk_icon(args[2])
-    else:
-        details["image"] = None
+            self.notification_id += 1
+            id = self.notification_id
+        actions = list(actions)
+        acts = []
+        for i in range(0, len(actions), 2):
+            acts.append([str(actions[i]), str(actions[i + 1])])
 
-    if "image-data" in args[6]:
-        details["image"] = f"{cache_dir}/{details['id']}.png"
-        save_img_byte(args[6]["image-data"], details["image"])
+        details = {
+            "id": id,
+            "app": str(app_name),
+            "summary": "\n".join([str(summary)[i:i+30] for i in range(0, len(str(summary)), 30)]),
+            "body": "\n".join([str(body)[i:i+30] for i in range(0, len(str(body)), 30)]),
+            "time": datetime.datetime.now().strftime("%H:%M"),
+            "actions": acts
+        }
+
+        app_icon = str(app_icon)
+
+        if app_icon.strip():
+            if os.path.isfile(app_icon) or app_icon.startswith("file://"):
+                details["image"] = app_icon
+            else:
+                details["image"] = self.get_gtk_icon(app_icon)
+        else:
+            details["image"] = None
+
+        if "image-data" in hints:
+            details["image"] = f"{cache_dir}/{details['id']}.png"
+            self.save_img_byte(hints["image-data"], details["image"])
+
+        self.save_notifications(details)
+        self.save_popup(details)
+        return id
+
+    @dbus.service.method("org.freedesktop.Notifications", in_signature="", out_signature="ssss")
+    def GetServerInformation(self):
+        return ("linkfrg's notification daemon", "linkfrg", "1.0", "1.2")
     
-    save_notifications(details)
-    save_popup(details)
+    @dbus.service.method("org.freedesktop.Notifications", in_signature="", out_signature="as")
+    def GetCapabilities(self):
+        return ('actions', 'body', 'icon-static', 'persistence')
+    
+    @dbus.service.method("org.freedesktop.Notifications", in_signature="us", out_signature="us")
+    def ActionInvoked(self, id, action):
+        print("ASDFJASDNJAS")
+        return (id, action)
+    
+    @dbus.service.method("org.freedesktop.Notifications", in_signature="u", out_signature="uu")
+    def NotificationClosed(self, id):
+        current = self.read_log_file()
+        current["notifications"] = [n for n in current["notifications"] if n["id"] != id]
+        current["count"] = len(current["notifications"])
+        
+        self.write_log_file(current)
+        return (id, 2)
+    
 
-def update_eww(data):
-    output_json = json.dumps(data, indent=2)
-    subprocess.run(["eww", "update", f"notifications={output_json}"])
-    with open(log_file, "w") as log:
-        log.write(output_json)
+    def get_gtk_icon(self, icon_name):
+        theme = Gtk.IconTheme.get_default()
+        icon_info = theme.lookup_icon(icon_name, 128, 0)
 
-def read_log_file():
-    empty = {"count": 0, "notifications": [], "popups": []}
-    try:
-        with open(log_file, "r") as log:
-            return json.load(log)
-    except FileNotFoundError:
+        if icon_info is not None:
+            return icon_info.get_filename()
+        
+
+    def save_img_byte(self, px_args: typing.Iterable, save_path: str):
+        GdkPixbuf.Pixbuf.new_from_bytes(
+            width=px_args[0],
+            height=px_args[1],
+            has_alpha=px_args[3],
+            data=GLib.Bytes(px_args[6]),
+            colorspace=GdkPixbuf.Colorspace.RGB,
+            rowstride=px_args[2],
+            bits_per_sample=px_args[4],
+        ).savev(save_path, "png")
+
+
+    def write_log_file(self, data):
+        output_json = json.dumps(data, indent=2)
+        subprocess.run(["eww", "update", f"notifications={output_json}"])
         with open(log_file, "w") as log:
-            json.dump(empty, log)
-        return empty
+            log.write(output_json)
 
-def save_notifications(notification):
-    current = read_log_file()
-    current["notifications"].insert(0, notification)
-    current["count"] = len(current["notifications"])
+    def read_log_file(self):
+        empty = {"count": 0, "notifications": [], "popups": []}
+        try:
+            with open(log_file, "r") as log:
+                return json.load(log)
+        except FileNotFoundError:
+            with open(log_file, "w") as log:
+                json.dump(empty, log)
+            return empty
+        
 
-    update_eww(current)
+    def save_notifications(self, notification):
+        current = self.read_log_file()
+        current["notifications"].insert(0, notification)
+        current["count"] = len(current["notifications"])
 
-def clear_notifications():
-    data = {"count": 0, "notifications": [], "popups": []}
-    
-    update_eww(data)
+        self.write_log_file(current)
+
+    @dbus.service.method("org.freedesktop.Notifications", in_signature="", out_signature="")
+    def ClearAll(self):
+        data = {"count": 0, "notifications": [], "popups": []}
+        
+        self.write_log_file(data)
 
 
-def remove_notification(id):
-    current = read_log_file()
-    current["notifications"] = [n for n in current["notifications"] if n["id"] != id]
-    current["count"] = len(current["notifications"])
-    
-    update_eww(current)
+    # OPERATIONS WITH POPUPS
 
-def save_popup(notification):
-    global active_popups
+    def save_popup(self, notification):
+        global active_popups
 
-    current = read_log_file()
-    if len(current["popups"]) >= 3:
-        oldest_popup = current["popups"].pop()
-        remove_notification(oldest_popup["id"])
+        current = self.read_log_file()
+        if len(current["popups"]) >= 3:
+            oldest_popup = current["popups"].pop()
+            self.DismissPopup(oldest_popup["id"])
 
-    current["popups"].insert(0, notification)
-    update_eww(current)
+        current["popups"].insert(0, notification)
+        self.write_log_file(current)
 
-    popup_id = notification["id"]
-    active_popups[popup_id] = GLib.timeout_add_seconds(5, remove_popup, popup_id)
-    os.system('eww open notifications_popup')
+        popup_id = notification["id"]
+        active_popups[popup_id] = GLib.timeout_add_seconds(5, self.DismissPopup, popup_id)
+        os.system('eww open notifications_popup')
 
-def remove_popup(popup_id):
-    global active_popups
+    @dbus.service.method("org.freedesktop.Notifications", in_signature="u", out_signature="")
+    def DismissPopup(self, id):
+        global active_popups
 
-    current = read_log_file()
-    current["popups"] = [n for n in current["popups"] if n["id"] != popup_id]
-    update_eww(current)
+        current = self.read_log_file()
+        current["popups"] = [n for n in current["popups"] if n["id"] != id]
+        self.write_log_file(current)
 
-    active_popups.pop(popup_id, None)
+        active_popups.pop(id, None)
 
-def notification_loop():
+# MAINLOOP
+
+def main():
     DBusGMainLoop(set_as_default=True)
-
-    bus = dbus.SessionBus()
-    bus.add_match_string_non_blocking(
-        "eavesdrop=true, interface='org.freedesktop.Notifications', member='Notify'"
-    )
-
-    bus.add_message_filter(notification_callback)
-
     loop = GLib.MainLoop()
+    NotificationDaemon()
     try:
         loop.run()
     except KeyboardInterrupt:
-        bus.close()
+        exit(0)
 
 if __name__ == "__main__":
-    arg = sys.argv[1]
-    if arg == "init":
-        notification_loop()
-    elif arg == "clear":
-        clear_notifications()
-    elif arg == "remove_popup":
-        remove_popup(sys.argv[2])
+    main()

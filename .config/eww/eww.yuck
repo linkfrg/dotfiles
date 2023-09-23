@@ -6,13 +6,10 @@
 (include "windows/launcher.yuck")
 (include "windows/clipboard.yuck")
 
-(include "windows/notifications_menu.yuck")
-(include "windows/time_menu.yuck")
-(include "windows/settings_menu.yuck")
+(include "windows/control_center.yuck")
 
 
 (include "modules/clock.yuck")
-(include "modules/language.yuck")
 (include "modules/logo.yuck")
 (include "modules/tray.yuck")
 (include "modules/volume.yuck")
@@ -25,3 +22,4 @@
 (include "modules/weather.yuck")
 (include "modules/calendar.yuck")
 (include "modules/bar_state.yuck")
+(include "modules/monitoring.yuck")

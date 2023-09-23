@@ -1,0 +1,29 @@
+(defwindow control_center
+    :monitor 0
+    :stacking "fg"
+    :geometry (geometry
+                    :anchor "center left"
+                )
+    (control_center)
+)
+
+(defwidget control_center []
+    (revealer :transition "slideright" :reveal {open_control_center == true ? true : false} :duration "700ms"
+        (eventbox :onhoverlost "scripts/toggle_control_center.sh close &"
+            (box :orientation "h" :space-evenly false
+                (box :orientation "v" :space-evenly false
+                    (notifications)
+                    (box :orientation "v" :space-evenly false :class "control-center"
+                        (user)
+                        (quick_settings)
+                        (volume_control_center)
+                        (weather)
+                        (media)
+                        (monitoring)
+                    )
+                )
+                (powermenu)
+            )
+        )
+    )
+)

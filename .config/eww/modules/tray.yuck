@@ -1,5 +1,5 @@
 (defwidget tray []
-    (box :class "clock" :orientation "h" :space-evenly false :halign "end" :valign "center" :class "tray-box"
-        (systray :pack-direction "rtl" :class "tray")
+    (box :class "clock" :orientation "v" :space-evenly false
+        (systray :pack-direction "ttb" :class "tray")
     )
 )

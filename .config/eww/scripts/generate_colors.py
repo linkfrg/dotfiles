@@ -68,25 +68,8 @@ def render_templates(colors_list):
 
 def setup(img):
     os.system("eww close wallpaper_selector")
-    os.system("gsettings set org.gnome.desktop.interface gtk-theme Adwaita")
-    os.system("gsettings set org.gnome.desktop.interface gtk-theme Monet")
+    os.system("gradience-cli apply -p ~/.config/eww/scripts/colors/colors-gradience.json --gtk both")
     os.system(f"swww img {img} --transition-fps 75 --transition-type wipe --transition-duration 2")
-
-# # TELEGRAM
-# def generate_telegram_theme():
-#     img = Image.new('RGB', (1, 1), colorscheme.get_surface())
-#     img.save(f"{SCRIPTS_DIR}/colors/background.png")
-
-
-#     with ZipFile(f'{SCRIPTS_DIR}/colors/monet.tdesktop-theme', 'w') as zip_object:
-#     zip_object.write(f"{SCRIPTS_DIR}/colors/background.png", arcname="background.png")
-#     zip_object.write(f"{SCRIPTS_DIR}/colors/colors.tdesktop-theme", arcname="colors.tdesktop-theme")
-
-#     try:
-#         shutil.copyfile(sys.argv[2], f"{SCRIPTS_DIR}/colors/wall.png")
-#     except shutil.SameFileError:
-#         pass
-
 
 if __name__ == "__main__":
     if len(sys.argv) >= 2:

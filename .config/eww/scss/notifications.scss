@@ -1,51 +1,63 @@
-.notifications-body {
+.notifications-center {
+    @include window;
+    margin-bottom: 0rem;
+}
+
+.notification-box {
     background-color: $surfaceVariant;
     color: $onSurface;
-    border-radius: 20px;
+    border-radius: 1rem;
     padding: 1rem;
     margin-top: 1rem;
 }
 
-.notifications-apptime {
+.notification-image {
+    margin-right: 1rem;
+}
+
+.notification-app {
     font-weight: normal;
     color: $onSurfaceVariant;
 }
 
-.notifications-circle {
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
-    font-size: 0.5rem;
-}
-
-.notifications-info {
-    margin-top: 1rem;
-}
-
-.notifications-text {
-    margin-left: 1rem;
-}
-
-.notifications-summary {
+.notification-summary {
+    font-weight: bold;
     font-size: 1.1rem;
 }
 
-.notifications-body-text {
+.notification-body {
     color: $onSurfaceVariant;
     font-weight: normal;
 }
 
 .notifications-scroll {
-    min-width: 35rem;
-    min-height: 60rem;
-}
-
-.notifications-box-header {
-    font-size: 1.5rem;
+    min-height: 15rem;
+    margin-top: 1rem;
 }
 
 .notifications-clear-button {
     background-color: $surfaceVariant;
-    color: $onSurfaceVariant;
-    padding: 0 1rem;
-    border-radius: 20px;
+    color: $onSurface;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    transition: 0.3s;
+}
+
+.notifications-clear-button:hover {
+    background-color: mix($surfaceVariant, $onSurfaceVariant, 70%);
+}
+
+.notifications-header-text {
+    font-size: 1.2rem;
+}
+
+.notify-action {
+    color: $primary;
+    margin-left: 2rem;
+    border-radius: 1rem;
+    transition: 0.3s;
+}
+
+.first-action {
+    margin-left: 0rem;
 }

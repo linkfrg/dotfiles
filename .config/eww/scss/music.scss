@@ -1,47 +1,62 @@
-.music-box {
+.music {
+    background-color: $secondary;
+    border-radius: 1rem;
+    color: $surface;
     padding: 1rem;
     margin-top: 1rem;
-    border-radius: 10px;
-    min-height: 5rem;
+}
+
+.music-image {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    min-width: 20rem;
-    color: #ffffff;
+    min-height: 6rem;
+    min-width: 6rem;
+    border-radius: 1rem;
 }
 
-.music-button-box {
-    min-width: 1rem;
+.music-text {
     margin-left: 1rem;
 }
 
-.music-body {
-    min-width: 19rem;
-}
-
-.music-button {
-    background-color: $primary;
-    color: $surface;
-    font-size: 2rem;
-    border-radius: 20px;
-    margin: 1.1rem 0;
-    padding: 0 1rem;
-}
-
-.music-player {
-    margin-left: 0.5rem;
-}
-
-.music-icon {
-    font-size: 1.5rem;
-}
-
-.music-info {
-    margin-top: 0.5rem;
+.music-title {
+    font-size: 1.2rem;
 }
 
 .music-artist {
-    font-size: 0.9rem;
-    font-weight: normal;
-    margin-top: 0.2rem;
+    color: $surfaceVariant;
+}
+
+.music-name {
+    background-color: $tertiary;
+    padding: 0.25rem 0.5rem;
+    border-radius: 1rem;
+    font-size: 1rem;
+}
+
+.music-action {
+    font-size: 2rem;
+    min-width: 3rem;
+}
+
+.music-scale {
+    margin-top: 0.5rem;
+}
+
+.music-scale trough {
+    background-color: $surface;
+    border-radius: 1rem;
+    min-height: 0.5rem;
+}
+
+
+.music-scale highlight {
+    background-color: $inverseSurface;
+    border-radius: 1rem;
+    min-height: 0.5rem;
+}
+
+.music-strtime {
+    color: $surfaceVariant;
+    margin-top: 0.25rem;
 }

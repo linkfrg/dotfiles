@@ -4,20 +4,20 @@
     font-weight: bold;
 }
 @import "scripts/colors/colors.scss";
+@import "scss/lib.scss";
 
 @import "scss/bar.scss";
 @import "scss/powermenu.scss";
-@import "scss/notifications_popup.scss";
 @import "scss/launcher.scss";
 @import "scss/clipboard.scss";
 
-@import "scss/settings_menu.scss";
-@import "scss/notifications_menu.scss";
-@import "scss/time_menu.scss";
+@import "scss/control_center.scss";
+@import "scss/notifications_popup.scss";
+
+
 
 @import "scss/calendar.scss";
 @import "scss/clock.scss";
-@import "scss/kb_layout.scss";
 @import "scss/logo.scss";
 @import "scss/quick_settings.scss";
 @import "scss/user.scss";
@@ -28,3 +28,4 @@
 @import "scss/music.scss";
 @import "scss/bar_state.scss";
 @import "scss/notifications.scss";
+@import "scss/monitoring.scss";

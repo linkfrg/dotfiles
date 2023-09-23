@@ -1,5 +1,4 @@
-.bar {
-    background-color: $surface;
-    color: $onSurface;
-    font-size: 1.05rem;
+.bar-widget {
+    @include window;
+    padding: 1rem 0.4rem;
 }

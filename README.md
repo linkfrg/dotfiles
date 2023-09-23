@@ -1,5 +1,5 @@
 ## Software
-- **Distro** - [Arch](https://archlinux.org/)
+- **OS** - [Arch](https://archlinux.org/)
 - **Wayland compositor** - [Hyprland](https://hyprland.org/)
 - **Widgets** - [eww](https://github.com/elkowar/eww)
 - **Terminal** - [Kitty](https://sw.kovidgoyal.net/kitty/)
@@ -14,7 +14,7 @@
 <img src="assets/2.png"/>
 <img src="assets/3.png"/>
 
-## Installation
+## Dependencies
 
 ### Hyprland Nvidia
 ```
@@ -52,7 +52,8 @@ wireplumber
 
 ### Components
 ```
-dunst
+gradience-git
+adw-gtk3-git
 jq
 eww-tray-wayland-git
 polkit-gnome
@@ -66,8 +67,6 @@ kitty
 thunar
 thunar-archive-plugin 
 file-roller 
-gtk-engine-murrine 
-gnome-themes-extra
 xdg-user-dirs
 wf-recorder
 dbus-python
@@ -77,12 +76,17 @@ python-jinja
 python-material-color-utilities
 zenity
 socat
-networkmanager
 ```
 
-### Font
+### Font & icons
 ```
 ttf-jetbrains-mono
 ttf-nerd-fonts-symbols
 papirus-icon-theme
+```
+
+```
+gsettings set org.gnome.desktop.interface gtk-theme adw-gtk3
+gsettings set org.gnome.desktop.interface icon-theme Papirus
+gsettings set org.gnome.desktop.interface font-name "JetBrains Mono Regular 11"
 ```

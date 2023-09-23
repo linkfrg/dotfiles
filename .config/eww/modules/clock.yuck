@@ -1,18 +1,8 @@
 (defwidget clock []
-    (eventbox :onhover "scripts/toggle_time_menu.sh &"
-      (box :class "clock" :orientation "h" :space-evenly false :halign "end"
-        (label :text time)
+    (eventbox :onhover "scripts/toggle_control_center.sh open &"
+      (box :class "clock" :orientation "v" :space-evenly false
+        (label :text {formattime(EWW_TIME, "%H")})
+        (label :text {formattime(EWW_TIME, "%M")})
       )
     )
-)
-
-(defwidget time_menu_clock []
-  (box :class "time-menu-clock" :orientation "h" :space-evenly false :halign "center"
-    (label :text time)
-  )
-)
-(defwidget time_menu_date []
-  (box :class "time-menu-date" :orientation "h" :space-evenly false :halign "center"
-    (label :text date)
-  )
 )

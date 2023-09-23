@@ -31,7 +31,8 @@ pipewire_stage="
 "
 
 components="
-    dunst
+    gradience-git
+    adw-gtk3-git
     jq
     eww-tray-wayland-git
     polkit-gnome
@@ -45,8 +46,6 @@ components="
     thunar
     thunar-archive-plugin 
     file-roller 
-    gtk-engine-murrine 
-    gnome-themes-extra
     xdg-user-dirs
     wf-recorder
     dbus-python
@@ -56,15 +55,8 @@ components="
     python-material-color-utilities
     zenity
     socat
-    networkmanager
 "
 
-additional_programs="
-    firefox 
-    eog
-    nwg-look
-    telegram-desktop
-"
 
 font="
     ttf-jetbrains-mono
@@ -129,28 +121,8 @@ else
     echo "Error! type 'y' or 'n' Exit..."
 fi
 
-# SDDM
-read -rep $'Install sddm? (y, n) ' ANSWER
-if [[ $ANSWER == "Y" || $ANSWER == "y" ]]; then
-    paru -S --needed sddm-git
-elif [[ $ANSWER == "N" || $ANSWER == "n" ]]; then
-    echo "Skipping sddm install..."
-else
-    echo "Error! type 'y' or 'n' Exit..."
-fi
-
-# ADDITIONAL PROGRAMS
-read -rep $'Install additional programs(firefox, eye of gnome, nwg-look, telegram, obs-studio)? (y, n) ' ANSWER
-if [[ $ANSWER == "Y" || $ANSWER == "y" ]]; then
-    paru -S --needed $additional_programs
-elif [[ $ANSWER == "N" || $ANSWER == "n" ]]; then
-    echo "Skipping additional programs installation..."
-else
-    echo "Error! type 'y' or 'n' Exit..."
-fi
-
 # SETTING UP THEME, FONT, ICONS
 
-gsettings set org.gnome.desktop.interface gtk-theme Monet
+gsettings set org.gnome.desktop.interface gtk-theme adw-gtk3
 gsettings set org.gnome.desktop.interface icon-theme Papirus
 gsettings set org.gnome.desktop.interface font-name "JetBrains Mono Regular 11"

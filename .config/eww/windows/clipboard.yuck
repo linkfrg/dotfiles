@@ -11,11 +11,11 @@
 (defwidget clipboard_widget []
     (eventbox :onrightclick "eww close clipboard"
         (box :orientation "v" :space-evenly false :valign "start" :class "launcher-box"
+            (button :class "clear-clipboard-button" :onclick "cliphist wipe && python scripts/get_clipboard_history.py" "Clear")
             (scroll :vscroll true :class "launcher-scroll"
                 (box :orientation "v" :space-evenly false :valign "start"
-                    (button :class "clear-clipboard-button" :onclick "cliphist wipe && python scripts/get_clipboard_history.py" "Очистить")
                     (for clip in clipboard
-                        (button :class "app-button" :onclick "echo '${clip}' | cliphist decode | wl-copy && eww close clipboard"
+                        (button :class "launcher-item" :onclick "echo '${clip}' | cliphist decode | wl-copy && eww close clipboard"
                             (box :orientation "h" :space-evenly false :halign "start"
                                 (label :limit-width 30 :class "clip-label" :text {clip})
                             )

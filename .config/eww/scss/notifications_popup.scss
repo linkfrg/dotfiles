@@ -1,9 +1,4 @@
 .notifications-popup-body {
-    background-color: $surfaceVariant;
-    color: $onSurface;
-    border-radius: 20px;
-    padding: 1rem;
-    margin-top: 1rem;
+    @include window;
     min-width: 35rem;
-    box-shadow: 0px 0px 2px $shadow, inset 0px 0px 2px $shadow;
 }

@@ -1,17 +1,31 @@
 (defwidget weather []
-    (box :orientation "h" :class "weather-box" :space-evenly false :valign "start"
-        (box :orientation "v" :class "weather-body" :space-evenly false :halign "start" :visible {weather != "" ? true : false}
-            (box :orientation "h" :class "weather-desc" :space-evenly false :halign "start"
-                (label :text {weather.desc})
-            )
-            (box :orientation "h" :class "weather-info" :space-evenly false :halign "start"
-                (label :class "weather-icon" :text {weather.icon})
-                (label :class "weather-temp" :text {weather.temp})
+    (box :orientation "v" :space-evenly false :class "weather"
+        (label :class "weather-connection-error" :text "󰤨 Connect to the internet" :visible {weather != "null" ? false : true})
+        (box :orientation "h" :space-evenly false
+            (label :hexpand true :class "weather-current-icon" :halign "start" :valign "start" :text {weather.current.icon})
+            (box :hexpand true :orientation "v" :space-evenly false :halign "end" :valign "start"
+                (label :halign "end" :class "weather-location" :text {weather.location})
+                (label :halign "end" :class "weather-current-text" :text {weather.current.text})
             )
         )
-        (box :orientation "h" :class "weather-no-data" :space-evenly false :halign "center" :visible {weather != "" ? false : true}
-            (label :text "󰖩 Updating...")
+
+        (box :orientation "h" :space-evenly false :class "weather-info"
+            (box :orientation "v" :space-evenly false :halign "start" :hexpand true
+                (label :halign "start" :class "weather-current-temp" :text {weather.current.temp})
+                (box :orientation "h" :space-evenly true
+                    (label :class "weather-current-maxtemp" :text {weather.maxtemp})
+                    (label :class "weather-current-mintemp" :text {weather.mintemp})
+                )
+            )
+            (box :orientation "h" :space-evenly false :halign "end" :hexpand true
+                (for hour in {weather.hourly}
+                    (box :orientation "v" :space-evenly false :class "weather-hour"
+                        (label :class "weather-hour-temp" :text {hour.temp})
+                        (label :class "weather-hour-icon" :text {hour.icon})
+                        (label :class "weather-hour-time" :text {hour.time})
+                    )
+                )
+            )
         )
     )
-
 )

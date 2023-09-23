@@ -1,31 +1,26 @@
-.powermenu-box {
-    background-color: $secondaryContainer;
-    padding: 1rem;
-    border-radius: 10px;
-    margin-top: 1rem;
-    min-width: 23rem;
+.powermenu {
+    @include window;
+    margin-left: 0rem;
+    min-width: 20rem;
 }
 
 .powermenu-button {
-    background-color: $secondary;
-    color: $onSecondary;
+    background-color: $surfaceVariant;
+    color: $onSurface;
     padding: 0.25rem;
     font-size: 1.1rem;
     margin-top: 0.5rem;
     border-radius: 10px;
     min-height: 2rem;
+    transition: 0.3s;
 }
 
 .powermenu-button:hover {
-    background-color: $tertiary;
-    color: $onTertiary;
+    background-color: $primary;
+    color: $surface;
 }
 
 .powermenu-icon {
-    min-width: 2rem;
-}
-
-.powermenu-label {
-    color: $onSecondaryContainer;
+    min-width: 2.5rem;
     font-size: 1.3rem;
 }
