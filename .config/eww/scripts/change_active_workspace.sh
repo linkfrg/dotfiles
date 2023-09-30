@@ -1,3 +1,4 @@
+#!/bin/bash
 direction=$1
 current=$2
 if [[ $direction == "down" ]]; then

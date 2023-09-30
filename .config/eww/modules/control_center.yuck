@@ -1,15 +1,6 @@
-(defwindow control_center
-    :monitor 0
-    :stacking "fg"
-    :geometry (geometry
-                    :anchor "center left"
-                )
-    (control_center)
-)
-
 (defwidget control_center []
     (revealer :transition "slideright" :reveal {open_control_center == true ? true : false} :duration "700ms"
-        (eventbox :onhoverlost "scripts/toggle_control_center.sh close &"
+        (eventbox :onrightclick "scripts/toggle_control_center.sh close &"
             (box :orientation "h" :space-evenly false
                 (box :orientation "v" :space-evenly false
                     (notifications)

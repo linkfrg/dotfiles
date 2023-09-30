@@ -31,6 +31,7 @@ pipewire_stage="
 "
 
 components="
+    playerctl
     gradience-git
     adw-gtk3-git
     jq
@@ -113,7 +114,6 @@ read -rep $'Copy config files? (y, n) ' ANSWER
 if [[ $ANSWER == "Y" || $ANSWER == "y" ]]; then
     echo "Coping config files..."
     cp -R .config/* ~/.config/
-    cp -R .themes ~/
     cp -R .wallpaper ~/
 elif [[ $ANSWER == "N" || $ANSWER == "n" ]]; then
     echo "Skipping config files copy..."

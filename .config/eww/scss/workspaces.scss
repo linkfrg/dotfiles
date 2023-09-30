@@ -1,15 +1,17 @@
-.workspaces-widget {
+.workspaces {
     background-color: $surfaceVariant;
-    padding: 0.5rem;
     border-radius: 1rem;
     margin-top: 1rem;
+    padding: 0.5rem;
 }
 
-.workspaces-button {
+.workspace {
     border-radius: 1rem;
-}
+    background-color: $onPrimary;
+    margin: 0.25rem 0;
 
-.workspaces-current {
-    background-color: $primary;
-    color: $surface;
+    &.current {
+        background-color: $primary;
+        padding: 1rem 0;
+    }
 }

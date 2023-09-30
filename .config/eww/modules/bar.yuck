@@ -1,0 +1,20 @@
+(defwidget bar []
+    (box :class "bar-widget" :orientation "v" :space-evenly true
+
+        (box :orientation "v" :space-evenly false :valign "start"
+            (logo)
+            (workspaces)
+        )
+
+        (box :orientation "v" :space-evenly false :valign "center"
+            (clock)
+        )
+
+        (box :orientation "v" :space-evenly false :valign "end"
+            (tray)
+            (bar_state)
+        )
+
+    )
+    
+)

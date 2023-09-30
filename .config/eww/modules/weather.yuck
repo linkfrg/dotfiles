@@ -5,7 +5,7 @@
             (label :hexpand true :class "weather-current-icon" :halign "start" :valign "start" :text {weather.current.icon})
             (box :hexpand true :orientation "v" :space-evenly false :halign "end" :valign "start"
                 (label :halign "end" :class "weather-location" :text {weather.location})
-                (label :halign "end" :class "weather-current-text" :text {weather.current.text})
+                (label :limit-width 20 :halign "end" :class "weather-current-text" :text {weather.current.text})
             )
         )
 

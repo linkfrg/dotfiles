@@ -1,3 +1,10 @@
 .clock {
     font-size: 1.5rem;
+    padding: 0.5rem 0;
+    transition: 0.3s;
+    border-radius: 1rem;
+}
+
+.clock:hover {
+    background-color: mix($surface, $onSurface, 70%);
 }

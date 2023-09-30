@@ -4,13 +4,12 @@
             (label :class "notifications-header-text" :halign "start" :text "Notifications")
             (button :halign "end" :class "notifications-clear-button" :onclick "scripts/notifications.sh clear" "Clear all")
         )
-        (scroll :vscroll true :class "notifications-scroll" :visible {notifications.notifications != "[]" ? true : false}
+        (scroll :vscroll true :class "notifications-scroll"
             (box :orientation "v" :space-evenly false
                 (for notify in {notifications.notifications}
                     (eventbox :onrightclick "scripts/notifications.sh close ${notify.id}"
                         (box :orientation "h" :space-evenly false :class "notification-box"
                             (image :valign "start" :class "notification-image" :visible {notify.image != "null" ? true :false} :path {notify.image} :image-width 48 :image-height 48)
-
                             (box :orientation "v" :space-evenly false
                                 (label :halign "start" :class "notification-app" :visible {notify.app != "null" ? true :false} :text {notify.app})
                                 (label :halign "start" :class "notification-summary" :visible {notify.summary != "null" ? true :false} :wrap true :markup {notify.summary})
@@ -24,10 +23,8 @@
                         )
                     )
                 )
+                (label :vexpand true :valign "center" :text "No notifications" :visible {notifications.notifications != "[]" ? false : true})
             )
-        )
-        (box :orientation "v" :valign "center" :class "notifications-scroll" :visible {notifications.notifications != "[]" ? false : true}
-            (label :text "No notifications")
         )
     )
 )

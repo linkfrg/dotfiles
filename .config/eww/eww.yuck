@@ -1,13 +1,12 @@
 (include "variables.yuck")
+(include "windows.yuck")
 
-(include "windows/bar.yuck")
-(include "windows/osd.yuck")
-(include "windows/notifications_popup.yuck")
-(include "windows/launcher.yuck")
-(include "windows/clipboard.yuck")
 
-(include "windows/control_center.yuck")
-
+(include "modules/bar.yuck")
+(include "modules/notifications_popup.yuck")
+(include "modules/launcher.yuck")
+(include "modules/control_center.yuck")
+(include "modules/clipboard.yuck")
 
 (include "modules/clock.yuck")
 (include "modules/logo.yuck")

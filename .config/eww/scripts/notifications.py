@@ -46,6 +46,7 @@ class NotificationDaemon(dbus.service.Object):
             "summary": "\n".join([str(summary)[i:i+30] for i in range(0, len(str(summary)), 30)]),
             "body": "\n".join([str(body)[i:i+30] for i in range(0, len(str(body)), 30)]),
             "time": datetime.datetime.now().strftime("%H:%M"),
+            "urgency": hints['urgency'],
             "actions": acts
         }
 
@@ -77,7 +78,6 @@ class NotificationDaemon(dbus.service.Object):
     
     @dbus.service.method("org.freedesktop.Notifications", in_signature="us", out_signature="us")
     def ActionInvoked(self, id, action):
-        print("ASDFJASDNJAS")
         return (id, action)
     
     @dbus.service.method("org.freedesktop.Notifications", in_signature="u", out_signature="uu")
@@ -173,7 +173,9 @@ class NotificationDaemon(dbus.service.Object):
 def main():
     DBusGMainLoop(set_as_default=True)
     loop = GLib.MainLoop()
-    NotificationDaemon()
+    daemon = NotificationDaemon()
+    data = daemon.read_log_file()
+    subprocess.run(["eww", "update", f"notifications={json.dumps(data)}"])
     try:
         loop.run()
     except KeyboardInterrupt:

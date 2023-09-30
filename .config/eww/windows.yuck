@@ -1,0 +1,53 @@
+(defwindow bar
+    :monitor 0
+    :geometry (geometry :height "100%"
+                        :anchor "left center")
+    :exclusive true
+    (bar)
+)
+  
+(defwindow clipboard
+    :monitor 0
+    :stacking "fg"
+    :geometry (geometry
+                    :anchor "center"
+                )
+    :focusable false
+    (clipboard_widget)
+)
+
+(defwindow control_center
+    :monitor 0
+    :stacking "fg"
+    :geometry (geometry
+                    :anchor "center left"
+                )
+    (control_center)
+)
+
+(defwindow launcher
+    :monitor 0
+    :stacking "fg"
+    :geometry (geometry
+                    :anchor "center"
+                )
+    :focusable true
+    (launcher)
+)
+
+(defwindow notifications_popup
+    :monitor 0
+    :stacking "fg"
+    :geometry (geometry
+                    :anchor "top center"
+                )
+    (notifications_popup_widget)
+)
+
+(defwindow osd
+    :monitor 0
+    :stacking "fg"
+    :geometry (geometry 
+                    :anchor "top center")
+    (volume_osd)
+)

@@ -5,10 +5,12 @@
 (defvar open_osd false)
 
 (defvar do-not-disturb false)
-(defvar workspaces_list "[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]")
+(deflisten workspaces :initial "[{'window'}]"
+"scripts/workspaces.sh")
 (defvar apps "{}")
 (defvar clipboard "[]")
-(defvar notifications '{"count": 0, "notifications": [], "popups": []}')
+(deflisten notifications :initial '{"count": 0, "notifications": [], "popups": []}'
+"scripts/notifications.py")
 
 
 ; POLLS
@@ -22,8 +24,8 @@
 (deflisten weather :initial "null"
 "scripts/weather.py")
 
-(defpoll current_theme :interval "1h" 
-"cat ~/.config/eww/scripts/colors/current")
+(deflisten current_theme :initial "dark" 
+"scripts/generate_colors.py --current-scheme")
 
 ; LISTENS
 

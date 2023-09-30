@@ -1,13 +1,3 @@
-(defwindow launcher
-    :monitor 0
-    :stacking "fg"
-    :geometry (geometry
-                    :anchor "center"
-                )
-    :focusable true
-    (launcher)
-)
-
 (defwidget launcher []
     (eventbox :onrightclick "eww close launcher"
         (box :orientation "v" :space-evenly false :class "launcher-box"

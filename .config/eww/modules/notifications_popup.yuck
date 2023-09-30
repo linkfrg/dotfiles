@@ -1,12 +1,3 @@
-(defwindow notifications_popup
-    :monitor 0
-    :stacking "fg"
-    :geometry (geometry
-                    :anchor "top center"
-                )
-    (notifications_popup_widget)
-)
-
 (defwidget notifications_popup_widget []
     (box :orientation "v" :space-evenly false :visible {do-not-disturb == false ? true : false}
         (for notify in {notifications.popups}
