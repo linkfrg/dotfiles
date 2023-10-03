@@ -27,7 +27,7 @@
 Install dependencies
 
 ```
-paru -S playerctl gradience-git adw-gtk3-git jq eww-tray-wayland-git polkit-gnome swww gtklock pamixer  cliphist grimblast-git gnome-control-center wf-recorder dbus-python python-gobject python-requests python-jinja python-material-color-utilities zenity socat ttf-jetbrains-mono ttf-nerd-fonts-symbols papirus-icon-theme
+paru -S ripgrep playerctl gradience-git adw-gtk3-git jq eww-tray-wayland-git polkit-gnome swww gtklock pamixer  cliphist grimblast-git gnome-control-center wf-recorder dbus-python python-gobject python-requests python-jinja python-material-color-utilities zenity socat ttf-jetbrains-mono ttf-nerd-fonts-symbols papirus-icon-theme
 ```
 clone repo and configs
 ```
