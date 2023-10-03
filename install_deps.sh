@@ -31,6 +31,7 @@ pipewire_stage="
 "
 
 components="
+    ripgrep
     playerctl
     gradience-git
     adw-gtk3-git
