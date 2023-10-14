@@ -19,6 +19,6 @@
 - **Notifications**: notification daemon written on python with notifications center
 
 
-# How to install
+## How to install
 
 - See the [wiki page](https://github.com/linkfrg/dotfiles/wiki/Installation)
