@@ -1,5 +1,0 @@
-(defwidget cal []
-    (box :class "calendar"
-      (calendar)
-    )
-)

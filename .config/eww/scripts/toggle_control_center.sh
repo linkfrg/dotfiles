@@ -11,7 +11,6 @@ open_control_center() {
 
 close_control_center() {
     eww update open_control_center=false
-    eww update open_powermenu=false
 }
 
 case $1 in

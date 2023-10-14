@@ -40,7 +40,7 @@
 
 (defwidget do-not-disturb_mode []
     (quick_settings_button  :condition {do-not-disturb == false} 
-                            :action {do-not-disturb == false ? "eww update do-not-disturb=true" : "eww update do-not-disturb=false"}
+                            :action "scripts/notifications.sh togglednd"
                             :icon "󰍷"
                             :label "Do not disturb"
                             :class "right-top-plite"
@@ -49,7 +49,7 @@
 
 (defwidget recorder []
     (quick_settings_button  :condition {recording == false} 
-                            :action {recording == false ? "~/.config/eww/scripts/record.sh" : "pkill -INT wf-recorder && notify-send 'Запись сохранена'"}
+                            :action {recording == false ? "~/.config/eww/scripts/record.sh" : "pkill -INT wf-recorder && notify-send 'Recording saved'"}
                             :icon "󰻃"
                             :label "Recording"
                             :class "right-bottom-plite"
@@ -58,7 +58,7 @@
 
 (defwidget theme []
     (quick_settings_button  :condition {current_theme == "light"} 
-                            :action "scripts/generate_colors.py --toggle &"
+                            :action "scripts/material.py --toggle &"
                             :icon "󱎖"
                             :label "Dark mode"
                             :class "left-bottom-plite"

@@ -1,0 +1,5 @@
+(defwidget language []
+    (button :class "language" :onclick "scripts/switch_kb_layout.sh &"
+        (label :text {kb_layout})
+    )
+)

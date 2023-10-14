@@ -1,9 +1,12 @@
+.tray {
+    margin: 0 0.5rem;
+}
+
 tooltip {
-    background-color: $surface;
+    background-color: $surfaceVariant;
     color: $onSurface;
     padding: 1rem;
-    border-radius: 20px;
-    box-shadow: 2px 2px 2px $shadow;
+    border-radius: 1rem;
 }
 
 menu {

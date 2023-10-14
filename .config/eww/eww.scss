@@ -16,7 +16,8 @@
 
 
 
-@import "scss/calendar.scss";
+@import "scss/language.scss";
+@import "scss/taskbar.scss";
 @import "scss/clock.scss";
 @import "scss/logo.scss";
 @import "scss/quick_settings.scss";
@@ -26,6 +27,5 @@
 @import "scss/tray.scss";
 @import "scss/weather.scss";
 @import "scss/music.scss";
-@import "scss/bar_state.scss";
+@import "scss/indicator.scss";
 @import "scss/notifications.scss";
-@import "scss/monitoring.scss";

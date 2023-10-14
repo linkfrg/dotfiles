@@ -1,3 +1,5 @@
 (defwidget tray []
-    (systray :pack-direction "ttb")
+    (eventbox :class "tray"
+        (systray :pack-direction "left" :class "tray")
+    )
 )

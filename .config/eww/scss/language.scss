@@ -1,0 +1,11 @@
+.language {
+    border-radius: 0.5rem;
+    padding: 0 0.25rem;
+    margin: 0 0.25rem;
+    transition: 0.3s;
+    font-size: 1.3rem;
+}
+
+.language:hover {
+    background-color: mix($surface, $onSurface, 70%);
+}

@@ -1,8 +1,3 @@
 (defwidget clock []
-    (eventbox :onclick "scripts/toggle_control_center.sh &" :class "clock"
-        (box :orientation "v" :space-evenly false :class "clock"
-            (label :text {formattime(EWW_TIME, "%H")})
-            (label :text {formattime(EWW_TIME, "%M")})
-        )
-    )
+    (label :class "clock" :text {formattime(EWW_TIME, "%H:%M")})
 )

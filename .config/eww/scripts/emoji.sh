@@ -16,4 +16,4 @@ for component in "${rgb_array[@]}"; do
     hex_component=$(printf "%02X" "$component")
     hex_color="${hex_color}${hex_component}"
 done
-~/.config/eww/scripts/generate_colors.py --emoji $hex_color
+~/.config/eww/scripts/material.py --color $hex_color

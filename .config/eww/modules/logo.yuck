@@ -1,5 +1,5 @@
 (defwidget logo []
-    (box :class "logo" :orientation "h" :space-evenly false :halign "center"
+    (button :class "logo" :onclick "scripts/toggle_launcher.sh &"
         (label :text "󰣇")
     )
 )

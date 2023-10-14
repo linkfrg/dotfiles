@@ -1,0 +1,9 @@
+(defwidget taskbar []
+    (box :orientation "h" :space-evenly false :class "taskbar"
+        (for app in {apps.pinned}
+            (button :class "taskbar-item" :onclick "cd ~ && gtk-launch ${app.desktop} & scripts/toggle_launcher.sh close &"
+                (image :path {app.icon} :image-width 32 :image-height 32)
+            )
+        )
+    )
+)

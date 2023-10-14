@@ -1,20 +1,8 @@
 (defwidget notifications_popup_widget []
-    (box :orientation "v" :space-evenly false :visible {do-not-disturb == false ? true : false}
+    (box :orientation "v" :space-evenly false
         (for notify in {notifications.popups}
-            (eventbox :onrightclick "scripts/notifications.sh close ${notify.id}"
-                (box :orientation "h" :space-evenly false :class "notifications-popup-body"
-                    (image :valign "start" :class "notification-image" :visible {notify.image != "null" ? true :false} :path {notify.image} :image-width 48 :image-height 48)
-                    (box :orientation "v" :space-evenly false
-                        (label :halign "start" :class "notification-app" :visible {notify.app != "null" ? true :false} :text {notify.app})
-                        (label :halign "start" :class "notification-summary" :visible {notify.summary != "null" ? true :false} :wrap true :markup {notify.summary})
-                        (label :halign "start" :class "notification-body" :visible {notify.body != "null" ? true :false} :wrap true :markup {notify.body})
-                        (box :orientation "h" :space-evenly false
-                            (for action in {notify.actions}
-                                (button :class {action == notify.actions[0] ? "notify-action first-action" : "notify-action"} :onclick "scripts/notifications.sh ${notify.id} ${action[0]}" {action[1]})
-                            )
-                        )
-                    )
-                )
+            (box :orientation "h" :space-evenly false :class "notifications-popup-body"
+                (notification :notify {notify})
             )
         )
     )

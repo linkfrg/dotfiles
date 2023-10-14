@@ -1,5 +1,5 @@
 {
-  "scheme": "light",
-  "type": "emoji",
-  "base_color": "#1C71D8"
+  "scheme": "dark",
+  "type": "image",
+  "base_color": null
 }

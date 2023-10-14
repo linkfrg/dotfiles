@@ -6,8 +6,11 @@
     background-color: $surfaceVariant;
     color: $onSurface;
     border-radius: 1rem;
-    padding: 1rem;
     margin-top: 1rem;
+}
+
+.notification-info {
+    margin: 1rem;
 }
 
 .notification-image {
@@ -50,13 +53,31 @@
     font-size: 1.2rem;
 }
 
-.notify-action {
+.notification-action {
     color: $primary;
-    margin-left: 2rem;
+    padding: 0 0.5rem;
+    margin: 0 0.25rem;
+    transition: 0.3s;
+    border-radius: 0.25rem;
+}
+
+.notification-action-box {
+    margin-left: 0.25rem;
+    margin-bottom: 1rem;
+}
+
+.notification-action:hover {
+    background-color: mix($surfaceVariant, $onSurfaceVariant, 70%);
+}
+
+.notification-close {
+    color: $onSurface;
+    font-size: 1.2rem;
     border-radius: 1rem;
+    padding: 0.25rem 0.55rem;
     transition: 0.3s;
 }
 
-.first-action {
-    margin-left: 0rem;
+.notification-close:hover {
+    background-color: mix($surfaceVariant, $onSurfaceVariant, 70%);
 }

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-notify-send "Начата запись экрана"
+notify-send "Recording started"
 
 datetime=$(date | sed 's/ /_/g')
 

@@ -47,7 +47,7 @@ def get_desktop_entries():
 
     
 
-    return {"apps": entries, "pinned": read_cache()}
+    return {"apps": entries, "pinned": read_cache(), "search": False, "filtered": []}
 
 
 
@@ -71,7 +71,6 @@ def filter_entries(entries, query):
         if query.lower() in entry["name"].lower()
         or (entry["comment"] and query.lower() in entry["comment"].lower())
     ]
-    print(filtered_data)
     return filtered_data
 
 def update_eww(entries):
@@ -108,9 +107,13 @@ if __name__ == "__main__":
     if len(sys.argv) > 2:
         if sys.argv[1] == "--query":
             query = sys.argv[2]
+            if query == "":
+                entries = get_desktop_entries()
+                update_eww(entries)
+                exit(0)
             entries = get_desktop_entries()
             filtered = filter_entries(entries, query)
-            update_eww({"apps": filtered, "pinned": []})
+            update_eww({"apps": entries['apps'], "pinned": entries['pinned'], "search": True, "filtered": filtered})
 
         elif sys.argv[1] == "--add-pin":
             desktop = sys.argv[2]

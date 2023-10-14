@@ -1,17 +1,9 @@
 ; VARS
 
 (defvar open_control_center false)
-(defvar open_powermenu false)
 (defvar open_osd false)
-
-(defvar do-not-disturb false)
-(deflisten workspaces :initial "[{'window'}]"
-"scripts/workspaces.sh")
-(defvar apps "{}")
+(defvar open_launcher false)
 (defvar clipboard "[]")
-(deflisten notifications :initial '{"count": 0, "notifications": [], "popups": []}'
-"scripts/notifications.py")
-
 
 ; POLLS
 
@@ -20,12 +12,6 @@
 
 (defpoll username :interval "10h"
 "whoami")
-
-(deflisten weather :initial "null"
-"scripts/weather.py")
-
-(deflisten current_theme :initial "dark" 
-"scripts/generate_colors.py --current-scheme")
 
 ; LISTENS
 
@@ -46,4 +32,22 @@
 
 (deflisten mpris_positions :initial "{}"
 "scripts/positions.sh")
+
+(deflisten do-not-disturb :initial false
+"scripts/notifications.sh getdnd")
+
+(deflisten workspaces :initial "[{'window'}]"
+"scripts/workspaces.sh")
+
+(deflisten weather :initial "null"
+"scripts/weather.py")
+
+(deflisten current_theme :initial "dark" 
+"scripts/material.py --current")
+
+(deflisten notifications :initial '{"count": 0, "notifications": [], "popups": []}'
+"scripts/notifications.sh current")
+
+(deflisten apps :initial "{}"
+"scripts/apps.py")
 

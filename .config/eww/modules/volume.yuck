@@ -1,5 +1,5 @@
 (defwidget volume_osd []
-    (revealer :transition "slidedown" :reveal {open_osd == true ? true : false} :duration "500ms"
+    (revealer :transition "slideup" :reveal {open_osd == true ? true : false} :duration "500ms"
         (box :orientation "h" :class "volume-osd" :space-evenly false
             (volume_scale)
         )

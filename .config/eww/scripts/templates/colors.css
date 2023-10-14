@@ -11,7 +11,17 @@
 @define-color tertiaryContainer {{ tertiaryContainer }};
 @define-color onTertiaryContainer {{ onTertiaryContainer }};
 @define-color error {{ error }};
+@define-color onError {{ onError }};
+@define-color errorContainer {{ errorContainer }};
+@define-color onErrorContainer {{ onErrorContainer }};
+@define-color background {{ background }};
+@define-color onBackground {{ onBackground }};
 @define-color surface {{ surface }};
 @define-color onSurface {{ onSurface }};
 @define-color surfaceVariant {{ surfaceVariant }};
 @define-color onSurfaceVariant {{ onSurfaceVariant }};
+@define-color outline {{ outline }};
+@define-color shadow {{ shadow }};
+@define-color inverseSurface {{ inverseSurface }};
+@define-color inverseOnSurface {{ inverseOnSurface }};
+@define-color inversePrimary {{ inversePrimary }};

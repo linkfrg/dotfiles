@@ -1,7 +1,12 @@
 .logo {
-    font-size: 20px;
+    font-size: 1.5rem;
     background-color: $primary;
     color: $surface;
-    border-radius: 20px;
-    padding: 0.2rem 0.4rem;
+    border-radius: 2rem;
+    padding: 0 0.6rem;
+    transition: 0.3s;
+}
+
+.logo:hover {
+    background-color: mix($primary, $onSurface, 70%);
 }

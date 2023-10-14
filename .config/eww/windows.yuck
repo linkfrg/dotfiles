@@ -1,8 +1,9 @@
 (defwindow bar
     :monitor 0
-    :geometry (geometry :height "100%"
-                        :anchor "left center")
+    :geometry (geometry :width "100%"
+                        :anchor "bottom center")
     :exclusive true
+    :namespace "eww"
     (bar)
 )
   
@@ -12,7 +13,7 @@
     :geometry (geometry
                     :anchor "center"
                 )
-    :focusable false
+    :namespace "eww"
     (clipboard_widget)
 )
 
@@ -20,8 +21,9 @@
     :monitor 0
     :stacking "fg"
     :geometry (geometry
-                    :anchor "center left"
+                    :anchor "bottom right"
                 )
+    :namespace "eww"
     (control_center)
 )
 
@@ -29,9 +31,10 @@
     :monitor 0
     :stacking "fg"
     :geometry (geometry
-                    :anchor "center"
+                    :anchor "left bottom"
                 )
     :focusable true
+    :namespace "eww"
     (launcher)
 )
 
@@ -41,6 +44,7 @@
     :geometry (geometry
                     :anchor "top center"
                 )
+    :namespace "eww"
     (notifications_popup_widget)
 )
 
@@ -48,6 +52,18 @@
     :monitor 0
     :stacking "fg"
     :geometry (geometry 
-                    :anchor "top center")
+                    :anchor "bottom center")
+    :namespace "eww"
     (volume_osd)
+)
+
+(defwindow powermenu
+    :monitor 0
+    :stacking "fg"
+    :geometry (geometry 
+                    :anchor "center"
+                    :width "100%"
+                    :height "120%")
+    :namespace "eww-blur"
+    (powermenu)
 )

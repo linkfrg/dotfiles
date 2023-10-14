@@ -1,18 +1,19 @@
 (defwidget bar []
-    (box :class "bar-widget" :orientation "v" :space-evenly true
+    (box :class "bar-widget" :orientation "h" :space-evenly true
 
-        (box :orientation "v" :space-evenly false :valign "start"
+        (box :orientation "h" :space-evenly false :halign "start"
             (logo)
             (workspaces)
         )
 
-        (box :orientation "v" :space-evenly false :valign "center"
-            (clock)
+        (box :orientation "h" :space-evenly false :halign "center"
+            (taskbar)
         )
 
-        (box :orientation "v" :space-evenly false :valign "end"
+        (box :orientation "h" :space-evenly false :halign "end"
             (tray)
-            (bar_state)
+            (language)
+            (indicator)
         )
 
     )
