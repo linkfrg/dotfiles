@@ -3,6 +3,5 @@
         (label :class "weather-error" :text "󰤨 Connect to the internet" :visible {weather == "null" ? true : false})
         (label :class "weather-icon" :halign "start" :text {weather.icon})
         (label :class "weather-temp" :halign "start" :text {weather.temp})
-        (label :limit-width 10 :hexpand true :class "weather-desc" :halign "end" :valign "start" :text {weather.desc})
     )
 )

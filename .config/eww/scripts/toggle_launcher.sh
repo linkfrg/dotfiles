@@ -1,6 +1,5 @@
 #!/bin/bash
 
-~/.config/eww/scripts/apps.py &
 
 state=$(eww get open_launcher)
 
@@ -9,6 +8,7 @@ open_launcher() {
         eww open launcher
     fi
     eww update open_launcher=true
+    sleep 0.7 && ~/.config/eww/scripts/apps.py &
 }
 
 close_launcher() {

@@ -5,3 +5,15 @@
     transition: 0.3s;
     font-size: 1.5rem;
 }
+
+.big_clock_box {
+    @include window;
+    margin-top: 20rem;
+    margin-right: 20rem;
+    border-radius: 2rem;
+
+}
+
+.big_clock_label {
+    font-size: 10rem;
+}

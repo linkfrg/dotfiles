@@ -17,6 +17,7 @@
 - **Dark and light theme**: just toggle button in control center
 - **Control center**: quick access to everything you need (probably)
 - **Notifications**: notification daemon written on python with notifications center
+- **Launcher**: you can pin and unpin apps, just right click on them
 
 
 ## How to install

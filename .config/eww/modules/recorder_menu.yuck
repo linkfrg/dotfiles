@@ -1,0 +1,18 @@
+(defwidget recorder_menu []
+    (box :orientation "v" :space-evenly false :valign "center" :halign "center" :class "recorder_menu_box"
+        (label :class "recorder_menu_icon" :text "󰻃")
+        (label :class "recorder_menu_label" :text "Start recording?")
+        (box :orientation "h" :space-evenly true :class "recorder_menu_checkbox_box"
+            (label :halign "start" :class "recorder_menu_checkbox_label" :text "Record audio")
+            (checkbox :onchecked "eww update recorder_audio=true" :onunchecked "eww update recorder_audio=false" :halign "end" :class "recorder_menu_checkbox")
+        )
+        (box :orientation "h" :space-evenly true :class "recorder_menu_checkbox_box"
+            (label :halign "start" :class "recorder_menu_checkbox_label" :text "Select region")
+            (checkbox :onchecked "eww update recorder_region=true" :onunchecked "eww update recorder_region=false" :halign "end" :class "recorder_menu_checkbox")
+        )
+        (box :orientation "h" :space-evenly true :class "record_menu_buttons"
+            (button :onclick "eww close recorder_menu && eww update recorder_audio=false && eww update recorder_region=false" :class "record_menu_button_cancel" :halign "start" "Cancel")
+            (button :onclick "eww close recorder_menu && scripts/record.sh ${recorder_region == true ? 'region' : ''} ${recorder_audio == true ? 'audio' : 'no_audio'} & eww update recorder_audio=false && eww update recorder_region=false" :class "record_menu_button_start" :halign "end" "Start")
+        )
+    )
+)

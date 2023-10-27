@@ -49,7 +49,7 @@
 
 (defwidget recorder []
     (quick_settings_button  :condition {recording == false} 
-                            :action {recording == false ? "~/.config/eww/scripts/record.sh" : "pkill -INT wf-recorder && notify-send 'Recording saved'"}
+                            :action {recording == false ? "eww open recorder_menu" : "pkill -INT wf-recorder && notify-send 'Recording saved'"}
                             :icon "󰻃"
                             :label "Recording"
                             :class "right-bottom-plite"

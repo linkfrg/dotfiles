@@ -3,15 +3,17 @@
 (defvar open_control_center false)
 (defvar open_osd false)
 (defvar open_launcher false)
+(defvar open_tray false)
 (defvar clipboard "[]")
+(defvar ANIM_DURATION "500ms")
+
+(defvar recorder_audio false)
+(defvar recorder_region false)
 
 ; POLLS
 
 (defpoll recording :interval "1s"
 "pgrep 'wf-recorder' || echo false")
-
-(defpoll username :interval "10h"
-"whoami")
 
 ; LISTENS
 

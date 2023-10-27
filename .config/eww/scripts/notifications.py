@@ -30,28 +30,36 @@ class NotificationDaemon(dbus.service.Object):
 
     @dbus.service.method("org.freedesktop.Notifications", in_signature="susssasa{sv}i", out_signature="u")
     def Notify(self, app_name, replaces_id, app_icon, summary, body, actions, hints, timeout):
-        if int(replaces_id) != 0:
-            id = int(replaces_id)
-        else:
-            if self.read_log_file()['notifications'] != []:
-                id = self.read_log_file()['notifications'][0]['id'] + 1
-            else:
-                id = 1 
+        replaces_id = int(replaces_id)
         actions = list(actions)
+        app_icon = str(app_icon)
+        app_name = str(app_name)
+        summary = str(summary)
+        body = str(body)
+
+        if replaces_id != 0:
+            id = replaces_id
+        else:
+            log_file = self.read_log_file()
+            if log_file['notifications'] != []:
+                id = log_file['notifications'][0]['id'] + 1
+            else:
+                id = 1
+
         acts = []
         for i in range(0, len(actions), 2):
             acts.append([str(actions[i]), str(actions[i + 1])])
 
         details = {
             "id": id,
-            "app": str(app_name),
-            "summary": self.format_long_string(str(summary), 30),
-            "body": self.format_long_string(str(body), 30),
+            "app": app_name,
+            "summary": self.format_long_string(summary, 35),
+            "body": self.format_long_string(body, 35),
             "time": datetime.datetime.now().strftime("%H:%M"),
+            "urgency": hints["urgency"] if "urgency" in hints else 1,
             "actions": acts
         }
 
-        app_icon = str(app_icon)
 
         if app_icon.strip():
             if os.path.isfile(app_icon) or app_icon.startswith("file://"):
@@ -72,24 +80,19 @@ class NotificationDaemon(dbus.service.Object):
 
 
 
-    def format_long_string(self, input_str, max_line_length):
-        formatted_lines = []
+    def format_long_string(self, long_string, interval):
+        split_string = []
+        max_length = 256
 
-        # Split the input string by spaces
-        words = input_str.split()
+        for i in range(0, len(long_string), interval):
+            split_string.append(long_string[i:i+interval])
 
-        for word in words:
-            while len(word) > max_line_length:
-                formatted_lines.append(word[:max_line_length] + '-')
-                word = word[max_line_length:]
+        result = "-\n".join(split_string)
 
-            formatted_lines.append(word)
+        if len(result) > max_length:
+            result = result[:max_length] + "..."
 
-        # Join the formatted lines with spaces
-        formatted_text = ' '.join(formatted_lines)
-        if len(formatted_text) > 200:
-            formatted_text = formatted_text[:200] + "..."
-        return formatted_text
+        return result
 
     @dbus.service.method("org.freedesktop.Notifications", in_signature="", out_signature="ssss")
     def GetServerInformation(self):
@@ -197,12 +200,11 @@ class NotificationDaemon(dbus.service.Object):
             oldest_popup = current["popups"].pop()
             self.DismissPopup(oldest_popup["id"])
 
-        current["popups"].insert(0, notification)
+        current["popups"].append(notification)
         self.write_log_file(current)
 
         popup_id = notification["id"]
         active_popups[popup_id] = GLib.timeout_add_seconds(5, self.DismissPopup, popup_id)
-        os.system('eww open notifications_popup')
 
     @dbus.service.method("org.freedesktop.Notifications", in_signature="u", out_signature="")
     def DismissPopup(self, id):

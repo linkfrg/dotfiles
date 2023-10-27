@@ -6,7 +6,6 @@
 (include "modules/notifications_popup.yuck")
 (include "modules/launcher.yuck")
 (include "modules/control_center.yuck")
-(include "modules/clipboard.yuck")
 
 (include "modules/volume.yuck")
 (include "modules/notifications.yuck")
@@ -23,4 +22,6 @@
 (include "modules/language.yuck")
 (include "modules/indicator.yuck")
 (include "modules/clock.yuck")
+(include "modules/recorder_menu.yuck")
+(include "modules/bg_widgets.yuck")
 

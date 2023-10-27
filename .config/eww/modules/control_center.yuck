@@ -1,13 +1,12 @@
 (defwidget control_center []
-    (revealer :transition "slideleft" :reveal {open_control_center == true ? true : false} :duration "700ms"
+    (revealer :transition "slideleft" :reveal {open_control_center == true ? true : false} :duration {ANIM_DURATION}
         (box :orientation "v" :space-evenly false
+            (media)
             (notifications)
             (box :orientation "v" :space-evenly false :class "control-center"
                 (user)
                 (quick_settings)
                 (volume_control_center)
-                (weather)
-                (media)
             )
         )
     )

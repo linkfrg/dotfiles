@@ -1,25 +1,22 @@
 .weather {
-    background-color: $surfaceVariant;
-    border-radius: 1rem;
-    margin-top: 1rem;
-    padding: 1rem;
+    @include window;
+    min-width: 20rem;
+    border-radius: 2rem;
+    margin-bottom: 20rem;
+    margin-left: 20rem;
 }
 
 .weather-icon {
-    font-size: 4rem;
-}
-
-.weather-desc {
-    color: $primary;
-    font-size: 1.5rem;
+    font-size: 12rem;
 }
 
 .weather-temp {
     color: $primary;
-    font-size: 3rem;
-    margin-left: 1.5rem;
+    font-size: 8rem;
+    margin-left: 5rem;
+    margin-right: 4rem;
 }
 
 .weather-error {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
 }

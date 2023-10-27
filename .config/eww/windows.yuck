@@ -6,20 +6,10 @@
     :namespace "eww"
     (bar)
 )
-  
-(defwindow clipboard
-    :monitor 0
-    :stacking "fg"
-    :geometry (geometry
-                    :anchor "center"
-                )
-    :namespace "eww"
-    (clipboard_widget)
-)
 
 (defwindow control_center
     :monitor 0
-    :stacking "fg"
+    :stacking "overlay"
     :geometry (geometry
                     :anchor "bottom right"
                 )
@@ -29,7 +19,7 @@
 
 (defwindow launcher
     :monitor 0
-    :stacking "fg"
+    :stacking "overlay"
     :geometry (geometry
                     :anchor "left bottom"
                 )
@@ -40,7 +30,7 @@
 
 (defwindow notifications_popup
     :monitor 0
-    :stacking "fg"
+    :stacking "overlay"
     :geometry (geometry
                     :anchor "top center"
                 )
@@ -50,7 +40,7 @@
 
 (defwindow osd
     :monitor 0
-    :stacking "fg"
+    :stacking "overlay"
     :geometry (geometry 
                     :anchor "bottom center")
     :namespace "eww"
@@ -59,11 +49,43 @@
 
 (defwindow powermenu
     :monitor 0
-    :stacking "fg"
+    :stacking "overlay"
     :geometry (geometry 
                     :anchor "center"
                     :width "100%"
                     :height "120%")
     :namespace "eww-blur"
     (powermenu)
+)
+
+(defwindow recorder_menu
+    :monitor 0
+    :stacking "overlay"
+    :geometry (geometry 
+                    :anchor "center"
+                    :width "100%"
+                    :height "120%")
+    :namespace "eww-blur"
+    (recorder_menu)
+)
+
+(defwindow tray
+    :monitor 0
+    :stacking "fg"
+    :geometry (geometry 
+                    :anchor "bottom left"
+                    :x "82%")
+    :namespace "eww"
+    (tray)
+)
+
+(defwindow bg_widgets
+    :monitor 0
+    :stacking "bg"
+    :geometry (geometry 
+                    :anchor "center"
+                    :width "100%"
+                    :height "100%")
+    :namespace "eww"
+    (bg_widgets)
 )
