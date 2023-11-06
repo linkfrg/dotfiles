@@ -31,16 +31,14 @@ def get_desktop_entries():
         parser.read(file_path)
 
         if parser.getboolean("Desktop Entry", "NoDisplay", fallback=False):
-            continue  # Skip entries with NoDisplay=true
+            continue
 
         app_name = parser.get("Desktop Entry", "Name")
         icon_path = get_gtk_icon(parser.get("Desktop Entry", "Icon", fallback=None))
-        comment = parser.get("Desktop Entry", "Comment", fallback=None)
 
         entry = {
             "name": app_name,
             "icon": icon_path,
-            "comment": comment,
             "desktop": os.path.basename(file_path),
         }
         entries.append(entry)
@@ -69,30 +67,29 @@ def filter_entries(entries, query):
     filtered_data = [
         entry for entry in entries["apps"]
         if query.lower() in entry["name"].lower()
-        or (entry["comment"] and query.lower() in entry["comment"].lower())
     ]
     return filtered_data
 
 def update_eww(entries):
-    subprocess.run(["eww", "update", "apps={}".format(json.dumps(entries))])
+    subprocess.run(["eww", "update", f"apps={json.dumps(entries)}"])
 
 
-def add_pinned_entry(desktop, entries):
+def add_pinned_entry(name, icon, desktop):
+    entry = {
+            "name": name,
+            "icon": icon,
+            "desktop": desktop,
+        }
     cache = read_cache()
     for c in cache:
         if c['desktop'] == desktop:
             print("App already pinned!")
             exit(1)
-    pin = None
-    for entry in entries['apps']:
-        if entry['desktop'] == desktop:
-            pin = entry
-            break
-    if pin is not None:
-        cache.insert(0, pin)
-        write_cache(cache)
 
-        update_eww(get_desktop_entries())
+    cache.insert(0, entry)
+    write_cache(cache)
+
+    update_eww(get_desktop_entries())
 
 
 def remove_pinned_entry(desktop):
@@ -116,9 +113,10 @@ if __name__ == "__main__":
             update_eww({"apps": entries['apps'], "pinned": entries['pinned'], "search": True, "filtered": filtered})
 
         elif sys.argv[1] == "--add-pin":
-            desktop = sys.argv[2]
-            entries = get_desktop_entries()
-            add_pinned_entry(desktop, entries)
+            name = sys.argv[2]
+            icon = sys.argv[3]
+            desktop = sys.argv[4]
+            add_pinned_entry(name, icon, desktop)
 
         elif sys.argv[1] == "--remove-pin":
             desktop = sys.argv[2]

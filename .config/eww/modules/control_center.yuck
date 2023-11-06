@@ -1,7 +1,7 @@
 (defwidget control_center []
     (revealer :transition "slideleft" :reveal {open_control_center == true ? true : false} :duration {ANIM_DURATION}
         (box :orientation "v" :space-evenly false
-            (media)
+            (music)
             (notifications)
             (box :orientation "v" :space-evenly false :class "control-center"
                 (user)

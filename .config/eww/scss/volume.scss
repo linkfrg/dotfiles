@@ -34,7 +34,7 @@
 }
 
 .volume-arrow {
-    background-color: $surfaceVariant;
+    color: $primary;
     margin-left: 0.5rem;
     font-size: 2rem;
     min-width: 2.25rem;
@@ -43,5 +43,28 @@
 }
 
 .volume-arrow:hover {
+    background-color: mix($surface, $onSurface, 70%);
+}
+
+.volume-mute {
+    background-color: $surfaceVariant;
+    color: $onSurface;
+    margin-left: 0.5rem;
+    font-size: 1.5rem;
+    min-width: 2.25rem;
+    border-radius: 2rem;
+    transition: 0.3s;
+
+    &.active {
+        background-color: $primary;
+        color: $surface;
+    }
+
+    &.active:hover {
+        background-color: mix($primary, $onSurface, 70%);
+    }
+}
+
+.volume-mute:hover {
     background-color: mix($surfaceVariant, $onSurfaceVariant, 70%);
 }

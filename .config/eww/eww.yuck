@@ -14,6 +14,7 @@
 (include "modules/music.yuck")
 (include "modules/user.yuck")
 (include "modules/weather.yuck")
+(include "modules/picker.yuck")
 
 (include "modules/logo.yuck")
 (include "modules/workspaces.yuck")

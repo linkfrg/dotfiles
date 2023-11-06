@@ -16,6 +16,7 @@
 (defwidget volume_control_center []
     (box :orientation "h" :class "volume-control-center" :space-evenly false
         (volume_scale)
+        (button :class "volume-mute ${volume == 'muted' ? 'active' : ''}" :onclick "pamixer -t" "󰝟")
         (button :class "volume-arrow" :onclick "scripts/toggle_control_center.sh close && pavucontrol &" "󰅂")
     )
 )

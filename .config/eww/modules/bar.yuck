@@ -13,6 +13,7 @@
         (box :orientation "h" :space-evenly false :halign "end"
             (tray_button)
             (language)
+            (picker)
             (indicator)
         )
 

@@ -44,3 +44,18 @@
 .user-clock-date {
     font-size: 1.2rem;
 }
+
+.open-settings-button {
+    background-color: $surfaceVariant;
+    color: $onSurface;
+    border-radius: 0.5rem;
+    padding: 0 0.5rem;
+    margin: 0.35rem 0;
+    margin-left: 0.5rem;
+    transition: 0.3s;
+    font-size: 1.2rem;
+}
+
+.open-settings-button:hover {
+    background-color: mix($surfaceVariant, $onSurfaceVariant, 70%);
+}
