@@ -23,3 +23,6 @@
 ## How to install
 
 - See the [wiki page](https://github.com/linkfrg/dotfiles/wiki/Installation)
+
+## Keybindings
+- See the [wiki page](https://github.com/linkfrg/dotfiles/wiki/Cheat-Sheet)
