@@ -6,6 +6,7 @@
             (do-not-disturb_icon)
             (theme_icon)
             (volume_icon)
+            (battery_icon)
             (clock)
         )
     )
@@ -42,5 +43,13 @@
 (defwidget volume_icon []
     (state_icon :condition true
                 :text {volume == "muted" ? "󰸈" : volume < 33 ? "" : volume < 67 ? "" : ""}
+    )
+)
+
+(defwidget battery_icon []
+    (box :visible {EWW_BATTERY == "" ? false : true}
+        (state_icon :condition true
+                    :text {EWW_BATTERY.BAT0.capacity > 90 ? "" : EWW_BATTERY.BAT0.capacity > 75 ? "" : EWW_BATTERY.BAT0.capacity > 50 ? "" : EWW_BATTERY.BAT0.capacity > 25 ? "" : ""}
+        )
     )
 )
