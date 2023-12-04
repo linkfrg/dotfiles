@@ -1,7 +1,8 @@
 (defwindow bar
     :monitor 0
     :geometry (geometry :width "100%"
-                        :anchor "bottom center")
+                        :anchor "bottom center"
+                    )
     :exclusive true
     :namespace "eww"
     (bar)
@@ -12,6 +13,8 @@
     :stacking "overlay"
     :geometry (geometry
                     :anchor "bottom right"
+                    :width "2px"
+                    :height "2px"
                 )
     :namespace "eww"
     (control_center)
@@ -22,6 +25,8 @@
     :stacking "overlay"
     :geometry (geometry
                     :anchor "left bottom"
+                    :width "2px"
+                    :height "2px"
                 )
     :focusable true
     :namespace "eww"
@@ -33,6 +38,8 @@
     :stacking "overlay"
     :geometry (geometry
                     :anchor "top center"
+                    :width "2px"
+                    :height "2px"
                 )
     :namespace "eww"
     (notifications_popup_widget)
@@ -42,7 +49,10 @@
     :monitor 0
     :stacking "overlay"
     :geometry (geometry 
-                    :anchor "bottom center")
+                    :anchor "bottom center"
+                    :width "2px"
+                    :height "2px"
+                )
     :namespace "eww"
     (volume_osd)
 )
@@ -71,10 +81,13 @@
 
 (defwindow tray
     :monitor 0
-    :stacking "fg"
+    :stacking "overlay"
     :geometry (geometry 
                     :anchor "bottom left"
-                    :x "82%")
+                    :width "2px"
+                    :height "2px"
+                    :x "82%"
+                )
     :namespace "eww"
     (tray)
 )
