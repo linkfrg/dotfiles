@@ -8,7 +8,7 @@
 )
 
 (defwidget launcher []
-    (revealer :transition "slideright" :reveal {open_launcher == true ? true : false} :duration {ANIM_DURATION}
+    (revealer :transition "slideright" :reveal {open_launcher} :duration {ANIM_DURATION}
         (eventbox :onclick "scripts/toggle_launcher.sh close &"
             (box :orientation "v" :space-evenly false :class "launcher-box"
                 (box :orientation "h" :space-evenly false :class "launcher-search"
