@@ -9,6 +9,10 @@ from modules.osd import OSD
 from modules.powermenu import powermenu
 from modules.launcher import launcher
 
+Utils.exec_sh("gsettings set org.gnome.desktop.interface gtk-theme Material")
+Utils.exec_sh("gsettings set org.gnome.desktop.interface icon-theme Papirus")
+Utils.exec_sh('gsettings set org.gnome.desktop.interface font-name "JetBrains Mono Regular 11"')
+
 app.apply_css(os.path.expanduser("~/.config/ignis/style.scss"))
 
 options = Service.get("options")
