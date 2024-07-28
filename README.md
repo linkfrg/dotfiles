@@ -1,5 +1,5 @@
 <div align="center">
-    <h1>linkfrg's Hyprland(and ignis!) dotfiles</h1>
+    <h1>linkfrg's Hyprland(and Ignis!) dotfiles</h1>
     <img src="https://img.shields.io/github/last-commit/linkfrg/dotfiles?style=for-the-badge&color=ffb4a2&labelColor=201a19">
     <img src="https://img.shields.io/github/stars/linkfrg/dotfiles?style=for-the-badge&color=e6c419&labelColor=1d1b16">
     <img src="https://img.shields.io/github/repo-size/linkfrg/dotfiles?style=for-the-badge&color=a8c7ff&labelColor=1a1b1f">
