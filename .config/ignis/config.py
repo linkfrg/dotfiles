@@ -12,6 +12,7 @@ from modules.launcher import launcher
 Utils.exec_sh("gsettings set org.gnome.desktop.interface gtk-theme Material")
 Utils.exec_sh("gsettings set org.gnome.desktop.interface icon-theme Papirus")
 Utils.exec_sh('gsettings set org.gnome.desktop.interface font-name "JetBrains Mono Regular 11"')
+Utils.exec_sh('hyprctl reload')
 
 app.apply_css(os.path.expanduser("~/.config/ignis/style.scss"))
 
