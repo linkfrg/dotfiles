@@ -1,0 +1,36 @@
+from ignis.widgets import Widget
+from ignis.services import Service
+
+system_tray = Service.get("system_tray")
+
+class TrayItem(Widget.Button):
+    def __init__(self, item):
+        if item.menu:
+            menu = item.menu.copy()
+        else:
+            menu = None
+
+        super().__init__(
+            child=Widget.Box(
+                child=[
+                    Widget.Icon(image=item.bind("icon"), pixel_size=24),
+                    menu,
+                ]
+            ),
+            tooltip_text=item.bind("tooltip"),
+            on_click=lambda x: menu.popup() if menu else None,
+            on_right_click=lambda x: menu.popup() if menu else None,
+            css_classes=["tray-item", "unset"],
+        )
+
+        item.connect("removed", lambda x: self.unparent())
+
+
+def tray():
+    box = Widget.Box(
+        css_classes=["tray"],
+        spacing=10,
+    )
+    system_tray.connect("added", lambda x, item: box.append(TrayItem(item)))
+
+    return box

@@ -1,0 +1,51 @@
+# ---------------------SETTINGS---------------------------#
+daemonize
+show-failed-attempts
+clock
+screenshot
+ignore-empty-password
+indicator
+font=JetBrainsMono
+indicator-radius=200
+indicator-thickness=20
+
+
+#----------------------EFFECTS----------------------------#
+effect-blur=9x5
+effect-vignette=0.5:0.5
+
+#--------------------INPUT IGNORE-------------------------#
+grace-no-mouse
+grace-no-touch
+
+
+#--------------------DATE & TIME--------------------------#
+datestr=%a,%e %B 
+timestr=%H:%M
+fade-in=0.2
+
+
+#----------------------COLORS-----------------------------#
+bs-hl-color={{ error }}
+inside-color=#FFFFFF00
+ring-color=#FFFFFF00
+line-color=#FFFFFF00
+separator-color=#FFFFFF00
+key-hl-color={{ primaryFixedDim }}
+text-color={{ primaryFixedDim }}
+text-caps-lock-color={{ tertiary }}
+
+ring-clear-color=#FFFFFF00
+text-clear-color={{ onTertiary }}
+inside-clear-color={{ tertiary }}
+line-clear-color=#FFFFFF00
+
+ring-ver-color=#FFFFFF00
+text-ver-color={{ onSecondary }}
+inside-ver-color={{ secondary }}
+line-ver-color=#FFFFFF00
+
+ring-wrong-color=#FFFFFF00
+text-wrong-color={{ onError }}
+inside-wrong-color={{ error }}
+line-wrong-color=#FFFFFF00

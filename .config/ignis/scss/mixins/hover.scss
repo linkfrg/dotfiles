@@ -1,0 +1,12 @@
+@mixin hover($bg) {
+    background-color: $bg;
+
+    &:hover {
+        @if $darkmode == true {
+            background-color: lighten($bg, 5%);
+        }
+        @else {
+            background-color: darken($bg, 5%);
+        }
+    }
+}

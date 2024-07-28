@@ -1,0 +1,71 @@
+.settings-sidebar {
+    background-color: $surfaceContainer;
+    min-width: 300px;
+}
+
+.settings-sidebar-label {
+    font-size: 2rem;
+    margin-left: 1rem;
+    margin-bottom: 0.5rem;
+    margin-top: 2rem;
+}
+
+.settings-sidebar-entry {
+    all: unset;
+    background-color: $surfaceContainer;
+    padding: 1rem 2rem;
+    padding-left: 0.75rem;
+    font-size: 1.2rem;
+
+    &:selected {
+        @if $darkmode == true {
+            background-color: lighten($surfaceContainer, 10%);
+        }
+        @else {
+            background-color: darken($surfaceContainer, 10%);
+        }
+    }
+}
+
+
+.settings-page-name {
+    font-size: 2rem;
+    margin-left: 2.5rem;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+}
+
+.settings-group-name {
+    margin-left: 2.5rem;
+    color: $primary;
+}
+
+.settings-row {
+    all: unset;
+    padding: 0.7rem 2.5rem;
+    transition: 0.2s;
+
+    &:active {
+        @if $darkmode == true {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        @else {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+    }
+}
+
+.settings-row-label {
+    font-size: 1.2rem;
+}
+
+.settings-row-sublabel {
+    font-size: 0.9rem;
+    font-weight: normal;
+    color: $onSurfaceVariant;
+}
+
+.settings-user-name {
+    font-size: 2.3rem;
+    margin-left: 1.5rem;
+}

@@ -1,0 +1,50 @@
+@define-color accent_color {{ primary }};
+@define-color accent_bg_color {{ primary }};
+@define-color accent_fg_color {{ surface }};
+@define-color destructive_color {{ errorContainer }};
+@define-color destructive_bg_color {{ errorContainer }};
+@define-color destructive_fg_color {{ onSurface }};
+@define-color success_color {{ tertiary }};
+@define-color success_bg_color {{ tertiary }};
+@define-color success_fg_color {{ onSurface }};
+@define-color warning_color {{ secondary }};
+@define-color warning_bg_color {{ secondary }};
+@define-color warning_fg_color {{ onSurface }};
+@define-color error_color {{ errorContainer }};
+@define-color error_bg_color {{ errorContainer }};
+@define-color error_fg_color {{ onSurface }};
+@define-color window_bg_color {{ surface }};
+@define-color window_fg_color {{ onSurface }};
+@define-color view_bg_color {{ surface }};
+@define-color view_fg_color {{ onSurface }};
+@define-color headerbar_bg_color {{ surface }};
+@define-color headerbar_fg_color {{ onSurface }};
+@define-color headerbar_border_color {{ outline }};
+@define-color headerbar_backdrop_color {{ surface }};
+@define-color headerbar_shade_color {{ outline }};
+@define-color sidebar_bg_color {{ surfaceContainer }};
+@define-color sidebar_fg_color {{ onSurface }};
+@define-color sidebar_backdrop_color {{ surfaceContainer }};
+@define-color card_bg_color {{ surfaceContainer }};
+@define-color card_fg_color {{ onSurface }};
+@define-color card_shade_color rgba(0, 0, 0, 0.07);
+@define-color thumbnail_bg_color {{ surface }};
+@define-color thumbnail_fg_color {{ onSurface }};
+@define-color dialog_bg_color {{ surface }};
+@define-color dialog_fg_color {{ onSurface }};
+@define-color popover_bg_color {{ surfaceContainer }};
+@define-color popover_fg_color {{ onSurface }};
+@define-color shade_color rgba(0, 0, 0, 0.36);
+@define-color scrollbar_outline_color {{ outline }};
+
+.navigation-sidebar {
+    background-color: {{ surfaceContainer }};
+}
+
+switch:checked {
+    background-color: {{ primary }};
+}
+
+switch:checked slider {
+    background-color: {{ onPrimary }};
+}

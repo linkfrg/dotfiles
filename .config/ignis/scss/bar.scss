@@ -1,0 +1,93 @@
+.bar-widget {
+    padding: 0.4rem 1rem;
+    margin: 0;
+    border-radius: 0;
+    transition: 0.3s;
+    background-color: rgba($surface, 0.3);
+}
+
+.clock {
+    @include hover($surface);
+    color: $onSurface;
+    background-color: $surface;
+    font-size: 1.5rem;
+    border-radius: 1rem;
+    padding: 0 0.75rem;
+    margin: 0 0.5rem;
+    margin-right: 0;
+    transition: 0.3s;
+
+    &.active {
+        background-color: $primary;
+        color: $surface;
+
+        .record-indicator {
+            color: $surface;
+        }
+
+        @include hover($primary)
+    }
+}
+
+.kb-layout {
+    border-radius: 0.5rem;
+    padding: 0 0.25rem;
+    margin: 0 0.25rem;
+    transition: 0.3s;
+    font-size: 1.3rem;
+}
+
+.kb-layout:hover {
+    background-color: rgba(white, 0.2);
+}
+
+.pinned-app {
+    margin: 0 0.25rem;
+    transition: 0.3s;
+    padding: 0 0.1rem;
+    border-radius: 0.25rem;
+}
+
+.pinned-app:hover {
+    background-color: rgba(white, 0.2);
+}
+
+
+.tray {
+    padding: 0 0.25rem;
+    margin: 0 0.25rem;
+}
+
+.workspaces {
+    border-radius: 1rem;
+    padding: 0.5rem;
+    background-color: $surface;
+    margin: 0 0.5rem;
+    margin-left: 0;
+}
+
+.workspace {
+    @include hover($primaryContainer);
+    border-radius: 1rem;
+    margin: 0 0.25rem;
+    min-width: 0.7rem;
+    min-height: 0.7rem;
+    transition: 0.3s;
+
+    &.active {
+        @include hover($primary);
+        min-width: 2rem;
+    }
+}
+
+@keyframes recorder-animation {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+.record-indicator {
+    color: $error;
+    animation: recorder-animation 2s infinite;
+}

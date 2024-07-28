@@ -1,5 +1,0 @@
-(defwidget logo []
-    (button :class "logo" :onclick "scripts/toggle_launcher.sh &"
-        (label :text "󰣇")
-    )
-)

@@ -1,0 +1,8 @@
+.osd {
+    @include window;
+    min-width: 15rem;
+    margin-bottom: 5rem;
+    * {
+        all: unset
+    }
+}
