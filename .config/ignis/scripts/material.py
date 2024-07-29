@@ -1,7 +1,6 @@
 #!/usr/bin/python
 import os
 import math
-import shutil
 from ignis.logging import logger
 
 try:
@@ -48,6 +47,9 @@ TEMPLATES = os.path.expanduser("~/.config/ignis/scripts/templates")
 SAMPLE_WALL = os.path.expanduser("~/.config/ignis/scripts/sample_wall.png")
 os.makedirs(CACHE_DIR, exist_ok=True)
 
+SWAYLOCK_CONFIG_DIR = os.path.expanduser("~/.config/swaylock")
+SWAYLOCK_CONFIG = f"{SWAYLOCK_CONFIG_DIR}/config"
+os.makedirs(SWAYLOCK_CONFIG_DIR, exist_ok=True)
 
 def rgba_to_hex(rgba: list) -> str:
     return "#{:02x}{:02x}{:02x}".format(*rgba)
@@ -143,9 +145,19 @@ class MaterialService(IgnisGObject):
 
     def __setup(self, image_path: str) -> None:
         Utils.exec_sh_async("pkill -SIGUSR1 kitty")
-        shutil.copy2(f"{CACHE_DIR}/swaylock", os.path.expanduser("~/.config/swaylock/config"))
         wallpaper.set_wallpaper(image_path)
         app.reload_css()
         self.__reload_gtk_theme()
+        self.__symlink_swaylock_config()
+
+    def __symlink_swaylock_config(self) -> None:
+        link_name = f"{CACHE_DIR}/swaylock"
+        if not os.path.exists(SWAYLOCK_CONFIG):
+            os.symlink(link_name, SWAYLOCK_CONFIG)
+            return
+
+        if not os.path.islink(SWAYLOCK_CONFIG):
+            os.remove(SWAYLOCK_CONFIG)
+            os.symlink(link_name, SWAYLOCK_CONFIG)
     
 material = MaterialService()
