@@ -143,6 +143,7 @@ def launcher() -> Widget.Window:
 
     app_list = Widget.Box(vertical=True, visible=False, style="margin-top: 1rem;")
     entry = Widget.Entry(
+        hexpand=True,
         placeholder_text="Search",
         css_classes=["launcher-search"],
         on_change=lambda x: search(x, app_list),
