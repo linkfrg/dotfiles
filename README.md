@@ -1,6 +1,7 @@
 > [!WARNING]
 > This branch is no longer maintained.
 > If you plan to use it, you're on your own.
+> See [main](https://github.com/linkfrg/dotfiles/tree/main) branch for the latest stable version (which uses [Ignis](https://github.com/linkfrg/ignis)).
 
 <div align="center">
     <h1>linkfrg's Hyprland(and eww!) dotfiles</h1>
