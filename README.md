@@ -5,6 +5,11 @@
     <img src="https://img.shields.io/github/repo-size/linkfrg/dotfiles?style=for-the-badge&color=a8c7ff&labelColor=1a1b1f">
 </div>
 
+
+> [!WARNING]
+> This is a development branch.
+> It is intended for use with the latest Git version of Ignis (``ignis-git``).
+
 ## Gallery
 
 <img src="assets/1.png"/>
