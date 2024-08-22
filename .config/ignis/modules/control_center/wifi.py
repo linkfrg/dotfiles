@@ -2,9 +2,8 @@ from ignis.widgets import Widget
 from ignis.utils import Utils
 from .qs_button import QSButton
 from ignis.services import Service
-from ignis.services.network import NetworkService, WifiAccessPoint
+from ignis.services.network import NetworkService, WifiAccessPoint, WifiDevice
 from typing import List
-from typing import Tuple
 
 network: NetworkService = Service.get("network")
 
@@ -12,19 +11,19 @@ network: NetworkService = Service.get("network")
 class WifiNetworkItem(Widget.Button):
     def __init__(self, access_point: WifiAccessPoint):
         super().__init__(
-            css_classes=["wifi-entry", "unset"],
+            css_classes=["wifi-network-item", "unset"],
             on_click=lambda x: access_point.connect_to_graphical(),
             child=Widget.Box(
                 child=[
                     Widget.Icon(
                         image=access_point.bind(
                             "strength", transform=lambda value: access_point.icon_name
-                        )
+                        ),
                     ),
                     Widget.Label(
                         label=access_point.ssid,
                         halign="start",
-                        style="margin-left: 0.35rem;",
+                        css_classes=["wifi-network-label"],
                     ),
                     Widget.Icon(
                         image="object-select-symbolic",
@@ -37,7 +36,7 @@ class WifiNetworkItem(Widget.Button):
         )
 
 
-def network_control() -> Tuple[QSButton, Widget.Revealer]:
+def wifi_qsbutton(device: WifiDevice) -> QSButton:
     def get_wifi_entries(value: list[WifiAccessPoint]) -> List[WifiNetworkItem]:
         if network.wifi.enabled:
             if value:
@@ -45,9 +44,9 @@ def network_control() -> Tuple[QSButton, Widget.Revealer]:
             else:
                 return [Widget.Label(label="No Wi-Fi networks found.")]
         else:
-            return [Widget.Label(label="Wi-Fi is not available.")]
+            return [Widget.Label(label="Wi-Fi is disabled.")]
 
-    wifi_networks_list = Widget.Revealer(
+    networks_list = Widget.Revealer(
         transition_duration=300,
         transition_type="slide_down",
         child=Widget.Box(
@@ -56,7 +55,7 @@ def network_control() -> Tuple[QSButton, Widget.Revealer]:
             child=[
                 Widget.Box(
                     child=[
-                        Widget.Label(label="Wi-Fi", style="font-size: 1.2rem;"),
+                        Widget.Label(label="Wi-Fi", css_classes=["wifi-header-label"]),
                         Widget.Switch(
                             halign="end",
                             hexpand=True,
@@ -64,26 +63,26 @@ def network_control() -> Tuple[QSButton, Widget.Revealer]:
                             on_change=lambda x, state: network.wifi.set_enabled(state),
                         ),
                     ],
-                    css_classes=["toggle-box"],
-                    style="margin-bottom: 0.5rem;",
+                    css_classes=["toggle-box", "wifi-header-box"],
                 ),
                 Widget.Box(
                     vertical=True,
-                    child=network.wifi.bind(
+                    child=device.bind(
                         "access_points", transform=lambda value: get_wifi_entries(value)
                     ),
                 ),
-                Widget.Separator(),
+                Widget.Separator(css_classes=["wifi-network-list-separator"]),
                 Widget.Button(
-                    css_classes=["wifi-entry", "unset"],
+                    css_classes=["wifi-network-item", "unset"],
                     on_click=lambda x: Utils.exec_sh_async("nm-connection-editor"),
+                    style="margin-bottom: 0;",
                     child=Widget.Box(
                         child=[
                             Widget.Icon(image="preferences-system-symbolic"),
                             Widget.Label(
                                 label="Network Settings",
                                 halign="start",
-                                style="margin-left: 0.25rem;",
+                                css_classes=["wifi-network-label"],
                             ),
                         ]
                     ),
@@ -92,10 +91,27 @@ def network_control() -> Tuple[QSButton, Widget.Revealer]:
         ),
     )
 
+    def get_label(ssid: bool) -> str:
+        if ssid:
+            return ssid
+        else:
+            return "Wi-Fi"
+
+    def get_icon(icon_name: str) -> str:
+        if device.ap.is_connected:
+            return icon_name
+        else:
+            return "network-wireless-symbolic"
+
     return QSButton(
-        icon_name=network.wifi.ap.bind("icon-name"),
-        on_activate=lambda x: (network.wifi.scan(), wifi_networks_list.toggle()),
-        on_deactivate=lambda x: (network.wifi.scan(), wifi_networks_list.toggle()),
-        style="margin-left: 0;",
+        label=device.ap.bind("ssid", get_label),
+        icon_name=device.ap.bind("icon-name", get_icon),
+        on_activate=lambda x: (device.scan(), networks_list.toggle()),
+        on_deactivate=lambda x: (device.scan(), networks_list.toggle()),
         active=network.wifi.bind("enabled"),
-    ), wifi_networks_list
+        content=networks_list,
+    )
+
+
+def wifi_control() -> List[QSButton]:
+    return [wifi_qsbutton(dev) for dev in network.wifi.devices]

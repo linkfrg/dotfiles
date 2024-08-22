@@ -1,5 +1,12 @@
 from ignis.services import Service
-from .elements import SpinRow, SettingsPage, SettingsGroup, EntryRow, FileRow, SettingsEntry
+from .elements import (
+    SpinRow,
+    SettingsPage,
+    SettingsGroup,
+    EntryRow,
+    FileRow,
+    SettingsEntry,
+)
 from ignis.widgets import Widget
 
 recorder = Service.get("recorder")
@@ -25,7 +32,8 @@ def recorder_entry(active_page):
                         label="Recording path",
                         button_label=recorder.bind("default_file_location"),
                         dialog=Widget.FileDialog(
-                            on_file_set=lambda x, file: recorder.set_default_file_location(file.get_path()),
+                            on_file_set=lambda x,
+                            file: recorder.set_default_file_location(file.get_path()),
                             select_folder=True,
                             initial_path=recorder.default_file_location,
                         ),

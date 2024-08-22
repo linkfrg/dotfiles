@@ -7,8 +7,10 @@ from ignis.services import Service
 
 options = Service.get("options")
 
+
 def clock(monitor):
     window = app.get_window("ignis_CONTROL_CENTER")
+
     def on_click(x):
         if window.monitor == monitor:
             window.visible = not window.visible
@@ -21,10 +23,15 @@ def clock(monitor):
             child=[
                 status_icons(),
                 Widget.Label(
-                    label=Utils.Poll(1, lambda: datetime.datetime.now().strftime("%H:%M")).bind("output"),
-                )
+                    label=Utils.Poll(
+                        1, lambda x: datetime.datetime.now().strftime("%H:%M")
+                    ).bind("output"),
+                ),
             ]
         ),
-        css_classes=window.bind("visible", lambda value: ["clock", "unset", "active"] if value else ["clock", "unset"]),
+        css_classes=window.bind(
+            "visible",
+            lambda value: ["clock", "unset", "active"] if value else ["clock", "unset"],
+        ),
         on_click=on_click,
     )

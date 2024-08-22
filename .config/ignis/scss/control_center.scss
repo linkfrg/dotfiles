@@ -1,11 +1,6 @@
 .control-center {
     @include window;
-
-    separator {
-        background-color: $outline;
-        min-height: 0.1rem;
-        margin: 0.2rem 0;
-    }
+    min-width: 25rem;
 }
 
 .media {
@@ -33,36 +28,31 @@
     margin: 0 0.5rem;
 }
 
-.wifi-entry {
-    @include hover($surfaceContainerHigh);
-    font-size: 1rem;
-    transition: 0.3s;
-    border-radius: 0.25rem;
-    padding: 0.25rem 0.5rem;
+.qs-main-box {
+    margin-top: 1rem;
 }
 
-.wifi-network-list {
-    background-color: $surfaceContainerHigh;
-    border-radius: 1rem;
-    padding: 1rem;
+.user {
     margin-top: 1rem;
 }
 
 .qs-button {
     @include hover($surfaceContainerHighest);
     color: $onSurface;
-    min-width: 5rem;
-    min-height: 2.2rem;
-    border-radius: 1rem;
-    font-size: 1.2rem;
+    min-height: 2.4rem;
+    border-radius: 1.2rem;
     transition: 0.3s;
-    margin: 0 0.25rem;
+    padding: 0.3rem 0.8rem;
 
     &.active {
         @include hover($primary);
         color: $surface;
     }
 
+}
+
+.qs-button-label {
+    margin-left: 0.5rem;
 }
 
 .record-menu {
@@ -89,7 +79,7 @@
     color: $surface;
     border-radius: 1rem;
     padding: 0.25rem 0.75rem;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     transition: 0.3s;
 }
 
@@ -101,6 +91,14 @@
 
 .record-start-button {
     @include hover($primary);
+}
+
+.volume-slider {
+    all: unset;
+
+    * {
+        all: unset;
+    }
 }
 
 .volume-slider trough,
@@ -124,16 +122,22 @@
 
 .volume-entry {
     @include hover($surfaceContainerHigh);
-    font-size: 1rem;
     transition: 0.3s;
-    border-radius: 0.25rem;
-    padding: 0.25rem 0.5rem;
-    padding-left: 0.25rem;
+    border-radius: 1rem;
+    padding: 0.5rem 0.5rem;
 }
 
-.volume-entry-list-header {
-    font-size: 1.25rem;
-    margin-left: 0.45rem;
+.volume-entry-list-separator {
+    margin: 0.5rem 0;
+}
+
+.volume-entry-list-header-label {
+    font-size: 1.35rem;
+    margin-left: 0.5rem;
+}
+
+.volume-entry-list-header-box {
+    margin-bottom: 0.75rem;
 }
 
 .volume-icon {
@@ -150,10 +154,6 @@
     border-radius: 1rem;
     transition: 0.3s;
     margin-left: 0.5rem;
-}
-
-.user {
-    margin-top: 1rem;
 }
 
 .user-name-box {
@@ -186,4 +186,58 @@
     min-width: 2.35rem;
     margin: 0.4rem 0rem;
     transition: 0.3s;
+}
+
+.header-clock {
+    font-size: 2.6rem;
+}
+
+.header-date {
+    font-weight: normal;
+}
+
+.ethernet-network-list, .wifi-network-list {
+    background-color: $surfaceContainerHigh;
+    border-radius: 1rem;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+.ethernet-network-list-separator, .wifi-network-list-separator {
+    margin: 0.5rem 0;
+}
+
+.ethernet-header-box, .wifi-header-box {
+    margin-bottom: 0.5rem;
+}
+
+.ethernet-header-label {
+    font-size: 1.35rem;
+    margin-left: 0.75rem;
+}
+
+.wifi-header-label {
+    font-size: 1.35rem;
+}
+
+.ethernet-connection-item, .wifi-network-item {
+    @include hover($surfaceContainerHigh);
+    transition: 0.3s;
+    border-radius: 1rem;
+    padding: 0.5rem 0.5rem;
+}
+
+
+.ethernet-connection-label, .wifi-network-label {
+    margin-left: 0.5rem;
+}
+
+.ethernet-connection-item-connect-label {
+    color: $onSurfaceVariant;
+    font-size: 1rem;
+}
+
+.volume-entry-label {
+    margin-left: 0.5rem; 
+    margin-right: 1rem;
 }

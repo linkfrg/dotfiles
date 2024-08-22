@@ -3,6 +3,7 @@ from ignis.services import Service
 
 system_tray = Service.get("system_tray")
 
+
 class TrayItem(Widget.Button):
     def __init__(self, item):
         if item.menu:
@@ -27,10 +28,10 @@ class TrayItem(Widget.Button):
 
 
 def tray():
-    box = Widget.Box(
+    return Widget.Box(
         css_classes=["tray"],
+        setup=lambda self: system_tray.connect(
+            "added", lambda x, item: self.append(TrayItem(item))
+        ),
         spacing=10,
     )
-    system_tray.connect("added", lambda x, item: box.append(TrayItem(item)))
-
-    return box

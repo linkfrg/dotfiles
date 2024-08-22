@@ -4,6 +4,7 @@ from ignis.services import Service
 
 applications = Service.get("applications")
 
+
 class AppItem(Widget.Button):
     def __init__(self, app):
         menu = Widget.PopoverMenu(
@@ -12,14 +13,14 @@ class AppItem(Widget.Button):
                 Widget.Separator(),
             ]
             + [
-                Widget.MenuItem(label=i.name, on_activate=lambda x, action=i: action.launch())
+                Widget.MenuItem(
+                    label=i.name, on_activate=lambda x, action=i: action.launch()
+                )
                 for i in app.actions
             ]
             + [
                 Widget.Separator(),
-                Widget.MenuItem(
-                    label="Unpin", on_activate=lambda x: app.unpin()
-                ),
+                Widget.MenuItem(label="Unpin", on_activate=lambda x: app.unpin()),
             ]
         )
 
@@ -43,6 +44,7 @@ def pinned_apps():
     return Widget.Box(
         child=applications.bind(
             "pinned",
-            transform=lambda value: [AppItem(app) for app in value] + [launcher_button()],
+            transform=lambda value: [AppItem(app) for app in value]
+            + [launcher_button()],
         )
     )

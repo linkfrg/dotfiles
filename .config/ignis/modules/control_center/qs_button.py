@@ -5,18 +5,35 @@ from gi.repository import GObject
 class QSButton(Widget.Button):
     def __init__(
         self,
+        label: str,
         icon_name: str,
         on_activate: callable = None,
         on_deactivate: callable = None,
+        content: Widget.Revealer = None,
         **kwargs,
     ):
         self.on_activate = on_activate
         self.on_deactivate = on_deactivate
         self._active = False
+        self._content = content
         super().__init__(
-            child=Widget.Icon(image=icon_name),
+            child=Widget.Box(
+                child=[
+                    Widget.Icon(image=icon_name),
+                    Widget.Label(label=label, css_classes=["qs-button-label"]),
+                    Widget.Arrow(
+                        halign="end",
+                        hexpand=True,
+                        pixel_size=20,
+                        rotated=content.bind("reveal_child"),
+                    )
+                    if content
+                    else None,
+                ]
+            ),
             on_click=self.__callback,
             css_classes=["qs-button", "unset"],
+            hexpand=True,
             **kwargs,
         )
 
@@ -31,11 +48,15 @@ class QSButton(Widget.Button):
     @GObject.Property
     def active(self) -> bool:
         return self._active
-    
+
     @active.setter
     def active(self, value: bool) -> None:
         self._active = value
         if value:
-            self.add_css_class('active')
+            self.add_css_class("active")
         else:
-            self.remove_css_class('active')
+            self.remove_css_class("active")
+
+    @GObject.Property
+    def content(self) -> Widget.Revealer:
+        return self._content

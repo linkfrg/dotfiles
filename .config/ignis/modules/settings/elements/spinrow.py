@@ -1,6 +1,7 @@
 from ignis.widgets import Widget
 from .row import SettingsRow
 
+
 class SpinRow(SettingsRow):
     def __init__(
         self,

@@ -12,9 +12,11 @@ class FileRow(SettingsRow):
         super().__init__(**kwargs)
         self._button = Widget.FileChooserButton(
             dialog=dialog,
-            label=Widget.Label(label=button_label, ellipsize="start", max_width_chars=20),
+            label=Widget.Label(
+                label=button_label, ellipsize="start", max_width_chars=20
+            ),
             hexpand=True,
             halign="end",
         )
-        
+
         self.child.append(self._button)

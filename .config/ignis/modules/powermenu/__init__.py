@@ -61,8 +61,11 @@ def powermenu():
                                 PowermenuButton(
                                     label="Suspend",
                                     icon_name="night-light-symbolic",
-                                    on_click=lambda x: Utils.exec_sh_async(
-                                        "swaylock && systemctl suspend"
+                                    on_click=lambda x: (
+                                        Utils.exec_sh_async(
+                                            "swaylock && systemctl suspend"
+                                        ),
+                                        app.close_window("ignis_POWERMENU"),
                                     ),
                                 ),
                                 PowermenuButton(

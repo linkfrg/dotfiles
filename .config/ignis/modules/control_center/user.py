@@ -9,6 +9,7 @@ from ignis.services import Service
 fetch = Service.get("fetch")
 options = Service.get("options")
 
+
 def format_uptime(value):
     days, hours, minutes, seconds = value
     if days:
@@ -17,21 +18,27 @@ def format_uptime(value):
         return f"up {hours:02}:{minutes:02}"
 
 
-def user() -> Widget.Box:
-    user_image = Widget.Picture(
-        image=options.bind_option("user_avatar"),
+def user_image() -> Widget.Picture:
+    return Widget.Picture(
+        image=options.bind_option(
+            "user_avatar",
+            lambda value: "user-info" if not os.path.exists(value) else value,
+        ),
         width=44,
         height=44,
         content_fit="cover",
         style="border-radius: 10rem;",
     )
-    username = Widget.Box(
+
+
+def username() -> Widget.Box:
+    return Widget.Box(
         child=[
             Widget.Label(
                 label=os.getenv("USER"), css_classes=["user-name"], halign="start"
             ),
             Widget.Label(
-                label=Utils.Poll(timeout=60, callback=lambda: fetch.uptime).bind(
+                label=Utils.Poll(timeout=60, callback=lambda x: fetch.uptime).bind(
                     "output", lambda value: format_uptime(value)
                 ),
                 halign="start",
@@ -42,21 +49,28 @@ def user() -> Widget.Box:
         css_classes=["user-name-box"],
     )
 
-    settings_button = Widget.Button(
+
+def settings_button() -> Widget.Button:
+    return Widget.Button(
         child=Widget.Icon(image="emblem-system-symbolic", pixel_size=20),
         halign="end",
         hexpand=True,
-        css_classes=["user-settings"],
+        css_classes=["user-settings", "unset"],
         on_click=lambda x: settings_window(),
     )
-    power_button = Widget.Button(
+
+
+def power_button() -> Widget.Button:
+    return Widget.Button(
         child=Widget.Icon(image="system-shutdown-symbolic", pixel_size=20),
         halign="end",
-        css_classes=["user-power"],
+        css_classes=["user-power", "unset"],
         on_click=lambda x: app.toggle_window("ignis_POWERMENU"),
     )
 
+
+def user() -> Widget.Box:
     return Widget.Box(
-        child=[user_image, username, settings_button, power_button],
-        css_classes=["user", "rec-unset"],
+        child=[user_image(), username(), settings_button(), power_button()],
+        css_classes=["user"],
     )

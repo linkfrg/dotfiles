@@ -89,5 +89,8 @@
 
 .record-indicator {
     color: $error;
+}
+
+.record-indicator.active {
     animation: recorder-animation 2s infinite;
 }

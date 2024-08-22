@@ -19,10 +19,14 @@ try:
     from materialyoucolor.quantize import QuantizeCelebi
     from materialyoucolor.hct import Hct
     from materialyoucolor.scheme.scheme_tonal_spot import SchemeTonalSpot
-    from materialyoucolor.dynamiccolor.material_dynamic_colors import MaterialDynamicColors
+    from materialyoucolor.dynamiccolor.material_dynamic_colors import (
+        MaterialDynamicColors,
+    )
     from materialyoucolor.score.score import Score
 except ImportError:
-    logger.critical("materialyoucolor not found! To use my dotfiles, install python-materialyoucolor")
+    logger.critical(
+        "materialyoucolor not found! To use my dotfiles, install python-materialyoucolor"
+    )
     exit(1)
 
 from ignis.utils import Utils
@@ -50,6 +54,7 @@ os.makedirs(CACHE_DIR, exist_ok=True)
 SWAYLOCK_CONFIG_DIR = os.path.expanduser("~/.config/swaylock")
 SWAYLOCK_CONFIG = f"{SWAYLOCK_CONFIG_DIR}/config"
 os.makedirs(SWAYLOCK_CONFIG_DIR, exist_ok=True)
+
 
 def rgba_to_hex(rgba: list) -> str:
     return "#{:02x}{:02x}{:02x}".format(*rgba)
@@ -128,11 +133,10 @@ class MaterialService(IgnisGObject):
     def __render_templates(self, colors: dict) -> None:
         colors["dark_mode"] = str(self.dark_mode).lower()
         for template in os.listdir(TEMPLATES):
-            with open(f"{TEMPLATES}/{template}", "r") as file:
+            with open(f"{TEMPLATES}/{template}") as file:
                 template_rendered = Template(file.read()).render(colors)
             with open(f"{CACHE_DIR}/{template}", "w") as output_file:
                 output_file.write(template_rendered)
-
 
     def __reload_gtk_theme(self) -> None:
         THEME_CMD = "gsettings set org.gnome.desktop.interface gtk-theme {}"
@@ -159,5 +163,6 @@ class MaterialService(IgnisGObject):
         if not os.path.islink(SWAYLOCK_CONFIG):
             os.remove(SWAYLOCK_CONFIG)
             os.symlink(link_name, SWAYLOCK_CONFIG)
-    
+
+
 material = MaterialService()

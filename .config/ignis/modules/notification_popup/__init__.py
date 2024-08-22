@@ -138,7 +138,9 @@ def notification_popup(monitor: int) -> Widget.Window:
         valign="start",
         setup=lambda self: notifications.connect(
             "new_popup",
-            lambda x, notification: on_notified(notifications_box, notification, monitor),
+            lambda x, notification: on_notified(
+                notifications_box, notification, monitor
+            ),
         ),
     )
 

@@ -17,5 +17,5 @@ class SettingsGroup(Widget.Box):
                 ),
                 Widget.ListBox(rows=[*rows]),
             ],
-            **kwargs
+            **kwargs,
         )

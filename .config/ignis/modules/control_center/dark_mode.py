@@ -4,6 +4,7 @@ from .qs_button import QSButton
 
 def dark_mode_button() -> QSButton:
     return QSButton(
+        label="Dark",
         icon_name="night-light-symbolic",
         on_activate=lambda x: material.set_dark_mode(True),
         on_deactivate=lambda x: material.set_dark_mode(False),

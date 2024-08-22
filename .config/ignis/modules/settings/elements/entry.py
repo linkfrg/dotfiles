@@ -4,6 +4,7 @@ from .page import SettingsPage
 
 options = Service.get("options")
 
+
 class SettingsEntry(Widget.ListBoxRow):
     def __init__(
         self,
@@ -21,7 +22,6 @@ class SettingsEntry(Widget.ListBoxRow):
 
         super().__init__(
             child=Widget.Box(
-                
                 child=[
                     Widget.Icon(image=icon, pixel_size=20),
                     Widget.Label(label=label, style="margin-left: 0.75rem;"),
@@ -29,5 +29,5 @@ class SettingsEntry(Widget.ListBoxRow):
             ),
             css_classes=["settings-sidebar-entry"],
             on_activate=callback,
-            **kwargs
+            **kwargs,
         )

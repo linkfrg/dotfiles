@@ -15,7 +15,12 @@ def user_entry(active_page):
                 style="margin-left: 2rem;",
                 child=[
                     Widget.Picture(
-                        image=options.bind_option("user_avatar"),
+                        image=options.bind_option(
+                            "user_avatar",
+                            lambda value: "user-info"
+                            if not os.path.exists(value)
+                            else value,
+                        ),
                         width=96,
                         height=96,
                         style="border-radius: 10rem;",
@@ -37,8 +42,8 @@ def user_entry(active_page):
                             initial_path=options.bind_option("user_avatar"),
                             on_file_set=lambda x, gfile: options.set_option(
                                 "user_avatar", gfile.get_path()
-                            )
-                        )
+                            ),
+                        ),
                     )
                 ],
             ),

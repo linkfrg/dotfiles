@@ -5,16 +5,16 @@ from ignis.services.audio import AudioService
 
 audio: AudioService = Service.get("audio")
 
+
 class OSD(Widget.Window):
     def __init__(self):
         self._timer = None
         super().__init__(
             layer="overlay",
             anchor=["bottom"],
-            monitor=1,
             namespace="ignis_OSD",
             visible=False,
-            css_classes=['rec-unset'],
+            css_classes=["rec-unset"],
             child=Widget.Box(
                 css_classes=["osd"],
                 child=[
@@ -34,11 +34,11 @@ class OSD(Widget.Window):
         )
 
     def set_property(self, property_name, value):
-        if property_name == 'visible':
+        if property_name == "visible":
             if self._timer:
                 self._timer.cancel()
                 self._timer = None
 
             self._timer = Utils.Timeout(3000, self.set_visible, False)
-        
+
         super().set_property(property_name, value)

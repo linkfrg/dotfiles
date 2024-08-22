@@ -5,10 +5,12 @@ from ignis.utils import Utils
 
 mpris: MprisService = Service.get("mpris")
 
+
 def format_seconds(seconds: int) -> str:
     if seconds:
         minutes, seconds = divmod(seconds, 60)
         return f"{minutes}:{seconds:02d}"
+
 
 class Player(Widget.Revealer):
     def __init__(self, player: MprisPlayer) -> None:

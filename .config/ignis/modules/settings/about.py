@@ -6,6 +6,7 @@ from ignis.services import Service
 
 fetch = Service.get("fetch")
 
+
 def about_entry(active_page):
     about_page = SettingsPage(
         name="About",

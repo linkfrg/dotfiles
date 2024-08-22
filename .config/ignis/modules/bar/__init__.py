@@ -5,6 +5,7 @@ from .clock import clock
 from .pinned_apps import pinned_apps
 from .tray import tray
 
+
 def bar(monitor: int) -> Widget.Window:
     return Widget.Window(
         anchor=["left", "top", "right"],
@@ -15,9 +16,9 @@ def bar(monitor: int) -> Widget.Window:
         kb_mode="none",
         child=Widget.CenterBox(
             css_classes=["bar-widget"],
-            start_widget=Widget.Box(halign="start", child=[workspaces()]),
-            center_widget=Widget.Box(halign="center", child=[pinned_apps()]),
-            end_widget=Widget.Box(halign="end", child=[tray(), kb_layout(), clock(monitor)]),
+            start_widget=Widget.Box(child=[workspaces()]),
+            center_widget=Widget.Box(child=[pinned_apps()]),
+            end_widget=Widget.Box(child=[tray(), kb_layout(), clock(monitor)]),
         ),
         css_classes=["unset"],
     )

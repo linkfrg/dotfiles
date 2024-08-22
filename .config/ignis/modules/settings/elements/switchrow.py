@@ -1,6 +1,7 @@
 from ignis.widgets import Widget
 from .row import SettingsRow
 
+
 class SwitchRow(SettingsRow):
     def __init__(
         self,
@@ -16,5 +17,7 @@ class SwitchRow(SettingsRow):
             valign="center",
             hexpand=True,
         )
-        self.on_activate = lambda x: self._switch.emit("activate") # if set "active" property animation will not work
+        self.on_activate = lambda x: self._switch.emit(
+            "activate"
+        )  # if set "active" property animation will not work
         self.child.append(self._switch)

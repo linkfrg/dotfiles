@@ -25,9 +25,9 @@ def device_entry(stream: Stream, _type: str) -> Widget.Button:
                 Widget.Label(
                     label=stream.description,
                     ellipsize="end",
-                    max_width_chars=25,
+                    max_width_chars=30,
                     halign="start",
-                    style="margin-left: 0.25rem; margin-right: 1rem;",
+                    css_classes=["volume-entry-label"],
                 ),
                 Widget.Icon(
                     image="object-select-symbolic",
@@ -37,7 +37,7 @@ def device_entry(stream: Stream, _type: str) -> Widget.Button:
                 ),
             ]
         ),
-        css_classes=["volume-entry"],
+        css_classes=["volume-entry", "unset"],
         hexpand=True,
         on_click=lambda x: setattr(audio, _type, stream),
     )
@@ -46,7 +46,9 @@ def device_entry(stream: Stream, _type: str) -> Widget.Button:
     return widget
 
 
-def device_list(header_label: str, header_icon: str, _type: str, **kwargs) -> Widget.Revealer:
+def device_list(
+    header_label: str, header_icon: str, _type: str, **kwargs
+) -> Widget.Revealer:
     box = Widget.Box(
         css_classes=["volume-entry-list"],
         vertical=True,
@@ -57,10 +59,10 @@ def device_list(header_label: str, header_icon: str, _type: str, **kwargs) -> Wi
                     Widget.Label(
                         label=header_label,
                         halign="start",
-                        css_classes=["volume-entry-list-header"],
+                        css_classes=["volume-entry-list-header-label"],
                     ),
                 ],
-                style="margin-bottom: 0.25rem;",
+                css_classes=["volume-entry-list-header-box"],
             ),
             Widget.Box(
                 vertical=True,
@@ -69,7 +71,7 @@ def device_list(header_label: str, header_icon: str, _type: str, **kwargs) -> Wi
                     lambda x, stream: self.append(device_entry(stream, _type)),
                 ),
             ),
-            Widget.Separator(),
+            Widget.Separator(css_classes=["volume-entry-list-separator"]),
             Widget.Button(
                 child=Widget.Box(
                     child=[
@@ -77,11 +79,12 @@ def device_list(header_label: str, header_icon: str, _type: str, **kwargs) -> Wi
                         Widget.Label(
                             label="Sound Settings",
                             halign="start",
-                            style="margin-left: 0.25rem;",
+                            css_classes=["volume-entry-label"],
                         ),
                     ]
                 ),
-                css_classes=["volume-entry"],
+                css_classes=["volume-entry", "unset"],
+                style="margin-bottom: 0;",
                 on_click=lambda x: Utils.exec_sh_async("pavucontrol"),
             ),
         ],
@@ -99,14 +102,16 @@ def volume_icon(stream: Stream) -> Widget.Button:
             image=stream.bind("icon_name"),
             pixel_size=18,
         ),
-        css_classes=["volume-icon"],
+        css_classes=["volume-icon", "unset"],
         on_click=lambda x: stream.set_is_muted(not stream.is_muted),
     )
 
 
 def device_list_arrow(device_list: Widget.Revealer) -> Widget.Button:
-    return Widget.Button(
-        child=Widget.Icon(image="pan-end-symbolic", pixel_size=20),
+    return Widget.ArrowButton(
+        arrow=Widget.Arrow(
+            pixel_size=20,
+        ),
         css_classes=["volume-arrow"],
         on_click=lambda x: device_list.toggle(),
     )
@@ -155,6 +160,5 @@ def volume_control():
 
     return Widget.Box(
         vertical=True,
-        css_classes=["rec-unset"],
         child=[speaker_control, microphone_control],
     )

@@ -15,15 +15,18 @@ applications: ApplicationsService = Service.get("applications")
 
 def is_url(url: str) -> bool:
     regex = re.compile(
-        r'^(?:http|ftp)s?://' # http:// or https://
-        r'(?:(?:[A-Z0-9](?:[A-Z0-9-]{0,61}[A-Z0-9])?\.)+(?:[A-Z]{2,6}\.?|[A-Z0-9-]{2,}\.?)|' # domain
-        r'localhost|' # localhost
-        r'\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}|' # or ipv4
-        r'\[?[A-F0-9]*:[A-F0-9:]+\]?)' # or ipv6
-        r'(?::\d+)?' # optional port
-        r'(?:/?|[/?]\S+)$', re.IGNORECASE)
-    
+        r"^(?:http|ftp)s?://"  # http:// or https://
+        r"(?:(?:[A-Z0-9](?:[A-Z0-9-]{0,61}[A-Z0-9])?\.)+(?:[A-Z]{2,6}\.?|[A-Z0-9-]{2,}\.?)|"  # domain
+        r"localhost|"  # localhost
+        r"\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}|"  # or ipv4
+        r"\[?[A-F0-9]*:[A-F0-9:]+\]?)"  # or ipv6
+        r"(?::\d+)?"  # optional port
+        r"(?:/?|[/?]\S+)$",
+        re.IGNORECASE,
+    )
+
     return re.match(regex, url) is not None
+
 
 class LauncherAppItem(Widget.Button):
     def __init__(self, application: Application) -> None:
@@ -70,9 +73,13 @@ class LauncherAppItem(Widget.Button):
             ]
             + [
                 Widget.Separator(),
-                Widget.MenuItem(label="Pin", on_activate=lambda x: self._application.pin())
+                Widget.MenuItem(
+                    label="Pin", on_activate=lambda x: self._application.pin()
+                )
                 if not self._application.is_pinned
-                else Widget.MenuItem(label="Unpin", on_activate=lambda x: self._application.unpin()),
+                else Widget.MenuItem(
+                    label="Unpin", on_activate=lambda x: self._application.unpin()
+                ),
             ]
         )
         self.child.append(self._menu)
@@ -89,8 +96,8 @@ class SearchWebButton(Widget.Button):
         app_info = Gio.DesktopAppInfo.new(desktop_id=browser_desktop_file)
         browser = Application(app=app_info, is_pinned=False)
 
-        if not query.startswith(('http://', 'https://')) and '.' in query:
-            query = 'https://' + query
+        if not query.startswith(("http://", "https://")) and "." in query:
+            query = "https://" + query
 
         if is_url(query):
             label = f"Visit {query}"

@@ -8,12 +8,15 @@ from .recorder import recorder_entry
 from .user import user_entry
 from .elements import SettingsPage
 from ignis.services import Service
+from ignis.app import app
+from ignis.exceptions import WindowNotFoundError
 
 options = Service.get("options")
 
 LAST_SETTINGS_PAGE_OPTION = "last_settings_page"
 
 options.create_option(name=LAST_SETTINGS_PAGE_OPTION, default=0, exists_ok=True)
+
 
 class ActivePage(IgnisGObject):
     def __init__(self, name: str, page: SettingsPage):
@@ -43,37 +46,42 @@ def settings_widget():
     content = Widget.Box(
         hexpand=True,
         vexpand=True,
-        child=active_page.bind("page", transform=lambda value: [value])
+        child=active_page.bind("page", transform=lambda value: [value]),
     )
     listbox = Widget.ListBox(
-                rows=[
-                    notifications_entry(active_page),
-                    recorder_entry(active_page),
-                    appearance_entry(active_page),
-                    user_entry(active_page),
-                    about_entry(active_page),
-                ],
-            )
-    
+        rows=[
+            notifications_entry(active_page),
+            recorder_entry(active_page),
+            appearance_entry(active_page),
+            user_entry(active_page),
+            about_entry(active_page),
+        ],
+    )
+
     listbox.select_row(listbox.rows[options.get_option("last_settings_page")])
-    
+
     navigation_sidebar = Widget.Box(
         vertical=True,
         css_classes=["settings-sidebar"],
         child=[
-            Widget.Label(label="Settings", halign="start", css_classes=["settings-sidebar-label"]),
-            listbox
+            Widget.Label(
+                label="Settings", halign="start", css_classes=["settings-sidebar-label"]
+            ),
+            listbox,
         ],
     )
-    
+
     return Widget.Box(child=[navigation_sidebar, content])
 
 
 def settings_window():
-    return Widget.RegularWindow(
-        default_width=900,
-        default_height=600,
-        resizable=False,
-        child=settings_widget(),
-        namespace="ignis_SETTINGS",
-    )
+    try:
+        app.get_window("ignis_SETTINGS")
+    except WindowNotFoundError:
+        return Widget.RegularWindow(
+            default_width=900,
+            default_height=600,
+            resizable=False,
+            child=settings_widget(),
+            namespace="ignis_SETTINGS",
+        )

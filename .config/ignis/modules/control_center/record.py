@@ -2,7 +2,6 @@ from ignis.widgets import Widget
 from .qs_button import QSButton
 from ignis.services import Service
 from ignis.services.recorder import RecorderService
-from typing import Tuple
 
 recorder: RecorderService = Service.get("recorder")
 
@@ -77,7 +76,9 @@ def record_menu() -> Widget.Revealer:
                         Widget.Button(
                             child=Widget.Label(label="Cancel"),
                             css_classes=["record-cancel-button", "unset"],
-                            on_click=lambda x: record_menu_widget.set_reveal_child(False),
+                            on_click=lambda x: record_menu_widget.set_reveal_child(
+                                False
+                            ),
                         ),
                         Widget.Button(
                             child=Widget.Label(label="Start recording"),
@@ -94,12 +95,13 @@ def record_menu() -> Widget.Revealer:
     return record_menu_widget
 
 
-def record_control() -> Tuple[QSButton, Widget.Revealer]:
+def record_control() -> QSButton:
     record_menu_widget = record_menu()
     return QSButton(
+        label="Recording",
         icon_name="media-record-symbolic",
         on_activate=lambda x: record_menu_widget.toggle(),
         on_deactivate=lambda x: recorder.stop_recording(),
         active=recorder.bind("active"),
-        style="margin-right: 0;",
-    ), record_menu_widget
+        content=record_menu_widget,
+    )
