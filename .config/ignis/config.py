@@ -1,15 +1,9 @@
 import os
-from ignis.utils import Utils
+from check_version import check_version
 
-VERSION = Utils.get_ignis_version().replace("dev0", "").split(".")
-EXPECT_VERSION = ["0", "1"]
+check_version()
 
-if int(VERSION[0]) < int(EXPECT_VERSION[0]) or int(VERSION[1]) < int(EXPECT_VERSION[1]):
-    print(
-        f"My dotfiles requires at least Ignis v{'.'.join(EXPECT_VERSION)}, current version: v{'.'.join(VERSION)}"
-    )
-    exit(1)
-
+from ignis.utils import Utils  # noqa: E402
 from ignis.app import app  # noqa: E402
 from ignis.services import Service  # noqa: E402
 from modules.control_center import control_center  # noqa: E402
