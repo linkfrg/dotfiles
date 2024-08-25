@@ -37,15 +37,6 @@ class WifiNetworkItem(Widget.Button):
 
 
 def wifi_qsbutton(device: WifiDevice) -> QSButton:
-    def get_wifi_entries(value: list[WifiAccessPoint]) -> List[WifiNetworkItem]:
-        if network.wifi.enabled:
-            if value:
-                return [WifiNetworkItem(i) for i in value]
-            else:
-                return [Widget.Label(label="No Wi-Fi networks found.")]
-        else:
-            return [Widget.Label(label="Wi-Fi is disabled.")]
-
     networks_list = Widget.Revealer(
         transition_duration=300,
         transition_type="slide_down",
@@ -68,7 +59,7 @@ def wifi_qsbutton(device: WifiDevice) -> QSButton:
                 Widget.Box(
                     vertical=True,
                     child=device.bind(
-                        "access_points", transform=lambda value: get_wifi_entries(value)
+                        "access_points", transform=lambda value: [WifiNetworkItem(i) for i in value]
                     ),
                 ),
                 Widget.Separator(css_classes=["wifi-network-list-separator"]),

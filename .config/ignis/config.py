@@ -1,7 +1,7 @@
 import os
 from ignis.utils import Utils
 
-VERSION = Utils.get_ignis_version().split(".")
+VERSION = Utils.get_ignis_version().replace("dev0", "").split(".")
 EXPECT_VERSION = ["0", "1"]
 
 if int(VERSION[0]) < int(EXPECT_VERSION[0]) or int(VERSION[1]) < int(EXPECT_VERSION[1]):

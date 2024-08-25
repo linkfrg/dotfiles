@@ -12,14 +12,18 @@ def indicator_icon(**kwargs):
 
 
 def wifi_icon():
-    return indicator_icon(
-        image=network.wifi.bind("icon-name"),
-        visible=network.wifi.bind("devices", lambda value: len(value) > 0),
-    )
+    icon = indicator_icon(image=network.wifi.bind("icon-name"))
+    icon.visible = network.wifi.bind("devices", lambda value: len(value) > 0)
+    icon.visible = network.ethernet.bind("is_connected", lambda value: not value)
+    return icon
+
 
 
 def ethernet_icon():
-    return indicator_icon(image=network.ethernet.bind("icon_name"))
+    icon = indicator_icon(image=network.ethernet.bind("icon_name"))
+    icon.visible = network.ethernet.bind("devices", lambda value: len(value) > 0)
+    icon.visible = network.wifi.bind("is_connected", lambda value: not value)
+    return icon
 
 
 def dnd_icon():

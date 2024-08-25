@@ -109,9 +109,7 @@ def volume_icon(stream: Stream) -> Widget.Button:
 
 def device_list_arrow(device_list: Widget.Revealer) -> Widget.Button:
     return Widget.ArrowButton(
-        arrow=Widget.Arrow(
-            pixel_size=20,
-        ),
+        arrow=Widget.Arrow(pixel_size=20),
         css_classes=["volume-arrow"],
         on_click=lambda x: device_list.toggle(),
     )
