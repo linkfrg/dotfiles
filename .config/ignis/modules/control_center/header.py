@@ -10,7 +10,7 @@ options = Service.get("options")
 def date() -> Widget.Label:
     return Widget.Label(
         label=Utils.Poll(
-            1, lambda x: datetime.datetime.now().strftime("%a, %b %d")
+            1000, lambda x: datetime.datetime.now().strftime("%a, %b %d")
         ).bind("output"),
         css_classes=["header-date"],
         halign="start",
@@ -19,9 +19,9 @@ def date() -> Widget.Label:
 
 def clock() -> Widget.Label:
     return Widget.Label(
-        label=Utils.Poll(1, lambda x: datetime.datetime.now().strftime("%H:%M")).bind(
-            "output"
-        ),
+        label=Utils.Poll(
+            1000, lambda x: datetime.datetime.now().strftime("%H:%M")
+        ).bind("output"),
         css_classes=["header-clock"],
     )
 

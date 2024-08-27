@@ -59,7 +59,8 @@ def wifi_qsbutton(device: WifiDevice) -> QSButton:
                 Widget.Box(
                     vertical=True,
                     child=device.bind(
-                        "access_points", transform=lambda value: [WifiNetworkItem(i) for i in value]
+                        "access_points",
+                        transform=lambda value: [WifiNetworkItem(i) for i in value],
                     ),
                 ),
                 Widget.Separator(css_classes=["wifi-network-list-separator"]),

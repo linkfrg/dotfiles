@@ -38,9 +38,9 @@ def username() -> Widget.Box:
                 label=os.getenv("USER"), css_classes=["user-name"], halign="start"
             ),
             Widget.Label(
-                label=Utils.Poll(timeout=60, callback=lambda x: fetch.uptime).bind(
-                    "output", lambda value: format_uptime(value)
-                ),
+                label=Utils.Poll(
+                    timeout=60 * 1000, callback=lambda x: fetch.uptime
+                ).bind("output", lambda value: format_uptime(value)),
                 halign="start",
                 css_classes=["user-name-secondary"],
             ),

@@ -13,7 +13,7 @@ recorder.{}_recording()
 
 def run_code(_type: str) -> None:
     client = IgnisClient()
-    client.RunPython(CODE_TEMPLATE.format(_type))
+    client.run_python(CODE_TEMPLATE.format(_type))
 
 
 if len(sys.argv) < 2:
