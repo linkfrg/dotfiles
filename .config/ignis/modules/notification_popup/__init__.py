@@ -38,7 +38,8 @@ class Popup(Widget.Box):
 
 
 def on_notified(box: Widget.Box, notification: Notification, monitor: int) -> None:
-    if app.get_window("ignis_CONTROL_CENTER").monitor == monitor:
+    window = app.get_window("ignis_CONTROL_CENTER")
+    if window.visible and window.monitor == monitor:
         return
 
     app.open_window(f"ignis_NOTIFICATION_POPUP_{monitor}")
