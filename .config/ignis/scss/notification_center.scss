@@ -1,0 +1,66 @@
+.notification-center {
+    background-color: $surfaceContainerLow;
+    border-radius: 1.5rem 1.5rem 1rem 1rem;
+    padding: 1rem;
+}
+
+.notification-center-header {
+    margin-bottom: 1rem;
+}
+
+.notification {
+    background-color: $surfaceContainerHigh;
+    border-radius: 1rem;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+.notification-count {
+    background-color: $tertiary;
+    color: $onTertiary;
+    min-width: 2rem;
+    font-size: 1.5rem;
+    border-radius: 2rem;
+}
+
+.notification-header-label {
+    font-size: 1.1rem;
+    margin-left: 0.5rem;
+}
+
+.notification-close {
+    @include hover($surfaceContainerHigh);
+    color: $onSurface;
+    border-radius: 1rem;
+    padding: 0.25rem;
+    margin-left: 0.5rem;
+    transition: 0.3s;
+}
+
+.notification-clear-all {
+    @include hover($surfaceContainerHigh);
+    transition: 0.3s;
+    border-radius: 1rem;
+    padding: 0.25rem 1rem;
+}
+
+.notification-action {
+    color: $primary;
+    @include hover($surfaceContainerHighest);
+    border-radius: 0.5rem;
+    padding: 0.25rem 0.25rem;
+    transition: 0.3s;
+}
+
+.notification-screenshot-label {
+    margin-top: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.notification-center-info-label {
+    color: $onSurfaceVariant;
+}
+
+.notification-body {
+    color: $onSurfaceVariant;
+}

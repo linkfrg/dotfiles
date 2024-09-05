@@ -42,7 +42,7 @@ def qs_config(main_box: Widget.Box) -> None:
     qs_fabric(
         main_box,
         *wifi_control(),
-        ethernet_control(),
+        *ethernet_control(),
         dnd_button(),
         dark_mode_button(),
         record_control(),
@@ -57,5 +57,6 @@ def update_box(main_box: Widget.Box):
 def quick_settings() -> Widget.Box:
     main_box = Widget.Box(vertical=True, css_classes=["qs-main-box"])
     network.wifi.connect("notify::devices", lambda x, y: update_box(main_box))
+    network.ethernet.connect("notify::devices", lambda x, y: update_box(main_box))
 
     return main_box

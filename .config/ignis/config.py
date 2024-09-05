@@ -13,7 +13,6 @@ from modules.osd import OSD  # noqa: E402
 from modules.powermenu import powermenu  # noqa: E402
 from modules.launcher import launcher  # noqa: E402
 
-
 Utils.exec_sh("gsettings set org.gnome.desktop.interface gtk-theme Material")
 Utils.exec_sh("gsettings set org.gnome.desktop.interface icon-theme Papirus")
 Utils.exec_sh(

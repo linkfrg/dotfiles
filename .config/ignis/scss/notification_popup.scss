@@ -1,25 +1,12 @@
 .notification-popup {
     @include window;
     min-width: 25rem;
-}
 
-.notification-body {
-    color: $onSurfaceVariant;
-}
+    & .notification-close {
+        @include hover($surface);
+    }
 
-.notification-action {
-    color: $primary;
-}
-
-.notification-close {
-    @include hover($surface);
-    color: $onSurface;
-    border-radius: 1rem;
-    padding: 0.25rem;
-    margin-left: 0.5rem;
-    transition: 0.3s;
-}
-
-.notification-center-empty {
-    color: $onSurfaceVariant;
+    & .notification-action {
+        @include hover($surfaceContainer);
+    }
 }

@@ -1,6 +1,12 @@
 .control-center {
     @include window;
-    min-width: 25rem;
+    min-width: 28rem;
+    padding: 0;
+}
+
+.control-center-widget {
+    padding: 1rem;
+    margin-bottom: 1rem;
 }
 
 .media {
@@ -29,7 +35,7 @@
 }
 
 .qs-main-box {
-    margin-top: 1rem;
+    margin-top: 0.5rem;
 }
 
 .user {

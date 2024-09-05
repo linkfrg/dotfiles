@@ -1,10 +1,11 @@
 from ignis.widgets import Widget
 from ignis.utils import Utils
 from ignis.app import app
+from typing import Callable
 
 
 class PowermenuButton(Widget.Box):
-    def __init__(self, label: str, icon_name: str, on_click: callable) -> None:
+    def __init__(self, label: str, icon_name: str, on_click: Callable) -> None:
         super().__init__(
             child=[
                 Widget.Button(

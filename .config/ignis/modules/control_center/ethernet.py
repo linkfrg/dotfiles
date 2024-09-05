@@ -1,3 +1,4 @@
+from typing import List
 from ignis.widgets import Widget
 from ignis.utils import Utils
 from .qs_button import QSButton
@@ -11,7 +12,7 @@ class EthernetConnectionItem(Widget.Button):
     def __init__(self, device: EthernetDevice):
         super().__init__(
             css_classes=["ethernet-connection-item", "unset"],
-            on_click=lambda x: device.disconnect()
+            on_click=lambda x: device.disconnect_from()
             if device.is_connected
             else device.connect_to(),
             child=Widget.Box(
@@ -40,7 +41,7 @@ class EthernetConnectionItem(Widget.Button):
         )
 
 
-def ethernet_control() -> QSButton:
+def ethernet_control() -> List[QSButton]:
     networks_list = Widget.Revealer(
         transition_duration=300,
         transition_type="slide_down",
@@ -85,11 +86,16 @@ def ethernet_control() -> QSButton:
         ),
     )
 
-    return QSButton(
-        label="Wired",
-        icon_name="network-wired-symbolic",
-        on_activate=lambda x: networks_list.toggle(),
-        on_deactivate=lambda x: networks_list.toggle(),
-        content=networks_list,
-        active=network.ethernet.bind("is_connected"),
-    )
+    if len(network.ethernet.devices) > 0:
+        return [
+            QSButton(
+                label="Wired",
+                icon_name="network-wired-symbolic",
+                on_activate=lambda x: networks_list.toggle(),
+                on_deactivate=lambda x: networks_list.toggle(),
+                content=networks_list,
+                active=network.ethernet.bind("is_connected"),
+            )
+        ]
+    else:
+        return []

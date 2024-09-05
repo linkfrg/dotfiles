@@ -27,7 +27,9 @@ def notifications_entry(active_page):
                     ),
                     SpinRow(
                         label="Popup timeout",
-                        sublabel="Timeout before popup will be dismissed",
+                        sublabel="Timeout before popup will be dismissed, in milliseconds.",
+                        max=100000,
+                        step=100,
                         value=notifications.bind("popup_timeout"),
                         on_change=lambda x, value: notifications.set_popup_timeout(
                             value
