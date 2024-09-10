@@ -22,12 +22,7 @@ def format_seconds(seconds: int) -> str:
         return f"{minutes}:{seconds:02d}"
 
 
-PLAYER_ICONS = {
-    "spotify": "󰓇",
-    "firefox": "󰈹",
-    "chrome": "󰊯",
-    None: ""
-}
+PLAYER_ICONS = {"spotify": "󰓇", "firefox": "󰈹", "chrome": "󰊯", None: ""}
 
 
 class Player(Widget.Revealer):
@@ -50,16 +45,17 @@ class Player(Widget.Revealer):
                         vexpand=True,
                         css_classes=[self.get_css("media-image-gradient")],
                     ),
+                    Widget.Label(
+                        label=self.get_player_icon(),
+                        halign="start",
+                        valign="start",
+                        css_classes=[self.get_css("media-player-icon")],
+                    ),
                     Widget.Box(
                         vertical=True,
                         hexpand=True,
                         css_classes=[self.get_css("media-content")],
                         child=[
-                            Widget.Label(
-                                label=self.get_player_icon(),
-                                halign="start",
-                                css_classes=[self.get_css("media-player-icon")],
-                            ),
                             Widget.Box(
                                 vexpand=True,
                                 valign="center",
@@ -114,41 +110,42 @@ class Player(Widget.Revealer):
                                     ),
                                 ],
                             ),
-                            Widget.Box(
-                                child=[
-                                    Widget.Scale(
-                                        value=player.bind("position"),
-                                        max=player.bind("length"),
-                                        hexpand=True,
-                                        css_classes=[self.get_css("media-scale")],
-                                        on_change=lambda x: player.set_position(
-                                            x.value
-                                        ),
-                                        visible=player.bind(
-                                            "position", lambda value: value != -1
-                                        ),
-                                    ),
-                                    Widget.Button(
-                                        child=Widget.Icon(
-                                            image="media-skip-backward-symbolic",
-                                            pixel_size=20,
-                                        ),
-                                        css_classes=[self.get_css("media-skip-button")],
-                                        on_click=lambda x: player.previous(),
-                                        visible=player.bind("can_go_previous"),
-                                        style="margin-left: 1rem;"
-                                    ),
-                                    Widget.Button(
-                                        child=Widget.Icon(
-                                            image="media-skip-forward-symbolic",
-                                            pixel_size=20,
-                                        ),
-                                        css_classes=[self.get_css("media-skip-button")],
-                                        on_click=lambda x: player.next(),
-                                        visible=player.bind("can_go_next"),
-                                        style="margin-left: 1rem;",
-                                    ),
-                                ],
+                        ],
+                    ),
+                    Widget.Box(
+                        vexpand=True,
+                        valign="end",
+                        style="padding: 1rem;",
+                        child=[
+                            Widget.Scale(
+                                value=player.bind("position"),
+                                max=player.bind("length"),
+                                hexpand=True,
+                                css_classes=[self.get_css("media-scale")],
+                                on_change=lambda x: player.set_position(x.value),
+                                visible=player.bind(
+                                    "position", lambda value: value != -1
+                                ),
+                            ),
+                            Widget.Button(
+                                child=Widget.Icon(
+                                    image="media-skip-backward-symbolic",
+                                    pixel_size=20,
+                                ),
+                                css_classes=[self.get_css("media-skip-button")],
+                                on_click=lambda x: player.previous(),
+                                visible=player.bind("can_go_previous"),
+                                style="margin-left: 1rem;",
+                            ),
+                            Widget.Button(
+                                child=Widget.Icon(
+                                    image="media-skip-forward-symbolic",
+                                    pixel_size=20,
+                                ),
+                                css_classes=[self.get_css("media-skip-button")],
+                                on_click=lambda x: player.next(),
+                                visible=player.bind("can_go_next"),
+                                style="margin-left: 1rem;",
                             ),
                         ],
                     ),

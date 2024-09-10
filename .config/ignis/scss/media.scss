@@ -73,6 +73,8 @@ $gradient-{{ desktop_entry }}: {{ onPrimary }};
 .media-player-icon-{{ desktop_entry }} {
     color: {{ primary }};
     font-size: 1.6rem;
+    padding: 1rem;
+    font-family: "JetBrains Mono Nerd Font";
 }
 
 .media-skip-button-{{ desktop_entry }} {
