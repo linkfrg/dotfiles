@@ -1,6 +1,7 @@
 #!/usr/bin/python
 import os
 import math
+import ignis
 from ignis.logging import logger
 
 try:
@@ -45,11 +46,11 @@ COLORS_OPTION = "colors"
 options.create_option(name="colors", default={}, exists_ok=True)
 options.create_option(name="dark_mode", default=True, exists_ok=True)
 
-CACHE_DIR = os.path.expanduser("~/.cache/ignis/material")
+MATERIAL_CACHE_DIR = f"{ignis.CACHE_DIR}/material"
 
 TEMPLATES = os.path.expanduser("~/.config/ignis/scripts/templates")
 SAMPLE_WALL = os.path.expanduser("~/.config/ignis/scripts/sample_wall.png")
-os.makedirs(CACHE_DIR, exist_ok=True)
+os.makedirs(MATERIAL_CACHE_DIR, exist_ok=True)
 
 SWAYLOCK_CONFIG_DIR = os.path.expanduser("~/.config/swaylock")
 SWAYLOCK_CONFIG = f"{SWAYLOCK_CONFIG_DIR}/config"
@@ -98,7 +99,7 @@ class MaterialService(IgnisGObject):
         wallpaper.set_wallpaper(SAMPLE_WALL)
         self.generate_colors(SAMPLE_WALL)
 
-    def get_colors_from_img(self, path: str, dark_mode: bool) -> None:
+    def get_colors_from_img(self, path: str, dark_mode: bool) -> dict[str, str]:
         image = Image.open(path)
         wsize, hsize = image.size
         wsize_new, hsize_new = calculate_optimal_size(wsize, hsize, 128)
@@ -131,12 +132,22 @@ class MaterialService(IgnisGObject):
         self.__setup(path)
 
     def __render_templates(self, colors: dict) -> None:
-        colors["dark_mode"] = str(self.dark_mode).lower()
         for template in os.listdir(TEMPLATES):
-            with open(f"{TEMPLATES}/{template}") as file:
-                template_rendered = Template(file.read()).render(colors)
-            with open(f"{CACHE_DIR}/{template}", "w") as output_file:
-                output_file.write(template_rendered)
+            self.render_template(
+                colors=colors,
+                input_file=f"{TEMPLATES}/{template}",
+                output_file=f"{MATERIAL_CACHE_DIR}/{template}",
+            )
+
+    def render_template(
+        self, colors: dict, input_file: str, output_file: str
+    ) -> None:
+        colors["dark_mode"] = str(self.dark_mode).lower()
+        with open(input_file) as file:
+            template_rendered = Template(file.read()).render(colors)
+
+        with open(output_file, "w") as file:
+            file.write(template_rendered)
 
     def __reload_gtk_theme(self) -> None:
         THEME_CMD = "gsettings set org.gnome.desktop.interface gtk-theme {}"
@@ -155,7 +166,7 @@ class MaterialService(IgnisGObject):
         self.__symlink_swaylock_config()
 
     def __symlink_swaylock_config(self) -> None:
-        link_name = f"{CACHE_DIR}/swaylock"
+        link_name = f"{MATERIAL_CACHE_DIR}/swaylock"
         if not os.path.exists(SWAYLOCK_CONFIG):
             os.symlink(link_name, SWAYLOCK_CONFIG)
             return

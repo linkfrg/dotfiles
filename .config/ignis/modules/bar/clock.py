@@ -16,7 +16,7 @@ def clock(monitor):
             window.visible = not window.visible
         else:
             window.set_monitor(monitor)
-            window.show()
+            window.visible = True
 
     return Widget.Button(
         child=Widget.Box(

@@ -9,31 +9,6 @@
     margin-bottom: 1rem;
 }
 
-.media {
-    @include window;
-}
-
-
-.media-scale trough,
-.media-scale trough highlight {
-    background-color: $secondaryContainer;
-    border-radius: 1rem;
-    min-height: 0.5rem;
-}
-
-
-.media-scale trough highlight {
-    background-color: $primary;
-}
-
-.media-artist {
-    color: $onSurfaceVariant;
-}
-
-.media-button {
-    margin: 0 0.5rem;
-}
-
 .qs-main-box {
     margin-top: 0.5rem;
 }
@@ -207,6 +182,7 @@
     border-radius: 1rem;
     padding: 1rem;
     margin-top: 1rem;
+    margin-bottom: 0.5rem;
 }
 
 .ethernet-network-list-separator, .wifi-network-list-separator {
