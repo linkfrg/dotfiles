@@ -98,6 +98,7 @@ class MaterialService(IgnisGObject):
     def __on_colors_not_found(self) -> None:
         wallpaper.set_wallpaper(SAMPLE_WALL)
         self.generate_colors(SAMPLE_WALL)
+        Utils.exec_sh_async("hyprctl reload")
 
     def get_colors_from_img(self, path: str, dark_mode: bool) -> dict[str, str]:
         image = Image.open(path)
