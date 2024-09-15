@@ -1,15 +1,16 @@
 from ignis.widgets import Widget
-from gi.repository import GObject
-
+from gi.repository import GObject  # type: ignore
+from typing import Callable
+from ignis.gobject import Binding
 
 class QSButton(Widget.Button):
     def __init__(
         self,
-        label: str,
-        icon_name: str,
-        on_activate: callable = None,
-        on_deactivate: callable = None,
-        content: Widget.Revealer = None,
+        label: str | Binding,
+        icon_name: str | Binding,
+        on_activate: Callable | None = None,
+        on_deactivate: Callable | None = None,
+        content: Widget.Revealer | None = None,
         **kwargs,
     ):
         self.on_activate = on_activate
@@ -58,5 +59,5 @@ class QSButton(Widget.Button):
             self.remove_css_class("active")
 
     @GObject.Property
-    def content(self) -> Widget.Revealer:
+    def content(self) -> Widget.Revealer | None:
         return self._content

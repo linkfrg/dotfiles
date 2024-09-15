@@ -21,30 +21,30 @@ options.create_option(name=LAST_SETTINGS_PAGE_OPTION, default=0, exists_ok=True)
 
 
 class ActivePage(IgnisGObject):
-    def __init__(self, name: str, page: SettingsPage):
+    def __init__(self, name: str | None, page: SettingsPage | None):
         super().__init__()
         self._name = name
         self._page = page
 
     @GObject.Property
-    def name(self) -> str:
+    def name(self) -> str | None:
         return self._name
 
     @name.setter
-    def name(self, value: str) -> None:
+    def name(self, value: str | None) -> None:
         self._name = value
 
     @GObject.Property
-    def page(self) -> SettingsPage:
+    def page(self) -> SettingsPage | None:
         return self._page
 
     @page.setter
-    def page(self, value: SettingsPage) -> None:
+    def page(self, value: SettingsPage | None) -> None:
         self._page = value
 
 
 def settings_widget():
-    active_page = ActivePage(name="Settings", page=SettingsPage(name=None))
+    active_page = ActivePage(name="Settings", page=None)
     content = Widget.Box(
         hexpand=True,
         vexpand=True,

@@ -93,8 +93,14 @@ class SearchWebButton(Widget.Button):
         browser_desktop_file = Utils.exec_sh(
             "xdg-settings get default-web-browser"
         ).stdout.replace("\n", "")
+
         app_info = Gio.DesktopAppInfo.new(desktop_id=browser_desktop_file)
-        browser = Application(app=app_info, is_pinned=False)
+
+        icon_name = "applications-internet-symbolic"
+        if app_info:
+            icon_string = app_info.get_string("Icon")
+            if icon_string:
+                icon_name = icon_string
 
         if not query.startswith(("http://", "https://")) and "." in query:
             query = "https://" + query
@@ -111,7 +117,7 @@ class SearchWebButton(Widget.Button):
             css_classes=["launcher-app"],
             child=Widget.Box(
                 child=[
-                    Widget.Icon(image=browser.icon, pixel_size=48),
+                    Widget.Icon(image=icon_name, pixel_size=48),
                     Widget.Label(
                         label=label,
                         css_classes=["launcher-app-label"],

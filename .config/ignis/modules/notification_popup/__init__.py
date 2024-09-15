@@ -22,10 +22,15 @@ class Popup(Widget.Box):
 
     def destroy(self):
         def box_destroy():
-            box = self.get_parent()
+            box: Widget.Box = self.get_parent()  # type: ignore
+            if not box:
+                return
+
             self.unparent()
             if len(notifications.popups) == 0:
-                window = box.get_parent()
+                window: Widget.Window = box.get_parent()  # type: ignore
+                if not window:
+                    return
                 window.visible = False
             else:
                 change_window_input_region(box)
@@ -40,7 +45,7 @@ class Popup(Widget.Box):
 
 
 def on_notified(box: Widget.Box, notification: Notification, monitor: int) -> None:
-    window = app.get_window("ignis_CONTROL_CENTER")
+    window: Widget.Window = app.get_window("ignis_CONTROL_CENTER")  # type: ignore
     if window.visible and window.monitor == monitor:
         return
 
@@ -60,7 +65,7 @@ def change_window_input_region(box: Widget.Box) -> None:
     def callback() -> None:
         width = box.get_width()
         height = box.get_height()
-        window = box.get_parent()
+        window: Widget.Window = box.get_parent()  # type: ignore
         window.input_width = width
         window.input_height = height
 

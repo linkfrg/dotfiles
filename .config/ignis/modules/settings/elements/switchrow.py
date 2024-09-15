@@ -1,12 +1,13 @@
 from ignis.widgets import Widget
 from .row import SettingsRow
-
+from typing import Callable
+from ignis.gobject import Binding
 
 class SwitchRow(SettingsRow):
     def __init__(
         self,
-        active: bool = False,
-        on_change: callable = None,
+        active: bool | Binding = False,
+        on_change: Callable | None = None,
         **kwargs,
     ):
         super().__init__(**kwargs)

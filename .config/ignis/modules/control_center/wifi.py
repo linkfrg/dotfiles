@@ -82,7 +82,7 @@ def wifi_qsbutton(device: WifiDevice) -> QSButton:
         ),
     )
 
-    def get_label(ssid: bool) -> str:
+    def get_label(ssid: str) -> str:
         if ssid:
             return ssid
         else:
@@ -94,11 +94,15 @@ def wifi_qsbutton(device: WifiDevice) -> QSButton:
         else:
             return "network-wireless-symbolic"
 
+    def toggle_list(x) -> None:
+        device.scan()
+        networks_list.toggle()
+
     return QSButton(
         label=device.ap.bind("ssid", get_label),
         icon_name=device.ap.bind("icon-name", get_icon),
-        on_activate=lambda x: (device.scan(), networks_list.toggle()),
-        on_deactivate=lambda x: (device.scan(), networks_list.toggle()),
+        on_activate=toggle_list,
+        on_deactivate=toggle_list,
         active=network.wifi.bind("enabled"),
         content=networks_list,
     )

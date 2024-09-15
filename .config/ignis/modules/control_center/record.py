@@ -5,15 +5,15 @@ from ignis.services.recorder import RecorderService
 recorder = RecorderService.get_default()
 
 
-def record_menu() -> Widget.Revealer:
+def record_control() -> QSButton:
     record_audio_switch = Widget.Switch(halign="end", hexpand=True, valign="center")
     dropdown = Widget.DropDown(
         items=["Internal audio", "Microphone", "Both sources"],
         css_classes=["record-dropdown"],
     )
 
-    def start_recording(x):
-        record_menu_widget.set_reveal_child(False)
+    def start_recording(record_menu: Widget.Revealer) -> None:
+        record_menu.set_reveal_child(False)
         microphone = False
         internal = False
         if record_audio_switch.active:
@@ -29,7 +29,7 @@ def record_menu() -> Widget.Revealer:
             record_microphone=microphone, record_internal_audio=internal
         )
 
-    record_menu_widget = Widget.Revealer(
+    record_menu = Widget.Revealer(
         transition_duration=300,
         transition_type="slide_down",
         child=Widget.Box(
@@ -75,32 +75,26 @@ def record_menu() -> Widget.Revealer:
                         Widget.Button(
                             child=Widget.Label(label="Cancel"),
                             css_classes=["record-cancel-button", "unset"],
-                            on_click=lambda x: record_menu_widget.set_reveal_child(
-                                False
-                            ),
+                            on_click=lambda x: record_menu.set_reveal_child(False),  # type: ignore
                         ),
                         Widget.Button(
                             child=Widget.Label(label="Start recording"),
                             halign="end",
                             hexpand=True,
                             css_classes=["record-start-button", "unset"],
-                            on_click=start_recording,
+                            on_click=lambda x: start_recording(record_menu),  # type: ignore
                         ),
                     ],
                 ),
             ],
         ),
     )
-    return record_menu_widget
 
-
-def record_control() -> QSButton:
-    record_menu_widget = record_menu()
     return QSButton(
         label="Recording",
         icon_name="media-record-symbolic",
-        on_activate=lambda x: record_menu_widget.toggle(),
+        on_activate=lambda x: record_menu.toggle(),
         on_deactivate=lambda x: recorder.stop_recording(),
         active=recorder.bind("active"),
-        content=record_menu_widget,
+        content=record_menu,
     )

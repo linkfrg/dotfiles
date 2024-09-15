@@ -2,33 +2,14 @@
 import os
 import math
 import ignis
-from ignis.logging import logger
 
-try:
-    from jinja2 import Template
-except ImportError:
-    logger.critical("Jinja not found! To use my dotfiles, install python-jinja")
-    exit(1)
-
-try:
-    from PIL import Image
-except ImportError:
-    logger.critical("Pillow not found! To use my dotfiles, install python-pillow")
-    exit(1)
-
-try:
-    from materialyoucolor.quantize import QuantizeCelebi
-    from materialyoucolor.hct import Hct
-    from materialyoucolor.scheme.scheme_tonal_spot import SchemeTonalSpot
-    from materialyoucolor.dynamiccolor.material_dynamic_colors import (
-        MaterialDynamicColors,
-    )
-    from materialyoucolor.score.score import Score
-except ImportError:
-    logger.critical(
-        "materialyoucolor not found! To use my dotfiles, install python-materialyoucolor"
-    )
-    exit(1)
+from jinja2 import Template
+from PIL import Image
+from materialyoucolor.quantize import QuantizeCelebi
+from materialyoucolor.hct import Hct
+from materialyoucolor.scheme.scheme_tonal_spot import SchemeTonalSpot
+from materialyoucolor.dynamiccolor.material_dynamic_colors import MaterialDynamicColors
+from materialyoucolor.score.score import Score
 
 from ignis.utils import Utils
 from ignis.app import IgnisApp
@@ -49,7 +30,7 @@ COLORS_OPTION = "colors"
 options.create_option(name="colors", default={}, exists_ok=True)
 options.create_option(name="dark_mode", default=True, exists_ok=True)
 
-MATERIAL_CACHE_DIR = f"{ignis.CACHE_DIR}/material"
+MATERIAL_CACHE_DIR = f"{ignis.CACHE_DIR}/material"  # type: ignore
 
 TEMPLATES = os.path.expanduser("~/.config/ignis/scripts/templates")
 SAMPLE_WALL = os.path.expanduser("~/.config/ignis/scripts/sample_wall.png")
@@ -108,7 +89,7 @@ class MaterialService(IgnisGObject):
         wsize, hsize = image.size
         wsize_new, hsize_new = calculate_optimal_size(wsize, hsize, 128)
         if wsize_new < wsize or hsize_new < hsize:
-            image = image.resize((wsize_new, hsize_new), Image.Resampling.BICUBIC)
+            image = image.resize((wsize_new, hsize_new), Image.Resampling.BICUBIC)  # type: ignore
 
         pixel_len = image.width * image.height
         image_data = image.getdata()

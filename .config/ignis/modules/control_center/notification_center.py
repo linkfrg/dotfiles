@@ -16,8 +16,8 @@ class ScreenshotLayout(Widget.Box):
                         Widget.Picture(
                             image=notification.icon,
                             content_fit="cover",
-                            width=1920 / 7,
-                            height=1080 / 7,
+                            width=1920 // 7,
+                            height=1080 // 7,
                             style="border-radius: 1rem; background-color: black;",
                         ),
                         Widget.Button(
@@ -126,6 +126,8 @@ class NormalLayout(Widget.Box):
 
 class NotificationWidget(Widget.Box):
     def __init__(self, notification: Notification) -> None:
+        layout: NormalLayout | ScreenshotLayout
+
         if notification.app_name == "grimblast":
             layout = ScreenshotLayout(notification)
         else:
@@ -174,7 +176,7 @@ def on_notified(box: Widget.Box, notification: Notification) -> None:
     notify.reveal_child = True
 
 
-def load_notifications() -> list[Widget.Label] | list[Popup]:
+def load_notifications() -> list[Widget.Label | Popup]:
     widgets = [Popup(i, reveal_child=True) for i in notifications.notifications] + [
         no_notifications_label()
     ]

@@ -17,8 +17,8 @@ def appearance_entry(active_page):
                     Widget.ListBoxRow(
                         child=Widget.Picture(
                             image=wallpaper.bind("wallpaper"),
-                            width=1920 / 4,
-                            height=1080 / 4,
+                            width=1920 // 4,
+                            height=1080 // 4,
                             halign="center",
                             style="border-radius: 1rem;",
                             content_fit="cover",

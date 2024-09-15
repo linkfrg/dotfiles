@@ -1,16 +1,17 @@
 from ignis.widgets import Widget
 from .row import SettingsRow
-
+from typing import Callable
+from ignis.gobject import Binding
 
 class SpinRow(SettingsRow):
     def __init__(
         self,
-        value: int = None,
-        on_change: callable = None,
-        min: int = None,
-        max: int = None,
-        step: int = None,
-        width: int = None,
+        value: int | Binding = 0,
+        on_change: Callable | None = None,
+        min: int = 0,
+        max: int = 100,
+        step: int = 1,
+        width: int | None = None,
         **kwargs,
     ):
         super().__init__(**kwargs)

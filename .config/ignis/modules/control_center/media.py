@@ -6,21 +6,15 @@ from ignis.utils import Utils
 from scripts.material import material
 from ignis.app import IgnisApp
 from ignis.exceptions import StylePathNotFoundError
-from ignis.services.mpris import MprisService
+
 
 mpris = MprisService.get_default()
 app = IgnisApp.get_default()
 
 MEDIA_TEMPLATE = os.path.expanduser("~/.config/ignis/scss/media.scss")
-MEDIA_SCSS_CACHE_DIR = f"{ignis.CACHE_DIR}/media"
+MEDIA_SCSS_CACHE_DIR = f"{ignis.CACHE_DIR}/media"  # type: ignore
 MEDIA_ART_FALLBACK = os.path.expanduser("~/.config/ignis/misc/media-art-fallback.png")
 os.makedirs(MEDIA_SCSS_CACHE_DIR, exist_ok=True)
-
-
-def format_seconds(seconds: int) -> str:
-    if seconds:
-        minutes, seconds = divmod(seconds, 60)
-        return f"{minutes}:{seconds:02d}"
 
 
 PLAYER_ICONS = {"spotify": "󰓇", "firefox": "󰈹", "chrome": "󰊯", None: ""}

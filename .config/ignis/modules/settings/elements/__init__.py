@@ -8,13 +8,13 @@ from .entryrow import EntryRow
 from .entry import SettingsEntry
 
 __all__ = [
-    SettingsRow,
-    SettingsPage,
-    SettingsGroup,
-    SettingsRow,
-    SwitchRow,
-    FileRow,
-    SpinRow,
-    EntryRow,
-    SettingsEntry,
+    "SettingsRow",
+    "SettingsPage",
+    "SettingsGroup",
+    "SettingsRow",
+    "SwitchRow",
+    "FileRow",
+    "SpinRow",
+    "EntryRow",
+    "SettingsEntry",
 ]

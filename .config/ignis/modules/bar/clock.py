@@ -10,7 +10,7 @@ options = OptionsService.get_default()
 app = IgnisApp.get_default()
 
 def clock(monitor):
-    window = app.get_window("ignis_CONTROL_CENTER")
+    window: Widget.Window = app.get_window("ignis_CONTROL_CENTER")  # type: ignore
 
     def on_click(x):
         if window.monitor == monitor:

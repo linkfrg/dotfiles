@@ -4,7 +4,9 @@ files = [".config/ignis"]
 exclude = ["venv"]
 disable_error_code = [
     "no-redef",  # allow variable redefinition (needed for GObject.Property decorator)
-    "method-assign"  # also needed for GObject.Property,
+    "method-assign",  # also needed for GObject.Property
+    "import-not-found",
+    "import-untyped"
 ]
 mypy_path = ["stubs"]
 check_untyped_defs = true
@@ -12,7 +14,3 @@ check_untyped_defs = true
 [[tool.mypy.overrides]]
 module = ["gi.repository.*"]
 disable_error_code = ["assignment"]
-
-[[tool.mypy.overrides]]
-module = ["materialyoucolor.*"]
-disable_error_code = ["import-untyped"]

@@ -1,12 +1,12 @@
 from ignis.widgets import Widget
 from .row import SettingsRow
-
+from ignis.gobject import Binding
 
 class FileRow(SettingsRow):
     def __init__(
         self,
         dialog: Widget.FileDialog,
-        button_label: str = None,
+        button_label: str | Binding | None = None,
         **kwargs,
     ):
         super().__init__(**kwargs)
