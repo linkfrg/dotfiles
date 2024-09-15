@@ -1,11 +1,11 @@
 import os
-from scripts.material import material
+from services.material import MaterialService
 from .elements import SwitchRow, SettingsPage, SettingsGroup, FileRow, SettingsEntry
 from ignis.widgets import Widget
 from ignis.services.wallpaper import WallpaperService
 
 wallpaper = WallpaperService.get_default()
-
+material = MaterialService.get_default()
 
 def appearance_entry(active_page):
     appearance_page = SettingsPage(

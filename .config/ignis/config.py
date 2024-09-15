@@ -20,8 +20,8 @@ Utils.exec_sh(
 )
 Utils.exec_sh("hyprctl reload")
 app = IgnisApp.get_default()
-
-app.apply_css(os.path.expanduser("~/.config/ignis/style.scss"))
+print(os.path.dirname(os.path.abspath(__file__)))
+app.apply_css(Utils.get_current_dir() + "/style.scss")
 
 options = OptionsService.get_default()
 options.create_option(

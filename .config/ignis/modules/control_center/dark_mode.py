@@ -1,6 +1,7 @@
-from scripts.material import material
+from services.material import MaterialService
 from .qs_button import QSButton
 
+material = MaterialService.get_default()
 
 def dark_mode_button() -> QSButton:
     return QSButton(

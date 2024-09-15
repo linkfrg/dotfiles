@@ -1,11 +1,11 @@
 from .elements import SettingsPage, SettingsRow, SettingsEntry
 from ignis.utils import Utils
 from ignis.widgets import Widget
-from scripts.material import material
+from services.material import MaterialService
 from ignis.services.fetch import FetchService
 
 fetch = FetchService.get_default()
-
+material = MaterialService.get_default()
 
 def about_entry(active_page):
     about_page = SettingsPage(

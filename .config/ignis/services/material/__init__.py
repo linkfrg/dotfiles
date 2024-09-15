@@ -13,7 +13,7 @@ from materialyoucolor.score.score import Score
 
 from ignis.utils import Utils
 from ignis.app import IgnisApp
-from ignis.gobject import IgnisGObject
+from ignis.base_service import BaseService
 from ignis.services.wallpaper import CACHE_WALLPAPER_PATH
 from gi.repository import GObject  # type: ignore
 from ignis.services.wallpaper import WallpaperService
@@ -27,13 +27,13 @@ options = OptionsService.get_default()
 DARK_MODE_OPTION = "dark_mode"
 COLORS_OPTION = "colors"
 
-options.create_option(name="colors", default={}, exists_ok=True)
-options.create_option(name="dark_mode", default=True, exists_ok=True)
+options.create_option(name=COLORS_OPTION, default={}, exists_ok=True)
+options.create_option(name=DARK_MODE_OPTION, default=True, exists_ok=True)
 
 MATERIAL_CACHE_DIR = f"{ignis.CACHE_DIR}/material"  # type: ignore
 
-TEMPLATES = os.path.expanduser("~/.config/ignis/scripts/templates")
-SAMPLE_WALL = os.path.expanduser("~/.config/ignis/scripts/sample_wall.png")
+TEMPLATES = Utils.get_current_dir() + "/templates"
+SAMPLE_WALL = Utils.get_current_dir() + "/sample_wall.png"
 os.makedirs(MATERIAL_CACHE_DIR, exist_ok=True)
 
 SWAYLOCK_CONFIG_DIR = os.path.expanduser("~/.config/swaylock")
@@ -58,7 +58,7 @@ def calculate_optimal_size(width: int, height: int, bitmap_size: int) -> tuple:
     return new_width, new_height
 
 
-class MaterialService(IgnisGObject):
+class MaterialService(BaseService):
     def __init__(self):
         super().__init__()
         if not os.path.exists(CACHE_WALLPAPER_PATH):
@@ -159,6 +159,3 @@ class MaterialService(IgnisGObject):
         if not os.path.islink(SWAYLOCK_CONFIG):
             os.remove(SWAYLOCK_CONFIG)
             os.symlink(link_name, SWAYLOCK_CONFIG)
-
-
-material = MaterialService()
