@@ -4,9 +4,9 @@ import sys
 from ignis.client import IgnisClient
 
 CODE_TEMPLATE = """
-from ignis.services import Service
+from ignis.services.recorder import RecorderService
 
-recorder = Service.get("recorder")
+recorder = RecorderService.get_default()
 recorder.{}_recording()
 """
 

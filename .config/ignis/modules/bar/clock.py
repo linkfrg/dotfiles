@@ -1,12 +1,13 @@
 import datetime
 from ignis.widgets import Widget
-from ignis.app import app
+from ignis.app import IgnisApp
 from ignis.utils import Utils
 from .indicator import status_icons
-from ignis.services import Service
+from ignis.services.options import OptionsService
 
-options = Service.get("options")
+options = OptionsService.get_default()
 
+app = IgnisApp.get_default()
 
 def clock(monitor):
     window = app.get_window("ignis_CONTROL_CENTER")

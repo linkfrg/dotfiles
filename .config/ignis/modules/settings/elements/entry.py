@@ -1,8 +1,8 @@
 from ignis.widgets import Widget
-from ignis.services import Service
+from ignis.services.options import OptionsService
 from .page import SettingsPage
 
-options = Service.get("options")
+options = OptionsService.get_default()
 
 
 class SettingsEntry(Widget.ListBoxRow):

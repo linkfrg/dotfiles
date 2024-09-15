@@ -6,9 +6,9 @@ from .dark_mode import dark_mode_button
 from .ethernet import ethernet_control
 from .qs_button import QSButton
 from typing import List
-from ignis.services import Service
+from ignis.services.network import NetworkService
 
-network = Service.get("network")
+network = NetworkService.get_default()
 
 
 def add_button(main_box: Widget.Box, buttons: List[QSButton], i: int) -> None:

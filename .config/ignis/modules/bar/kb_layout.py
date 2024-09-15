@@ -1,9 +1,9 @@
 from ignis.widgets import Widget
-from ignis.services import Service
 from ignis.exceptions import HyprlandIPCNotFoundError
+from ignis.services.hyprland import HyprlandService
 
 try:
-    hyprland = Service.get("hyprland")
+    hyprland = HyprlandService.get_default()
 
     def kb_layout():
         return Widget.Button(

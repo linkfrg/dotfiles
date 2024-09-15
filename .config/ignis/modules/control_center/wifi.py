@@ -1,11 +1,10 @@
 from ignis.widgets import Widget
 from ignis.utils import Utils
 from .qs_button import QSButton
-from ignis.services import Service
 from ignis.services.network import NetworkService, WifiAccessPoint, WifiDevice
 from typing import List
 
-network: NetworkService = Service.get("network")
+network = NetworkService.get_default()
 
 
 class WifiNetworkItem(Widget.Button):

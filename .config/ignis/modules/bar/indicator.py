@@ -1,10 +1,13 @@
 from ignis.widgets import Widget
-from ignis.services import Service
+from ignis.services.network import NetworkService
+from ignis.services.notifications import NotificationService
+from ignis.services.recorder import RecorderService
+from ignis.services.audio import AudioService
 
-network = Service.get("network")
-notifications = Service.get("notifications")
-recorder = Service.get("recorder")
-audio = Service.get("audio")
+network = NetworkService.get_default()
+notifications = NotificationService.get_default()
+recorder = RecorderService.get_default()
+audio = AudioService.get_default()
 
 
 def indicator_icon(**kwargs):

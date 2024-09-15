@@ -1,4 +1,4 @@
-from ignis.services import Service
+from ignis.services.recorder import RecorderService
 from .elements import (
     SpinRow,
     SettingsPage,
@@ -9,7 +9,7 @@ from .elements import (
 )
 from ignis.widgets import Widget
 
-recorder = Service.get("recorder")
+recorder = RecorderService.get_default()
 
 
 def recorder_entry(active_page):

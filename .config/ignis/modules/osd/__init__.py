@@ -1,9 +1,8 @@
 from ignis.widgets import Widget
 from ignis.utils import Utils
-from ignis.services import Service
 from ignis.services.audio import AudioService
 
-audio: AudioService = Service.get("audio")
+audio = AudioService.get_default()
 
 
 class OSD(Widget.Window):

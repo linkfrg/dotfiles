@@ -1,13 +1,14 @@
 import os
 from ignis.widgets import Widget
 from ignis.utils import Utils
-from ignis.app import app
+from ignis.app import IgnisApp
+from ignis.services.fetch import FetchService
+from ignis.services.options import OptionsService
 from ..settings import settings_window
 
-from ignis.services import Service
-
-fetch = Service.get("fetch")
-options = Service.get("options")
+fetch = FetchService.get_default()
+options = OptionsService.get_default()
+app = IgnisApp.get_default()
 
 
 def format_uptime(value):

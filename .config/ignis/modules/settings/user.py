@@ -1,9 +1,9 @@
 import os
 from .elements import SettingsGroup, SettingsPage, SettingsEntry, FileRow
 from ignis.widgets import Widget
-from ignis.services import Service
+from ignis.services.options import OptionsService
 
-options = Service.get("options")
+options = OptionsService.get_default()
 
 
 def user_entry(active_page):

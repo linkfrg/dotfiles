@@ -1,11 +1,13 @@
 from ignis.widgets import Widget
-from ignis.app import app
+from ignis.app import IgnisApp
 from ignis.utils import Utils
-from ignis.services import Service
 from ignis.services.notifications import Notification, NotificationService
 from ..control_center.notification_center import NotificationWidget
 
-notifications: NotificationService = Service.get("notifications")
+
+app = IgnisApp.get_default()
+
+notifications = NotificationService.get_default()
 
 
 class Popup(Widget.Box):

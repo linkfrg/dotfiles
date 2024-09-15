@@ -1,14 +1,15 @@
 import os
 import ignis
 from ignis.widgets import Widget
-from ignis.services import Service
 from ignis.services.mpris import MprisService, MprisPlayer
 from ignis.utils import Utils
 from scripts.material import material
-from ignis.app import app
+from ignis.app import IgnisApp
 from ignis.exceptions import StylePathNotFoundError
+from ignis.services.mpris import MprisService
 
-mpris: MprisService = Service.get("mpris")
+mpris = MprisService.get_default()
+app = IgnisApp.get_default()
 
 MEDIA_TEMPLATE = os.path.expanduser("~/.config/ignis/scss/media.scss")
 MEDIA_SCSS_CACHE_DIR = f"{ignis.CACHE_DIR}/media"

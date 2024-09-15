@@ -1,9 +1,8 @@
 from ignis.widgets import Widget
-from ignis.services import Service
 from ignis.services.notifications import Notification, NotificationService
 from ignis.utils import Utils
 
-notifications: NotificationService = Service.get("notifications")
+notifications = NotificationService.get_default()
 
 
 class ScreenshotLayout(Widget.Box):

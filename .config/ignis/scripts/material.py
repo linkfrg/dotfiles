@@ -31,14 +31,17 @@ except ImportError:
     exit(1)
 
 from ignis.utils import Utils
-from ignis.app import app
+from ignis.app import IgnisApp
 from ignis.gobject import IgnisGObject
 from ignis.services.wallpaper import CACHE_WALLPAPER_PATH
-from gi.repository import GObject
-from ignis.services import Service
+from gi.repository import GObject  # type: ignore
+from ignis.services.wallpaper import WallpaperService
+from ignis.services.options import OptionsService
 
-wallpaper = Service.get("wallpaper")
-options = Service.get("options")
+app = IgnisApp.get_default()
+
+wallpaper = WallpaperService.get_default()
+options = OptionsService.get_default()
 
 DARK_MODE_OPTION = "dark_mode"
 COLORS_OPTION = "colors"

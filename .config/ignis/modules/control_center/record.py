@@ -1,9 +1,8 @@
 from ignis.widgets import Widget
 from .qs_button import QSButton
-from ignis.services import Service
 from ignis.services.recorder import RecorderService
 
-recorder: RecorderService = Service.get("recorder")
+recorder = RecorderService.get_default()
 
 
 def record_menu() -> Widget.Revealer:

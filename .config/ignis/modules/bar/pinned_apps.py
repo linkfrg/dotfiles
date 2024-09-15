@@ -1,9 +1,9 @@
 from ignis.widgets import Widget
-from ignis.app import app
-from ignis.services import Service
+from ignis.app import IgnisApp
+from ignis.services.applications import ApplicationsService
 
-applications = Service.get("applications")
-
+applications = ApplicationsService.get_default()
+app = IgnisApp.get_default()
 
 class AppItem(Widget.Button):
     def __init__(self, app):

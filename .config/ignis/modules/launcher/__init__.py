@@ -1,17 +1,17 @@
 import re
 from ignis.widgets import Widget
-from ignis.app import app
-from ignis.services import Service
+from ignis.app import IgnisApp
 from ignis.services.applications import (
     ApplicationsService,
     Application,
     ApplicationAction,
 )
 from ignis.utils import Utils
-from gi.repository import Gio
+from gi.repository import Gio  # type: ignore
 
-applications: ApplicationsService = Service.get("applications")
+app = IgnisApp.get_default()
 
+applications = ApplicationsService.get_default()
 
 def is_url(url: str) -> bool:
     regex = re.compile(

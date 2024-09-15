@@ -1,7 +1,7 @@
 from .elements import SwitchRow, SettingsPage, SettingsGroup, SpinRow, SettingsEntry
-from ignis.services import Service
+from ignis.services.notifications import NotificationService
 
-notifications = Service.get("notifications")
+notifications = NotificationService.get_default()
 
 
 def notifications_entry(active_page):

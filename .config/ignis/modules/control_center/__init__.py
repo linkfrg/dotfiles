@@ -1,6 +1,6 @@
 from typing import Any
 from ignis.widgets import Widget
-from ignis.app import app
+from ignis.app import IgnisApp
 from .volume import volume_control
 from .quick_settings import quick_settings
 from .user import user
@@ -8,6 +8,8 @@ from .media import media
 from .notification_center import notification_center
 from ignis.utils import Utils
 from gi.repository import GObject
+
+app = IgnisApp.get_default()
 
 def control_center_widget() -> Widget.Box:
     return Widget.Box(

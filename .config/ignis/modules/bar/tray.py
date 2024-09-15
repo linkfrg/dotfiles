@@ -1,7 +1,7 @@
 from ignis.widgets import Widget
-from ignis.services import Service
+from ignis.services.system_tray import SystemTrayService
 
-system_tray = Service.get("system_tray")
+system_tray = SystemTrayService.get_default()
 
 
 class TrayItem(Widget.Button):

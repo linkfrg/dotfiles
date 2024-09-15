@@ -1,17 +1,19 @@
 from ignis.widgets import Widget
 from ignis.gobject import IgnisGObject
-from gi.repository import GObject
+from gi.repository import GObject  # type: ignore
 from .notifications import notifications_entry
 from .about import about_entry
 from .appearance import appearance_entry
 from .recorder import recorder_entry
 from .user import user_entry
 from .elements import SettingsPage
-from ignis.services import Service
-from ignis.app import app
+from ignis.app import IgnisApp
 from ignis.exceptions import WindowNotFoundError
+from ignis.services.options import OptionsService
 
-options = Service.get("options")
+app = IgnisApp.get_default()
+
+options = OptionsService.get_default()
 
 LAST_SETTINGS_PAGE_OPTION = "last_settings_page"
 

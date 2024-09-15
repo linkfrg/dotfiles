@@ -2,9 +2,9 @@ from .elements import SettingsPage, SettingsRow, SettingsEntry
 from ignis.utils import Utils
 from ignis.widgets import Widget
 from scripts.material import material
-from ignis.services import Service
+from ignis.services.fetch import FetchService
 
-fetch = Service.get("fetch")
+fetch = FetchService.get_default()
 
 
 def about_entry(active_page):

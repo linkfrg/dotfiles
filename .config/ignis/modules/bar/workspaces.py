@@ -1,7 +1,6 @@
 from ignis.widgets import Widget
-from ignis.services import Service
 from ignis.exceptions import HyprlandIPCNotFoundError
-
+from ignis.services.hyprland import HyprlandService
 
 class WorkspaceButton(Widget.Button):
     def __init__(self, workspace: dict) -> None:
@@ -16,7 +15,7 @@ class WorkspaceButton(Widget.Button):
 
 
 try:
-    hyprland = Service.get("hyprland")
+    hyprland = HyprlandService.get_default()
 
     def scroll_workspaces(direction: str) -> None:
         current = hyprland.active_workspace["id"]

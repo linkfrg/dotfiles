@@ -1,9 +1,8 @@
 from ignis.widgets import Widget
 from ignis.utils import Utils
-from ignis.services import Service
 from ignis.services.audio import AudioService, Stream
 
-audio: AudioService = Service.get("audio")
+audio = AudioService.get_default()
 
 
 def volume_scale(stream: Stream) -> Widget.Scale:

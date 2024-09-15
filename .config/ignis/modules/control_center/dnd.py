@@ -1,8 +1,7 @@
 from .qs_button import QSButton
-from ignis.services import Service
 from ignis.services.notifications import NotificationService
 
-notifications: NotificationService = Service.get("notifications")
+notifications = NotificationService.get_default()
 
 
 def dnd_button() -> QSButton:
