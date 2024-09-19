@@ -3,9 +3,6 @@ from ignis.widgets import Widget
 from ignis.app import IgnisApp
 from ignis.utils import Utils
 from .indicator import status_icons
-from ignis.services.options import OptionsService
-
-options = OptionsService.get_default()
 
 app = IgnisApp.get_default()
 

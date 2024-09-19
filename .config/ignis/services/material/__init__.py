@@ -1,7 +1,6 @@
 #!/usr/bin/python
 import os
 import math
-import ignis
 
 from jinja2 import Template
 from PIL import Image
@@ -19,26 +18,13 @@ from gi.repository import GObject  # type: ignore
 from ignis.services.wallpaper import WallpaperService
 from ignis.services.options import OptionsService
 
+from .options import DARK_MODE_OPTION, COLORS_OPTION, GROUP_NAME
+from .constants import MATERIAL_CACHE_DIR, TEMPLATES, SAMPLE_WALL, SWAYLOCK_CONFIG
+
 app = IgnisApp.get_default()
 
 wallpaper = WallpaperService.get_default()
 options = OptionsService.get_default()
-
-DARK_MODE_OPTION = "dark_mode"
-COLORS_OPTION = "colors"
-
-options.create_option(name=COLORS_OPTION, default={}, exists_ok=True)
-options.create_option(name=DARK_MODE_OPTION, default=True, exists_ok=True)
-
-MATERIAL_CACHE_DIR = f"{ignis.CACHE_DIR}/material"  # type: ignore
-
-TEMPLATES = Utils.get_current_dir() + "/templates"
-SAMPLE_WALL = Utils.get_current_dir() + "/sample_wall.png"
-os.makedirs(MATERIAL_CACHE_DIR, exist_ok=True)
-
-SWAYLOCK_CONFIG_DIR = os.path.expanduser("~/.config/swaylock")
-SWAYLOCK_CONFIG = f"{SWAYLOCK_CONFIG_DIR}/config"
-os.makedirs(SWAYLOCK_CONFIG_DIR, exist_ok=True)
 
 
 def rgba_to_hex(rgba: list) -> str:
@@ -61,6 +47,11 @@ def calculate_optimal_size(width: int, height: int, bitmap_size: int) -> tuple:
 class MaterialService(BaseService):
     def __init__(self):
         super().__init__()
+
+        options = OptionsService.get_default()
+        self._opt_group = options.create_group(name=GROUP_NAME, exists_ok=True)
+        self._opt_group.create_option(name=COLORS_OPTION, default={}, exists_ok=True)
+        self._opt_group.create_option(name=DARK_MODE_OPTION, default=True, exists_ok=True)
         if not os.path.exists(CACHE_WALLPAPER_PATH):
             self.__on_colors_not_found()
         if self.colors == {}:
@@ -68,16 +59,16 @@ class MaterialService(BaseService):
 
     @GObject.Property
     def dark_mode(self) -> bool:
-        return options.get_option("dark_mode")
+        return self._opt_group.get_option("dark_mode")
 
     @dark_mode.setter
     def dark_mode(self, value: bool) -> None:
-        options.set_option("dark_mode", value)
+        self._opt_group.set_option("dark_mode", value)
         self.generate_colors(CACHE_WALLPAPER_PATH)
 
     @GObject.Property
     def colors(self) -> dict:
-        return options.get_option("colors")
+        return self._opt_group.get_option("colors")
 
     def __on_colors_not_found(self) -> None:
         wallpaper.set_wallpaper(SAMPLE_WALL)
@@ -112,7 +103,7 @@ class MaterialService(BaseService):
 
     def generate_colors(self, path: str) -> None:
         colors = self.get_colors_from_img(path, self.dark_mode)
-        options.set_option("colors", colors)
+        self._opt_group.set_option("colors", colors)
         self.__render_templates(colors)
         self.__setup(path)
 

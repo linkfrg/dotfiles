@@ -1,9 +1,6 @@
 from ignis.widgets import Widget
-from ignis.services.options import OptionsService
 from .page import SettingsPage
-
-options = OptionsService.get_default()
-
+from options import SETTINGS_OPT_GROUP
 
 class SettingsEntry(Widget.ListBoxRow):
     def __init__(
@@ -18,7 +15,7 @@ class SettingsEntry(Widget.ListBoxRow):
             active_page.page = page
             active_page.name = label
             if self in self.parent.rows:
-                options.set_option("last_settings_page", self.parent.rows.index(self))
+                SETTINGS_OPT_GROUP.set_option("last_page", self.parent.rows.index(self))
 
         super().__init__(
             child=Widget.Box(

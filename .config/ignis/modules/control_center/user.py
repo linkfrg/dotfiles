@@ -3,11 +3,10 @@ from ignis.widgets import Widget
 from ignis.utils import Utils
 from ignis.app import IgnisApp
 from ignis.services.fetch import FetchService
-from ignis.services.options import OptionsService
 from ..settings import settings_window
+from options import USER_OPT_GROUP
 
 fetch = FetchService.get_default()
-options = OptionsService.get_default()
 app = IgnisApp.get_default()
 
 
@@ -21,8 +20,8 @@ def format_uptime(value):
 
 def user_image() -> Widget.Picture:
     return Widget.Picture(
-        image=options.bind_option(
-            "user_avatar",
+        image=USER_OPT_GROUP.bind_option(
+            "avatar",
             lambda value: "user-info" if not os.path.exists(value) else value,
         ),
         width=44,

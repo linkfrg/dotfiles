@@ -11,7 +11,6 @@ from modules.notification_popup import notification_popup  # noqa: E402
 from modules.osd import OSD  # noqa: E402
 from modules.powermenu import powermenu  # noqa: E402
 from modules.launcher import launcher  # noqa: E402
-from ignis.services.options import OptionsService  # noqa: E402
 
 Utils.exec_sh("gsettings set org.gnome.desktop.interface gtk-theme Material")
 Utils.exec_sh("gsettings set org.gnome.desktop.interface icon-theme Papirus")
@@ -20,15 +19,8 @@ Utils.exec_sh(
 )
 Utils.exec_sh("hyprctl reload")
 app = IgnisApp.get_default()
-print(os.path.dirname(os.path.abspath(__file__)))
 app.apply_css(Utils.get_current_dir() + "/style.scss")
 
-options = OptionsService.get_default()
-options.create_option(
-    "user_avatar",
-    default=f"/var/lib/AccountsService/icons/{os.getenv('USER')}",
-    exists_ok=True,
-)
 
 control_center()
 for monitor in range(Utils.get_n_monitors()):
