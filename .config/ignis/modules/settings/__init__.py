@@ -9,7 +9,7 @@ from .user import user_entry
 from .elements import SettingsPage
 from ignis.app import IgnisApp
 from ignis.exceptions import WindowNotFoundError
-from options import SETTINGS_OPT_GROUP
+from options import settings_last_page
 
 app = IgnisApp.get_default()
 
@@ -54,7 +54,7 @@ def settings_widget():
         ],
     )
 
-    listbox.select_row(listbox.rows[SETTINGS_OPT_GROUP.get_option("last_page")])
+    listbox.select_row(listbox.rows[settings_last_page.value])
 
     navigation_sidebar = Widget.Box(
         vertical=True,

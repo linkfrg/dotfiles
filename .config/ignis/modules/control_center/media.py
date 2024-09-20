@@ -72,6 +72,7 @@ class Player(Widget.Revealer):
                                             Widget.Label(
                                                 label=player.bind("artist"),
                                                 max_width_chars=30,
+                                                ellipsize="end",
                                                 halign="start",
                                                 css_classes=[
                                                     self.get_css("media-artist")

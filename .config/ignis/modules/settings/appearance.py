@@ -34,7 +34,7 @@ def appearance_entry(active_page):
                     ),
                     FileRow(
                         label="Wallpaper path",
-                        button_label=os.path.basename(wallpaper.wallpaper),
+                        button_label=os.path.basename(wallpaper.wallpaper) if wallpaper.wallpaper else None,
                         dialog=Widget.FileDialog(
                             on_file_set=lambda x, file: material.generate_colors(
                                 file.get_path()

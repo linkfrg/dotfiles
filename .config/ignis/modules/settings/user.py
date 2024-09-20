@@ -1,7 +1,7 @@
 import os
 from .elements import SettingsGroup, SettingsPage, SettingsEntry, FileRow
 from ignis.widgets import Widget
-from options import USER_OPT_GROUP
+from options import avatar_opt
 
 
 def user_entry(active_page):
@@ -13,8 +13,8 @@ def user_entry(active_page):
                 style="margin-left: 2rem;",
                 child=[
                     Widget.Picture(
-                        image=USER_OPT_GROUP.bind_option(
-                            "avatar",
+                        image=avatar_opt.bind(
+                            "value",
                             lambda value: "user-info"
                             if not os.path.exists(value)
                             else value,
@@ -37,10 +37,8 @@ def user_entry(active_page):
                     FileRow(
                         label="Avatar",
                         dialog=Widget.FileDialog(
-                            initial_path=USER_OPT_GROUP.bind_option("avatar"),
-                            on_file_set=lambda x, gfile: USER_OPT_GROUP.set_option(
-                                "avatar", gfile.get_path()
-                            ),
+                            initial_path=avatar_opt.bind("value"),
+                            on_file_set=lambda x, gfile: avatar_opt.set_value(gfile.get_path()),
                         ),
                     )
                 ],
