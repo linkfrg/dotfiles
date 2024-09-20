@@ -79,6 +79,7 @@ $gradient-{{ desktop_entry }}: {{ onPrimary }};
 
 .media-skip-button-{{ desktop_entry }} {
     transition: 0.3s;
+    color: {{ onSurface }};
     &:hover {
         color: {{ primary }};
     }
