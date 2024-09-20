@@ -17,7 +17,7 @@ ignis
 dart-sass
 nm-connection-editor
 polkit-gnome
-swaylock-effects
+hyprlock
 pamixer
 grimblast-git
 kitty

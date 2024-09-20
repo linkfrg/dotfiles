@@ -17,7 +17,7 @@ from gi.repository import GObject  # type: ignore
 from ignis.services.wallpaper import WallpaperService
 from ignis.services.options import OptionsService
 
-from .constants import MATERIAL_CACHE_DIR, TEMPLATES, SAMPLE_WALL, SWAYLOCK_CONFIG
+from .constants import MATERIAL_CACHE_DIR, TEMPLATES, SAMPLE_WALL
 from .util import rgba_to_hex, calculate_optimal_size
 
 app = IgnisApp.get_default()
@@ -85,22 +85,35 @@ class MaterialService(BaseService):
 
     def generate_colors(self, path: str) -> None:
         colors = self.get_colors_from_img(path, self.dark_mode)
+        dark_colors = self.get_colors_from_img(path, True)
         self._colors_opt.value = colors
-        self.__render_templates(colors)
+        self.__render_templates(colors, dark_colors)
         self.__setup(path)
 
-    def __render_templates(self, colors: dict) -> None:
+    def __render_templates(self, colors: dict, dark_colors: dict) -> None:
         for template in os.listdir(TEMPLATES):
             self.render_template(
                 colors=colors,
+                dark_mode=self.dark_mode,
                 input_file=f"{TEMPLATES}/{template}",
                 output_file=f"{MATERIAL_CACHE_DIR}/{template}",
             )
 
+        for template in os.listdir(TEMPLATES):
+            self.render_template(
+                colors=dark_colors,
+                dark_mode=True,
+                input_file=f"{TEMPLATES}/{template}",
+                output_file=f"{MATERIAL_CACHE_DIR}/dark_{template}",
+            )
+
     def render_template(
-        self, colors: dict, input_file: str, output_file: str
+        self, colors: dict, input_file: str, output_file: str, dark_mode: bool = None
     ) -> None:
-        colors["dark_mode"] = str(self.dark_mode).lower()
+        if dark_mode is None:
+            colors["dark_mode"] = str(self.dark_mode).lower()
+        else:
+            colors["dark_mode"] = str(dark_mode).lower()
         with open(input_file) as file:
             template_rendered = Template(file.read()).render(colors)
 
@@ -121,14 +134,3 @@ class MaterialService(BaseService):
         self._wallpaper.set_wallpaper(image_path)
         app.reload_css()
         self.__reload_gtk_theme()
-        self.__symlink_swaylock_config()
-
-    def __symlink_swaylock_config(self) -> None:
-        link_name = f"{MATERIAL_CACHE_DIR}/swaylock"
-        if not os.path.exists(SWAYLOCK_CONFIG):
-            os.symlink(link_name, SWAYLOCK_CONFIG)
-            return
-
-        if not os.path.islink(SWAYLOCK_CONFIG):
-            os.remove(SWAYLOCK_CONFIG)
-            os.symlink(link_name, SWAYLOCK_CONFIG)

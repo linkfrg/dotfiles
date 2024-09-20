@@ -31,7 +31,7 @@ def reboot(*args) -> None:
 
 
 def suspend(*args) -> None:
-    Utils.exec_sh_async("swaylock && systemctl suspend")
+    Utils.exec_sh_async("hyprlock && systemctl suspend")
     app.close_window("ignis_POWERMENU")
 
 
