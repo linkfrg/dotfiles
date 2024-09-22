@@ -30,9 +30,11 @@
 
 ```
 git clone https://github.com/linkfrg/dotfiles.git --depth 1 --branch main  # "dev" for development version
+cd dotfiles
 mkdir -p ~/.local/share/themes
-cp -R dotfiles/.config/* ~/.config/
-cp -R dotfiles/Material ~/.local/share/themes
+cp -R .config/* ~/.config/
+cp -R ignis ~/.config/
+cp -R Material ~/.local/share/themes
 ```
 
 ### Install dependencies
