@@ -1,30 +1,29 @@
-# Installation
+# Keybindings
+This a cheat sheet with some keybindings
 
-## Clone repository
+## Ignis
+| Bind | Action |
+| ---- | ------ |
+| `Super` + `X` | Toggle Launcher |
+| `Super` + `M` | Toggle Powermenu |
+| `Alt` +  `F4` | Toggle Powermenu |
 
-```
-git clone https://github.com/linkfrg/dotfiles.git --depth 1 --branch main  # "dev" for development version
-```
+## Software
+| Bind | Action |
+| ---- | ------ |
+| `Super` + `Q` | Open Kitty |
+| `Super` + `L` | Lock screen |
+| `Super` + `E` | Open Thunar |
+| `Super` + `Shift` + `S` | Make screenshot from area |
+| `Super` + `S` | Make screenshot from area |
+| `Print screen` | Make fullscreen screenshot |
 
-## Copy config files
 
-```
-cd dotfiles
-mkdir -p ~/.local/share/themes
-cp -R .config/* ~/.config/
-cp -R ignis ~/.config/
-cp -R Material ~/.local/share/themes
-```
-
-## Install dependencies
-
-Firstly, you need to install AUR helper (e.g., paru).
-
-```
-paru -S --needed - < dependencies.txt
-```
-
-If using nvidia install also
-```
-paru -S --needed - < nvidia_deps.txt
-```
+## Windows
+| Bind | Action |
+| ---- | ------ |
+| `Super` + `C` | Close window |
+| `Super` + `Shift` + `M` | Force quit Hyprland |
+| `F11` | Make window fullscreen |
+| `Super` + `G` | Center window |
+| `Super` + `D` | Pin window |
