@@ -1,7 +1,7 @@
 import os
 from ignis.utils import Utils
 
-EXPECT_VERSION = ["0", "1"]
+EXPECT_VERSION = ["0", "2"]
 
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 
