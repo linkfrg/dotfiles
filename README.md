@@ -6,10 +6,6 @@
 </div>
 
 
-> [!WARNING]
-> This is a development branch.
-> It is intended for use with the latest Git version of Ignis (``ignis-git``).
-
 ## Gallery
 
 <img src="assets/1.png"/>
