@@ -7,6 +7,7 @@ from ignis.services.fetch import FetchService
 fetch = FetchService.get_default()
 material = MaterialService.get_default()
 
+
 def about_entry(active_page):
     about_page = SettingsPage(
         name="About",

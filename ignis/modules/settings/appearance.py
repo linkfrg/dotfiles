@@ -7,6 +7,7 @@ from ignis.services.wallpaper import WallpaperService
 wallpaper = WallpaperService.get_default()
 material = MaterialService.get_default()
 
+
 def appearance_entry(active_page):
     appearance_page = SettingsPage(
         name="Appearance",
@@ -34,7 +35,9 @@ def appearance_entry(active_page):
                     ),
                     FileRow(
                         label="Wallpaper path",
-                        button_label=os.path.basename(wallpaper.wallpaper) if wallpaper.wallpaper else None,
+                        button_label=os.path.basename(wallpaper.wallpaper)
+                        if wallpaper.wallpaper
+                        else None,
                         dialog=Widget.FileDialog(
                             on_file_set=lambda x, file: material.generate_colors(
                                 file.get_path()

@@ -13,6 +13,7 @@ app = IgnisApp.get_default()
 
 applications = ApplicationsService.get_default()
 
+
 def is_url(url: str) -> bool:
     regex = re.compile(
         r"^(?:http|ftp)s?://"  # http:// or https://

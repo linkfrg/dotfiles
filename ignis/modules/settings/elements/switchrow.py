@@ -3,6 +3,7 @@ from .row import SettingsRow
 from typing import Callable
 from ignis.gobject import Binding
 
+
 class SwitchRow(SettingsRow):
     def __init__(
         self,

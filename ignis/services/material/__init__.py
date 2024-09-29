@@ -1,5 +1,3 @@
 from .service import MaterialService
 
-__all__ = [
-    "MaterialService"
-]
+__all__ = ["MaterialService"]

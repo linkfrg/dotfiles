@@ -1,4 +1,3 @@
-import os
 from check_version import check_version
 
 check_version()

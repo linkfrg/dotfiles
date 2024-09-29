@@ -5,6 +5,7 @@ from ignis.services.applications import ApplicationsService
 applications = ApplicationsService.get_default()
 app = IgnisApp.get_default()
 
+
 class AppItem(Widget.Button):
     def __init__(self, app):
         menu = Widget.PopoverMenu(

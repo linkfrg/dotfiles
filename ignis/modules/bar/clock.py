@@ -6,6 +6,7 @@ from .indicator import status_icons
 
 app = IgnisApp.get_default()
 
+
 def clock(monitor):
     window: Widget.Window = app.get_window("ignis_CONTROL_CENTER")  # type: ignore
 

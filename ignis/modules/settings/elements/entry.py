@@ -2,6 +2,7 @@ from ignis.widgets import Widget
 from .page import SettingsPage
 from options import settings_last_page
 
+
 class SettingsEntry(Widget.ListBoxRow):
     def __init__(
         self,

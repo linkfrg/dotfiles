@@ -38,7 +38,9 @@ def user_entry(active_page):
                         label="Avatar",
                         dialog=Widget.FileDialog(
                             initial_path=avatar_opt.bind("value"),
-                            on_file_set=lambda x, gfile: avatar_opt.set_value(gfile.get_path()),
+                            on_file_set=lambda x, gfile: avatar_opt.set_value(
+                                gfile.get_path()
+                            ),
                         ),
                     )
                 ],

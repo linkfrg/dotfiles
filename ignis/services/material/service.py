@@ -31,8 +31,12 @@ class MaterialService(BaseService):
 
         options = OptionsService.get_default()
         opt_group = options.create_group(name="material", exists_ok=True)
-        self._dark_mode_opt = opt_group.create_option(name="dark_mode", default=True, exists_ok=True)
-        self._colors_opt = opt_group.create_option(name="colors", default={}, exists_ok=True)
+        self._dark_mode_opt = opt_group.create_option(
+            name="dark_mode", default=True, exists_ok=True
+        )
+        self._colors_opt = opt_group.create_option(
+            name="colors", default={}, exists_ok=True
+        )
 
         if not os.path.exists(CACHE_WALLPAPER_PATH):
             self.__on_colors_not_found()
@@ -108,7 +112,11 @@ class MaterialService(BaseService):
             )
 
     def render_template(
-        self, colors: dict, input_file: str, output_file: str, dark_mode: bool = None
+        self,
+        colors: dict,
+        input_file: str,
+        output_file: str,
+        dark_mode: bool | None = None,
     ) -> None:
         if dark_mode is None:
             colors["dark_mode"] = str(self.dark_mode).lower()

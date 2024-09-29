@@ -2,6 +2,7 @@ from ignis.widgets import Widget
 from .row import SettingsRow
 from ignis.gobject import Binding
 
+
 class FileRow(SettingsRow):
     def __init__(
         self,

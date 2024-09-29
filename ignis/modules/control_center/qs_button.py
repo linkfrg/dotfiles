@@ -3,6 +3,7 @@ from gi.repository import GObject  # type: ignore
 from typing import Callable
 from ignis.gobject import Binding
 
+
 class QSButton(Widget.Button):
     def __init__(
         self,

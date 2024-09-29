@@ -3,6 +3,7 @@ from typing import List
 from .group import SettingsGroup
 from ignis.base_widget import BaseWidget
 
+
 class SettingsPage(Widget.Scroll):
     def __init__(self, name: str, groups: List[SettingsGroup | BaseWidget] = []):
         super().__init__(

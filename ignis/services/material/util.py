@@ -1,5 +1,6 @@
 import math
 
+
 def rgba_to_hex(rgba: list) -> str:
     return "#{:02x}{:02x}{:02x}".format(*rgba)
 
