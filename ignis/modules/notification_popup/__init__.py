@@ -66,6 +66,7 @@ def change_window_input_region(box: Widget.Box) -> None:
         width = box.get_width()
         height = box.get_height()
         window: Widget.Window = box.get_parent()  # type: ignore
+
         window.input_width = width
         window.input_height = height
 

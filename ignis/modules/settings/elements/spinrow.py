@@ -12,7 +12,7 @@ class SpinRow(SettingsRow):
         min: int = 0,
         max: int = 100,
         step: int = 1,
-        width: int | None = None,
+        width: int = 0,
         **kwargs,
     ):
         super().__init__(**kwargs)
