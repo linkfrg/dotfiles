@@ -13,7 +13,7 @@ pipewire-pulse
 pipewire-jack
 pavucontrol
 wireplumber
-ignis
+ignis-git
 dart-sass
 nm-connection-editor
 polkit-gnome
