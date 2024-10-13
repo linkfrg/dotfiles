@@ -94,3 +94,40 @@
 .record-indicator.active {
     animation: recorder-animation 2s infinite;
 }
+
+.battery-item {
+    margin: 0 0.25rem;
+}
+
+.battery-scale {
+    min-width: 5rem;
+    all: unset;
+
+    * {
+        all: unset;
+    }
+}
+
+.battery-scale trough,
+.battery-scale trough highlight {
+    background-color: $surfaceContainerHighest;
+    border-radius: 0.5rem;
+    min-height: 1.5rem;
+    min-width: 6rem;
+}
+
+
+.battery-scale trough highlight {
+    background-color: $primary;
+    min-width: 0rem;
+}
+
+.battery-icon {
+    color: $onSurface;
+    margin-right: 0.3rem;
+}
+
+.battery-percent {
+    color: $onSurface;
+    margin-right: 0.3rem;
+}
