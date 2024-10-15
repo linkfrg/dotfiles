@@ -1,6 +1,7 @@
 from ignis.widgets import Widget
 from ignis.services.notifications import Notification, NotificationService
 from ignis.utils import Utils
+from gi.repository import GLib  # type: ignore
 
 notifications = NotificationService.get_default()
 
@@ -177,9 +178,9 @@ def on_notified(box: Widget.Box, notification: Notification) -> None:
 
 
 def load_notifications() -> list[Widget.Label | Popup]:
-    widgets = [Popup(i, reveal_child=True) for i in notifications.notifications] + [
-        no_notifications_label()
-    ]
+    widgets = []
+    for i in notifications.notifications:
+        GLib.idle_add(lambda i=i: widgets.append(Popup(i, reveal_child=True)))
     return widgets
 
 
@@ -197,7 +198,7 @@ def notification_list() -> Widget.Box:
 
     Utils.ThreadTask(
         load_notifications,
-        lambda result: box.set_child(result) if len(result) > 0 else None,
+        lambda result: box.set_child(result + [no_notifications_label()]),
     )
 
     return box
