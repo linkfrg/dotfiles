@@ -2,6 +2,7 @@
     @include window;
     min-width: 28rem;
     padding: 0;
+    border-radius:20px;
 }
 
 .control-center-widget {
@@ -10,21 +11,23 @@
 }
 
 .qs-main-box {
-    margin-top: 0.5rem;
+    margin: 0.5rem 0.5rem;
 }
 
 .user {
-    margin-top: 1rem;
+    margin: 1rem 0rem;
+    margin-left:0.5rem;
+
 }
 
 .qs-button {
     @include hover($surfaceContainerHighest);
     color: $onSurface;
     min-height: 2.4rem;
-    border-radius: 1.2rem;
+    border-radius: 1.6rem;
     transition: 0.3s;
-    padding: 0.3rem 0.8rem;
-
+    padding: 0.6rem 0.8rem;
+    margin:0.2rem 0rem;
     &.active {
         @include hover($primary);
         color: $surface;
@@ -38,8 +41,8 @@
 
 .record-menu {
     background-color: $surfaceContainerHigh;
-    border-radius: 1rem;
-    padding: 1rem;
+    border-radius: 1.2rem;
+    padding: 0.5rem 1rem;
     margin-top: 1rem;
 }
 
@@ -87,6 +90,8 @@
     background-color: $secondaryContainer;
     border-radius: 1rem;
     min-height: 1rem;
+    padding: 0.01rem 0rem;
+    margin:0.3rem 0.3rem;
 }
 
 
@@ -126,7 +131,8 @@
     padding: 0.25rem;
     border-radius: 1rem;
     transition: 0.3s;
-    margin-right: 0.5rem;
+    margin-right: 0.2rem;
+    margin-left:0.5rem;
 }
 
 .volume-arrow {
@@ -134,7 +140,7 @@
     padding: 0.25rem;
     border-radius: 1rem;
     transition: 0.3s;
-    margin-left: 0.5rem;
+    margin-left: 0.3rem;
 }
 
 .user-name-box {
@@ -147,7 +153,8 @@
 
 .user-name-secondary {
     color: $onSurfaceVariant;
-    font-size: 0.9rem;
+    font-size: 1rem;
+    padding:0.1rem;
 }
 
 .user-settings {
@@ -170,16 +177,17 @@
 }
 
 .header-clock {
-    font-size: 2.6rem;
+    font-size: 3rem;
 }
 
 .header-date {
+    font-size:1rem;
     font-weight: normal;
 }
 
 .ethernet-network-list, .wifi-network-list {
     background-color: $surfaceContainerHigh;
-    border-radius: 1rem;
+    border-radius: 1.3rem;
     padding: 1rem;
     margin-top: 1rem;
     margin-bottom: 0.5rem;
@@ -205,7 +213,7 @@
 .ethernet-connection-item, .wifi-network-item {
     @include hover($surfaceContainerHigh);
     transition: 0.3s;
-    border-radius: 1rem;
+    border-radius: 3rem;
     padding: 0.5rem 0.5rem;
 }
 
@@ -220,6 +228,6 @@
 }
 
 .volume-entry-label {
-    margin-left: 0.5rem; 
+    margin-left: 0.5rem;
     margin-right: 1rem;
 }

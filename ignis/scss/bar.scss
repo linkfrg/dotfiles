@@ -1,20 +1,29 @@
 .bar-widget {
-    padding: 0.4rem 1rem;
+    padding: 0.35rem 1rem;
     margin: 0;
-    border-radius: 0;
+    border-radius: 4rem;
     transition: 0.3s;
-    background-color: rgba($surface, 0.3);
+    background-color: rgba($surface, 0);
+}
+.button {
+    width: 100px; /* Correct with 'px' unit */
+    height: 50px; /* Correct with 'px' unit */
+}
+.content-box {
+    height: 300px; /* Define the height */
+    overflow-y: auto; /* Enable vertical scrolling */
+    overflow-x: hidden; /* Hide horizontal overflow if not needed */
 }
 
 .clock {
     @include hover($surface);
     color: $onSurface;
     background-color: $surface;
-    font-size: 1.5rem;
     border-radius: 1rem;
-    padding: 0 0.75rem;
-    margin: 0 0.5rem;
-    margin-right: 0;
+    padding: 0.17rem 1rem;
+    margin: -0.5 0.1rem;
+    margin-left: 0.4rem;
+
     transition: 0.3s;
 
     &.active {
@@ -25,16 +34,18 @@
             color: $surface;
         }
 
-        @include hover($primary)
+        @include hover($primary);
     }
 }
 
 .kb-layout {
-    border-radius: 0.5rem;
-    padding: 0 0.25rem;
+    color: $onSurface;
+    background-color: $surface;
+    border-radius: 1rem;
+    padding: 0 0.75rem;
     margin: 0 0.25rem;
     transition: 0.3s;
-    font-size: 1.3rem;
+    font-size: 0rem;
 }
 
 .kb-layout:hover {
@@ -50,41 +61,52 @@
 
 .pinned-app:hover {
     background-color: rgba(white, 0.2);
+    padding: 1.5px;
+    border-radius: 100%;
 }
 
-
 .tray {
+    font-size: 1rem;
     padding: 0 0.25rem;
     margin: 0 0.25rem;
 }
 
 .workspaces {
-    border-radius: 1rem;
-    padding: 0.5rem;
+    border-radius: 2rem;
+    padding: 0.1rem 0.6rem;
     background-color: $surface;
-    margin: 0 0.5rem;
+    margin: 0rem 1rem;
     margin-left: 0;
 }
 
 .workspace {
     @include hover($primaryContainer);
     border-radius: 1rem;
-    margin: 0 0.25rem;
-    min-width: 0.7rem;
-    min-height: 0.7rem;
+    margin: 0.1rem 0.25rem;
+    min-width: 1rem;
+    min-height: 1rem;
     transition: 0.3s;
 
     &.active {
         @include hover($primary);
-        min-width: 2rem;
+        min-width: 3rem;
+        transition: 0.3s;
     }
 }
 
 @keyframes recorder-animation {
-    0% { opacity: 0; }
-    50% { opacity: 1; }
-    90% { opacity: 1; }
-    100% { opacity: 0; }
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
 }
 
 .record-indicator {
@@ -100,8 +122,9 @@
 }
 
 .battery-scale {
-    min-width: 5rem;
+    min-width: 6rem;
     all: unset;
+    margin-left: 0.65rem;
 
     * {
         all: unset;
@@ -111,11 +134,12 @@
 .battery-scale trough,
 .battery-scale trough highlight {
     background-color: $surfaceContainerHighest;
-    border-radius: 0.5rem;
-    min-height: 1.5rem;
+    border-radius: 1rem;
+    min-height: 1.4rem;
     min-width: 6rem;
+    padding: 0.2rem 0.2rem;
+    margin: -0.9 0.1rem;
 }
-
 
 .battery-scale trough highlight {
     background-color: $primary;
@@ -129,5 +153,6 @@
 
 .battery-percent {
     color: $onSurface;
-    margin-right: 0.3rem;
+    margin-top: 0.1rem;
+    margin-right: -0.1rem;
 }
