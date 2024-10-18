@@ -5,6 +5,8 @@ from .dnd import dnd_button
 from .dark_mode import dark_mode_button
 from .ethernet import ethernet_control
 from .qs_button import QSButton
+from .night_light import night_light_button
+# from .bluetooth import bluetooth_button
 from ignis.services.network import NetworkService
 
 network = NetworkService.get_default()
@@ -41,10 +43,12 @@ def qs_config(main_box: Widget.Box) -> None:
     qs_fabric(
         main_box,
         *wifi_control(),
+        # bluetooth_button(),
         *ethernet_control(),
         dnd_button(),
         dark_mode_button(),
         record_control(),
+        night_light_button(),
     )
 
 
