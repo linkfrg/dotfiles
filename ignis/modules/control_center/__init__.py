@@ -5,6 +5,7 @@ from .quick_settings import quick_settings
 from .user import user
 from .media import media
 from .notification_center import notification_center
+from .brightness import brightness_slider
 
 app = IgnisApp.get_default()
 
@@ -17,7 +18,13 @@ def control_center_widget() -> Widget.Box:
             Widget.Box(
                 vertical=True,
                 css_classes=["control-center-widget"],
-                child=[quick_settings(), volume_control(), user(), media()],
+                child=[
+                    quick_settings(),
+                    volume_control(),
+                    brightness_slider(),
+                    user(),
+                    media(),
+                ],
             ),
             notification_center(),
         ],

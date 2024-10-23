@@ -20,3 +20,23 @@ tooltip {
     border-radius: 1rem;
     background-color: $primaryContainer;
 }
+
+.material-slider {
+    all: unset;
+
+    * {
+        all: unset;
+    }
+}
+
+.material-slider trough,
+.material-slider trough highlight {
+    background-color: $secondaryContainer;
+    border-radius: 1rem;
+    min-height: 1rem;
+}
+
+
+.material-slider trough highlight {
+    background-color: $primary;
+}

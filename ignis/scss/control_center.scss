@@ -137,6 +137,12 @@
     margin-left: 0.5rem;
 }
 
+.brightness-icon {
+    padding: 0.25rem;
+    border-radius: 1rem;
+    margin-right: 0.5rem;
+}
+
 .user-name-box {
     margin-left: 0.5rem;
 }
@@ -177,7 +183,8 @@
     font-weight: normal;
 }
 
-.ethernet-network-list, .wifi-network-list {
+.ethernet-network-list,
+.wifi-network-list {
     background-color: $surfaceContainerHigh;
     border-radius: 1rem;
     padding: 1rem;
@@ -185,11 +192,13 @@
     margin-bottom: 0.5rem;
 }
 
-.ethernet-network-list-separator, .wifi-network-list-separator {
+.ethernet-network-list-separator,
+.wifi-network-list-separator {
     margin: 0.5rem 0;
 }
 
-.ethernet-header-box, .wifi-header-box {
+.ethernet-header-box,
+.wifi-header-box {
     margin-bottom: 0.5rem;
 }
 
@@ -202,7 +211,8 @@
     font-size: 1.35rem;
 }
 
-.ethernet-connection-item, .wifi-network-item {
+.ethernet-connection-item,
+.wifi-network-item {
     @include hover($surfaceContainerHigh);
     transition: 0.3s;
     border-radius: 1rem;
@@ -210,7 +220,8 @@
 }
 
 
-.ethernet-connection-label, .wifi-network-label {
+.ethernet-connection-label,
+.wifi-network-label {
     margin-left: 0.5rem;
 }
 
@@ -220,6 +231,6 @@
 }
 
 .volume-entry-label {
-    margin-left: 0.5rem; 
+    margin-left: 0.5rem;
     margin-right: 1rem;
 }
