@@ -17,7 +17,7 @@ class VpnNetworkItem(Widget.Button):
             child=Widget.Box(
                 child=[
                     Widget.Label(
-                        label=conn.get_id,
+                        label=conn.connection_id,
                         ellipsize="end",
                         max_width_chars=20,
                         halign="start",
