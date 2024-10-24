@@ -4,6 +4,7 @@ from .record import record_control
 from .dnd import dnd_button
 from .dark_mode import dark_mode_button
 from .ethernet import ethernet_control
+from .vpn import vpn_control
 from .qs_button import QSButton
 from ignis.services.network import NetworkService
 
@@ -42,6 +43,7 @@ def qs_config(main_box: Widget.Box) -> None:
         main_box,
         *wifi_control(),
         *ethernet_control(),
+        *vpn_control(),
         dnd_button(),
         dark_mode_button(),
         record_control(),
