@@ -17,7 +17,7 @@ def brightness_slider() -> Widget.Scale:
             ),
             Widget.Scale(
                 min=0,
-                max=100,
+                max=backlight.max_brightness,
                 hexpand=True,
                 value=backlight.bind("brightness"),
                 css_classes=["material-slider"],
