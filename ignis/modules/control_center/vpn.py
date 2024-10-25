@@ -114,4 +114,7 @@ def vpn_qsbutton() -> QSButton:
 
 
 def vpn_control() -> List[QSButton]:
-    return [vpn_qsbutton()]
+    if len(network.vpn.connections) > 0:
+        return [vpn_qsbutton()]
+    else:
+        return []

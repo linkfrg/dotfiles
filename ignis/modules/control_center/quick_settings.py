@@ -59,5 +59,6 @@ def quick_settings() -> Widget.Box:
     main_box = Widget.Box(vertical=True, css_classes=["qs-main-box"])
     network.wifi.connect("notify::devices", lambda x, y: update_box(main_box))
     network.ethernet.connect("notify::devices", lambda x, y: update_box(main_box))
+    network.vpn.connect("notify::connections", lambda x, y: update_box(main_box))
 
     return main_box
