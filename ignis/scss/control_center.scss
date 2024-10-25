@@ -195,17 +195,17 @@
 
 .ethernet-network-list-separator,
 .wifi-network-list-separator,
-.vpn-connection-list-separator,{
+.vpn-connection-list-separator {
     margin: 0.5rem 0;
 }
 
 .ethernet-header-box,
-.wifi-header-box 
+.wifi-header-box,
 .vpn-header-box {
     margin-bottom: 0.5rem;
 }
 
-.ethernet-header-label 
+.ethernet-header-label,
 .vpn-header-label {
     font-size: 1.35rem;
     margin-left: 0.75rem;
@@ -226,12 +226,12 @@
 
 
 .ethernet-connection-label,
-.wifi-network-label 
+.wifi-network-label,
 .vpn-connection-label {
     margin-left: 0.5rem;
 }
 
-.ethernet-connection-item-connect-label 
+.ethernet-connection-item-connect-label,
 .vpn-connection-item-connect-label {
     color: $onSurfaceVariant;
     font-size: 1rem;
