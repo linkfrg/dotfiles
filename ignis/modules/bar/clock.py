@@ -2,9 +2,16 @@ import datetime
 from ignis.widgets import Widget
 from ignis.app import IgnisApp
 from ignis.utils import Utils
+from ignis.variable import Variable
 from .indicator import status_icons
 
 app = IgnisApp.get_default()
+
+current_time = Variable(
+    value=Utils.Poll(1000, lambda x: datetime.datetime.now().strftime("%H:%M")).bind(
+        "output"
+    )
+)
 
 
 def clock(monitor):
@@ -22,9 +29,7 @@ def clock(monitor):
             child=[
                 status_icons(),
                 Widget.Label(
-                    label=Utils.Poll(
-                        1000, lambda x: datetime.datetime.now().strftime("%H:%M")
-                    ).bind("output"),
+                    label=current_time.bind("value"),
                 ),
             ]
         ),
