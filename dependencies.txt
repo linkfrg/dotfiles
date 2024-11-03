@@ -32,6 +32,7 @@ python-pillow
 gst-plugin-pipewire
 gst-plugins-good
 gst-plugins-ugly
+gst-plugins-base
 networkmanager
 ttf-jetbrains-mono
 ttf-jetbrains-mono-nerd
