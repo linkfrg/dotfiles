@@ -18,7 +18,7 @@
 }
 
 .qs-button {
-    @include hover($surfaceContainerHighest);
+    @include hover($surfaceContainerHigh);
     color: $onSurface;
     min-height: 2.4rem;
     border-radius: 1.2rem;
