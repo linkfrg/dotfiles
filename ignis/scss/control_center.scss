@@ -2,12 +2,6 @@
     @include window;
     min-width: 28rem;
     padding: 0;
-    margin-top: 0;
-    margin-bottom: 0;
-    margin-right: 0;
-    border-radius: 2rem;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
 }
 
 .control-center-widget {
@@ -80,42 +74,11 @@
     @include hover($primary);
 }
 
-.volume-slider {
-    all: unset;
-
-    * {
-        all: unset;
-    }
-}
-
-.volume-slider trough,
-.volume-slider trough highlight {
-    background-color: $secondaryContainer;
-    border-radius: 1rem;
-    min-height: 1rem;
-}
-
-
-.volume-slider trough highlight {
-    background-color: $primary;
-}
-
-.volume-entry-list {
-    margin-top: 1rem;
-    background-color: $surfaceContainerHigh;
-    border-radius: 1rem;
-    padding: 1rem;
-}
-
 .volume-entry {
     @include hover($surfaceContainerHigh);
     transition: 0.3s;
     border-radius: 1rem;
     padding: 0.5rem 0.5rem;
-}
-
-.volume-entry-list-separator {
-    margin: 0.5rem 0;
 }
 
 .volume-entry-list-header-label {
@@ -125,28 +88,6 @@
 
 .volume-entry-list-header-box {
     margin-bottom: 0.75rem;
-}
-
-.volume-icon {
-    @include hover($surface);
-    padding: 0.25rem;
-    border-radius: 1rem;
-    transition: 0.3s;
-    margin-right: 0.5rem;
-}
-
-.volume-arrow {
-    @include hover($surface);
-    padding: 0.25rem;
-    border-radius: 1rem;
-    transition: 0.3s;
-    margin-left: 0.5rem;
-}
-
-.brightness-icon {
-    padding: 0.25rem;
-    border-radius: 1rem;
-    margin-right: 0.5rem;
 }
 
 .user-name-box {
@@ -179,30 +120,6 @@
     min-width: 2.35rem;
     margin: 0.4rem 0rem;
     transition: 0.3s;
-}
-
-.header-clock {
-    font-size: 2.6rem;
-}
-
-.header-date {
-    font-weight: normal;
-}
-
-.ethernet-network-list,
-.wifi-network-list,
-.vpn-connection-list {
-    background-color: $surfaceContainerHigh;
-    border-radius: 1rem;
-    padding: 1rem;
-    margin-top: 1rem;
-    margin-bottom: 0.5rem;
-}
-
-.ethernet-network-list-separator,
-.wifi-network-list-separator,
-.vpn-connection-list-separator {
-    margin: 0.5rem 0;
 }
 
 .ethernet-header-box,

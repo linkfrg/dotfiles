@@ -41,7 +41,7 @@ def wifi_qsbutton(device: WifiDevice) -> QSButton:
         transition_type="slide_down",
         child=Widget.Box(
             vertical=True,
-            css_classes=["wifi-network-list"],
+            css_classes=["control-center-menu"],
             child=[
                 Widget.Box(
                     child=[

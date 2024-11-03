@@ -46,7 +46,7 @@ def ethernet_control() -> List[QSButton]:
         transition_type="slide_down",
         child=Widget.Box(
             vertical=True,
-            css_classes=["ethernet-network-list"],
+            css_classes=["control-center-menu"],
             child=[
                 Widget.Box(
                     css_classes=["ethernet-header-box"],

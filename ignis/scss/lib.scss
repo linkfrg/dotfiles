@@ -40,3 +40,36 @@ tooltip {
 .material-slider trough highlight {
     background-color: $primary;
 }
+
+.material-slider-icon {
+    padding: 0.25rem;
+    min-width: 1.5rem;
+    min-height: 1.5rem;
+    border-radius: 1rem;
+    margin-right: 0.5rem;
+}
+
+.material-slider-arrow {
+    all: unset;
+    padding: 0.25rem;
+    min-width: 1.5rem;
+    min-height: 1.5rem;
+    border-radius: 1rem;
+    margin-left: 0.5rem;
+}
+
+.hover-surface {
+    @include hover($surface);
+    transition: 0.3s;
+}
+
+.control-center-menu {
+    margin-top: 1rem;
+    background-color: $surfaceContainerHigh;
+    border-radius: 1rem;
+    padding: 1rem;
+
+    separator {
+        margin: 0.5rem 0;
+    }
+}

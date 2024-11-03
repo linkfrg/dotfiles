@@ -45,7 +45,7 @@ def vpn_qsbutton() -> QSButton:
         transition_type="slide_down",
         child=Widget.Box(
             vertical=True,
-            css_classes=["vpn-connection-list"],
+            css_classes=["control-center-menu"],
             child=[
                 Widget.Box(
                     css_classes=["vpn-header-box"],

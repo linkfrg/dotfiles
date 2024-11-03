@@ -7,7 +7,7 @@ audio = AudioService.get_default()
 
 def volume_scale(stream: Stream) -> Widget.Scale:
     return Widget.Scale(
-        css_classes=["volume-slider"],
+        css_classes=["material-slider"],
         value=stream.bind("volume"),
         step=5,
         hexpand=True,
@@ -49,7 +49,7 @@ def device_list(
     header_label: str, header_icon: str, _type: str, **kwargs
 ) -> Widget.Revealer:
     box = Widget.Box(
-        css_classes=["volume-entry-list"],
+        css_classes=["control-center-menu"],
         vertical=True,
         child=[
             Widget.Box(
@@ -101,7 +101,7 @@ def volume_icon(stream: Stream) -> Widget.Button:
             image=stream.bind("icon_name"),
             pixel_size=18,
         ),
-        css_classes=["volume-icon", "unset"],
+        css_classes=["material-slider-icon", "unset", "hover-surface"],
         on_click=lambda x: stream.set_is_muted(not stream.is_muted),
     )
 
@@ -109,7 +109,7 @@ def volume_icon(stream: Stream) -> Widget.Button:
 def device_list_arrow(device_list: Widget.Revealer) -> Widget.Button:
     return Widget.ArrowButton(
         arrow=Widget.Arrow(pixel_size=20),
-        css_classes=["volume-arrow"],
+        css_classes=["material-slider-arrow", "hover-surface"],
         on_click=lambda x: device_list.toggle(),
     )
 
