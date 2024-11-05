@@ -39,3 +39,4 @@ ttf-jetbrains-mono-nerd
 ttf-nerd-fonts-symbols
 papirus-icon-theme
 upower
+wl-clipboard
