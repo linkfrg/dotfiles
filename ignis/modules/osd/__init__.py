@@ -24,7 +24,7 @@ class OSD(Widget.Window):
                     ),
                     Widget.Scale(
                         value=audio.speaker.bind("volume"),
-                        css_classes=["volume-slider"],
+                        css_classes=["material-slider"],
                         sensitive=False,
                         hexpand=True,
                     ),
