@@ -19,7 +19,7 @@ class TrayItem(Widget.Button):
                 ]
             ),
             tooltip_text=item.bind("tooltip"),
-            on_click=lambda x: menu.popup() if menu else None,
+            on_click=lambda x: item.activate(),
             on_right_click=lambda x: menu.popup() if menu else None,
             css_classes=["tray-item", "unset"],
         )
