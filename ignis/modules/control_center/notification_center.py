@@ -199,7 +199,7 @@ def notification_list() -> Widget.Box:
     Utils.ThreadTask(
         load_notifications,
         lambda result: box.set_child(result + [no_notifications_label()]),
-    )
+    ).run()
 
     return box
 
