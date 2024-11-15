@@ -141,7 +141,7 @@ def launcher() -> Widget.Window:
             app_list.visible = False
             return
 
-        apps = applications.search(query)
+        apps = applications.search(applications.apps, query)
         if apps == []:
             app_list.child = [SearchWebButton(query)]
         else:
