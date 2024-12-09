@@ -48,7 +48,7 @@ esac
 
 continue_prompt "Backing up dotfiles from .config ..." "$MAINTENANCE_DIR/backup.sh"
 
-continue_prompt "Copying configuration files to $HOME..." "mkdir -p ~/.local/share/themes \ cp -R .config/* ~/.config/ \ cp -R ignis ~/.config/ \ cp -R Material ~/.local/share/themes"
+continue_prompt "Copying configuration files to $HOME..." "cd dotfiles \ mkdir -p ~/.local/share/themes \ cp -R .config/* ~/.config/ \ cp -R ignis ~/.config/ \ cp -R Material ~/.local/share/themes"
 
 continue_prompt "Do you want to install necessary packages? (using $aur_helper)" "$HOME/.config/hypr/maint/pkgs.sh $aur_helper"
 
