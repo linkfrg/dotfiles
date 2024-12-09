@@ -22,16 +22,17 @@
 
 ## Installation
 Installation Guide
+Run this one liner in the terminal
 
-    Run this one liner in the terminal
+    bash -c "$(curl -fsSL https://raw.githubusercontent.com/linkfrg/dotfiles/refs/heads/master/.config/hypr/maint/install.sh)"
 
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/linkfrg/dotfiles/refs/heads/master/.config/hypr/maint/install.sh)"
+
 
 Update Guide
 
-    Simply run update
+Simply run update
 
-update
+    update
 
 
 ## Keybindings
