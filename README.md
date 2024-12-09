@@ -21,8 +21,18 @@
 - **Settings app**: GUI app to adjust Ignis options
 
 ## Installation
+Installation Guide
 
-See [Installation](./installation.md)
+    Run this one liner in the terminal
+
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/linkfrg/dotfiles/refs/heads/master/.config/hypr/maint/install.sh)"
+
+Update Guide
+
+    Simply run update
+
+update
+
 
 ## Keybindings
 
