@@ -1,15 +1,11 @@
-from check_version import check_version
-
-check_version()
-
-from ignis.utils import Utils  # noqa: E402
-from ignis.app import IgnisApp  # noqa: E402
-from modules.control_center import control_center  # noqa: E402
-from modules.bar import bar  # noqa: E402
-from modules.notification_popup import notification_popup  # noqa: E402
-from modules.osd import OSD  # noqa: E402
-from modules.powermenu import powermenu  # noqa: E402
-from modules.launcher import launcher  # noqa: E402
+from ignis.utils import Utils
+from ignis.app import IgnisApp
+from modules.control_center import control_center
+from modules.bar import bar
+from modules.notification_popup import notification_popup
+from modules.osd import OSD
+from modules.powermenu import powermenu
+from modules.launcher import launcher
 
 Utils.exec_sh("gsettings set org.gnome.desktop.interface gtk-theme Material")
 Utils.exec_sh("gsettings set org.gnome.desktop.interface icon-theme Papirus")
