@@ -18,7 +18,7 @@ MEDIA_ART_FALLBACK = Utils.get_current_dir() + "/../../misc/media-art-fallback.p
 os.makedirs(MEDIA_SCSS_CACHE_DIR, exist_ok=True)
 
 
-PLAYER_ICONS = {"spotify": "󰓇", "firefox": "󰈹", "chrome": "󰊯", None: ""}
+PLAYER_ICONS = {"spotify": "spotify-symbolic", "firefox": "firefox-browser-symbolic", "chrome": "chrome-symbolic", None: ""}
 
 
 class Player(Widget.Revealer):
@@ -41,8 +41,9 @@ class Player(Widget.Revealer):
                         vexpand=True,
                         css_classes=[self.get_css("media-image-gradient")],
                     ),
-                    Widget.Label(
-                        label=self.get_player_icon(),
+                    Widget.Icon(
+                        icon_name=self.get_player_icon(),
+                        pixel_size=22,
                         halign="start",
                         valign="start",
                         css_classes=[self.get_css("media-player-icon")],

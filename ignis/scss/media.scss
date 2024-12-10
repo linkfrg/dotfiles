@@ -70,9 +70,8 @@
 
 .media-player-icon-{{ desktop_entry }} {
     color: {{ primary }};
-    font-size: 1.6rem;
     padding: 1rem;
-    font-family: "JetBrains Mono Nerd Font";
+    padding-top: 1.2rem;
 }
 
 .media-skip-button-{{ desktop_entry }} {
