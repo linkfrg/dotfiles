@@ -10,7 +10,7 @@ fetch = FetchService.get_default()
 app = IgnisApp.get_default()
 
 
-def format_uptime(value):
+def format_uptime(value: tuple[int, int, int, int]) -> str:
     days, hours, minutes, seconds = value
     if days:
         return f"up {days:02}:{hours:02}:{minutes:02}"

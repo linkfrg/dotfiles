@@ -1,4 +1,4 @@
-from .qs_button import QSButton
+from ..qs_button import QSButton
 from ignis.services.notifications import NotificationService
 
 notifications = NotificationService.get_default()

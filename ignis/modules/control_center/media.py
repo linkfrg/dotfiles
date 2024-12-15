@@ -18,7 +18,7 @@ MEDIA_ART_FALLBACK = Utils.get_current_dir() + "/../../misc/media-art-fallback.p
 os.makedirs(MEDIA_SCSS_CACHE_DIR, exist_ok=True)
 
 
-PLAYER_ICONS = {"spotify": "spotify-symbolic", "firefox": "firefox-browser-symbolic", "chrome": "chrome-symbolic", None: ""}
+PLAYER_ICONS = {"spotify": "spotify-symbolic", "firefox": "firefox-browser-symbolic", "chrome": "chrome-symbolic", None: "folder-music-symbolic"}
 
 
 class Player(Widget.Revealer):

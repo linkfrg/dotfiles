@@ -1,6 +1,7 @@
 from ignis.widgets import Widget
 from ignis.utils import Utils
 from ignis.services.audio import AudioService, Stream
+from .menu import Menu
 
 audio = AudioService.get_default()
 
@@ -48,9 +49,8 @@ def device_entry(stream: Stream, _type: str) -> Widget.Button:
 def device_list(
     header_label: str, header_icon: str, _type: str, **kwargs
 ) -> Widget.Revealer:
-    box = Widget.Box(
-        css_classes=["control-center-menu"],
-        vertical=True,
+    return Menu(
+        name=f"volume-{_type}",
         child=[
             Widget.Box(
                 child=[
@@ -87,11 +87,6 @@ def device_list(
                 on_click=lambda x: Utils.exec_sh_async("pavucontrol"),
             ),
         ],
-        **kwargs,
-    )
-
-    return Widget.Revealer(
-        child=box, transition_type="slide_down", transition_duration=300
     )
 
 
@@ -107,8 +102,8 @@ def volume_icon(stream: Stream) -> Widget.Button:
 
 
 def device_list_arrow(device_list: Widget.Revealer) -> Widget.Button:
-    return Widget.ArrowButton(
-        arrow=Widget.Arrow(pixel_size=20),
+    return Widget.Button(
+        child=Widget.Arrow(pixel_size=20, rotated=device_list.bind("reveal_child")),
         css_classes=["material-slider-arrow", "hover-surface"],
         on_click=lambda x: device_list.toggle(),
     )

@@ -5,7 +5,7 @@ from .dnd import dnd_button
 from .dark_mode import dark_mode_button
 from .ethernet import ethernet_control
 from .vpn import vpn_control
-from .qs_button import QSButton
+from ..qs_button import QSButton
 from ignis.services.network import NetworkService
 
 network = NetworkService.get_default()

@@ -1,5 +1,5 @@
 from services.material import MaterialService
-from .qs_button import QSButton
+from ..qs_button import QSButton
 
 material = MaterialService.get_default()
 

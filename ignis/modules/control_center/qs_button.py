@@ -2,6 +2,7 @@ from ignis.widgets import Widget
 from gi.repository import GObject  # type: ignore
 from typing import Callable
 from ignis.gobject import Binding
+from .menu import Menu
 
 
 class QSButton(Widget.Button):
@@ -11,7 +12,7 @@ class QSButton(Widget.Button):
         icon_name: str | Binding,
         on_activate: Callable | None = None,
         on_deactivate: Callable | None = None,
-        content: Widget.Revealer | None = None,
+        content: Menu | None = None,
         **kwargs,
     ):
         self.on_activate = on_activate

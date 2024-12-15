@@ -205,7 +205,7 @@ def notification_list() -> Widget.Box:
 
 
 def notification_center() -> Widget.Box:
-    main_box = Widget.Box(
+    return Widget.Box(
         vertical=True,
         vexpand=True,
         css_classes=["notification-center"],
@@ -238,5 +238,3 @@ def notification_center() -> Widget.Box:
             ),
         ],
     )
-
-    return main_box

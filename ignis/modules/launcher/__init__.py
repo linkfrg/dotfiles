@@ -192,7 +192,6 @@ def launcher() -> Widget.Window:
         visible=False,
         popup=True,
         kb_mode="on_demand",
-        # exclusivity="ignore",
         css_classes=["unset"],
         setup=lambda self: self.connect(
             "notify::visible", lambda x, y: on_open(self, entry)

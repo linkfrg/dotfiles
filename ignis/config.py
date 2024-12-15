@@ -1,7 +1,7 @@
 from ignis.utils import Utils
 from ignis.app import IgnisApp
 from modules.control_center import control_center
-from modules.bar import bar
+from modules.bar import Bar
 from modules.notification_popup import notification_popup
 from modules.osd import OSD
 from modules.powermenu import powermenu
@@ -22,7 +22,7 @@ Utils.exec_sh("hyprctl reload")
 
 control_center()
 for monitor in range(Utils.get_n_monitors()):
-    bar(monitor)
+    Bar(monitor)
 launcher()
 for monitor in range(Utils.get_n_monitors()):
     notification_popup(monitor)
