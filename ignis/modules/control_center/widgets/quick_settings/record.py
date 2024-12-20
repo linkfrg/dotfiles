@@ -1,40 +1,21 @@
 from ignis.widgets import Widget
-from .qs_button import QSButton
+from ...qs_button import QSButton
+from ...menu import Menu
 from ignis.services.recorder import RecorderService
 
 recorder = RecorderService.get_default()
 
 
-def record_control() -> QSButton:
-    record_audio_switch = Widget.Switch(halign="end", hexpand=True, valign="center")
-    dropdown = Widget.DropDown(
-        items=["Internal audio", "Microphone", "Both sources"],
-        css_classes=["record-dropdown"],
-    )
-
-    def start_recording(record_menu: Widget.Revealer) -> None:
-        record_menu.set_reveal_child(False)
-        microphone = False
-        internal = False
-        if record_audio_switch.active:
-            if dropdown.selected == "Internal audio":
-                internal = True
-            elif dropdown.selected == "Microphone":
-                microphone = True
-            else:
-                internal = True
-                microphone = True
-
-        recorder.start_recording(
-            record_microphone=microphone, record_internal_audio=internal
+class RecordMenu(Menu):
+    def __init__(self):
+        self._audio_switch = Widget.Switch(halign="end", hexpand=True, valign="center")
+        self._dropdown = Widget.DropDown(
+            items=["Internal audio", "Microphone", "Both sources"],
+            css_classes=["record-dropdown"],
         )
 
-    record_menu = Widget.Revealer(
-        transition_duration=300,
-        transition_type="slide_down",
-        child=Widget.Box(
-            css_classes=["record-menu"],
-            vertical=True,
+        super().__init__(
+            name="recording",
             child=[
                 Widget.Icon(
                     image="media-record-symbolic",
@@ -63,10 +44,10 @@ def record_control() -> QSButton:
                                     style="font-size: 1.1rem;",
                                     halign="start",
                                 ),
-                                dropdown,
+                                self._dropdown,
                             ],
                         ),
-                        record_audio_switch,
+                        self._audio_switch,
                     ],
                 ),
                 Widget.Box(
@@ -75,26 +56,47 @@ def record_control() -> QSButton:
                         Widget.Button(
                             child=Widget.Label(label="Cancel"),
                             css_classes=["record-cancel-button", "unset"],
-                            on_click=lambda x: record_menu.set_reveal_child(False),  # type: ignore
+                            on_click=lambda x: self.set_reveal_child(False),  # type: ignore
                         ),
                         Widget.Button(
                             child=Widget.Label(label="Start recording"),
                             halign="end",
                             hexpand=True,
                             css_classes=["record-start-button", "unset"],
-                            on_click=lambda x: start_recording(record_menu),  # type: ignore
+                            on_click=lambda x: self.__start_recording(),  # type: ignore
                         ),
                     ],
                 ),
             ],
-        ),
-    )
+        )
 
-    return QSButton(
-        label="Recording",
-        icon_name="media-record-symbolic",
-        on_activate=lambda x: record_menu.toggle(),
-        on_deactivate=lambda x: recorder.stop_recording(),
-        active=recorder.bind("active"),
-        content=record_menu,
-    )
+    def __start_recording(self) -> None:
+        self.set_reveal_child(False)
+        microphone = False
+        internal = False
+        if self._audio_switch.active:
+            if self._dropdown.selected == "Internal audio":
+                internal = True
+            elif self._dropdown.selected == "Microphone":
+                microphone = True
+            else:
+                internal = True
+                microphone = True
+
+        recorder.start_recording(
+            record_microphone=microphone, record_internal_audio=internal
+        )
+
+
+class RecordButton(QSButton):
+    def __init__(self):
+        record_menu = RecordMenu()
+
+        super().__init__(
+            label="Recording",
+            icon_name="media-record-symbolic",
+            on_activate=lambda x: record_menu.toggle(),
+            on_deactivate=lambda x: recorder.stop_recording(),
+            active=recorder.bind("active"),
+            content=record_menu,
+        )

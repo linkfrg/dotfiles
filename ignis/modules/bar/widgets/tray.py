@@ -1,15 +1,15 @@
 from ignis.widgets import Widget
-from ignis.services.system_tray import SystemTrayService
+from ignis.services.system_tray import SystemTrayService, SystemTrayItem
 
 system_tray = SystemTrayService.get_default()
 
 
 class TrayItem(Widget.Button):
-    def __init__(self, item):
+    __gtype_name__ = "TrayItem"
+
+    def __init__(self, item: SystemTrayItem):
         if item.menu:
             menu = item.menu.copy()
-        else:
-            menu = None
 
         super().__init__(
             child=Widget.Box(
@@ -20,18 +20,20 @@ class TrayItem(Widget.Button):
             ),
             tooltip_text=item.bind("tooltip"),
             on_click=lambda x: item.activate(),
+            setup=lambda self: item.connect("removed", lambda x: self.unparent()),
             on_right_click=lambda x: menu.popup() if menu else None,
             css_classes=["tray-item", "unset"],
         )
 
-        item.connect("removed", lambda x: self.unparent())
 
+class Tray(Widget.Box):
+    __gtype_name__ = "Tray"
 
-def tray():
-    return Widget.Box(
-        css_classes=["tray"],
-        setup=lambda self: system_tray.connect(
-            "added", lambda x, item: self.append(TrayItem(item))
-        ),
-        spacing=10,
-    )
+    def __init__(self):
+        super().__init__(
+            css_classes=["tray"],
+            setup=lambda self: system_tray.connect(
+                "added", lambda x, item: self.append(TrayItem(item))
+            ),
+            spacing=10,
+        )

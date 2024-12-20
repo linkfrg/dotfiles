@@ -81,10 +81,21 @@
 }
 
 @keyframes recorder-animation {
-    0% { opacity: 0; }
-    50% { opacity: 1; }
-    90% { opacity: 1; }
-    100% { opacity: 0; }
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
 }
 
 .record-indicator {
@@ -110,16 +121,14 @@
 
 .battery-scale trough,
 .battery-scale trough highlight {
-    background-color: $surfaceContainerHighest;
-    border-radius: 0.5rem;
-    min-height: 1.5rem;
-    min-width: 6rem;
+    background: $surface;
+    border-radius: 1rem;
+    min-height: 1.3rem;
+    min-width: 5rem;
 }
 
-
 .battery-scale trough highlight {
-    background-color: $primary;
-    min-width: 0rem;
+    background: $primary;
 }
 
 .battery-icon {
