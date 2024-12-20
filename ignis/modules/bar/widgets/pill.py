@@ -33,6 +33,14 @@ class EthernetIcon(NetworkIndicatorIcon):
         super().__init__(device_type=network.ethernet, other_device_type=network.wifi)
 
 
+class VpnIcon(IndicatorIcon):
+    def __init__(self):
+        super().__init__(
+            image=network.vpn.bind("icon_name"),
+            visible=network.vpn.bind("is_connected"),
+        )
+
+
 class DNDIcon(IndicatorIcon):
     def __init__(self):
         super().__init__(
@@ -77,6 +85,7 @@ class StatusPill(Widget.Button):
                     RecorderIcon(),
                     WifiIcon(),
                     EthernetIcon(),
+                    VpnIcon(),
                     VolumeIcon(),
                     DNDIcon(),
                     Widget.Label(

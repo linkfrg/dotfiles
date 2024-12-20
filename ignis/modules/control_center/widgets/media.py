@@ -12,13 +12,18 @@ mpris = MprisService.get_default()
 app = IgnisApp.get_default()
 material = MaterialService.get_default()
 
-MEDIA_TEMPLATE = Utils.get_current_dir() + "/../../scss/media.scss"
+MEDIA_TEMPLATE = Utils.get_current_dir() + "/media.scss"
 MEDIA_SCSS_CACHE_DIR = ignis.CACHE_DIR + "/media"  # type: ignore
-MEDIA_ART_FALLBACK = Utils.get_current_dir() + "/../../misc/media-art-fallback.png"
+MEDIA_ART_FALLBACK = Utils.get_current_dir() + "/../../../misc/media-art-fallback.png"
 os.makedirs(MEDIA_SCSS_CACHE_DIR, exist_ok=True)
 
 
-PLAYER_ICONS = {"spotify": "spotify-symbolic", "firefox": "firefox-browser-symbolic", "chrome": "chrome-symbolic", None: "folder-music-symbolic"}
+PLAYER_ICONS = {
+    "spotify": "spotify-symbolic",
+    "firefox": "firefox-browser-symbolic",
+    "chrome": "chrome-symbolic",
+    None: "folder-music-symbolic",
+}
 
 
 class Player(Widget.Revealer):
@@ -188,16 +193,17 @@ class Player(Widget.Revealer):
         app.apply_css(self._colors_path)
 
 
-def media() -> Widget.Box:
-    def add_player(box: Widget.Box, obj: MprisPlayer) -> None:
-        player = Player(obj)
-        box.append(player)
-        player.set_reveal_child(True)
+class Media(Widget.Box):
+    def __init__(self):
+        super().__init__(
+            vertical=True,
+            setup=lambda self: mpris.connect(
+                "player_added", lambda x, player: self.__add_player(player)
+            ),
+            css_classes=["rec-unset"],
+        )
 
-    return Widget.Box(
-        vertical=True,
-        setup=lambda self: mpris.connect(
-            "player_added", lambda x, player: add_player(self, player)
-        ),
-        css_classes=["rec-unset"],
-    )
+    def __add_player(self, obj: MprisPlayer) -> None:
+        player = Player(obj)
+        self.append(player)
+        player.set_reveal_child(True)

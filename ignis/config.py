@@ -1,11 +1,6 @@
 from ignis.utils import Utils
 from ignis.app import IgnisApp
-from modules.control_center import control_center
-from modules.bar import Bar
-from modules.notification_popup import notification_popup
-from modules.osd import OSD
-from modules.powermenu import powermenu
-from modules.launcher import launcher
+from modules import Bar, ControlCenter, Launcher, NotificationPopup, OSD, Powermenu
 
 app = IgnisApp.get_default()
 
@@ -20,12 +15,14 @@ Utils.exec_sh(
 Utils.exec_sh("hyprctl reload")
 
 
-control_center()
+ControlCenter()
+
 for monitor in range(Utils.get_n_monitors()):
     Bar(monitor)
-launcher()
-for monitor in range(Utils.get_n_monitors()):
-    notification_popup(monitor)
 
-powermenu()
+for monitor in range(Utils.get_n_monitors()):
+    NotificationPopup(monitor)
+
+Launcher()
+Powermenu()
 OSD()
