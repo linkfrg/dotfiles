@@ -161,10 +161,11 @@ class Player(Widget.Revealer):
             return PLAYER_ICONS["firefox"]
         elif self._player.desktop_entry == "spotify":
             return PLAYER_ICONS["spotify"]
-        elif "chromium" in self._player.track_id or "chrome" in self._player.track_id:
-            return PLAYER_ICONS["chrome"]
-        else:
-            return PLAYER_ICONS[None]
+        elif self._player.track_id is not None:
+            if "chromium" in self._player.track_id or "chrome" in self._player.track_id:
+                return PLAYER_ICONS["chrome"]
+
+        return PLAYER_ICONS[None]
 
     def destroy(self) -> None:
         self.set_reveal_child(False)

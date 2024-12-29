@@ -3,7 +3,6 @@ from ignis.widgets import Widget
 from ignis.utils import Utils
 from ignis.app import IgnisApp
 from ignis.services.fetch import FetchService
-from ...settings import settings_window
 from options import avatar_opt
 
 fetch = FetchService.get_default()
@@ -53,7 +52,7 @@ class User(Widget.Box):
             halign="end",
             hexpand=True,
             css_classes=["user-settings", "unset"],
-            on_click=lambda x: settings_window(),
+            on_click=lambda x: self.__on_settings_button_click(),
         )
 
         power_button = Widget.Button(
@@ -66,3 +65,7 @@ class User(Widget.Box):
             child=[user_image, username, settings_button, power_button],
             css_classes=["user"],
         )
+
+    def __on_settings_button_click(self) -> None:
+        window = app.get_window("ignis_SETTINGS")
+        window.visible = not window.visible

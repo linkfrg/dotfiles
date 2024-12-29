@@ -1,6 +1,6 @@
 from ignis.utils import Utils
 from ignis.app import IgnisApp
-from modules import Bar, ControlCenter, Launcher, NotificationPopup, OSD, Powermenu
+from modules import Bar, ControlCenter, Launcher, NotificationPopup, OSD, Powermenu, Settings
 
 app = IgnisApp.get_default()
 
@@ -26,3 +26,5 @@ for monitor in range(Utils.get_n_monitors()):
 Launcher()
 Powermenu()
 OSD()
+
+Settings()

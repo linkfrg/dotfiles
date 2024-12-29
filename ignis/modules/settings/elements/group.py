@@ -1,4 +1,3 @@
-from typing import List
 from ignis.widgets import Widget
 from .row import SettingsRow
 from ignis.base_widget import BaseWidget
@@ -6,7 +5,7 @@ from ignis.base_widget import BaseWidget
 
 class SettingsGroup(Widget.Box):
     def __init__(
-        self, name: str | None, rows: List[SettingsRow | BaseWidget] = [], **kwargs
+        self, name: str | None, rows: list[SettingsRow | BaseWidget] = [], **kwargs
     ):
         super().__init__(
             vertical=True,
