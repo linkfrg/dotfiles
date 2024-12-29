@@ -100,7 +100,7 @@ class VpnButton(QSButton):
             on_activate=lambda x: menu.toggle(),
             on_deactivate=lambda x: menu.toggle(),
             active=network.vpn.bind("is-connected"),
-            content=menu,
+            menu=menu,
         )
 
 

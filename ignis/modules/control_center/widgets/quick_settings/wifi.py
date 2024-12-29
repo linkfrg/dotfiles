@@ -97,7 +97,7 @@ class WifiButton(QSButton):
             on_activate=toggle_list,
             on_deactivate=toggle_list,
             active=network.wifi.bind("enabled"),
-            content=menu,
+            menu=menu,
         )
 
 

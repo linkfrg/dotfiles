@@ -98,5 +98,5 @@ class RecordButton(QSButton):
             on_activate=lambda x: record_menu.toggle(),
             on_deactivate=lambda x: recorder.stop_recording(),
             active=recorder.bind("active"),
-            content=record_menu,
+            menu=record_menu,
         )

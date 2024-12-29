@@ -89,7 +89,7 @@ class EthernetButton(QSButton):
             icon_name="network-wired-symbolic",
             on_activate=lambda x: menu.toggle(),
             on_deactivate=lambda x: menu.toggle(),
-            content=menu,
+            menu=menu,
             active=network.ethernet.bind("is_connected"),
         )
 
