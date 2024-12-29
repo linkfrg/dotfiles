@@ -125,5 +125,5 @@ class VolumeSlider(Widget.Box):
                 Widget.Box(child=[icon, scale, arrow]),
                 device_menu,
             ],
-            css_classes=[f"volume-mainbox-{_type}"]
+            css_classes=[f"volume-mainbox-{_type}"],
         )

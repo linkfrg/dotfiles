@@ -1,6 +1,13 @@
 from ignis.widgets import Widget
 from ignis.app import IgnisApp
-from .widgets import QuickSettings, Brightness, VolumeSlider, User, Media, NotificationCenter
+from .widgets import (
+    QuickSettings,
+    Brightness,
+    VolumeSlider,
+    User,
+    Media,
+    NotificationCenter,
+)
 from .menu import opened_menu
 
 app = IgnisApp.get_default()
@@ -52,6 +59,8 @@ class ControlCenter(Widget.RevealerWindow):
                     revealer,
                 ],
             ),
-            setup=lambda self: self.connect("notify::visible", lambda x, y: opened_menu.set_value("")),
+            setup=lambda self: self.connect(
+                "notify::visible", lambda x, y: opened_menu.set_value("")
+            ),
             revealer=revealer,
         )

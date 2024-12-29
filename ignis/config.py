@@ -1,6 +1,14 @@
 from ignis.utils import Utils
 from ignis.app import IgnisApp
-from modules import Bar, ControlCenter, Launcher, NotificationPopup, OSD, Powermenu, Settings
+from modules import (
+    Bar,
+    ControlCenter,
+    Launcher,
+    NotificationPopup,
+    OSD,
+    Powermenu,
+    Settings,
+)
 
 app = IgnisApp.get_default()
 

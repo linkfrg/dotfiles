@@ -18,9 +18,12 @@ class NetworkIndicatorIcon(IndicatorIcon):
 
         super().__init__(icon_name=device_type.bind("icon-name"))
 
-        self.visible = device_type.bind("devices", self.__check_visibility)
-        self.visible = other_device_type.bind("is_connected", self.__check_visibility)
-        self.visible = device_type.bind("is_connected", self.__check_visibility)
+        for binding in (
+            device_type.bind("devices", self.__check_visibility),
+            other_device_type.bind("is_connected", self.__check_visibility),
+            device_type.bind("is_connected", self.__check_visibility),
+        ):
+            self.visible = binding  # type: ignore
 
     def __check_visibility(self, *args) -> bool:
         return len(self._device_type.devices) > 0 and (

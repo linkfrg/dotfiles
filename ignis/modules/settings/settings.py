@@ -2,7 +2,13 @@ from ignis.widgets import Widget
 from ignis.app import IgnisApp
 from options import settings_last_page
 from .active_page import active_page
-from .pages import AboutEntry, AppearanceEntry, NotificationsEntry, RecorderEntry, UserEntry
+from .pages import (
+    AboutEntry,
+    AppearanceEntry,
+    NotificationsEntry,
+    RecorderEntry,
+    UserEntry,
+)
 
 app = IgnisApp.get_default()
 

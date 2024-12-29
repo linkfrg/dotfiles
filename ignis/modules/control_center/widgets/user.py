@@ -68,4 +68,4 @@ class User(Widget.Box):
 
     def __on_settings_button_click(self) -> None:
         window = app.get_window("ignis_SETTINGS")
-        window.visible = not window.visible
+        window.visible = not window.visible  # type: ignore

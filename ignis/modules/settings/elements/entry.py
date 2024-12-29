@@ -11,6 +11,7 @@ class SettingsEntry(Widget.ListBoxRow):
         **kwargs,
     ):
         from ..active_page import active_page  # avoid a circular import
+
         super().__init__(
             child=Widget.Box(
                 child=[

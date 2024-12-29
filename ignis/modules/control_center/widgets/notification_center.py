@@ -52,7 +52,7 @@ class NotificationList(Widget.Box):
         notify.reveal_child = True
 
     def __load_notifications(self) -> list[Widget.Label | Popup]:
-        widgets = []
+        widgets: list[Widget.Label | Popup] = []
         for i in notifications.notifications:
             GLib.idle_add(lambda i=i: widgets.append(Popup(i, reveal_child=True)))
 

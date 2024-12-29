@@ -6,4 +6,12 @@ from .osd import OSD
 from .powermenu import Powermenu
 from .settings import Settings
 
-__all__ = ["Bar", "ControlCenter", "Launcher", "NotificationPopup", "OSD", "Powermenu", "Settings"]
+__all__ = [
+    "Bar",
+    "ControlCenter",
+    "Launcher",
+    "NotificationPopup",
+    "OSD",
+    "Powermenu",
+    "Settings",
+]
