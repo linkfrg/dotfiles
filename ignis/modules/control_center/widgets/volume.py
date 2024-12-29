@@ -87,7 +87,7 @@ class DeviceMenu(Menu):
             ],
         )
 
-        self.child.add_css_class(f"volume-menubox-{_type}")
+        self.box.add_css_class(f"volume-menubox-{_type}")
 
 
 class VolumeSlider(Widget.Box):
