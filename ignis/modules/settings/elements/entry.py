@@ -1,6 +1,5 @@
 from ignis.widgets import Widget
 from .page import SettingsPage
-from options import settings_last_page
 
 
 class SettingsEntry(Widget.ListBoxRow):
@@ -8,15 +7,10 @@ class SettingsEntry(Widget.ListBoxRow):
         self,
         icon: str,
         label: str,
-        active_page,
         page: SettingsPage,
         **kwargs,
     ):
-        def callback(x):
-            active_page.page = page
-            active_page.name = label
-            if self in self.parent.rows:
-                settings_last_page.set_value(self.parent.rows.index(self))
+        from ..active_page import active_page  # avoid a circular import
 
         super().__init__(
             child=Widget.Box(
@@ -26,6 +20,6 @@ class SettingsEntry(Widget.ListBoxRow):
                 ],
             ),
             css_classes=["settings-sidebar-entry"],
-            on_activate=callback,
+            on_activate=lambda x: active_page.set_value(page),
             **kwargs,
         )

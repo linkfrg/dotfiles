@@ -18,6 +18,7 @@ tooltip {
 .toggle-box {
     padding: 0.75rem 1rem;
     border-radius: 1rem;
+    font-size: 1.35rem;
     background-color: $primaryContainer;
 }
 
@@ -61,15 +62,4 @@ tooltip {
 .hover-surface {
     @include hover($surface);
     transition: 0.3s;
-}
-
-.control-center-menu {
-    margin-top: 1rem;
-    background-color: $surfaceContainerHigh;
-    border-radius: 1rem;
-    padding: 1rem;
-
-    separator {
-        margin: 0.5rem 0;
-    }
 }

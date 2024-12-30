@@ -2,7 +2,12 @@ from ignis.widgets import Widget
 
 
 class SettingsRow(Widget.ListBoxRow):
-    def __init__(self, label: str | None = None, sublabel: str | None = None, **kwargs):
+    def __init__(
+        self,
+        label: str | None = None,
+        sublabel: str | None = None,
+        **kwargs,
+    ):
         super().__init__(
             css_classes=["settings-row"],
             child=Widget.Box(

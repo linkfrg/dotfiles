@@ -2,6 +2,7 @@ from ignis.widgets import Widget
 from gi.repository import GObject  # type: ignore
 from typing import Callable
 from ignis.gobject import Binding
+from .menu import Menu
 
 
 class QSButton(Widget.Button):
@@ -11,13 +12,13 @@ class QSButton(Widget.Button):
         icon_name: str | Binding,
         on_activate: Callable | None = None,
         on_deactivate: Callable | None = None,
-        content: Widget.Revealer | None = None,
+        menu: Menu | None = None,
         **kwargs,
     ):
         self.on_activate = on_activate
         self.on_deactivate = on_deactivate
         self._active = False
-        self._content = content
+        self._menu = menu
         super().__init__(
             child=Widget.Box(
                 child=[
@@ -27,9 +28,9 @@ class QSButton(Widget.Button):
                         halign="end",
                         hexpand=True,
                         pixel_size=20,
-                        rotated=content.bind("reveal_child"),
+                        rotated=menu.bind("reveal_child"),
                     )
-                    if content
+                    if menu
                     else None,
                 ]
             ),
@@ -60,5 +61,5 @@ class QSButton(Widget.Button):
             self.remove_css_class("active")
 
     @GObject.Property
-    def content(self) -> Widget.Revealer | None:
-        return self._content
+    def menu(self) -> Menu | None:
+        return self._menu

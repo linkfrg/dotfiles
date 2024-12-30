@@ -1,0 +1,84 @@
+// JINJA2 TEMPLATE
+// WARNING: Do not import this file in style.scss
+
+.media-{{ desktop_entry }} {
+    margin-top: 1rem;
+}
+
+
+.media-image-{{ desktop_entry }} {
+    background-image: url('file:///{{ art_url }}');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-height: 11rem;
+    border-radius: 1.5rem;
+}
+
+.media-image-gradient-{{ desktop_entry }} {
+    border-radius: 1.3rem;
+    background: linear-gradient(90deg, rgba({{ onPrimary }}, 0.9) 0%, rgba({{ onPrimary }}, 0.4) 50%, rgba({{ onPrimary }}, 0.9) 100%);
+}
+
+.media-scale-{{ desktop_entry }} trough,
+.media-scale-{{ desktop_entry }} trough highlight {
+    background-color: rgba({{ onSurface }}, 0.2);
+    border-radius: 1rem;
+    min-height: 0.2rem;
+}
+
+
+.media-scale-{{ desktop_entry }} trough highlight {
+    background-color: {{ onSurface }};
+}
+
+.media-scale-{{ desktop_entry }} slider {
+    background-color: {{ onSurface }};
+    padding: 0.5rem 0.1rem;
+    margin: -0.5rem -0.1rem;
+}
+
+.media-title-{{ desktop_entry }} {
+    color: {{ onSurface }};
+}
+
+.media-artist-{{ desktop_entry }} {
+    color: {{ onSurfaceVariant }};
+    font-weight: normal;
+}
+
+
+.media-content-{{ desktop_entry }} {
+    padding: 1rem;
+}
+
+.media-playback-button-{{ desktop_entry }} {
+    background-color: {{ primary }};
+    color: {{ onPrimary }};
+    border-radius: 4rem;
+    min-width: 2.7rem;
+    min-height: 2.7rem;
+    transition: 0.3s;
+
+    &:hover {
+        background-color: lighten({{ primary }}, 5%);
+    }
+
+    &.playing {
+        border-radius: 1rem;
+    }
+}
+
+.media-player-icon-{{ desktop_entry }} {
+    color: {{ primary }};
+    padding: 1rem;
+    padding-top: 1.2rem;
+}
+
+.media-skip-button-{{ desktop_entry }} {
+    transition: 0.3s;
+    color: {{ onSurface }};
+    &:hover {
+        color: {{ primary }};
+    }
+}
