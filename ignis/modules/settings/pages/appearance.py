@@ -2,9 +2,9 @@ import os
 from services.material import MaterialService
 from ..elements import SwitchRow, SettingsPage, SettingsGroup, FileRow, SettingsEntry
 from ignis.widgets import Widget
-from ignis.services.wallpaper import WallpaperService
+from user_options import user_options
+from ignis.options import options
 
-wallpaper = WallpaperService.get_default()
 material = MaterialService.get_default()
 
 
@@ -18,7 +18,7 @@ class AppearanceEntry(SettingsEntry):
                     rows=[
                         Widget.ListBoxRow(
                             child=Widget.Picture(
-                                image=wallpaper.bind("wallpaper"),
+                                image=options.wallpaper.bind("wallpaper_path"),
                                 width=1920 // 4,
                                 height=1080 // 4,
                                 halign="center",
@@ -30,20 +30,23 @@ class AppearanceEntry(SettingsEntry):
                         ),
                         SwitchRow(
                             label="Dark mode",
-                            active=material.bind("dark_mode"),
-                            on_change=lambda x, state: material.set_dark_mode(state),
+                            active=user_options.material.bind("dark_mode"),
+                            on_change=lambda x,
+                            state: user_options.material.set_dark_mode(state),
                             style="margin-top: 1rem;",
                         ),
                         FileRow(
                             label="Wallpaper path",
-                            button_label=os.path.basename(wallpaper.wallpaper)
-                            if wallpaper.wallpaper
+                            button_label=os.path.basename(
+                                options.wallpaper.wallpaper_path
+                            )
+                            if options.wallpaper.wallpaper_path
                             else None,
                             dialog=Widget.FileDialog(
                                 on_file_set=lambda x, file: material.generate_colors(
                                     file.get_path()
                                 ),
-                                initial_path=wallpaper.bind("wallpaper"),
+                                initial_path=options.wallpaper.bind("wallpaper_path"),
                                 filters=[
                                     Widget.FileFilter(
                                         mime_types=["image/jpeg", "image/png"],

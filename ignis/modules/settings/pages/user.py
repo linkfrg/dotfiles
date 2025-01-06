@@ -1,7 +1,7 @@
 import os
 from ..elements import SettingsGroup, SettingsPage, SettingsEntry, FileRow
 from ignis.widgets import Widget
-from options import avatar_opt
+from user_options import user_options
 
 
 class UserEntry(SettingsEntry):
@@ -14,8 +14,8 @@ class UserEntry(SettingsEntry):
                     style="margin-left: 2rem;",
                     child=[
                         Widget.Picture(
-                            image=avatar_opt.bind(
-                                "value",
+                            image=user_options.user.bind(
+                                "avatar",
                                 lambda value: "user-info"
                                 if not os.path.exists(value)
                                 else value,
@@ -38,8 +38,8 @@ class UserEntry(SettingsEntry):
                         FileRow(
                             label="Avatar",
                             dialog=Widget.FileDialog(
-                                initial_path=avatar_opt.bind("value"),
-                                on_file_set=lambda x, gfile: avatar_opt.set_value(
+                                initial_path=user_options.user.bind("avatar"),
+                                on_file_set=lambda x, gfile: user_options.user.set_avatar(
                                     gfile.get_path()
                                 ),
                             ),

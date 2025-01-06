@@ -1,11 +1,10 @@
 from ..elements import SettingsPage, SettingsRow, SettingsEntry, SettingsGroup
 from ignis.utils import Utils
 from ignis.widgets import Widget
-from services.material import MaterialService
 from ignis.services.fetch import FetchService
+from user_options import user_options
 
 fetch = FetchService.get_default()
-material = MaterialService.get_default()
 
 
 class AboutEntry(SettingsEntry):
@@ -16,7 +15,7 @@ class AboutEntry(SettingsEntry):
                 Widget.Box(
                     child=[
                         Widget.Picture(
-                            image=material.bind(
+                            image=user_options.material.bind(
                                 "dark_mode",
                                 transform=lambda value: fetch.os_logo_text_dark
                                 if value

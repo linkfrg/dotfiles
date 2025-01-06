@@ -1,6 +1,6 @@
 from ignis.widgets import Widget
 from ignis.app import IgnisApp
-from options import settings_last_page
+from user_options import user_options
 from .active_page import active_page
 from .pages import (
     AboutEntry,
@@ -63,9 +63,9 @@ class Settings(Widget.RegularWindow):
         ]
 
         self._listbox.rows = rows
-        self._listbox.select_row(rows[settings_last_page.value])
+        self._listbox.select_row(rows[user_options.settings.last_page])
 
         self._listbox.connect("row-activated", self.__update_last_page)
 
     def __update_last_page(self, x, row) -> None:
-        settings_last_page.set_value(self._listbox.rows.index(row))
+        user_options.settings.last_page = self._listbox.rows.index(row)

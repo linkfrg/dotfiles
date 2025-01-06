@@ -13,9 +13,8 @@ from ignis.utils import Utils
 from ignis.app import IgnisApp
 from ignis.base_service import BaseService
 from ignis.services.wallpaper import CACHE_WALLPAPER_PATH
-from gi.repository import GObject  # type: ignore
-from ignis.services.wallpaper import WallpaperService
-from ignis.services.options import OptionsService
+from ignis.options import options
+from user_options import user_options
 
 from .constants import MATERIAL_CACHE_DIR, TEMPLATES, SAMPLE_WALL
 from .util import rgba_to_hex, calculate_optimal_size
@@ -27,37 +26,15 @@ class MaterialService(BaseService):
     def __init__(self):
         super().__init__()
 
-        self._wallpaper = WallpaperService.get_default()
-
-        options = OptionsService.get_default()
-        opt_group = options.create_group(name="material", exists_ok=True)
-        self._dark_mode_opt = opt_group.create_option(
-            name="dark_mode", default=True, exists_ok=True
-        )
-        self._colors_opt = opt_group.create_option(
-            name="colors", default={}, exists_ok=True
-        )
-
         if not os.path.exists(CACHE_WALLPAPER_PATH):
             self.__on_colors_not_found()
-        if self.colors == {}:
+        if user_options.material.colors == {}:
             self.__on_colors_not_found()
 
-    @GObject.Property
-    def dark_mode(self) -> bool:
-        return self._dark_mode_opt.value
-
-    @dark_mode.setter
-    def dark_mode(self, value: bool) -> None:
-        self._dark_mode_opt.value = value
-        self.generate_colors(CACHE_WALLPAPER_PATH)
-
-    @GObject.Property
-    def colors(self) -> dict:
-        return self._colors_opt.value
+        user_options.material.connect_option("dark_mode", lambda: self.generate_colors(CACHE_WALLPAPER_PATH))
 
     def __on_colors_not_found(self) -> None:
-        self._wallpaper.set_wallpaper(SAMPLE_WALL)
+        options.wallpaper.set_wallpaper_path(SAMPLE_WALL)
         self.generate_colors(SAMPLE_WALL)
         Utils.exec_sh_async("hyprctl reload")
 
@@ -88,9 +65,9 @@ class MaterialService(BaseService):
         return material_colors
 
     def generate_colors(self, path: str) -> None:
-        colors = self.get_colors_from_img(path, self.dark_mode)
+        colors = self.get_colors_from_img(path, user_options.material.dark_mode)
         dark_colors = self.get_colors_from_img(path, True)
-        self._colors_opt.value = colors
+        user_options.material.colors = colors
         self.__render_templates(colors, dark_colors)
         self.__setup(path)
 
@@ -98,7 +75,7 @@ class MaterialService(BaseService):
         for template in os.listdir(TEMPLATES):
             self.render_template(
                 colors=colors,
-                dark_mode=self.dark_mode,
+                dark_mode=user_options.material.dark_mode,
                 input_file=f"{TEMPLATES}/{template}",
                 output_file=f"{MATERIAL_CACHE_DIR}/{template}",
             )
@@ -119,7 +96,7 @@ class MaterialService(BaseService):
         dark_mode: bool | None = None,
     ) -> None:
         if dark_mode is None:
-            colors["dark_mode"] = str(self.dark_mode).lower()
+            colors["dark_mode"] = str(user_options.material.dark_mode).lower()
         else:
             colors["dark_mode"] = str(dark_mode).lower()
         with open(input_file) as file:
@@ -139,6 +116,6 @@ class MaterialService(BaseService):
 
     def __setup(self, image_path: str) -> None:
         Utils.exec_sh_async("pkill -SIGUSR1 kitty")
-        self._wallpaper.set_wallpaper(image_path)
+        options.wallpaper.set_wallpaper_path(image_path)
         app.reload_css()
         self.__reload_gtk_theme()

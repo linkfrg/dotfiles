@@ -1,4 +1,3 @@
-from ignis.services.recorder import RecorderService
 from ..elements import (
     SpinRow,
     SettingsPage,
@@ -8,8 +7,7 @@ from ..elements import (
     SettingsEntry,
 )
 from ignis.widgets import Widget
-
-recorder = RecorderService.get_default()
+from ignis.options import options
 
 
 class RecorderEntry(SettingsEntry):
@@ -23,29 +21,29 @@ class RecorderEntry(SettingsEntry):
                         SpinRow(
                             label="Recording bitrate",
                             sublabel="Affects the recording quality",
-                            value=recorder.bind("bitrate"),
+                            value=options.recorder.bind("bitrate"),
                             max=640000,
                             width=150,
-                            on_change=lambda x, value: recorder.set_bitrate(int(value)),
+                            on_change=lambda x, value: options.recorder.set_bitrate(int(value)),
                             step=1000,
                         ),
                         FileRow(
                             label="Recording path",
-                            button_label=recorder.bind("default_file_location"),
+                            button_label=options.recorder.bind("default_file_location"),
                             dialog=Widget.FileDialog(
                                 on_file_set=lambda x,
-                                file: recorder.set_default_file_location(
+                                file: options.recorder.set_default_file_location(
                                     file.get_path()
                                 ),
                                 select_folder=True,
-                                initial_path=recorder.default_file_location,
+                                initial_path=options.recorder.default_file_location,
                             ),
                         ),
                         EntryRow(
                             label="Recording filename",
                             sublabel="Support time formatting",
-                            text=recorder.bind("default_filename"),
-                            on_change=lambda x: recorder.set_default_filename(x.text),
+                            text=options.recorder.bind("default_filename"),
+                            on_change=lambda x: options.recorder.set_default_filename(x.text),
                             width=200,
                         ),
                     ],

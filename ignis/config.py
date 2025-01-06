@@ -1,5 +1,6 @@
 from ignis.utils import Utils
 from ignis.app import IgnisApp
+from ignis.services.wallpaper import WallpaperService
 from modules import (
     Bar,
     ControlCenter,
@@ -11,6 +12,7 @@ from modules import (
 )
 
 app = IgnisApp.get_default()
+WallpaperService.get_default()
 
 app.add_icons(f"{Utils.get_current_dir()}/icons")
 app.apply_css(Utils.get_current_dir() + "/style.scss")

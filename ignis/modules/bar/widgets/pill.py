@@ -8,6 +8,7 @@ from ignis.services.notifications import NotificationService
 from ignis.services.recorder import RecorderService
 from ignis.services.audio import AudioService
 from ..indicator_icon import IndicatorIcon, NetworkIndicatorIcon
+from ignis.options import options
 
 network = NetworkService.get_default()
 notifications = NotificationService.get_default()
@@ -45,7 +46,7 @@ class DNDIcon(IndicatorIcon):
     def __init__(self):
         super().__init__(
             image="notification-disabled-symbolic",
-            visible=notifications.bind("dnd"),
+            visible=options.notifications.bind("dnd"),
         )
 
 
