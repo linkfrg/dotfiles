@@ -3,6 +3,7 @@ from ignis.utils import Utils
 from ignis.services.audio import AudioService, Stream
 from typing import Literal
 from ..menu import Menu
+from ...shared_widgets import MaterialVolumeSlider
 
 audio = AudioService.get_default()
 
@@ -105,11 +106,8 @@ class VolumeSlider(Widget.Box):
 
         device_menu = DeviceMenu(_type=_type)
 
-        scale = Widget.Scale(
-            css_classes=["material-slider"],
-            value=stream.bind("volume"),
-            step=5,
-            hexpand=True,
+        scale = MaterialVolumeSlider(
+            stream=stream,
             on_change=lambda x: stream.set_volume(x.value),
             sensitive=stream.bind("is_muted", lambda value: not value),
         )
