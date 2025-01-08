@@ -13,7 +13,9 @@ class NotificationsEntry(SettingsEntry):
                         SwitchRow(
                             label="Do not disturb",
                             active=options.notifications.bind("dnd"),
-                            on_change=lambda x, state: options.notifications.set_dnd(state),
+                            on_change=lambda x, state: options.notifications.set_dnd(
+                                state
+                            ),
                         ),
                         SpinRow(
                             label="Maximum popups count",
@@ -29,9 +31,8 @@ class NotificationsEntry(SettingsEntry):
                             max=100000,
                             step=100,
                             value=options.notifications.bind("popup_timeout"),
-                            on_change=lambda x, value: options.notifications.set_popup_timeout(
-                                value
-                            ),
+                            on_change=lambda x,
+                            value: options.notifications.set_popup_timeout(value),
                         ),
                     ],
                 )

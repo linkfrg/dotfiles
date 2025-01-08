@@ -39,9 +39,8 @@ class UserEntry(SettingsEntry):
                             label="Avatar",
                             dialog=Widget.FileDialog(
                                 initial_path=user_options.user.bind("avatar"),
-                                on_file_set=lambda x, gfile: user_options.user.set_avatar(
-                                    gfile.get_path()
-                                ),
+                                on_file_set=lambda x,
+                                gfile: user_options.user.set_avatar(gfile.get_path()),
                             ),
                         )
                     ],

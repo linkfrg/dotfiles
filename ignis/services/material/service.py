@@ -31,7 +31,9 @@ class MaterialService(BaseService):
         if user_options.material.colors == {}:
             self.__on_colors_not_found()
 
-        user_options.material.connect_option("dark_mode", lambda: self.generate_colors(CACHE_WALLPAPER_PATH))
+        user_options.material.connect_option(
+            "dark_mode", lambda: self.generate_colors(CACHE_WALLPAPER_PATH)
+        )
 
     def __on_colors_not_found(self) -> None:
         options.wallpaper.set_wallpaper_path(SAMPLE_WALL)

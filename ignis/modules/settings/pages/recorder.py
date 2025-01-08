@@ -24,7 +24,9 @@ class RecorderEntry(SettingsEntry):
                             value=options.recorder.bind("bitrate"),
                             max=640000,
                             width=150,
-                            on_change=lambda x, value: options.recorder.set_bitrate(int(value)),
+                            on_change=lambda x, value: options.recorder.set_bitrate(
+                                int(value)
+                            ),
                             step=1000,
                         ),
                         FileRow(
@@ -43,7 +45,9 @@ class RecorderEntry(SettingsEntry):
                             label="Recording filename",
                             sublabel="Support time formatting",
                             text=options.recorder.bind("default_filename"),
-                            on_change=lambda x: options.recorder.set_default_filename(x.text),
+                            on_change=lambda x: options.recorder.set_default_filename(
+                                x.text
+                            ),
                             width=200,
                         ),
                     ],

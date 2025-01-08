@@ -1,6 +1,7 @@
 import os
 from ignis.options_manager import OptionsGroup, OptionsManager
-from ignis import CACHE_DIR
+from ignis import CACHE_DIR  # type: ignore
+
 
 class UserOptions(OptionsManager):
     def __init__(self):
@@ -17,10 +18,11 @@ class UserOptions(OptionsManager):
 
     class Material(OptionsGroup):
         dark_mode: bool = True
-        colors: dict[str] = {}
+        colors: dict[str, str] = {}
 
     user = User()
     settings = Settings()
     material = Material()
+
 
 user_options = UserOptions()
