@@ -5,6 +5,7 @@ from .dnd import DNDButton
 from .dark_mode import DarkModeButton
 from .ethernet import ethernet_control
 from .vpn import vpn_control
+from .bluetooth import bluetooth_control
 from ...qs_button import QSButton
 from ignis.services.network import NetworkService
 
@@ -29,6 +30,7 @@ class QuickSettings(Widget.Box):
             *wifi_control(),
             *ethernet_control(),
             *vpn_control(),
+            *bluetooth_control(),
             DNDButton(),
             DarkModeButton(),
             RecordButton(),
