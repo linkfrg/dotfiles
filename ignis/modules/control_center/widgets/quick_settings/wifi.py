@@ -41,6 +41,7 @@ class WifiMenu(Menu):
             name="wifi",
             child=[
                 ToggleBox(
+                    label="Wi-Fi",
                     active=network.wifi.enabled,
                     on_change=lambda x, state: network.wifi.set_enabled(state),
                     css_classes=["network-header-box"],
