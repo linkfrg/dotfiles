@@ -30,8 +30,6 @@ class Popup(Widget.Box):
             self.unparent()
             if len(notifications.popups) == 0:
                 self._window.visible = False
-            else:
-                self._box.change_window_input_region()
 
         def outer_close():
             self._outer.reveal_child = False
@@ -61,21 +59,9 @@ class PopupBox(Widget.Box):
         popup = Popup(box=self, window=self._window, notification=notification)
         self.prepend(popup)
         popup._outer.reveal_child = True
-        Utils.Timeout(popup._outer.transition_duration, self.__reveal_popup, popup)
-
-    def __reveal_popup(self, popup: Popup) -> None:
-        popup._inner.set_reveal_child(True)
-        self.change_window_input_region()
-
-    def change_window_input_region(self) -> None:
-        def callback() -> None:
-            width = self.get_width()
-            height = self.get_height()
-
-            self._window.input_width = width
-            self._window.input_height = height
-
-        Utils.Timeout(ms=50, target=callback)
+        Utils.Timeout(
+            popup._outer.transition_duration, popup._inner.set_reveal_child, True
+        )
 
 
 class NotificationPopup(Widget.Window):
@@ -87,6 +73,7 @@ class NotificationPopup(Widget.Window):
             layer="top",
             child=PopupBox(window=self, monitor=monitor),
             visible=False,
+            dynamic_input_region=True,
             css_classes=["rec-unset"],
             style="min-width: 29rem;",
         )
