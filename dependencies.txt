@@ -40,3 +40,4 @@ ttf-nerd-fonts-symbols
 papirus-icon-theme
 upower
 wl-clipboard
+gnome-bluetooth-3.0
