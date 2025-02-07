@@ -1,13 +1,15 @@
 from ignis.widgets import Widget
 from ignis.app import IgnisApp
-from ignis.services.applications import ApplicationsService
+from ignis.services.applications import ApplicationsService, Application
 
 applications = ApplicationsService.get_default()
 app = IgnisApp.get_default()
 
+TERMINAL_FORMAT = "kitty %command%"
+
 
 class AppItem(Widget.Button):
-    def __init__(self, app):
+    def __init__(self, app: Application):
         menu = Widget.PopoverMenu(
             items=[
                 Widget.MenuItem(label="Launch", on_activate=lambda x: app.launch()),
@@ -27,7 +29,7 @@ class AppItem(Widget.Button):
 
         super().__init__(
             child=Widget.Box(child=[Widget.Icon(image=app.icon, pixel_size=32), menu]),
-            on_click=lambda x: app.launch(),
+            on_click=lambda x: app.launch(terminal_format=TERMINAL_FORMAT),
             on_right_click=lambda x: menu.popup(),
             css_classes=["pinned-app", "unset"],
         )

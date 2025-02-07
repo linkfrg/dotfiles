@@ -13,6 +13,8 @@ app = IgnisApp.get_default()
 
 applications = ApplicationsService.get_default()
 
+TERMINAL_FORMAT = "kitty %command%"
+
 
 def is_url(url: str) -> bool:
     regex = re.compile(
@@ -52,7 +54,7 @@ class LauncherAppItem(Widget.Button):
         application.connect("notify::is-pinned", lambda x, y: self.__sync_menu())
 
     def launch(self) -> None:
-        self._application.launch()
+        self._application.launch(terminal_format=TERMINAL_FORMAT)
         app.close_window("ignis_LAUNCHER")
 
     def launch_action(self, action: ApplicationAction) -> None:
