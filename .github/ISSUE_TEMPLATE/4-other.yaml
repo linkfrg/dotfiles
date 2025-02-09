@@ -1,0 +1,9 @@
+name: Other
+description: Something else? if the options above do not suit
+body:
+  - type: textarea
+    attributes:
+      label: Description
+      description: "Provide a description of your issue"
+    validations:
+      required: true

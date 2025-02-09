@@ -1,0 +1,39 @@
+name: Bug Report
+description: Something is not working as expected
+labels: ["bug"]
+body:
+  - type: textarea
+    attributes:
+      label: System Information
+      description: |
+        Paste the output of `ignis systeminfo` below.
+
+      value: "
+        ```
+
+        <Paste the output of the command here>
+
+        ```"
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Description
+      description: "Provide a clear and concise description of the issue you encountered"
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: How to reproduce
+      description: "List the steps to reproduce the issue. Be as detailed as possible to help replicate the problem"
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Additional Information
+      description: |
+        Anything that can help (Logs, Images, Videos, Configs, etc.). Please avoid pasting large text directly.
+        Logs can be found at `~/.ignis/ignis.log`.
