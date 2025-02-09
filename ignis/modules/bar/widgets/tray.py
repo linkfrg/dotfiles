@@ -10,6 +10,8 @@ class TrayItem(Widget.Button):
     def __init__(self, item: SystemTrayItem):
         if item.menu:
             menu = item.menu.copy()
+        else:
+            menu = None
 
         super().__init__(
             child=Widget.Box(
