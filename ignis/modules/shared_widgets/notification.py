@@ -1,3 +1,4 @@
+import asyncio
 from ignis.widgets import Widget
 from ignis.services.notifications import Notification
 from ignis.utils import Utils
@@ -42,8 +43,8 @@ class ScreenshotLayout(Widget.Box):
                         Widget.Button(
                             child=Widget.Label(label="Open"),
                             css_classes=["notification-action"],
-                            on_click=lambda x: Utils.exec_sh_async(
-                                f"xdg-open {notification.icon}"
+                            on_click=lambda x: asyncio.create_task(
+                                Utils.exec_sh_async(f"xdg-open {notification.icon}")
                             ),
                         ),
                         Widget.Button(

@@ -1,4 +1,5 @@
 import re
+import asyncio
 from ignis.widgets import Widget
 from ignis.app import IgnisApp
 from ignis.services.applications import (
@@ -130,7 +131,7 @@ class SearchWebButton(Widget.Button):
         )
 
     def launch(self) -> None:
-        Utils.exec_sh_async(f"xdg-open {self._url}")
+        asyncio.create_task(Utils.exec_sh_async(f"xdg-open {self._url}"))
         app.close_window("ignis_LAUNCHER")
 
 

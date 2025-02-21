@@ -1,3 +1,4 @@
+import asyncio
 from ignis.widgets import Widget
 from ignis.utils import Utils
 from ...qs_button import QSButton
@@ -11,9 +12,9 @@ class EthernetConnectionItem(Widget.Button):
     def __init__(self, device: EthernetDevice):
         super().__init__(
             css_classes=["network-item", "unset"],
-            on_click=lambda x: device.disconnect_from()
+            on_click=lambda x: asyncio.create_task(device.disconnect_from())
             if device.is_connected
-            else device.connect_to(),
+            else asyncio.create_task(device.connect_to()),
             child=Widget.Box(
                 child=[
                     Widget.Icon(image="network-wired-symbolic"),
@@ -65,7 +66,7 @@ class EthernetMenu(Menu):
                 Widget.Button(
                     css_classes=["network-item", "unset"],
                     style="margin-bottom: 0;",
-                    on_click=lambda x: Utils.exec_sh_async("nm-connection-editor"),
+                    on_click=lambda x: asyncio.create_task(Utils.exec_sh_async("nm-connection-editor")),
                     child=Widget.Box(
                         child=[
                             Widget.Icon(image="preferences-system-symbolic"),

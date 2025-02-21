@@ -1,3 +1,4 @@
+import asyncio
 from ignis.widgets import Widget
 from ignis.utils import Utils
 from ignis.services.audio import AudioService, Stream
@@ -83,7 +84,7 @@ class DeviceMenu(Menu):
                     ),
                     css_classes=["volume-entry", "unset"],
                     style="margin-bottom: 0;",
-                    on_click=lambda x: Utils.exec_sh_async("pavucontrol"),
+                    on_click=lambda x: asyncio.create_task(Utils.exec_sh_async("pavucontrol")),
                 ),
             ],
         )
