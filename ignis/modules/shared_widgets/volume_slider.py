@@ -9,7 +9,7 @@ class MaterialVolumeSlider(Widget.Scale):
         super().__init__(
             value=stream.bind_many(
                 ["volume", "is_muted"],
-                lambda volume, is_muted: 0 if is_muted else volume,
+                lambda volume, is_muted: 0 if is_muted or volume is None else volume,
             ),
             css_classes=["material-slider"],
             hexpand=True,
