@@ -8,11 +8,11 @@ class KeyboardLayout(Widget.Button):
     def __init__(self):
         super().__init__(
             css_classes=["kb-layout", "unset"],
-            on_click=lambda x: hyprland.switch_kb_layout(),
+            on_click=lambda x: hyprland.main_keyboard.switch_layout("1"),
             visible=hyprland.is_available,
             child=Widget.Label(
-                label=hyprland.bind(
-                    "kb_layout", transform=lambda value: value[:2].lower()
+                label=hyprland.main_keyboard.bind(
+                    "active_keymap", transform=lambda value: value[:2].lower()
                 )
             ),
         )
