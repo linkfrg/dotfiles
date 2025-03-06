@@ -1,3 +1,4 @@
+import asyncio
 from ignis.widgets import Widget
 from ignis.services.system_tray import SystemTrayService, SystemTrayItem
 
@@ -21,7 +22,7 @@ class TrayItem(Widget.Button):
                 ]
             ),
             tooltip_text=item.bind("tooltip"),
-            on_click=lambda x: item.activate(),
+            on_click=lambda x: asyncio.create_task(item.activate_async()),
             setup=lambda self: item.connect("removed", lambda x: self.unparent()),
             on_right_click=lambda x: menu.popup() if menu else None,
             css_classes=["tray-item", "unset"],

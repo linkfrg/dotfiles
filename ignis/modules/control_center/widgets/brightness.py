@@ -1,3 +1,4 @@
+import asyncio
 from ignis.services.backlight import BacklightService
 from ignis.widgets import Widget
 
@@ -22,7 +23,7 @@ class Brightness(Widget.Box):
                     hexpand=True,
                     value=backlight.bind("brightness"),
                     css_classes=["material-slider"],
-                    on_change=lambda x: backlight.set_brightness(x.value),
+                    on_change=lambda x: asyncio.create_task(backlight.set_brightness_async(x.value)),
                 ),
             ],
         )
