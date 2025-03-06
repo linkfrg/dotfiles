@@ -29,7 +29,6 @@ PLAYER_ICONS = {
 
 class Player(Widget.Revealer):
     def __init__(self, player: MprisPlayer) -> None:
-        self._set_pos_task = None
         self._player = player
         self._colors_path = f"{MEDIA_SCSS_CACHE_DIR}/{self._player.desktop_entry}.scss"
         player.connect("closed", lambda x: self.destroy())
