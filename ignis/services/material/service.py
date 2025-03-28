@@ -13,7 +13,6 @@ from materialyoucolor.score.score import Score
 from ignis.utils import Utils
 from ignis.app import IgnisApp
 from ignis.base_service import BaseService
-from ignis.services.wallpaper import CACHE_WALLPAPER_PATH
 from ignis.options import options
 from user_options import user_options
 
@@ -27,13 +26,13 @@ class MaterialService(BaseService):
     def __init__(self):
         super().__init__()
 
-        if not os.path.exists(CACHE_WALLPAPER_PATH):
+        if not options.wallpaper.wallpaper_path:
             self.__on_colors_not_found()
         if user_options.material.colors == {}:
             self.__on_colors_not_found()
 
         user_options.material.connect_option(
-            "dark_mode", lambda: self.generate_colors(CACHE_WALLPAPER_PATH)
+            "dark_mode", lambda: self.generate_colors(options.wallpaper.wallpaper_path)
         )
 
     def __on_colors_not_found(self) -> None:
