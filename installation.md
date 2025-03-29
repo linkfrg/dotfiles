@@ -28,3 +28,23 @@ If using nvidia install also
 ```
 paru -S --needed - < nvidia_deps.txt
 ```
+
+## Install tide prompt
+
+Install fisher.
+
+```bash
+paru -S fisher
+```
+
+Install tide.
+
+```bash
+fisher install IlanCosman/tide@v6
+```
+
+Configure tide prompt.
+
+```bash
+tide configure --auto --style=Rainbow --prompt_colors='16 colors' --show_time=No --rainbow_prompt_separators=Angled --powerline_prompt_heads=Sharp --powerline_prompt_tails=Round --powerline_prompt_style='Two lines, frame' --prompt_connection=Disconnected --powerline_right_prompt_frame=Yes --prompt_spacing=Sparse --icons='Many icons' --transient=No
+```
