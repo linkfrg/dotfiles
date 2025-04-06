@@ -1,6 +1,7 @@
 from ignis.widgets import Widget
 from ignis.app import IgnisApp
 from ignis.services.applications import ApplicationsService, Application
+from ignis.menu_model import IgnisMenuModel, IgnisMenuItem, IgnisMenuSeparator
 
 applications = ApplicationsService.get_default()
 app = IgnisApp.get_default()
@@ -11,20 +12,18 @@ TERMINAL_FORMAT = "kitty %command%"
 class AppItem(Widget.Button):
     def __init__(self, app: Application):
         menu = Widget.PopoverMenu(
-            items=[
-                Widget.MenuItem(label="Launch", on_activate=lambda x: app.launch()),
-                Widget.Separator(),
-            ]
-            + [
-                Widget.MenuItem(
-                    label=i.name, on_activate=lambda x, action=i: action.launch()
-                )
-                for i in app.actions
-            ]
-            + [
-                Widget.Separator(),
-                Widget.MenuItem(label="Unpin", on_activate=lambda x: app.unpin()),
-            ]
+            model=IgnisMenuModel(
+                IgnisMenuItem(label="Launch", on_activate=lambda x: app.launch()),
+                IgnisMenuSeparator(),
+                *(
+                    IgnisMenuItem(
+                        label=i.name, on_activate=lambda x, action=i: action.launch()
+                    )
+                    for i in app.actions
+                ),
+                IgnisMenuSeparator(),
+                IgnisMenuItem(label="Unpin", on_activate=lambda x: app.unpin()),
+            )
         )
 
         super().__init__(
