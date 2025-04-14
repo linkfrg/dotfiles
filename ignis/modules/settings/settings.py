@@ -63,7 +63,7 @@ class Settings(Widget.RegularWindow):
         ]
 
         self._listbox.rows = rows
-        self._listbox.select_row(rows[user_options.settings.last_page])
+        self._listbox.activate_row(rows[user_options.settings.last_page])
 
         self._listbox.connect("row-activated", self.__update_last_page)
 
