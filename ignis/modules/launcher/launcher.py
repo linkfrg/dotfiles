@@ -35,6 +35,8 @@ def is_url(url: str) -> bool:
 
 class LauncherAppItem(Widget.Button):
     def __init__(self, application: Application) -> None:
+        self._menu = Widget.PopoverMenu()
+
         self._application = application
         super().__init__(
             on_click=lambda x: self.launch(),
@@ -49,6 +51,7 @@ class LauncherAppItem(Widget.Button):
                         max_width_chars=30,
                         css_classes=["launcher-app-label"],
                     ),
+                    self._menu,
                 ]
             ),
         )
@@ -64,28 +67,23 @@ class LauncherAppItem(Widget.Button):
         app.close_window("ignis_LAUNCHER")
 
     def __sync_menu(self) -> None:
-        self._menu = Widget.PopoverMenu(
-            model=IgnisMenuModel(
-                IgnisMenuItem(label="Launch", on_activate=lambda x: self.launch()),
-                IgnisMenuSeparator(),
-                *(
-                    IgnisMenuItem(
-                        label=i.name,
-                        on_activate=lambda x, action=i: self.launch_action(action),
-                    )
-                    for i in self._application.actions
-                ),
-                IgnisMenuSeparator(),
+        self._menu.model = IgnisMenuModel(
+            IgnisMenuItem(label="Launch", on_activate=lambda x: self.launch()),
+            IgnisMenuSeparator(),
+            *(
                 IgnisMenuItem(
-                    label="Pin", on_activate=lambda x: self._application.pin()
+                    label=i.name,
+                    on_activate=lambda x, action=i: self.launch_action(action),
                 )
-                if not self._application.is_pinned
-                else IgnisMenuItem(
-                    label="Unpin", on_activate=lambda x: self._application.unpin()
-                ),
-            )
+                for i in self._application.actions
+            ),
+            IgnisMenuSeparator(),
+            IgnisMenuItem(label="Pin", on_activate=lambda x: self._application.pin())
+            if not self._application.is_pinned
+            else IgnisMenuItem(
+                label="Unpin", on_activate=lambda x: self._application.unpin()
+            ),
         )
-        self.child.append(self._menu)
 
 
 class SearchWebButton(Widget.Button):
