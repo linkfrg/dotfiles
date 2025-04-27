@@ -30,7 +30,7 @@ PLAYER_ICONS = {
 class Player(Widget.Revealer):
     def __init__(self, player: MprisPlayer) -> None:
         self._player = player
-        self._colors_path = f"{MEDIA_SCSS_CACHE_DIR}/{self._player.desktop_entry}.scss"
+        self._colors_path = f"{MEDIA_SCSS_CACHE_DIR}/{self.clean_desktop_entry()}.scss"
         player.connect("closed", lambda x: self.destroy())
         player.connect("notify::art-url", lambda x, y: self.load_colors())
         self.load_colors()
@@ -173,7 +173,7 @@ class Player(Widget.Revealer):
         Utils.Timeout(self.transition_duration, super().unparent)
 
     def get_css(self, class_name: str) -> str:
-        return f"{class_name}-{self._player.desktop_entry}"
+        return f"{class_name}-{self.clean_desktop_entry()}"
 
     def load_colors(self) -> None:
         if not self._player.art_url:
@@ -188,11 +188,14 @@ class Player(Widget.Revealer):
 
         colors = material.get_colors_from_img(art_url, True)
         colors["art_url"] = art_url
-        colors["desktop_entry"] = self._player.desktop_entry
+        colors["desktop_entry"] = self.clean_desktop_entry()
         material.render_template(
             colors, input_file=MEDIA_TEMPLATE, output_file=self._colors_path
         )
         app.apply_css(self._colors_path)
+
+    def clean_desktop_entry(self) -> str:
+        return self._player.desktop_entry.replace(".", "-")
 
 
 class Media(Widget.Box):
