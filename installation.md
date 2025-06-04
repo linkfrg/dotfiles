@@ -12,7 +12,7 @@ git clone https://github.com/linkfrg/dotfiles.git --depth 1 --branch main
 cd dotfiles
 mkdir -p ~/.local/share/themes
 cp -R .config/* ~/.config/
-cp -R ignis ~/.config/
+cp -R ignisc ~/.config/ignis
 cp -R Material ~/.local/share/themes
 ```
 
