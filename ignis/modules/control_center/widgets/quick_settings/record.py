@@ -1,4 +1,4 @@
-from ignis.widgets import Widget
+from ignis import widgets
 from ...qs_button import QSButton
 from ...menu import Menu
 from ignis.services.recorder import RecorderService
@@ -8,8 +8,8 @@ recorder = RecorderService.get_default()
 
 class RecordMenu(Menu):
     def __init__(self):
-        self._audio_switch = Widget.Switch(halign="end", hexpand=True, valign="center")
-        self._dropdown = Widget.DropDown(
+        self._audio_switch = widgets.Switch(halign="end", hexpand=True, valign="center")
+        self._dropdown = widgets.DropDown(
             items=["Internal audio", "Microphone", "Both sources"],
             css_classes=["record-dropdown"],
         )
@@ -17,29 +17,29 @@ class RecordMenu(Menu):
         super().__init__(
             name="recording",
             child=[
-                Widget.Icon(
+                widgets.Icon(
                     image="media-record-symbolic",
                     pixel_size=36,
                     halign="center",
                     css_classes=["record-icon"],
                 ),
-                Widget.Label(
+                widgets.Label(
                     label="Start recording?",
                     halign="center",
                     style="font-size: 1.2rem;",
                 ),
-                Widget.Box(
+                widgets.Box(
                     style="margin-top: 0.5rem;",
                     child=[
-                        Widget.Icon(
+                        widgets.Icon(
                             image="microphone-sensitivity-medium-symbolic",
                             pixel_size=20,
                             style="margin-right: 0.5rem;",
                         ),
-                        Widget.Box(
+                        widgets.Box(
                             vertical=True,
                             child=[
-                                Widget.Label(
+                                widgets.Label(
                                     label="Record audio",
                                     style="font-size: 1.1rem;",
                                     halign="start",
@@ -50,16 +50,16 @@ class RecordMenu(Menu):
                         self._audio_switch,
                     ],
                 ),
-                Widget.Box(
+                widgets.Box(
                     style="margin-top: 1rem;",
                     child=[
-                        Widget.Button(
-                            child=Widget.Label(label="Cancel"),
+                        widgets.Button(
+                            child=widgets.Label(label="Cancel"),
                             css_classes=["record-cancel-button", "unset"],
                             on_click=lambda x: self.set_reveal_child(False),  # type: ignore
                         ),
-                        Widget.Button(
-                            child=Widget.Label(label="Start recording"),
+                        widgets.Button(
+                            child=widgets.Label(label="Start recording"),
                             halign="end",
                             hexpand=True,
                             css_classes=["record-start-button", "unset"],

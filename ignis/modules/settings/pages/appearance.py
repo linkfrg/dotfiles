@@ -1,7 +1,7 @@
 import os
 from services.material import MaterialService
 from ..elements import SwitchRow, SettingsPage, SettingsGroup, FileRow, SettingsEntry
-from ignis.widgets import Widget
+from ignis import widgets
 from user_options import user_options
 from ignis.options import options
 
@@ -16,8 +16,8 @@ class AppearanceEntry(SettingsEntry):
                 SettingsGroup(
                     name=None,
                     rows=[
-                        Widget.ListBoxRow(
-                            child=Widget.Picture(
+                        widgets.ListBoxRow(
+                            child=widgets.Picture(
                                 image=options.wallpaper.bind("wallpaper_path"),
                                 width=1920 // 4,
                                 height=1080 // 4,
@@ -42,13 +42,13 @@ class AppearanceEntry(SettingsEntry):
                             )
                             if options.wallpaper.wallpaper_path
                             else None,
-                            dialog=Widget.FileDialog(
+                            dialog=widgets.FileDialog(
                                 on_file_set=lambda x, file: material.generate_colors(
                                     file.get_path()
                                 ),
                                 initial_path=options.wallpaper.bind("wallpaper_path"),
                                 filters=[
-                                    Widget.FileFilter(
+                                    widgets.FileFilter(
                                         mime_types=["image/jpeg", "image/png"],
                                         default=True,
                                         name="Images JPEG/PNG",

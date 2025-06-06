@@ -1,4 +1,4 @@
-from ignis.widgets import Widget
+from ignis import widgets
 from .row import SettingsRow
 from typing import Callable
 from ignis.gobject import Binding
@@ -12,7 +12,7 @@ class SwitchRow(SettingsRow):
         **kwargs,
     ):
         super().__init__(**kwargs)
-        self._switch = Widget.Switch(
+        self._switch = widgets.Switch(
             active=active,
             on_change=on_change,
             halign="end",

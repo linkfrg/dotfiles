@@ -1,11 +1,11 @@
-from ignis.widgets import Widget
+from ignis import widgets
 from gi.repository import GObject  # type: ignore
 from typing import Callable
 from ignis.gobject import Binding
 from .menu import Menu
 
 
-class QSButton(Widget.Button):
+class QSButton(widgets.Button):
     def __init__(
         self,
         label: str | Binding,
@@ -20,11 +20,11 @@ class QSButton(Widget.Button):
         self._active = False
         self._menu = menu
         super().__init__(
-            child=Widget.Box(
+            child=widgets.Box(
                 child=[
-                    Widget.Icon(image=icon_name),
-                    Widget.Label(label=label, css_classes=["qs-button-label"]),
-                    Widget.Arrow(
+                    widgets.Icon(image=icon_name),
+                    widgets.Label(label=label, css_classes=["qs-button-label"]),
+                    widgets.Arrow(
                         halign="end",
                         hexpand=True,
                         pixel_size=20,

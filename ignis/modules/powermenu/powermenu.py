@@ -1,24 +1,24 @@
 import asyncio
-from ignis.widgets import Widget
-from ignis.utils import Utils
+from ignis import widgets
+from ignis import utils
 from ignis.app import IgnisApp
 from typing import Callable
 
 app = IgnisApp.get_default()
 
 def create_exec_task(cmd: str) -> None:
-    asyncio.create_task(Utils.exec_sh_async(cmd))
+    asyncio.create_task(utils.exec_sh_async(cmd))
 
-class PowermenuButton(Widget.Box):
+class PowermenuButton(widgets.Box):
     def __init__(self, label: str, icon_name: str, on_click: Callable) -> None:
         super().__init__(
             child=[
-                Widget.Button(
-                    child=Widget.Icon(image=icon_name, pixel_size=36),
+                widgets.Button(
+                    child=widgets.Icon(image=icon_name, pixel_size=36),
                     on_click=on_click,
                     css_classes=["powermenu-button", "unset"],
                 ),
-                Widget.Label(label=label, css_classes=["powermenu-button-label"]),
+                widgets.Label(label=label, css_classes=["powermenu-button-label"]),
             ],
             vertical=True,
             css_classes=["powermenu-button-box"],
@@ -63,21 +63,21 @@ class HyprlandExitButton(PowermenuButton):
         )
 
 
-class Powermenu(Widget.Window):
+class Powermenu(widgets.Window):
     def __init__(self):
-        main_box = Widget.Box(
+        main_box = widgets.Box(
             vertical=True,
             valign="center",
             halign="center",
             css_classes=["powermenu"],
             child=[
-                Widget.Box(
+                widgets.Box(
                     child=[
                         PowerOffButton(),
                         RebootButton(),
                     ]
                 ),
-                Widget.Box(
+                widgets.Box(
                     child=[
                         SuspendButton(),
                         HyprlandExitButton(),
@@ -92,8 +92,8 @@ class Powermenu(Widget.Window):
             exclusivity="ignore",
             anchor=["left", "right", "top", "bottom"],
             visible=False,
-            child=Widget.Overlay(
-                child=Widget.Button(
+            child=widgets.Overlay(
+                child=widgets.Button(
                     vexpand=True,
                     hexpand=True,
                     can_focus=False,

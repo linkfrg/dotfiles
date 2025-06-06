@@ -1,10 +1,10 @@
-from ignis.widgets import Widget
+from ignis import widgets
 from ignis.services.hyprland import HyprlandService, HyprlandWorkspace
 
 hyprland = HyprlandService.get_default()
 
 
-class WorkspaceButton(Widget.Button):
+class WorkspaceButton(widgets.Button):
     def __init__(self, workspace: HyprlandWorkspace) -> None:
         super().__init__(
             css_classes=["workspace", "unset"],
@@ -28,11 +28,11 @@ def scroll_workspaces(direction: str) -> None:
         hyprland.switch_to_workspace(target)
 
 
-class Workspaces(Widget.Box):
+class Workspaces(widgets.Box):
     def __init__(self):
         if hyprland.is_available:
             child = [
-                Widget.EventBox(
+                widgets.EventBox(
                     on_scroll_up=lambda x: scroll_workspaces("up"),
                     on_scroll_down=lambda x: scroll_workspaces("down"),
                     css_classes=["workspaces"],

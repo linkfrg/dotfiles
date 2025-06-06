@@ -1,10 +1,10 @@
-from ignis.widgets import Widget
+from ignis import widgets
 from ignis.services.audio import AudioService, Stream
 
 audio = AudioService.get_default()
 
 
-class MaterialVolumeSlider(Widget.Scale):
+class MaterialVolumeSlider(widgets.Scale):
     def __init__(self, stream: Stream, **kwargs):
         super().__init__(
             value=stream.bind_many(

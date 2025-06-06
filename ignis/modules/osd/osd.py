@@ -1,12 +1,12 @@
-from ignis.widgets import Widget
-from ignis.utils import Utils
+from ignis import widgets
+from ignis import utils
 from ignis.services.audio import AudioService
 from ..shared_widgets import MaterialVolumeSlider
 
 audio = AudioService.get_default()
 
 
-class OSD(Widget.Window):
+class OSD(widgets.Window):
     def __init__(self):
         super().__init__(
             layer="overlay",
@@ -14,10 +14,10 @@ class OSD(Widget.Window):
             namespace="ignis_OSD",
             visible=False,
             css_classes=["rec-unset"],
-            child=Widget.Box(
+            child=widgets.Box(
                 css_classes=["osd"],
                 child=[
-                    Widget.Icon(
+                    widgets.Icon(
                         pixel_size=26,
                         style="margin-right: 0.5rem;",
                         image=audio.speaker.bind("icon_name"),
@@ -33,6 +33,6 @@ class OSD(Widget.Window):
 
         super().set_property(property_name, value)
 
-    @Utils.debounce(3000)
+    @utils.debounce(3000)
     def __update_visible(self) -> None:
         super().set_property("visible", False)

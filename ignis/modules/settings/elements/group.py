@@ -1,9 +1,9 @@
-from ignis.widgets import Widget
+from ignis import widgets
 from .row import SettingsRow
 from ignis.base_widget import BaseWidget
 
 
-class SettingsGroup(Widget.Box):
+class SettingsGroup(widgets.Box):
     def __init__(
         self, name: str | None, rows: list[SettingsRow | BaseWidget] = [], **kwargs
     ):
@@ -11,13 +11,13 @@ class SettingsGroup(Widget.Box):
             vertical=True,
             css_classes=["settings-group"],
             child=[
-                Widget.Label(
+                widgets.Label(
                     label=name,
                     css_classes=["settings-group-name"],
                     halign="start",
                     visible=True if name else False,
                 ),
-                Widget.ListBox(rows=[*rows]),
+                widgets.ListBox(rows=[*rows]),
             ],
             **kwargs,
         )

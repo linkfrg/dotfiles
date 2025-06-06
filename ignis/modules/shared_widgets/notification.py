@@ -1,26 +1,26 @@
 import asyncio
-from ignis.widgets import Widget
+from ignis import widgets
 from ignis.services.notifications import Notification
-from ignis.utils import Utils
+from ignis import utils
 
 
-class ScreenshotLayout(Widget.Box):
+class ScreenshotLayout(widgets.Box):
     def __init__(self, notification: Notification) -> None:
         super().__init__(
             vertical=True,
             hexpand=True,
             child=[
-                Widget.Box(
+                widgets.Box(
                     child=[
-                        Widget.Picture(
+                        widgets.Picture(
                             image=notification.icon,
                             content_fit="cover",
                             width=1920 // 7,
                             height=1080 // 7,
                             style="border-radius: 1rem; background-color: black;",
                         ),
-                        Widget.Button(
-                            child=Widget.Icon(
+                        widgets.Button(
+                            child=widgets.Icon(
                                 image="window-close-symbolic", pixel_size=20
                             ),
                             halign="end",
@@ -31,24 +31,24 @@ class ScreenshotLayout(Widget.Box):
                         ),
                     ],
                 ),
-                Widget.Label(
+                widgets.Label(
                     label="Screenshot saved",
                     css_classes=["notification-screenshot-label"],
                 ),
-                Widget.Box(
+                widgets.Box(
                     homogeneous=True,
                     style="margin-top: 0.75rem;",
                     spacing=10,
                     child=[
-                        Widget.Button(
-                            child=Widget.Label(label="Open"),
+                        widgets.Button(
+                            child=widgets.Label(label="Open"),
                             css_classes=["notification-action"],
                             on_click=lambda x: asyncio.create_task(
-                                Utils.exec_sh_async(f"xdg-open {notification.icon}")
+                                utils.exec_sh_async(f"xdg-open {notification.icon}")
                             ),
                         ),
-                        Widget.Button(
-                            child=Widget.Label(label="Close"),
+                        widgets.Button(
+                            child=widgets.Label(label="Close"),
                             css_classes=["notification-action"],
                             on_click=lambda x: notification.close(),
                         ),
@@ -58,15 +58,15 @@ class ScreenshotLayout(Widget.Box):
         )
 
 
-class NormalLayout(Widget.Box):
+class NormalLayout(widgets.Box):
     def __init__(self, notification: Notification) -> None:
         super().__init__(
             vertical=True,
             hexpand=True,
             child=[
-                Widget.Box(
+                widgets.Box(
                     child=[
-                        Widget.Icon(
+                        widgets.Icon(
                             image=notification.icon
                             if notification.icon
                             else "dialog-information-symbolic",
@@ -74,18 +74,18 @@ class NormalLayout(Widget.Box):
                             halign="start",
                             valign="start",
                         ),
-                        Widget.Box(
+                        widgets.Box(
                             vertical=True,
                             style="margin-left: 0.75rem;",
                             child=[
-                                Widget.Label(
+                                widgets.Label(
                                     ellipsize="end",
                                     label=notification.summary,
                                     halign="start",
                                     visible=notification.summary != "",
                                     css_classes=["notification-summary"],
                                 ),
-                                Widget.Label(
+                                widgets.Label(
                                     label=notification.body,
                                     ellipsize="end",
                                     halign="start",
@@ -94,8 +94,8 @@ class NormalLayout(Widget.Box):
                                 ),
                             ],
                         ),
-                        Widget.Button(
-                            child=Widget.Icon(
+                        widgets.Button(
+                            child=widgets.Icon(
                                 image="window-close-symbolic", pixel_size=20
                             ),
                             halign="end",
@@ -106,10 +106,10 @@ class NormalLayout(Widget.Box):
                         ),
                     ],
                 ),
-                Widget.Box(
+                widgets.Box(
                     child=[
-                        Widget.Button(
-                            child=Widget.Label(label=action.label),
+                        widgets.Button(
+                            child=widgets.Label(label=action.label),
                             on_click=lambda x, action=action: action.invoke(),
                             css_classes=["notification-action"],
                         )
@@ -123,7 +123,7 @@ class NormalLayout(Widget.Box):
         )
 
 
-class NotificationWidget(Widget.Box):
+class NotificationWidget(widgets.Box):
     def __init__(self, notification: Notification) -> None:
         layout: NormalLayout | ScreenshotLayout
 

@@ -1,11 +1,11 @@
 import asyncio
-from ignis.widgets import Widget
+from ignis import widgets
 from ignis.services.system_tray import SystemTrayService, SystemTrayItem
 
 system_tray = SystemTrayService.get_default()
 
 
-class TrayItem(Widget.Button):
+class TrayItem(widgets.Button):
     __gtype_name__ = "TrayItem"
 
     def __init__(self, item: SystemTrayItem):
@@ -15,9 +15,9 @@ class TrayItem(Widget.Button):
             menu = None
 
         super().__init__(
-            child=Widget.Box(
+            child=widgets.Box(
                 child=[
-                    Widget.Icon(image=item.bind("icon"), pixel_size=24),
+                    widgets.Icon(image=item.bind("icon"), pixel_size=24),
                     menu,
                 ]
             ),
@@ -29,7 +29,7 @@ class TrayItem(Widget.Button):
         )
 
 
-class Tray(Widget.Box):
+class Tray(widgets.Box):
     __gtype_name__ = "Tray"
 
     def __init__(self):

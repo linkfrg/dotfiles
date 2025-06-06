@@ -1,6 +1,6 @@
 from ..elements import SettingsPage, SettingsRow, SettingsEntry, SettingsGroup
-from ignis.utils import Utils
-from ignis.widgets import Widget
+from ignis import utils
+from ignis import widgets
 from ignis.services.fetch import FetchService
 from user_options import user_options
 
@@ -12,9 +12,9 @@ class AboutEntry(SettingsEntry):
         page = SettingsPage(
             name="About",
             groups=[
-                Widget.Box(
+                widgets.Box(
                     child=[
-                        Widget.Picture(
+                        widgets.Picture(
                             image=user_options.material.bind(
                                 "dark_mode",
                                 transform=lambda value: fetch.os_logo_text_dark
@@ -34,7 +34,7 @@ class AboutEntry(SettingsEntry):
                     rows=[
                         SettingsRow(label="OS", sublabel=fetch.os_name),
                         SettingsRow(
-                            label="Ignis version", sublabel=Utils.get_ignis_version()
+                            label="Ignis version", sublabel=utils.get_ignis_version()
                         ),
                         SettingsRow(label="Session type", sublabel=fetch.session_type),
                         SettingsRow(

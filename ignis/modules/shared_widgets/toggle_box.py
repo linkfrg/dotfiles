@@ -1,8 +1,8 @@
-from ignis.widgets import Widget
+from ignis import widgets
 from typing import Callable
 
 
-class ToggleBox(Widget.Box):
+class ToggleBox(widgets.Box):
     def __init__(
         self,
         label: str,
@@ -13,8 +13,8 @@ class ToggleBox(Widget.Box):
     ):
         super().__init__(
             child=[
-                Widget.Label(label=label),
-                Widget.Switch(
+                widgets.Label(label=label),
+                widgets.Switch(
                     halign="end",
                     hexpand=True,
                     active=active,

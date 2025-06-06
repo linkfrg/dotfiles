@@ -1,8 +1,8 @@
-from ignis.widgets import Widget
+from ignis import widgets
 from .page import SettingsPage
 
 
-class SettingsEntry(Widget.ListBoxRow):
+class SettingsEntry(widgets.ListBoxRow):
     def __init__(
         self,
         icon: str,
@@ -13,10 +13,10 @@ class SettingsEntry(Widget.ListBoxRow):
         from ..active_page import active_page  # avoid a circular import
 
         super().__init__(
-            child=Widget.Box(
+            child=widgets.Box(
                 child=[
-                    Widget.Icon(image=icon, pixel_size=20),
-                    Widget.Label(label=label, style="margin-left: 0.75rem;"),
+                    widgets.Icon(image=icon, pixel_size=20),
+                    widgets.Label(label=label, style="margin-left: 0.75rem;"),
                 ],
             ),
             css_classes=["settings-sidebar-entry"],

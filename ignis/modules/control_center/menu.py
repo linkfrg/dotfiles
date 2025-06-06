@@ -1,15 +1,15 @@
 from gi.repository import GObject  # type: ignore
-from ignis.widgets import Widget
+from ignis import widgets
 from ignis.variable import Variable
 from ignis.base_widget import BaseWidget
 
 opened_menu = Variable()
 
 
-class Menu(Widget.Revealer):
+class Menu(widgets.Revealer):
     def __init__(self, name: str, child: list[BaseWidget], **kwargs):
         self._name = name
-        self._box = Widget.Box(
+        self._box = widgets.Box(
             vertical=True,
             css_classes=["control-center-menu"],
             child=child,
@@ -30,5 +30,5 @@ class Menu(Widget.Revealer):
             opened_menu.value = self._name
 
     @GObject.Property
-    def box(self) -> Widget.Box:
+    def box(self) -> widgets.Box:
         return self._box

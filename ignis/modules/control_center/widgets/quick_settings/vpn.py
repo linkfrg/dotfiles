@@ -1,6 +1,6 @@
 import asyncio
-from ignis.widgets import Widget
-from ignis.utils import Utils
+from ignis import widgets
+from ignis import utils
 from ...qs_button import QSButton
 from ...menu import Menu
 from ignis.services.network import NetworkService, VpnConnection
@@ -9,21 +9,21 @@ from ignis.services.network import NetworkService, VpnConnection
 network = NetworkService.get_default()
 
 
-class VpnNetworkItem(Widget.Button):
+class VpnNetworkItem(widgets.Button):
     def __init__(self, conn: VpnConnection):
         super().__init__(
             css_classes=["network-item", "unset"],
             on_click=lambda x: asyncio.create_task(conn.toggle_connection()),
-            child=Widget.Box(
+            child=widgets.Box(
                 child=[
-                    Widget.Label(
+                    widgets.Label(
                         label=conn.name,
                         ellipsize="end",
                         max_width_chars=20,
                         halign="start",
                     ),
-                    Widget.Button(
-                        child=Widget.Label(
+                    widgets.Button(
+                        child=widgets.Label(
                             label=conn.bind(
                                 "is_connected",
                                 lambda value: "Disconnect" if value else "Connect",
@@ -43,32 +43,32 @@ class VpnMenu(Menu):
         super().__init__(
             name="vpn",
             child=[
-                Widget.Box(
+                widgets.Box(
                     css_classes=["network-header-box"],
                     child=[
-                        Widget.Icon(icon_name="network-vpn-symbolic", pixel_size=28),
-                        Widget.Label(
+                        widgets.Icon(icon_name="network-vpn-symbolic", pixel_size=28),
+                        widgets.Label(
                             label="VPN connections",
                             css_classes=["network-header-label"],
                         ),
                     ],
                 ),
-                Widget.Box(
+                widgets.Box(
                     vertical=True,
                     child=network.vpn.bind(
                         "connections",
                         transform=lambda value: [VpnNetworkItem(i) for i in value],
                     ),
                 ),
-                Widget.Separator(),
-                Widget.Button(
+                widgets.Separator(),
+                widgets.Button(
                     css_classes=["network-item", "unset"],
-                    on_click=lambda x: asyncio.create_task(Utils.exec_sh_async("nm-connection-editor")),
+                    on_click=lambda x: asyncio.create_task(utils.exec_sh_async("nm-connection-editor")),
                     style="margin-bottom: 0;",
-                    child=Widget.Box(
+                    child=widgets.Box(
                         child=[
-                            Widget.Icon(image="preferences-system-symbolic"),
-                            Widget.Label(
+                            widgets.Icon(image="preferences-system-symbolic"),
+                            widgets.Label(
                                 label="Network Manager",
                                 halign="start",
                             ),

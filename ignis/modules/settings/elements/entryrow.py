@@ -1,4 +1,4 @@
-from ignis.widgets import Widget
+from ignis import widgets
 from .row import SettingsRow
 from typing import Callable
 from ignis.gobject import Binding
@@ -13,7 +13,7 @@ class EntryRow(SettingsRow):
         **kwargs,
     ):
         super().__init__(**kwargs)
-        self._entry = Widget.Entry(
+        self._entry = widgets.Entry(
             on_change=on_change,
             text=text,
             halign="end",

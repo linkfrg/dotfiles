@@ -1,9 +1,9 @@
 import os
 import ignis
 import asyncio
-from ignis.widgets import Widget
+from ignis import widgets
 from ignis.services.mpris import MprisService, MprisPlayer
-from ignis.utils import Utils
+from ignis import utils
 from services.material import MaterialService
 from ignis.app import IgnisApp
 from ignis.exceptions import StylePathNotFoundError
@@ -13,9 +13,9 @@ mpris = MprisService.get_default()
 app = IgnisApp.get_default()
 material = MaterialService.get_default()
 
-MEDIA_TEMPLATE = Utils.get_current_dir() + "/media.scss"
+MEDIA_TEMPLATE = utils.get_current_dir() + "/media.scss"
 MEDIA_SCSS_CACHE_DIR = ignis.CACHE_DIR + "/media"  # type: ignore
-MEDIA_ART_FALLBACK = Utils.get_current_dir() + "/../../../misc/media-art-fallback.png"
+MEDIA_ART_FALLBACK = utils.get_current_dir() + "/../../../misc/media-art-fallback.png"
 os.makedirs(MEDIA_SCSS_CACHE_DIR, exist_ok=True)
 
 
@@ -27,7 +27,7 @@ PLAYER_ICONS = {
 }
 
 
-class Player(Widget.Revealer):
+class Player(widgets.Revealer):
     def __init__(self, player: MprisPlayer) -> None:
         self._player = player
         self._colors_path = f"{MEDIA_SCSS_CACHE_DIR}/{self.clean_desktop_entry()}.scss"
@@ -39,35 +39,35 @@ class Player(Widget.Revealer):
             transition_type="slide_down",
             reveal_child=False,
             css_classes=[self.get_css("media")],
-            child=Widget.Overlay(
-                child=Widget.Box(css_classes=[self.get_css("media-image")]),
+            child=widgets.Overlay(
+                child=widgets.Box(css_classes=[self.get_css("media-image")]),
                 overlays=[
-                    Widget.Box(
+                    widgets.Box(
                         hexpand=True,
                         vexpand=True,
                         css_classes=[self.get_css("media-image-gradient")],
                     ),
-                    Widget.Icon(
+                    widgets.Icon(
                         icon_name=self.get_player_icon(),
                         pixel_size=22,
                         halign="start",
                         valign="start",
                         css_classes=[self.get_css("media-player-icon")],
                     ),
-                    Widget.Box(
+                    widgets.Box(
                         vertical=True,
                         hexpand=True,
                         css_classes=[self.get_css("media-content")],
                         child=[
-                            Widget.Box(
+                            widgets.Box(
                                 vexpand=True,
                                 valign="center",
                                 child=[
-                                    Widget.Box(
+                                    widgets.Box(
                                         hexpand=True,
                                         vertical=True,
                                         child=[
-                                            Widget.Label(
+                                            widgets.Label(
                                                 ellipsize="end",
                                                 label=player.bind("title"),
                                                 max_width_chars=30,
@@ -76,7 +76,7 @@ class Player(Widget.Revealer):
                                                     self.get_css("media-title")
                                                 ],
                                             ),
-                                            Widget.Label(
+                                            widgets.Label(
                                                 label=player.bind("artist"),
                                                 max_width_chars=30,
                                                 ellipsize="end",
@@ -87,8 +87,8 @@ class Player(Widget.Revealer):
                                             ),
                                         ],
                                     ),
-                                    Widget.Button(
-                                        child=Widget.Icon(
+                                    widgets.Button(
+                                        child=widgets.Icon(
                                             image=player.bind(
                                                 "playback_status",
                                                 lambda value: "media-playback-pause-symbolic"
@@ -116,12 +116,12 @@ class Player(Widget.Revealer):
                             ),
                         ],
                     ),
-                    Widget.Box(
+                    widgets.Box(
                         vexpand=True,
                         valign="end",
                         style="padding: 1rem;",
                         child=[
-                            Widget.Scale(
+                            widgets.Scale(
                                 value=player.bind("position"),
                                 max=player.bind("length"),
                                 hexpand=True,
@@ -131,8 +131,8 @@ class Player(Widget.Revealer):
                                     "position", lambda value: value != -1
                                 ),
                             ),
-                            Widget.Button(
-                                child=Widget.Icon(
+                            widgets.Button(
+                                child=widgets.Icon(
                                     image="media-skip-backward-symbolic",
                                     pixel_size=20,
                                 ),
@@ -141,8 +141,8 @@ class Player(Widget.Revealer):
                                 visible=player.bind("can_go_previous"),
                                 style="margin-left: 1rem;",
                             ),
-                            Widget.Button(
-                                child=Widget.Icon(
+                            widgets.Button(
+                                child=widgets.Icon(
                                     image="media-skip-forward-symbolic",
                                     pixel_size=20,
                                 ),
@@ -170,7 +170,7 @@ class Player(Widget.Revealer):
 
     def destroy(self) -> None:
         self.set_reveal_child(False)
-        Utils.Timeout(self.transition_duration, super().unparent)
+        utils.Timeout(self.transition_duration, super().unparent)
 
     def get_css(self, class_name: str) -> str:
         return f"{class_name}-{self.clean_desktop_entry()}"
@@ -198,7 +198,7 @@ class Player(Widget.Revealer):
         return self._player.desktop_entry.replace(".", "-")
 
 
-class Media(Widget.Box):
+class Media(widgets.Box):
     def __init__(self):
         super().__init__(
             vertical=True,

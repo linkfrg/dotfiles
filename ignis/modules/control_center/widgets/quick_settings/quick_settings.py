@@ -1,4 +1,4 @@
-from ignis.widgets import Widget
+from ignis import widgets
 from .wifi import wifi_control
 from .record import RecordButton
 from .dnd import DNDButton
@@ -12,7 +12,7 @@ from ignis.services.network import NetworkService
 network = NetworkService.get_default()
 
 
-class QuickSettings(Widget.Box):
+class QuickSettings(widgets.Box):
     def __init__(self):
         super().__init__(vertical=True, css_classes=["qs-main-box"])
         network.wifi.connect("notify::devices", lambda x, y: self.__refresh())
@@ -41,7 +41,7 @@ class QuickSettings(Widget.Box):
             self.__add_row(buttons, i)
 
     def __add_row(self, buttons: tuple[QSButton, ...], i: int) -> None:
-        row = Widget.Box(homogeneous=True)
+        row = widgets.Box(homogeneous=True)
         if len(self.child) > 0:
             row.style = "margin-top: 0.5rem;"
 
@@ -57,7 +57,7 @@ class QuickSettings(Widget.Box):
             self.__add_button(row, button2, buttons, i)
 
     def __add_button(
-        self, row: Widget.Box, button: QSButton, buttons: tuple[QSButton, ...], i: int
+        self, row: widgets.Box, button: QSButton, buttons: tuple[QSButton, ...], i: int
     ) -> None:
         row.append(button)
 

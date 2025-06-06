@@ -1,4 +1,4 @@
-from ignis.widgets import Widget
+from ignis import widgets
 from ignis.app import IgnisApp
 from user_options import user_options
 from .active_page import active_page
@@ -13,20 +13,20 @@ from .pages import (
 app = IgnisApp.get_default()
 
 
-class Settings(Widget.RegularWindow):
+class Settings(widgets.RegularWindow):
     def __init__(self) -> None:
-        content = Widget.Box(
+        content = widgets.Box(
             hexpand=True,
             vexpand=True,
             child=active_page.bind("value", transform=lambda value: [value]),
         )
-        self._listbox = Widget.ListBox()
+        self._listbox = widgets.ListBox()
 
-        navigation_sidebar = Widget.Box(
+        navigation_sidebar = widgets.Box(
             vertical=True,
             css_classes=["settings-sidebar"],
             child=[
-                Widget.Label(
+                widgets.Label(
                     label="Settings",
                     halign="start",
                     css_classes=["settings-sidebar-label"],
@@ -41,7 +41,7 @@ class Settings(Widget.RegularWindow):
             resizable=False,
             hide_on_close=True,
             visible=False,
-            child=Widget.Box(child=[navigation_sidebar, content]),
+            child=widgets.Box(child=[navigation_sidebar, content]),
             namespace="ignis_SETTINGS",
         )
 

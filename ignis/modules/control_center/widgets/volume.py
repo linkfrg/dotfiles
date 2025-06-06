@@ -1,6 +1,6 @@
 import asyncio
-from ignis.widgets import Widget
-from ignis.utils import Utils
+from ignis import widgets
+from ignis import utils
 from ignis.services.audio import AudioService, Stream
 from typing import Literal
 from ..menu import Menu
@@ -17,20 +17,20 @@ AUDIO_TYPES = {
 }
 
 
-class DeviceItem(Widget.Button):
+class DeviceItem(widgets.Button):
     def __init__(self, stream: Stream, _type: Literal["speaker", "microphone"]):
         super().__init__(
-            child=Widget.Box(
+            child=widgets.Box(
                 child=[
-                    Widget.Icon(image="audio-card-symbolic"),
-                    Widget.Label(
+                    widgets.Icon(image="audio-card-symbolic"),
+                    widgets.Label(
                         label=stream.description,
                         ellipsize="end",
                         max_width_chars=30,
                         halign="start",
                         css_classes=["volume-entry-label"],
                     ),
-                    Widget.Icon(
+                    widgets.Icon(
                         image="object-select-symbolic",
                         halign="end",
                         hexpand=True,
@@ -52,10 +52,10 @@ class DeviceMenu(Menu):
         super().__init__(
             name=f"volume-{_type}",
             child=[
-                Widget.Box(
+                widgets.Box(
                     child=[
-                        Widget.Icon(image=data["menu_icon"], pixel_size=24),
-                        Widget.Label(
+                        widgets.Icon(image=data["menu_icon"], pixel_size=24),
+                        widgets.Label(
                             label=data["menu_label"],
                             halign="start",
                             css_classes=["volume-entry-list-header-label"],
@@ -63,19 +63,19 @@ class DeviceMenu(Menu):
                     ],
                     css_classes=["volume-entry-list-header-box"],
                 ),
-                Widget.Box(
+                widgets.Box(
                     vertical=True,
                     setup=lambda self: audio.connect(
                         f"{_type}-added",
                         lambda x, stream: self.append(DeviceItem(stream, _type)),
                     ),
                 ),
-                Widget.Separator(css_classes=["volume-entry-list-separator"]),
-                Widget.Button(
-                    child=Widget.Box(
+                widgets.Separator(css_classes=["volume-entry-list-separator"]),
+                widgets.Button(
+                    child=widgets.Box(
                         child=[
-                            Widget.Icon(image="preferences-system-symbolic"),
-                            Widget.Label(
+                            widgets.Icon(image="preferences-system-symbolic"),
+                            widgets.Label(
                                 label="Sound Settings",
                                 halign="start",
                                 css_classes=["volume-entry-label"],
@@ -84,7 +84,7 @@ class DeviceMenu(Menu):
                     ),
                     css_classes=["volume-entry", "unset"],
                     style="margin-bottom: 0;",
-                    on_click=lambda x: asyncio.create_task(Utils.exec_sh_async("pavucontrol")),
+                    on_click=lambda x: asyncio.create_task(utils.exec_sh_async("pavucontrol")),
                 ),
             ],
         )
@@ -92,12 +92,12 @@ class DeviceMenu(Menu):
         self.box.add_css_class(f"volume-menubox-{_type}")
 
 
-class VolumeSlider(Widget.Box):
+class VolumeSlider(widgets.Box):
     def __init__(self, _type: Literal["speaker", "microphone"]):
         stream = getattr(audio, _type)
 
-        icon = Widget.Button(
-            child=Widget.Icon(
+        icon = widgets.Button(
+            child=widgets.Icon(
                 image=stream.bind("icon_name"),
                 pixel_size=18,
             ),
@@ -113,15 +113,15 @@ class VolumeSlider(Widget.Box):
             sensitive=stream.bind("is_muted", lambda value: not value),
         )
 
-        arrow = Widget.Button(
-            child=Widget.Arrow(pixel_size=20, rotated=device_menu.bind("reveal_child")),
+        arrow = widgets.Button(
+            child=widgets.Arrow(pixel_size=20, rotated=device_menu.bind("reveal_child")),
             css_classes=["material-slider-arrow", "hover-surface"],
             on_click=lambda x: device_menu.toggle(),
         )
         super().__init__(
             vertical=True,
             child=[
-                Widget.Box(child=[icon, scale, arrow]),
+                widgets.Box(child=[icon, scale, arrow]),
                 device_menu,
             ],
             css_classes=[f"volume-mainbox-{_type}"],

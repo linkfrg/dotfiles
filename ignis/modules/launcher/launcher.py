@@ -1,13 +1,13 @@
 import re
 import asyncio
-from ignis.widgets import Widget
+from ignis import widgets
 from ignis.app import IgnisApp
 from ignis.services.applications import (
     ApplicationsService,
     Application,
     ApplicationAction,
 )
-from ignis.utils import Utils
+from ignis import utils
 from ignis.menu_model import IgnisMenuModel, IgnisMenuItem, IgnisMenuSeparator
 from gi.repository import Gio  # type: ignore
 
@@ -33,19 +33,19 @@ def is_url(url: str) -> bool:
     return re.match(regex, url) is not None
 
 
-class LauncherAppItem(Widget.Button):
+class LauncherAppItem(widgets.Button):
     def __init__(self, application: Application) -> None:
-        self._menu = Widget.PopoverMenu()
+        self._menu = widgets.PopoverMenu()
 
         self._application = application
         super().__init__(
             on_click=lambda x: self.launch(),
             on_right_click=lambda x: self._menu.popup(),
             css_classes=["launcher-app"],
-            child=Widget.Box(
+            child=widgets.Box(
                 child=[
-                    Widget.Icon(image=application.icon, pixel_size=48),
-                    Widget.Label(
+                    widgets.Icon(image=application.icon, pixel_size=48),
+                    widgets.Label(
                         label=application.name,
                         ellipsize="end",
                         max_width_chars=30,
@@ -86,12 +86,12 @@ class LauncherAppItem(Widget.Button):
         )
 
 
-class SearchWebButton(Widget.Button):
+class SearchWebButton(widgets.Button):
     def __init__(self, query: str):
         self._query = query
         self._url = ""
 
-        browser_desktop_file = Utils.exec_sh(
+        browser_desktop_file = utils.exec_sh(
             "xdg-settings get default-web-browser"
         ).stdout.replace("\n", "")
 
@@ -116,10 +116,10 @@ class SearchWebButton(Widget.Button):
         super().__init__(
             on_click=lambda x: self.launch(),
             css_classes=["launcher-app"],
-            child=Widget.Box(
+            child=widgets.Box(
                 child=[
-                    Widget.Icon(image=icon_name, pixel_size=48),
-                    Widget.Label(
+                    widgets.Icon(image=icon_name, pixel_size=48),
+                    widgets.Label(
                         label=label,
                         css_classes=["launcher-app-label"],
                     ),
@@ -128,16 +128,16 @@ class SearchWebButton(Widget.Button):
         )
 
     def launch(self) -> None:
-        asyncio.create_task(Utils.exec_sh_async(f"xdg-open {self._url}"))
+        asyncio.create_task(utils.exec_sh_async(f"xdg-open {self._url}"))
         app.close_window("ignis_LAUNCHER")
 
 
-class Launcher(Widget.Window):
+class Launcher(widgets.Window):
     def __init__(self):
-        self._app_list = Widget.Box(
+        self._app_list = widgets.Box(
             vertical=True, visible=False, style="margin-top: 1rem;"
         )
-        self._entry = Widget.Entry(
+        self._entry = widgets.Entry(
             hexpand=True,
             placeholder_text="Search",
             css_classes=["launcher-search"],
@@ -145,16 +145,16 @@ class Launcher(Widget.Window):
             on_accept=self.__on_accept,
         )
 
-        main_box = Widget.Box(
+        main_box = widgets.Box(
             vertical=True,
             valign="start",
             halign="center",
             css_classes=["launcher"],
             child=[
-                Widget.Box(
+                widgets.Box(
                     css_classes=["launcher-search-box"],
                     child=[
-                        Widget.Icon(
+                        widgets.Icon(
                             icon_name="system-search-symbolic",
                             pixel_size=24,
                             style="margin-right: 0.5rem;",
@@ -174,8 +174,8 @@ class Launcher(Widget.Window):
             css_classes=["unset"],
             setup=lambda self: self.connect("notify::visible", self.__on_open),
             anchor=["top", "right", "bottom", "left"],
-            child=Widget.Overlay(
-                child=Widget.Button(
+            child=widgets.Overlay(
+                child=widgets.Button(
                     vexpand=True,
                     hexpand=True,
                     can_focus=False,

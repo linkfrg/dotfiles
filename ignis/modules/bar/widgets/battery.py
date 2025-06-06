@@ -1,23 +1,23 @@
-from ignis.widgets import Widget
+from ignis import widgets
 from ignis.services.upower import UPowerService, UPowerDevice
 
 upower = UPowerService.get_default()
 
 
-class BatteryItem(Widget.Box):
+class BatteryItem(widgets.Box):
     def __init__(self, device: UPowerDevice):
         super().__init__(
             css_classes=["battery-item"],
             setup=lambda self: device.connect("removed", lambda x: self.unparent()),
             child=[
-                Widget.Icon(
+                widgets.Icon(
                     icon_name=device.bind("icon_name"), css_classes=["battery-icon"]
                 ),
-                Widget.Label(
+                widgets.Label(
                     label=device.bind("percent", lambda x: f"{int(x)}%"),
                     css_classes=["battery-percent"],
                 ),
-                Widget.Scale(
+                widgets.Scale(
                     min=0,
                     max=100,
                     value=device.bind("percent"),
@@ -28,7 +28,7 @@ class BatteryItem(Widget.Box):
         )
 
 
-class Battery(Widget.Box):
+class Battery(widgets.Box):
     def __init__(self):
         super().__init__(
             setup=lambda self: upower.connect(

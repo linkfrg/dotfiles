@@ -1,6 +1,6 @@
 import os
 from ..elements import SettingsGroup, SettingsPage, SettingsEntry, FileRow
-from ignis.widgets import Widget
+from ignis import widgets
 from user_options import user_options
 
 
@@ -9,11 +9,11 @@ class UserEntry(SettingsEntry):
         page = SettingsPage(
             name="User",
             groups=[
-                Widget.Box(
+                widgets.Box(
                     halign="start",
                     style="margin-left: 2rem;",
                     child=[
-                        Widget.Picture(
+                        widgets.Picture(
                             image=user_options.user.bind(
                                 "avatar",
                                 lambda value: "user-info"
@@ -24,7 +24,7 @@ class UserEntry(SettingsEntry):
                             height=96,
                             style="border-radius: 10rem;",
                         ),
-                        Widget.Label(
+                        widgets.Label(
                             label=os.getenv("USER"), css_classes=["settings-user-name"]
                         ),
                     ],
@@ -37,7 +37,7 @@ class UserEntry(SettingsEntry):
                     rows=[
                         FileRow(
                             label="Avatar",
-                            dialog=Widget.FileDialog(
+                            dialog=widgets.FileDialog(
                                 initial_path=user_options.user.bind("avatar"),
                                 on_file_set=lambda x,
                                 gfile: user_options.user.set_avatar(gfile.get_path()),

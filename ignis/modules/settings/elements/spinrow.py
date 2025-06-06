@@ -1,4 +1,4 @@
-from ignis.widgets import Widget
+from ignis import widgets
 from .row import SettingsRow
 from typing import Callable
 from ignis.gobject import Binding
@@ -16,7 +16,7 @@ class SpinRow(SettingsRow):
         **kwargs,
     ):
         super().__init__(**kwargs)
-        self._spin_button = Widget.SpinButton(
+        self._spin_button = widgets.SpinButton(
             value=value,
             on_change=on_change,
             min=min,

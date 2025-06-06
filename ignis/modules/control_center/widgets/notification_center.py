@@ -1,13 +1,13 @@
-from ignis.widgets import Widget
+from ignis import widgets
 from ignis.services.notifications import Notification, NotificationService
-from ignis.utils import Utils
+from ignis import utils
 from gi.repository import GLib  # type: ignore
 from ...shared_widgets import NotificationWidget
 
 notifications = NotificationService.get_default()
 
 
-class Popup(Widget.Revealer):
+class Popup(widgets.Revealer):
     def __init__(self, notification: Notification, **kwargs):
         widget = NotificationWidget(notification)
         super().__init__(child=widget, transition_type="slide_down", **kwargs)
@@ -16,14 +16,14 @@ class Popup(Widget.Revealer):
 
     def destroy(self):
         self.reveal_child = False
-        Utils.Timeout(self.transition_duration, self.unparent)
+        utils.Timeout(self.transition_duration, self.unparent)
 
 
-class NotificationList(Widget.Box):
+class NotificationList(widgets.Box):
     __gtype_name__ = "NotificationList"
 
     def __init__(self):
-        loading_notifications_label = Widget.Label(
+        loading_notifications_label = widgets.Label(
             label="Loading notifications...",
             valign="center",
             vexpand=True,
@@ -41,7 +41,7 @@ class NotificationList(Widget.Box):
             ),
         )
 
-        Utils.ThreadTask(
+        utils.ThreadTask(
             self.__load_notifications,
             lambda result: self.set_child(result),
         ).run()
@@ -51,13 +51,13 @@ class NotificationList(Widget.Box):
         self.prepend(notify)
         notify.reveal_child = True
 
-    def __load_notifications(self) -> list[Widget.Label | Popup]:
-        widgets: list[Widget.Label | Popup] = []
+    def __load_notifications(self) -> list[widgets.Label | Popup]:
+        contents: list[widgets.Label | Popup] = []
         for i in notifications.notifications:
-            GLib.idle_add(lambda i=i: widgets.append(Popup(i, reveal_child=True)))
+            GLib.idle_add(lambda i=i: contents.append(Popup(i, reveal_child=True)))
 
-        widgets.append(
-            Widget.Label(
+        contents.append(
+            widgets.Label(
                 label="No notifications",
                 valign="center",
                 vexpand=True,
@@ -67,10 +67,10 @@ class NotificationList(Widget.Box):
                 css_classes=["notification-center-info-label"],
             )
         )
-        return widgets
+        return contents
 
 
-class NotificationCenter(Widget.Box):
+class NotificationCenter(widgets.Box):
     __gtype_name__ = "NotificationCenter"
 
     def __init__(self):
@@ -79,21 +79,21 @@ class NotificationCenter(Widget.Box):
             vexpand=True,
             css_classes=["notification-center"],
             child=[
-                Widget.Box(
+                widgets.Box(
                     css_classes=["notification-center-header", "rec-unset"],
                     child=[
-                        Widget.Label(
+                        widgets.Label(
                             label=notifications.bind(
                                 "notifications", lambda value: str(len(value))
                             ),
                             css_classes=["notification-count"],
                         ),
-                        Widget.Label(
+                        widgets.Label(
                             label="notifications",
                             css_classes=["notification-header-label"],
                         ),
-                        Widget.Button(
-                            child=Widget.Label(label="Clear all"),
+                        widgets.Button(
+                            child=widgets.Label(label="Clear all"),
                             halign="end",
                             hexpand=True,
                             on_click=lambda x: notifications.clear_all(),
@@ -101,7 +101,7 @@ class NotificationCenter(Widget.Box):
                         ),
                     ],
                 ),
-                Widget.Scroll(
+                widgets.Scroll(
                     child=NotificationList(),
                     vexpand=True,
                 ),

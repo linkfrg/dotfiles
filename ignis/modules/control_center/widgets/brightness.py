@@ -1,23 +1,23 @@
 import asyncio
 from ignis.services.backlight import BacklightService
-from ignis.widgets import Widget
+from ignis import widgets
 
 backlight = BacklightService.get_default()
 
 
-class Brightness(Widget.Box):
+class Brightness(widgets.Box):
     def __init__(self):
         super().__init__(
             visible=backlight.bind("available"),
             hexpand=True,
             style="margin-top: 0.25rem;",
             child=[
-                Widget.Icon(
+                widgets.Icon(
                     image="display-brightness-symbolic",
                     css_classes=["material-slider-icon"],
                     pixel_size=18,
                 ),
-                Widget.Scale(
+                widgets.Scale(
                     min=0,
                     max=backlight.max_brightness,
                     hexpand=True,

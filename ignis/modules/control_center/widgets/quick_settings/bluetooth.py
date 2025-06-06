@@ -1,4 +1,4 @@
-from ignis.widgets import Widget
+from ignis import widgets
 from ...qs_button import QSButton
 from ...menu import Menu
 from ....shared_widgets import ToggleBox
@@ -7,24 +7,24 @@ from ignis.services.bluetooth import BluetoothService, BluetoothDevice
 bluetooth = BluetoothService.get_default()
 
 
-class BluetoothDeviceItem(Widget.Button):
+class BluetoothDeviceItem(widgets.Button):
     def __init__(self, device: BluetoothDevice):
         super().__init__(
             css_classes=["network-item", "unset"],
             on_click=lambda x: device.disconnect_from()
             if device.connected
             else device.connect_to(),
-            child=Widget.Box(
+            child=widgets.Box(
                 child=[
-                    Widget.Icon(
+                    widgets.Icon(
                         image=device.bind("icon_name"),
                     ),
-                    Widget.Label(
+                    widgets.Label(
                         label=device.alias,
                         halign="start",
                         css_classes=["wifi-network-label"],
                     ),
-                    Widget.Icon(
+                    widgets.Icon(
                         image="object-select-symbolic",
                         halign="end",
                         hexpand=True,
@@ -46,7 +46,7 @@ class BluetoothMenu(Menu):
                     on_change=lambda x, state: bluetooth.set_powered(state),
                     css_classes=["network-header-box"],
                 ),
-                Widget.Box(
+                widgets.Box(
                     vertical=True,
                     child=bluetooth.bind(
                         "devices",

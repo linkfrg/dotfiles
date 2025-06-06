@@ -1,8 +1,8 @@
-from ignis.widgets import Widget
+from ignis import widgets
 from ignis.services.network import Ethernet, Wifi
 
 
-class IndicatorIcon(Widget.Icon):
+class IndicatorIcon(widgets.Icon):
     def __init__(self, css_classes: list[str] = [], **kwargs):
         super().__init__(
             style="margin-right: 0.5rem;", css_classes=["unset"] + css_classes, **kwargs

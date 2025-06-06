@@ -10,7 +10,7 @@ from materialyoucolor.scheme.scheme_tonal_spot import SchemeTonalSpot
 from materialyoucolor.dynamiccolor.material_dynamic_colors import MaterialDynamicColors
 from materialyoucolor.score.score import Score
 
-from ignis.utils import Utils
+from ignis import utils
 from ignis.app import IgnisApp
 from ignis.base_service import BaseService
 from ignis.options import options
@@ -38,7 +38,7 @@ class MaterialService(BaseService):
     def __on_colors_not_found(self) -> None:
         options.wallpaper.set_wallpaper_path(SAMPLE_WALL)
         self.generate_colors(SAMPLE_WALL)
-        asyncio.create_task(Utils.exec_sh_async("hyprctl reload"))
+        asyncio.create_task(utils.exec_sh_async("hyprctl reload"))
 
     def get_colors_from_img(self, path: str, dark_mode: bool) -> dict[str, str]:
         image = Image.open(path)
@@ -110,15 +110,15 @@ class MaterialService(BaseService):
     async def __reload_gtk_theme(self) -> None:
         THEME_CMD = "gsettings set org.gnome.desktop.interface gtk-theme {}"
         COLOR_SCHEME_CMD = "gsettings set org.gnome.desktop.interface color-scheme {}"
-        await Utils.exec_sh_async(THEME_CMD.format("Adwaita"))
-        await Utils.exec_sh_async(THEME_CMD.format("Material"))
-        await Utils.exec_sh_async(COLOR_SCHEME_CMD.format("default"))
-        await Utils.exec_sh_async(COLOR_SCHEME_CMD.format("prefer-dark"))
-        await Utils.exec_sh_async(COLOR_SCHEME_CMD.format("default"))
+        await utils.exec_sh_async(THEME_CMD.format("Adwaita"))
+        await utils.exec_sh_async(THEME_CMD.format("Material"))
+        await utils.exec_sh_async(COLOR_SCHEME_CMD.format("default"))
+        await utils.exec_sh_async(COLOR_SCHEME_CMD.format("prefer-dark"))
+        await utils.exec_sh_async(COLOR_SCHEME_CMD.format("default"))
 
     async def __setup(self, image_path: str) -> None:
         try:
-            await Utils.exec_sh_async("pkill -SIGUSR1 kitty")
+            await utils.exec_sh_async("pkill -SIGUSR1 kitty")
         except GLib.Error:
             ...
         options.wallpaper.set_wallpaper_path(image_path)

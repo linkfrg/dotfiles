@@ -1,6 +1,6 @@
 import asyncio
-from ignis.widgets import Widget
-from ignis.utils import Utils
+from ignis import widgets
+from ignis import utils
 from ...qs_button import QSButton
 from ...menu import Menu
 from ....shared_widgets import ToggleBox
@@ -9,23 +9,23 @@ from ignis.services.network import NetworkService, WifiAccessPoint, WifiDevice
 network = NetworkService.get_default()
 
 
-class WifiNetworkItem(Widget.Button):
+class WifiNetworkItem(widgets.Button):
     def __init__(self, access_point: WifiAccessPoint):
         super().__init__(
             css_classes=["network-item", "unset"],
             on_click=lambda x: asyncio.create_task(access_point.connect_to_graphical()),
-            child=Widget.Box(
+            child=widgets.Box(
                 child=[
-                    Widget.Icon(
+                    widgets.Icon(
                         image=access_point.bind(
                             "strength", transform=lambda value: access_point.icon_name
                         ),
                     ),
-                    Widget.Label(
+                    widgets.Label(
                         label=access_point.ssid,
                         halign="start",
                     ),
-                    Widget.Icon(
+                    widgets.Icon(
                         image="object-select-symbolic",
                         halign="end",
                         hexpand=True,
@@ -47,22 +47,22 @@ class WifiMenu(Menu):
                     on_change=lambda x, state: network.wifi.set_enabled(state),
                     css_classes=["network-header-box"],
                 ),
-                Widget.Box(
+                widgets.Box(
                     vertical=True,
                     child=device.bind(
                         "access_points",
                         transform=lambda value: [WifiNetworkItem(i) for i in value],
                     ),
                 ),
-                Widget.Separator(),
-                Widget.Button(
+                widgets.Separator(),
+                widgets.Button(
                     css_classes=["network-item", "unset"],
-                    on_click=lambda x: asyncio.create_task(Utils.exec_sh_async("nm-connection-editor")),
+                    on_click=lambda x: asyncio.create_task(utils.exec_sh_async("nm-connection-editor")),
                     style="margin-bottom: 0;",
-                    child=Widget.Box(
+                    child=widgets.Box(
                         child=[
-                            Widget.Icon(image="preferences-system-symbolic"),
-                            Widget.Label(
+                            widgets.Icon(image="preferences-system-symbolic"),
+                            widgets.Label(
                                 label="Network Settings",
                                 halign="start",
                             ),

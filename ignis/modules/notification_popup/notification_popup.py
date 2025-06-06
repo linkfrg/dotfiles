@@ -1,6 +1,6 @@
-from ignis.widgets import Widget
+from ignis import widgets
 from ignis.app import IgnisApp
-from ignis.utils import Utils
+from ignis import utils
 from ignis.services.notifications import Notification, NotificationService
 from ..shared_widgets import NotificationWidget
 
@@ -10,7 +10,7 @@ app = IgnisApp.get_default()
 notifications = NotificationService.get_default()
 
 
-class Popup(Widget.Box):
+class Popup(widgets.Box):
     def __init__(
         self, box: "PopupBox", window: "NotificationPopup", notification: Notification
     ):
@@ -19,8 +19,8 @@ class Popup(Widget.Box):
 
         widget = NotificationWidget(notification)
         widget.css_classes = ["notification-popup"]
-        self._inner = Widget.Revealer(transition_type="slide_left", child=widget)
-        self._outer = Widget.Revealer(transition_type="slide_down", child=self._inner)
+        self._inner = widgets.Revealer(transition_type="slide_left", child=widget)
+        self._outer = widgets.Revealer(transition_type="slide_down", child=self._inner)
         super().__init__(child=[self._outer], halign="end")
 
         notification.connect("dismissed", lambda x: self.destroy())
@@ -33,14 +33,14 @@ class Popup(Widget.Box):
 
         def outer_close():
             self._outer.reveal_child = False
-            Utils.Timeout(self._outer.transition_duration, box_destroy)
+            utils.Timeout(self._outer.transition_duration, box_destroy)
 
         self._inner.transition_type = "crossfade"
         self._inner.reveal_child = False
-        Utils.Timeout(self._outer.transition_duration, outer_close)
+        utils.Timeout(self._outer.transition_duration, outer_close)
 
 
-class PopupBox(Widget.Box):
+class PopupBox(widgets.Box):
     def __init__(self, window: "NotificationPopup", monitor: int):
         self._window = window
         self._monitor = monitor
@@ -59,12 +59,12 @@ class PopupBox(Widget.Box):
         popup = Popup(box=self, window=self._window, notification=notification)
         self.prepend(popup)
         popup._outer.reveal_child = True
-        Utils.Timeout(
+        utils.Timeout(
             popup._outer.transition_duration, popup._inner.set_reveal_child, True
         )
 
 
-class NotificationPopup(Widget.Window):
+class NotificationPopup(widgets.Window):
     def __init__(self, monitor: int):
         super().__init__(
             anchor=["right", "top", "bottom"],

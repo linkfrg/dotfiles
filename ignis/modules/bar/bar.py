@@ -1,8 +1,8 @@
-from ignis.widgets import Widget
+from ignis import widgets
 from .widgets import StatusPill, Tray, KeyboardLayout, Battery, Apps, Workspaces
 
 
-class Bar(Widget.Window):
+class Bar(widgets.Window):
     __gtype_name__ = "Bar"
 
     def __init__(self, monitor: int):
@@ -13,11 +13,11 @@ class Bar(Widget.Window):
             namespace=f"ignis_BAR_{monitor}",
             layer="top",
             kb_mode="none",
-            child=Widget.CenterBox(
+            child=widgets.CenterBox(
                 css_classes=["bar-widget"],
-                start_widget=Widget.Box(child=[Workspaces()]),
-                center_widget=Widget.Box(child=[Apps()]),
-                end_widget=Widget.Box(
+                start_widget=widgets.Box(child=[Workspaces()]),
+                center_widget=widgets.Box(child=[Apps()]),
+                end_widget=widgets.Box(
                     child=[Tray(), KeyboardLayout(), Battery(), StatusPill(monitor)]
                 ),
             ),
