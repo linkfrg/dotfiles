@@ -1,5 +1,4 @@
 from ..elements import (
-    SpinRow,
     SettingsPage,
     SettingsGroup,
     EntryRow,
@@ -18,17 +17,7 @@ class RecorderEntry(SettingsEntry):
                 SettingsGroup(
                     name="General",
                     rows=[
-                        SpinRow(
-                            label="Recording bitrate",
-                            sublabel="Affects the recording quality",
-                            value=options.recorder.bind("bitrate"),
-                            max=640000,
-                            width=150,
-                            on_change=lambda x, value: options.recorder.set_bitrate(
-                                int(value)
-                            ),
-                            step=1000,
-                        ),
+                        # TODO: add more settings for options added in ignis-sh/ignis#305
                         FileRow(
                             label="Recording path",
                             button_label=options.recorder.bind("default_file_location"),

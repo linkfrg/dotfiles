@@ -1,7 +1,15 @@
+import asyncio
 from ignis import widgets
 from ...qs_button import QSButton
 from ...menu import Menu
-from ignis.services.recorder import RecorderService
+from ignis.exceptions import RecorderPortalCaptureCanceled
+from ignis.services.recorder import RecorderService, RecorderConfig
+
+AUDIO_DEVICES = {
+    "Internal audio": "default_output",
+    "Microphone": "default_input",
+    "Both sources": "default_output|default_input",
+}
 
 recorder = RecorderService.get_default()
 
@@ -63,29 +71,27 @@ class RecordMenu(Menu):
                             halign="end",
                             hexpand=True,
                             css_classes=["record-start-button", "unset"],
-                            on_click=lambda x: self.__start_recording(),  # type: ignore
+                            on_click=lambda x: asyncio.create_task(
+                                self.__start_recording()
+                            ),
                         ),
                     ],
                 ),
             ],
         )
 
-    def __start_recording(self) -> None:
+    async def __start_recording(self) -> None:
         self.set_reveal_child(False)
-        microphone = False
-        internal = False
-        if self._audio_switch.active:
-            if self._dropdown.selected == "Internal audio":
-                internal = True
-            elif self._dropdown.selected == "Microphone":
-                microphone = True
-            else:
-                internal = True
-                microphone = True
 
-        recorder.start_recording(
-            record_microphone=microphone, record_internal_audio=internal
-        )
+        config = RecorderConfig.new_from_options()
+
+        if self._audio_switch.active:
+            config.audio_devices = [AUDIO_DEVICES.get(self._dropdown.selected, "")]
+
+        try:
+            await recorder.start_recording(config=config)
+        except RecorderPortalCaptureCanceled:
+            pass
 
 
 class RecordButton(QSButton):
