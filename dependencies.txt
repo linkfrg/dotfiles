@@ -29,10 +29,7 @@ python-requests
 python-jinja
 python-materialyoucolor
 python-pillow
-gst-plugin-pipewire
-gst-plugins-good
-gst-plugins-ugly
-gst-plugins-base
+gpu-screen-recorder
 networkmanager
 ttf-jetbrains-mono
 ttf-jetbrains-mono-nerd
