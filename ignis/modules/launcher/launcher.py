@@ -1,7 +1,7 @@
 import re
 import asyncio
 from ignis import widgets
-from ignis.app import IgnisApp
+from ignis.window_manager import WindowManager
 from ignis.services.applications import (
     ApplicationsService,
     Application,
@@ -11,7 +11,7 @@ from ignis import utils
 from ignis.menu_model import IgnisMenuModel, IgnisMenuItem, IgnisMenuSeparator
 from gi.repository import Gio  # type: ignore
 
-app = IgnisApp.get_default()
+window_manager = WindowManager.get_default()
 
 applications = ApplicationsService.get_default()
 
@@ -60,11 +60,11 @@ class LauncherAppItem(widgets.Button):
 
     def launch(self) -> None:
         self._application.launch(terminal_format=TERMINAL_FORMAT)
-        app.close_window("ignis_LAUNCHER")
+        window_manager.close_window("ignis_LAUNCHER")
 
     def launch_action(self, action: ApplicationAction) -> None:
         action.launch()
-        app.close_window("ignis_LAUNCHER")
+        window_manager.close_window("ignis_LAUNCHER")
 
     def __sync_menu(self) -> None:
         self._menu.model = IgnisMenuModel(
@@ -129,7 +129,7 @@ class SearchWebButton(widgets.Button):
 
     def launch(self) -> None:
         asyncio.create_task(utils.exec_sh_async(f"xdg-open {self._url}"))
-        app.close_window("ignis_LAUNCHER")
+        window_manager.close_window("ignis_LAUNCHER")
 
 
 class Launcher(widgets.Window):
@@ -180,7 +180,7 @@ class Launcher(widgets.Window):
                     hexpand=True,
                     can_focus=False,
                     css_classes=["unset"],
-                    on_click=lambda x: app.close_window("ignis_LAUNCHER"),
+                    on_click=lambda x: window_manager.close_window("ignis_LAUNCHER"),
                     style="background-color: rgba(0, 0, 0, 0.3);",
                 ),
                 overlays=[main_box],

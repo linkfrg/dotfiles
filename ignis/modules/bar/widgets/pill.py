@@ -1,6 +1,6 @@
 import datetime
 from ignis import widgets
-from ignis.app import IgnisApp
+from ignis.window_manager import WindowManager
 from ignis import utils
 from ignis.variable import Variable
 from ignis.services.network import NetworkService
@@ -15,7 +15,7 @@ notifications = NotificationService.get_default()
 recorder = RecorderService.get_default()
 audio = AudioService.get_default()
 
-app = IgnisApp.get_default()
+window_manager = WindowManager.get_default()
 
 current_time = Variable(
     value=utils.Poll(1000, lambda x: datetime.datetime.now().strftime("%H:%M")).bind(
@@ -78,7 +78,7 @@ class VolumeIcon(IndicatorIcon):
 class StatusPill(widgets.Button):
     def __init__(self, monitor: int):
         self._monitor = monitor
-        self._window: widgets.Window = app.get_window("ignis_CONTROL_CENTER")  # type: ignore
+        self._window = window_manager.get_window("ignis_CONTROL_CENTER")
 
         super().__init__(
             child=widgets.Box(
