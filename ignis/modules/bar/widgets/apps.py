@@ -1,10 +1,10 @@
 from ignis import widgets
-from ignis.app import IgnisApp
+from ignis.window_manager import WindowManager
 from ignis.services.applications import ApplicationsService, Application
 from ignis.menu_model import IgnisMenuModel, IgnisMenuItem, IgnisMenuSeparator
 
 applications = ApplicationsService.get_default()
-app = IgnisApp.get_default()
+window_manager = WindowManager.get_default()
 
 TERMINAL_FORMAT = "kitty %command%"
 
@@ -43,7 +43,7 @@ class Apps(widgets.Box):
                 + [
                     widgets.Button(
                         child=widgets.Icon(image="start-here-symbolic", pixel_size=32),
-                        on_click=lambda x: app.toggle_window("ignis_LAUNCHER"),
+                        on_click=lambda x: window_manager.toggle_window("ignis_LAUNCHER"),
                         css_classes=["pinned-app", "unset"],
                     )
                 ],

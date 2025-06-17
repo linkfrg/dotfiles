@@ -1,10 +1,10 @@
 import asyncio
 from ignis import widgets
 from ignis import utils
-from ignis.app import IgnisApp
+from ignis.window_manager import WindowManager
 from typing import Callable
 
-app = IgnisApp.get_default()
+window_manager = WindowManager.get_default()
 
 def create_exec_task(cmd: str) -> None:
     asyncio.create_task(utils.exec_sh_async(cmd))
@@ -50,7 +50,7 @@ class SuspendButton(PowermenuButton):
         )
 
     def __invoke(self, *args) -> None:
-        app.close_window("ignis_POWERMENU")
+        window_manager.close_window("ignis_POWERMENU")
         create_exec_task("systemctl suspend && hyprlock")
 
 
@@ -98,7 +98,7 @@ class Powermenu(widgets.Window):
                     hexpand=True,
                     can_focus=False,
                     css_classes=["unset", "powermenu-overlay"],
-                    on_click=lambda x: app.close_window("ignis_POWERMENU"),
+                    on_click=lambda x: window_manager.close_window("ignis_POWERMENU"),
                 ),
                 overlays=[main_box],
             ),
