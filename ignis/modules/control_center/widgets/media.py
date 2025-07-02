@@ -1,12 +1,13 @@
 import os
+
 import ignis
 import asyncio
 from ignis import widgets
 from ignis.services.mpris import MprisService, MprisPlayer
 from ignis import utils
 from services.material import MaterialService
-from ignis.exceptions import CssInfoNotFoundError
-from ignis.css_manager import CssManager, CssInfoPath
+from jinja2 import Template
+from ignis.css_manager import CssManager, CssInfoString
 
 
 mpris = MprisService.get_default()
@@ -189,22 +190,21 @@ class Player(widgets.Revealer):
         else:
             art_url = self._player.art_url
 
-        try:
-            css_manager.remove_css(self._colors_path)
-        except CssInfoNotFoundError:
-            pass
-
         colors = material.get_colors_from_img(art_url, True)
         colors["art_url"] = art_url
         colors["desktop_entry"] = self.clean_desktop_entry()
-        material.render_template(
-            colors, input_file=MEDIA_TEMPLATE, output_file=self._colors_path
-        )
+
+        with open(MEDIA_TEMPLATE) as file:
+            template_rendered = Template(file.read()).render(colors)
+
+        if self._player.desktop_entry in css_manager.list_css_info_names():
+            css_manager.remove_css(self._player.desktop_entry)
+
         css_manager.apply_css(
-            CssInfoPath(
+            CssInfoString(
                 name=self._player.desktop_entry,
-                path=self._colors_path,
-                compiler_function=lambda path: utils.sass_compile(path=path),
+                compiler_function=lambda string: utils.sass_compile(string=string),
+                string=template_rendered,
             )
         )
 
