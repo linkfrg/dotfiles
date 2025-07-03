@@ -1,6 +1,5 @@
 import os
 from ignis import utils
-from ignis.app import IgnisApp
 from ignis.services.wallpaper import WallpaperService
 from modules import (
     Bar,
@@ -12,9 +11,10 @@ from modules import (
     Settings,
 )
 from ignis.css_manager import CssManager, CssInfoPath
+from ignis.icon_manager import IconManager
 from user_options import user_options
 
-app = IgnisApp.get_default()
+icon_manager = IconManager.get_default()
 css_manager = CssManager.get_default()
 WallpaperService.get_default()
 
@@ -43,8 +43,6 @@ def patch_style_scss(path: str) -> str:
     )
 
 
-app.add_icons(f"{utils.get_current_dir()}/icons")
-
 css_manager.apply_css(
     CssInfoPath(
         name="main",
@@ -52,6 +50,8 @@ css_manager.apply_css(
         compiler_function=patch_style_scss,
     )
 )
+
+icon_manager.add_icons(os.path.join(utils.get_current_dir(), "icons"))
 
 utils.exec_sh("gsettings set org.gnome.desktop.interface gtk-theme Material")
 utils.exec_sh("gsettings set org.gnome.desktop.interface icon-theme Papirus")
