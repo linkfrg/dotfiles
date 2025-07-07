@@ -1,5 +1,4 @@
 from ignis import widgets
-from ignis.app import IgnisApp
 from user_options import user_options
 from .active_page import active_page
 from .pages import (
@@ -9,8 +8,6 @@ from .pages import (
     RecorderEntry,
     UserEntry,
 )
-
-app = IgnisApp.get_default()
 
 
 class Settings(widgets.RegularWindow):
