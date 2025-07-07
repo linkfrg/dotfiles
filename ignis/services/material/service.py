@@ -11,7 +11,7 @@ from materialyoucolor.dynamiccolor.material_dynamic_colors import MaterialDynami
 from materialyoucolor.score.score import Score
 
 from ignis import utils
-from ignis.app import IgnisApp
+from ignis.css_manager import CssManager
 from ignis.base_service import BaseService
 from ignis.options import options
 from user_options import user_options
@@ -19,7 +19,7 @@ from user_options import user_options
 from .constants import MATERIAL_CACHE_DIR, TEMPLATES, SAMPLE_WALL
 from .util import rgba_to_hex, calculate_optimal_size
 
-app = IgnisApp.get_default()
+css_manager = CssManager.get_default()
 
 
 class MaterialService(BaseService):
@@ -122,5 +122,5 @@ class MaterialService(BaseService):
         except GLib.Error:
             ...
         options.wallpaper.set_wallpaper_path(image_path)
-        app.reload_css()
+        css_manager.reload_all_css()
         await self.__reload_gtk_theme()
