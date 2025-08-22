@@ -8,10 +8,10 @@
 
 ## Gallery
 
-<img src="assets/1.png"/>
-<img src="assets/2.png"/>
-<img src="assets/3.png"/>
-<img src="assets/4.png"/>
+<img src=".github/assets/1.png"/>
+<img src=".github/assets/2.png"/>
+<img src=".github/assets/3.png"/>
+<img src=".github/assets/4.png"/>
 
 ## Features
 
@@ -22,8 +22,8 @@
 
 ## Installation
 
-See [Installation](./installation.md)
+See [Installation](./docs/installation.md)
 
 ## Keybindings
 
-See [Keybindings](./keybindings.md)
+See [Keybindings](./docs/keybindings.md)
