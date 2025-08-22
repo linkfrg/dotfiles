@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  cfg = config.custom.programs.virt-manager;
+  cfg = config.linkfrg-dotfiles.programs.virt-manager;
 in {
-  options.custom.programs.virt-manager = {
+  options.linkfrg-dotfiles.programs.virt-manager = {
     enable = lib.mkEnableOption "Enable virt-manager";
   };
 

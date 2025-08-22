@@ -4,9 +4,9 @@
   lib,
   ...
 }: let
-  cfg = config.custom.theming.iconTheme;
+  cfg = config.linkfrg-dotfiles.theming.iconTheme;
 in {
-  options.custom.theming.iconTheme = {
+  options.linkfrg-dotfiles.theming.iconTheme = {
     enable = lib.mkEnableOption "Enable icon theme";
   };
 

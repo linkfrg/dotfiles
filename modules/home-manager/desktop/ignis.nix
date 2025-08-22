@@ -6,11 +6,11 @@
   lib,
   ...
 }: let
-  cfg = config.custom.desktop.ignis;
+  cfg = config.linkfrg-dotfiles.desktop.ignis;
 in {
   imports = [inputs.ignis.homeManagerModules.default];
 
-  options.custom.desktop.ignis = {
+  options.linkfrg-dotfiles.desktop.ignis = {
     enable = lib.mkEnableOption "Enable Ignis";
   };
 

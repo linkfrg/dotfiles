@@ -3,7 +3,7 @@
   lib,
   ...
 }: let
-  cfg = config.custom.core;
+  cfg = config.linkfrg-dotfiles.core;
 in {
   imports = [
     ./bootloader.nix
@@ -13,7 +13,7 @@ in {
     ./users.nix
   ];
 
-  options.custom.core = {
+  options.linkfrg-dotfiles.core = {
     enable = lib.mkEnableOption "Enable core settings";
   };
 

@@ -8,7 +8,7 @@
     inputs.dotfiles-private.nixosModules.default
   ];
 
-  custom = {
+  linkfrg-dotfiles = {
     core = {
       enable = true;
       bootloader.enable = true;

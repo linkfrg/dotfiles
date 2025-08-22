@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  cfg = config.custom.desktop.hyprlock;
+  cfg = config.linkfrg-dotfiles.desktop.hyprlock;
 in {
-  options.custom.desktop.hyprlock = {
+  options.linkfrg-dotfiles.desktop.hyprlock = {
     enable = lib.mkEnableOption "Enable hyprlock";
   };
 

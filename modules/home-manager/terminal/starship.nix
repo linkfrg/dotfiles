@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  cfg = config.custom.terminal.starship;
+  cfg = config.linkfrg-dotfiles.terminal.starship;
 in {
-  options.custom.terminal.starship = {
+  options.linkfrg-dotfiles.terminal.starship = {
     enable = lib.mkEnableOption "Enable starship";
   };
 

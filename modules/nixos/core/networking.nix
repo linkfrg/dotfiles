@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  cfg = config.custom.core.networking;
+  cfg = config.linkfrg-dotfiles.core.networking;
 in {
-  options.custom.core.networking = {
+  options.linkfrg-dotfiles.core.networking = {
     enable = lib.mkEnableOption "Enable networking settings";
     hostName = lib.mkOption {
       type = lib.types.str;

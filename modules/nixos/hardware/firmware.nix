@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  cfg = config.custom.hardware.firmware;
+  cfg = config.linkfrg-dotfiles.hardware.firmware;
 in {
-  options.custom.hardware.firmware = {
+  options.linkfrg-dotfiles.hardware.firmware = {
     enable = lib.mkEnableOption "Enable firmware";
   };
 

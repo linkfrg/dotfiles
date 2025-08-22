@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  cfg = config.custom.software.kitty;
+  cfg = config.linkfrg-dotfiles.software.kitty;
 in {
-  options.custom.software.kitty = {
+  options.linkfrg-dotfiles.software.kitty = {
     enable = lib.mkEnableOption "Enable kitty";
   };
 

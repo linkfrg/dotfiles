@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  cfg = config.custom.services.pipewire;
+  cfg = config.linkfrg-dotfiles.services.pipewire;
 in {
-  options.custom.services.pipewire = {
+  options.linkfrg-dotfiles.services.pipewire = {
     enable = lib.mkEnableOption "Enable Pipewire";
   };
 

@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  cfg = config.custom.services.flatpak;
+  cfg = config.linkfrg-dotfiles.services.flatpak;
 in {
-  options.custom.services.flatpak = {
+  options.linkfrg-dotfiles.services.flatpak = {
     enable = lib.mkEnableOption "Enable flatpak";
   };
 

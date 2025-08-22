@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  cfg = config.custom.services.docker;
+  cfg = config.linkfrg-dotfiles.services.docker;
 in {
-  options.custom.services.docker = {
+  options.linkfrg-dotfiles.services.docker = {
     enable = lib.mkEnableOption "Enable docker";
   };
 

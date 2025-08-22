@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  cfg = config.custom.desktop.hyprland;
+  cfg = config.linkfrg-dotfiles.desktop.hyprland;
 in {
-  options.custom.desktop.hyprland = {
+  options.linkfrg-dotfiles.desktop.hyprland = {
     enable = lib.mkEnableOption "Enable Hyprland";
   };
 

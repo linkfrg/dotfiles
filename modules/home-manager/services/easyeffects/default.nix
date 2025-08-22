@@ -3,11 +3,11 @@
   lib,
   ...
 }: let
-  cfg = config.custom.services.easyeffects;
+  cfg = config.linkfrg-dotfiles.services.easyeffects;
 
   loadPreset = path: builtins.fromJSON (builtins.readFile path);
 in {
-  options.custom.services.easyeffects = {
+  options.linkfrg-dotfiles.services.easyeffects = {
     enable = lib.mkEnableOption "Enable easyeffects service";
   };
 

@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  cfg = config.custom.desktop.waylandEnv;
+  cfg = config.linkfrg-dotfiles.desktop.waylandEnv;
 in {
-  options.custom.desktop.waylandEnv = {
+  options.linkfrg-dotfiles.desktop.waylandEnv = {
     enable = lib.mkEnableOption "Enable Wayland env vars";
   };
 

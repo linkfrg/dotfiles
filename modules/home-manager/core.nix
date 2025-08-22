@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  cfg = config.custom.core;
+  cfg = config.linkfrg-dotfiles.core;
 in {
-  options.custom.core = {
+  options.linkfrg-dotfiles.core = {
     enable = lib.mkEnableOption "Enable core settings";
     username = lib.mkOption {
       type = lib.types.str;

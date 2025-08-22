@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  cfg = config.custom.terminal.common;
+  cfg = config.linkfrg-dotfiles.terminal.common;
 in {
-  options.custom.terminal.common = {
+  options.linkfrg-dotfiles.terminal.common = {
     enable = lib.mkEnableOption "Enable common utils";
   };
 

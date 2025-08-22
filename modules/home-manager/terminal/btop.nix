@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  cfg = config.custom.terminal.btop;
+  cfg = config.linkfrg-dotfiles.terminal.btop;
 in {
-  options.custom.terminal.btop = {
+  options.linkfrg-dotfiles.terminal.btop = {
     enable = lib.mkEnableOption "Enable btop";
   };
 

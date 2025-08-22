@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  cfg = config.custom.services.avahi;
+  cfg = config.linkfrg-dotfiles.services.avahi;
 in {
-  options.custom.services.avahi = {
+  options.linkfrg-dotfiles.services.avahi = {
     enable = lib.mkEnableOption "Enable Avahi";
   };
 

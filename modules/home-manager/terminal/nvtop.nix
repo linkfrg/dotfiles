@@ -4,9 +4,9 @@
   pkgs,
   ...
 }: let
-  cfg = config.custom.terminal.nvtop;
+  cfg = config.linkfrg-dotfiles.terminal.nvtop;
 in {
-  options.custom.terminal.nvtop = {
+  options.linkfrg-dotfiles.terminal.nvtop = {
     enable = lib.mkEnableOption "Enable nvtop";
     nvidia = lib.mkEnableOption "Enable for nvidia";
     intel = lib.mkEnableOption "Enable for intel";

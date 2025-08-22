@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  cfg = config.custom.core.locale;
+  cfg = config.linkfrg-dotfiles.core.locale;
 in {
-  options.custom.core.locale = {
+  options.linkfrg-dotfiles.core.locale = {
     enable = lib.mkEnableOption "Enable locale settings";
   };
 

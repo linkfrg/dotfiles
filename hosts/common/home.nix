@@ -8,7 +8,7 @@
     inputs.dotfiles-private.homeManagerModules.default
   ];
 
-  custom = {
+  linkfrg-dotfiles = {
     core = {
       enable = true;
       username = "link";

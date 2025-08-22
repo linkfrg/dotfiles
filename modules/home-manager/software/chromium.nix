@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  cfg = config.custom.software.chromium;
+  cfg = config.linkfrg-dotfiles.software.chromium;
 in {
-  options.custom.software.chromium = {
+  options.linkfrg-dotfiles.software.chromium = {
     enable = lib.mkEnableOption "Enable chromium";
   };
 

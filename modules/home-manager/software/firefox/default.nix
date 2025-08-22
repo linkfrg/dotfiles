@@ -5,10 +5,10 @@
   lib,
   ...
 }: let
-  cfg = config.custom.software.firefox;
+  cfg = config.linkfrg-dotfiles.software.firefox;
   firefox-addons = inputs.firefox-addons.packages.${pkgs.system};
 in {
-  options.custom.software.firefox = {
+  options.linkfrg-dotfiles.software.firefox = {
     enable = lib.mkEnableOption "Enable Firefox";
     nvidia = lib.mkEnableOption "Enable Nvidia spefic settings";
   };

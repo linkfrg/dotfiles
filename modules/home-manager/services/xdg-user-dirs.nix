@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  cfg = config.custom.services.xdgUserDirs;
+  cfg = config.linkfrg-dotfiles.services.xdgUserDirs;
 in {
-  options.custom.services.xdgUserDirs = {
+  options.linkfrg-dotfiles.services.xdgUserDirs = {
     enable = lib.mkEnableOption "Enable XDG User Dirs";
   };
 

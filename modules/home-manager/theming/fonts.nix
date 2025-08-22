@@ -4,9 +4,9 @@
   lib,
   ...
 }: let
-  cfg = config.custom.theming.fonts;
+  cfg = config.linkfrg-dotfiles.theming.fonts;
 in {
-  options.custom.theming.fonts = {
+  options.linkfrg-dotfiles.theming.fonts = {
     enable = lib.mkEnableOption "Enable fonts";
   };
 

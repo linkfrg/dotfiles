@@ -4,9 +4,9 @@
   lib,
   ...
 }: let
-  cfg = config.custom.software.zed;
+  cfg = config.linkfrg-dotfiles.software.zed;
 in {
-  options.custom.software.zed = {
+  options.linkfrg-dotfiles.software.zed = {
     enable = lib.mkEnableOption "Enable kitty";
   };
 

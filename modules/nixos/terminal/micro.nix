@@ -4,9 +4,9 @@
   lib,
   ...
 }: let
-  cfg = config.custom.terminal.micro;
+  cfg = config.linkfrg-dotfiles.terminal.micro;
 in {
-  options.custom.terminal.micro = {
+  options.linkfrg-dotfiles.terminal.micro = {
     enable = lib.mkEnableOption "Enable micro";
   };
 

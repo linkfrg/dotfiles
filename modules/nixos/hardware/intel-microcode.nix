@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  cfg = config.custom.hardware.intelMicrocode;
+  cfg = config.linkfrg-dotfiles.hardware.intelMicrocode;
 in {
-  options.custom.hardware.intelMicrocode = {
+  options.linkfrg-dotfiles.hardware.intelMicrocode = {
     enable = lib.mkEnableOption "Enable Intel microcode updates";
   };
 

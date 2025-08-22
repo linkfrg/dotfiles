@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  cfg = config.custom.terminal.git;
+  cfg = config.linkfrg-dotfiles.terminal.git;
 in {
-  options.custom.terminal.git = {
+  options.linkfrg-dotfiles.terminal.git = {
     enable = lib.mkEnableOption "Enable git";
   };
 
