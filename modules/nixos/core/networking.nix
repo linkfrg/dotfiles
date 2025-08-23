@@ -15,8 +15,6 @@ in {
 
   config = lib.mkIf cfg.enable {
     networking.hostName = cfg.hostName;
-    networking.networkmanager.enable = true;
-    systemd.services.NetworkManager-wait-online.enable = false;
 
     networking.firewall = {
       # make wireguard work

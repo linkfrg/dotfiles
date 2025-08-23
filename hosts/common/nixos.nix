@@ -44,6 +44,7 @@
       pipewire.enable = true;
       zram.enable = true;
       docker.enable = true;
+      networkmanager.enable = true;
     };
 
     terminal = {
