@@ -13,7 +13,7 @@ in {
     virtualisation.libvirtd.enable = true;
     programs.virt-manager.enable = true;
 
-    users.users.link.extraGroups = [
+    users.users.${config.linkfrg-dotfiles.core.users.username}.extraGroups = [
       "libvirtd"
     ];
   };

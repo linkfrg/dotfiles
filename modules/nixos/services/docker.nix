@@ -11,6 +11,6 @@ in {
 
   config = lib.mkIf cfg.enable {
     virtualisation.docker.enable = true;
-    users.users.link.extraGroups = ["docker"];
+    users.users.${config.linkfrg-dotfiles.core.users.username}.extraGroups = ["docker"];
   };
 }

@@ -17,7 +17,10 @@
       networking = {
         enable = true;
       };
-      users.enable = true;
+      users = {
+        enable = true;
+        username = "link";
+      };
     };
 
     desktop = {
