@@ -3,7 +3,7 @@
     ../common/home.nix
   ];
 
-  linkfrg-dotfiles = {
+  custom = {
     software = {
       firefox = {
         nvidia = true;

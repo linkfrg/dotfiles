@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  cfg = config.linkfrg-dotfiles.hardware.dataDisk;
+  cfg = config.custom.hardware.dataDisk;
 in {
-  options.linkfrg-dotfiles.hardware.dataDisk = {
+  options.custom.hardware.dataDisk = {
     enable = lib.mkEnableOption "Automatically mount a disk to /data";
 
     uuid = lib.mkOption {

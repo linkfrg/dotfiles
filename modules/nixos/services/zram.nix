@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  cfg = config.linkfrg-dotfiles.services.zram;
+  cfg = config.custom.services.zram;
 in {
-  options.linkfrg-dotfiles.services.zram = {
+  options.custom.services.zram = {
     enable = lib.mkEnableOption "Enable zram";
   };
 

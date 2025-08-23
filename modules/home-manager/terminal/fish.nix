@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  cfg = config.linkfrg-dotfiles.terminal.fish;
+  cfg = config.custom.terminal.fish;
 in {
-  options.linkfrg-dotfiles.terminal.fish = {
+  options.custom.terminal.fish = {
     enable = lib.mkEnableOption "Enable fish";
   };
 

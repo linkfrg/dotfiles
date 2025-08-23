@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  cfg = config.linkfrg-dotfiles.programs.virt-manager;
+  cfg = config.custom.programs.virt-manager;
 in {
-  options.linkfrg-dotfiles.programs.virt-manager = {
+  options.custom.programs.virt-manager = {
     enable = lib.mkEnableOption "Enable virt-manager";
   };
 
@@ -13,7 +13,7 @@ in {
     virtualisation.libvirtd.enable = true;
     programs.virt-manager.enable = true;
 
-    users.users.${config.linkfrg-dotfiles.core.users.username}.extraGroups = [
+    users.users.${config.custom.core.users.username}.extraGroups = [
       "libvirtd"
     ];
   };

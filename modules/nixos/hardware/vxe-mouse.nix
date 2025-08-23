@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  cfg = config.linkfrg-dotfiles.hardware.vxeMouse;
+  cfg = config.custom.hardware.vxeMouse;
 in {
-  options.linkfrg-dotfiles.hardware.vxeMouse = {
+  options.custom.hardware.vxeMouse = {
     enable = lib.mkEnableOption "Make ATK Hub work";
   };
 

@@ -46,7 +46,10 @@
   in {
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
 
-    homeManagerModules.default = import ./modules/home-manager;
+    homeManagerModules = {
+      default = import ./modules/home-manager;
+      public = import ./modules/public {inherit self inputs;};
+    };
     nixosModules.default = import ./modules/nixos;
 
     nixosConfigurations = {

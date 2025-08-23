@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  cfg = config.linkfrg-dotfiles.terminal.direnv;
+  cfg = config.custom.terminal.direnv;
 in {
-  options.linkfrg-dotfiles.terminal.direnv = {
+  options.custom.terminal.direnv = {
     enable = lib.mkEnableOption "Enable direnv";
   };
 

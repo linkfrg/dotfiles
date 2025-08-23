@@ -4,9 +4,9 @@
   lib,
   ...
 }: let
-  cfg = config.linkfrg-dotfiles.terminal.develop;
+  cfg = config.custom.terminal.develop;
 in {
-  options.linkfrg-dotfiles.terminal.develop = {
+  options.custom.terminal.develop = {
     enable = lib.mkEnableOption "Enable developer utils";
   };
 

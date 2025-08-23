@@ -5,21 +5,22 @@
 }: {
   imports = [
     outputs.homeManagerModules.default
+    outputs.homeManagerModules.public
     inputs.dotfiles-private.homeManagerModules.default
   ];
 
   linkfrg-dotfiles = {
+    hyprland.enable = true;
+    hyprlock.enable = true;
+    ignis.enable = true;
+    waylandEnv.enable = true;
+    xdgPortal.enable = true;
+  };
+
+  custom = {
     core = {
       enable = true;
       username = "link";
-    };
-
-    desktop = {
-      hyprland.enable = true;
-      hyprlock.enable = true;
-      ignis.enable = true;
-      waylandEnv.enable = true;
-      xdgPortal.enable = true;
     };
 
     services = {

@@ -4,9 +4,9 @@
   lib,
   ...
 }: let
-  cfg = config.linkfrg-dotfiles.services.imobiledevice;
+  cfg = config.custom.services.imobiledevice;
 in {
-  options.linkfrg-dotfiles.services.imobiledevice = {
+  options.custom.services.imobiledevice = {
     enable = lib.mkEnableOption "Enable imobiledevice and usbmuxd";
   };
 

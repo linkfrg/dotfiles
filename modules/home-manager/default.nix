@@ -1,6 +1,5 @@
 {
   imports = [
-    ./desktop
     ./services
     ./software
     ./terminal

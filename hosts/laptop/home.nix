@@ -3,7 +3,7 @@
     ../common/home.nix
   ];
 
-  linkfrg-dotfiles = {
+  custom = {
     terminal = {
       nvtop = {
         enable = true;

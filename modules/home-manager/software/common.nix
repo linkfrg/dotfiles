@@ -4,9 +4,9 @@
   lib,
   ...
 }: let
-  cfg = config.linkfrg-dotfiles.software.common;
+  cfg = config.custom.software.common;
 in {
-  options.linkfrg-dotfiles.software.common = {
+  options.custom.software.common = {
     enable = lib.mkEnableOption "Enable common software";
   };
 

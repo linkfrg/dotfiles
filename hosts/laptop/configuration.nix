@@ -4,7 +4,7 @@
     ../common/nixos.nix
   ];
 
-  linkfrg-dotfiles = {
+  custom = {
     core = {
       networking = {
         hostName = "laptop";

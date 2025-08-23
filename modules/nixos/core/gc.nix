@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  cfg = config.linkfrg-dotfiles.core.gc;
+  cfg = config.custom.core.gc;
 in {
-  options.linkfrg-dotfiles.core.gc = {
+  options.custom.core.gc = {
     enable = lib.mkEnableOption "Enable garbage collection";
   };
 

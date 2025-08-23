@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  cfg = config.linkfrg-dotfiles.core.bootloader;
+  cfg = config.custom.core.bootloader;
 in {
-  options.linkfrg-dotfiles.core.bootloader = {
+  options.custom.core.bootloader = {
     enable = lib.mkEnableOption "Enable bootloader";
   };
 

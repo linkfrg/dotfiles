@@ -4,9 +4,9 @@
   lib,
   ...
 }: let
-  cfg = config.linkfrg-dotfiles.programs.steam;
+  cfg = config.custom.programs.steam;
 in {
-  options.linkfrg-dotfiles.programs.steam = {
+  options.custom.programs.steam = {
     enable = lib.mkEnableOption "Enable Steam and all other gaming stuff";
   };
 

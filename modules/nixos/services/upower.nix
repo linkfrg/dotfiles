@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  cfg = config.linkfrg-dotfiles.services.upower;
+  cfg = config.custom.services.upower;
 in {
-  options.linkfrg-dotfiles.services.upower = {
+  options.custom.services.upower = {
     enable = lib.mkEnableOption "Enable UPower";
   };
 

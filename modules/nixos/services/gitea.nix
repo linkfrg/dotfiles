@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  cfg = config.linkfrg-dotfiles.services.gitea;
+  cfg = config.custom.services.gitea;
 in {
-  options.linkfrg-dotfiles.services.gitea = {
+  options.custom.services.gitea = {
     enable = lib.mkEnableOption "Enable gitea on localhost";
   };
 

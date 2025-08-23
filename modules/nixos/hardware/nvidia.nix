@@ -4,9 +4,9 @@
   lib,
   ...
 }: let
-  cfg = config.linkfrg-dotfiles.hardware.nvidia;
+  cfg = config.custom.hardware.nvidia;
 in {
-  options.linkfrg-dotfiles.hardware.nvidia = {
+  options.custom.hardware.nvidia = {
     enable = lib.mkEnableOption "Enable Novideo";
   };
 

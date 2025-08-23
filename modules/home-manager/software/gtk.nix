@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  cfg = config.linkfrg-dotfiles.software.gtk;
+  cfg = config.custom.software.gtk;
 in {
-  options.linkfrg-dotfiles.software.gtk = {
+  options.custom.software.gtk = {
     enable = lib.mkEnableOption "Enable Gtk";
   };
 

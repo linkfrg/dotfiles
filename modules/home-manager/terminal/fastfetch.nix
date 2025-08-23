@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  cfg = config.linkfrg-dotfiles.terminal.fastfetch;
+  cfg = config.custom.terminal.fastfetch;
 in {
-  options.linkfrg-dotfiles.terminal.fastfetch = {
+  options.custom.terminal.fastfetch = {
     enable = lib.mkEnableOption "Enable fastfetch";
   };
 

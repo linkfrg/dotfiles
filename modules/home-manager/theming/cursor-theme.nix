@@ -4,9 +4,9 @@
   lib,
   ...
 }: let
-  cfg = config.linkfrg-dotfiles.theming.cursorTheme;
+  cfg = config.custom.theming.cursorTheme;
 in {
-  options.linkfrg-dotfiles.theming.cursorTheme = {
+  options.custom.theming.cursorTheme = {
     enable = lib.mkEnableOption "Enable cursor theme";
   };
 
