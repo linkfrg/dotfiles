@@ -4,9 +4,9 @@
   lib,
   ...
 }: let
-  cfg = config.linkfrg-dotfiles.xdgPortal;
+  cfg = config.custom.services.xdgPortal;
 in {
-  options.linkfrg-dotfiles.xdgPortal = {
+  options.custom.services.xdgPortal = {
     enable = lib.mkEnableOption "Enable XDG Desktop Portal";
   };
 

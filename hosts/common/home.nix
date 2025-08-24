@@ -14,7 +14,6 @@
     hyprlock.enable = true;
     ignis.enable = true;
     kitty.enable = true;
-    xdgPortal.enable = true;
   };
 
   custom = {
@@ -25,6 +24,7 @@
 
     services = {
       easyeffects.enable = true;
+      xdgPortal.enable = true;
       xdgUserDirs.enable = true;
     };
 
