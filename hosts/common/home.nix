@@ -13,6 +13,7 @@
     hyprland.enable = true;
     hyprlock.enable = true;
     ignis.enable = true;
+    kitty.enable = true;
     waylandEnv.enable = true;
     xdgPortal.enable = true;
   };
@@ -36,7 +37,6 @@
       chromium.enable = true;
       common.enable = true;
       gtk.enable = true;
-      kitty.enable = true;
     };
 
     terminal = {
