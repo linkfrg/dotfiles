@@ -3,13 +3,13 @@
 > [!IMPORTANT]
 > The knowledge of Nix & NixOS is required.
 
-## Using Home Manager modules
+## Using Home Manager module
 
 > [!TIP]
 > You can start with the [starter flake template](https://github.com/linkfrg/dotfiles/blob/main/templates/starter).
 
 Since this is my personal, hardware-specific configuration, many parts may be inappropriate for your use case.
-However, you can reuse some of my configs in your own setup. This flake exports a public Home Manager module, which includes Ignis, Hyprland and hyprlock.
+However, you can reuse some of my configs in your own setup. This flake exports a public Home Manager module, which includes Ignis, Hyprland, and other configs.
 
 1. Add this repo to your flake's inputs:
 
@@ -49,7 +49,7 @@ However, you can reuse some of my configs in your own setup. This flake exports 
 }
 ```
 
-For the list of all available options, see [modules](https://github.com/linkfrg/dotfiles/tree/main/modules/public).
+For the list of all available options, see [public modules](https://github.com/linkfrg/dotfiles/tree/main/modules/public).
 
 ### Running on non-NixOS distro
 
@@ -58,4 +58,4 @@ For the list of all available options, see [modules](https://github.com/linkfrg/
 
 It's still possible to use Home Manager on distros rather than NixOS, though running graphical applications may be tricker.
 
-You have to install the [Nix package manager](https://nixos.org/download) and run graphical apps (such as Hyprland, Ignis, Hyprland, kitty, etc.) using [NixGL](https://github.com/nix-community/nixGL).
+You have to install the [Nix package manager](https://nixos.org/download) and run graphical apps (such as Hyprland, Ignis, kitty, etc.) using [NixGL](https://github.com/nix-community/nixGL).
