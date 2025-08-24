@@ -52,6 +52,12 @@
     };
     nixosModules.default = import ./modules/nixos;
 
+    templates = {
+      starter = {
+        path = ./templates/starter;
+      };
+    };
+
     nixosConfigurations = {
       desktop = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};

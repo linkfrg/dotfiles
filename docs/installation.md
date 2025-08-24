@@ -5,6 +5,9 @@
 
 ## Using Home Manager modules
 
+> [!TIP]
+> You can start with the [starter flake template](https://github.com/linkfrg/dotfiles/blob/main/templates/starter).
+
 Since this is my personal, hardware-specific configuration, many parts may be inappropriate for your use case.
 However, you can reuse some of my configs in your own setup. This flake exports a public Home Manager module, which includes Ignis, Hyprland and hyprlock.
 
