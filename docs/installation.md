@@ -1,50 +1,58 @@
 # Installation
 
-## Clone repository
+> [!IMPORTANT]
+> The knowledge of Nix & NixOS is required.
 
-```
-git clone https://github.com/linkfrg/dotfiles.git --depth 1 --branch main
-```
+## Using Home Manager modules
 
-## Copy config files
+Since this is my personal, hardware-specific configuration, many parts may be inappropriate for your use case.
+However, you can reuse some of my configs in your own setup. This flake exports a public Home Manager module, which includes Ignis, Hyprland and hyprlock.
 
-```
-cd dotfiles
-mkdir -p ~/.local/share/themes
-cp -R .config/* ~/.config/
-cp -R ignis ~/.config/
-cp -R Material ~/.local/share/themes
-```
+1. Add this repo to your flake's inputs:
 
-## Install dependencies
-
-Firstly, you need to install AUR helper (e.g., paru).
-
-```
-paru -S --needed - < dependencies.txt
+```nix
+{
+  inputs = {
+    linkfrg-dotfiles = {
+      url = "github:linkfrg/dotfiles";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+  };
+}
 ```
 
-If using nvidia install also
-```
-paru -S --needed - < nvidia_deps.txt
-```
+2. Add the Home Manager module:
 
-## Install tide prompt
-
-Install fisher.
-
-```bash
-paru -S fisher
+```nix
+# home.nix
+{inputs, ...}: {
+  imports = [
+    inputs.linkfrg-dotfiles.homeManagerModules.public
+  ];
+}
 ```
 
-Install tide.
+3. Enable modules you want
 
-```bash
-fisher install IlanCosman/tide@v6
+```nix
+# home.nix
+{
+  linkfrg-dotfiles = {
+    hyprland.enable = true;
+    hyprlock.enable = true;
+    ignis.enable = true;
+    kitty.enable = true;
+  };
+}
 ```
 
-Configure tide prompt.
+For the list of all available options, see [modules](https://github.com/linkfrg/dotfiles/tree/main/modules/public).
 
-```bash
-tide configure --auto --style=Rainbow --prompt_colors='16 colors' --show_time=No --rainbow_prompt_separators=Angled --powerline_prompt_heads=Sharp --powerline_prompt_tails=Round --powerline_prompt_style='Two lines, frame' --prompt_connection=Disconnected --powerline_right_prompt_frame=Yes --prompt_spacing=Sparse --icons='Many icons' --transient=No
-```
+### Running on non-NixOS distro
+
+> [!DANGER]
+> Not tested, not recommended. You're on your own here.
+
+It's still possible to use Home Manager on distros rather than NixOS, though running graphical applications may be tricker.
+
+You have to install the [Nix package manager](https://nixos.org/download) and run graphical apps (such as Hyprland, Ignis, Hyprland, kitty, etc.) using [NixGL](https://github.com/nix-community/nixGL).
