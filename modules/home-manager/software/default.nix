@@ -5,6 +5,5 @@
     ./chromium.nix
     ./common.nix
     ./gtk.nix
-    ./kitty.nix
   ];
 }

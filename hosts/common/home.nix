@@ -14,7 +14,6 @@
     hyprlock.enable = true;
     ignis.enable = true;
     kitty.enable = true;
-    waylandEnv.enable = true;
     xdgPortal.enable = true;
   };
 

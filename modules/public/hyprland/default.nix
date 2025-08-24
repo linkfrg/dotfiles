@@ -25,6 +25,7 @@ in {
         (import ./keybinds.nix)
         (import ./rules.nix)
         (import ./monitors.nix)
+        (import ./env.nix)
       ];
       extraConfig = import ./colors.nix;
     };
