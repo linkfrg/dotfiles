@@ -5,7 +5,7 @@
   ...
 }: let
   cfg = config.custom.software.common;
-in let
+
   imageViewer = "org.gnome.eog.desktop";
   videoPlayer = "mpv.desktop";
 in {
