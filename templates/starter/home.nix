@@ -10,7 +10,7 @@
     kitty.enable = true;
   };
 
-  # FIXME: replace "username" with your username
+  # CHANGEME: replace "username" with your username
   home = {
     username = "username";
     homeDirectory = "/home/username";
