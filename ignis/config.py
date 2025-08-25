@@ -53,14 +53,6 @@ css_manager.apply_css(
 
 icon_manager.add_icons(os.path.join(utils.get_current_dir(), "icons"))
 
-utils.exec_sh("gsettings set org.gnome.desktop.interface gtk-theme Material")
-utils.exec_sh("gsettings set org.gnome.desktop.interface icon-theme Papirus")
-utils.exec_sh(
-    'gsettings set org.gnome.desktop.interface font-name "JetBrains Mono Regular 11"'
-)
-utils.exec_sh("hyprctl reload")
-
-
 ControlCenter()
 
 for monitor in range(utils.get_n_monitors()):
