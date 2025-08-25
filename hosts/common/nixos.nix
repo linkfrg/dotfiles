@@ -35,6 +35,7 @@
 
     programs = {
       steam.enable = true;
+      thunar.enable = true;
     };
 
     services = {

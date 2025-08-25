@@ -14,9 +14,6 @@ in {
     home.packages = with pkgs; [
       telegram-desktop
       protonvpn-gui
-      xfce.thunar
-      xfce.thunar-archive-plugin
-      file-roller
       eog
       mpv
       transmission_4-gtk
