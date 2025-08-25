@@ -53,7 +53,7 @@ For the list of all available options, see [public modules](https://github.com/l
 
 ### Running on non-NixOS distro
 
-> [!DANGER]
+> [!CAUTION]
 > Not tested, not recommended. You're on your own here.
 
 It's still possible to use Home Manager on distros rather than NixOS, though running graphical applications may be tricker.
