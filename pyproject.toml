@@ -3,10 +3,10 @@ python_version = "3.10"
 packages = ["ignis"]
 exclude = ["venv"]
 disable_error_code = [
-    "no-redef",  # allow variable redefinition (needed for GObject.Property decorator)
-    "method-assign",  # also needed for GObject.Property
+    "no-redef",         # allow variable redefinition (needed for GObject.Property decorator)
+    "method-assign",    # also needed for GObject.Property
     "import-not-found",
-    "import-untyped"
+    "import-untyped",
 ]
 mypy_path = ["stubs"]
 check_untyped_defs = true
@@ -14,3 +14,27 @@ check_untyped_defs = true
 [[tool.mypy.overrides]]
 module = ["gi.repository.*"]
 disable_error_code = ["assignment"]
+
+[tool.ruff]
+include = ["ignis/**/*.py"]
+
+[tool.ruff.lint]
+select = [
+    "F",  # pyflakes
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "I",  # isort
+    "UP", # pyupgrade
+    "B",  # flake8-bugbear
+    "C4", # flake8-comprehensions
+]
+ignore = [
+    "E501", # line too long, handled by black
+    "B008", # do not perform function calls in argument defaults
+    "C901", # too complex
+    "W191", # indentation contains tabs
+    "I001", # import block is un-sorted or un-formatted
+]
+
+fixable = ["ALL"]
+unfixable = []

@@ -1,3 +1,0 @@
-materialyoucolor>=2.0.9
-Jinja2>=3.1.4
-pillow>=10.4.0
