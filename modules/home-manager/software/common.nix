@@ -5,6 +5,9 @@
   ...
 }: let
   cfg = config.custom.software.common;
+in let
+  imageViewer = "org.gnome.eog.desktop";
+  videoPlayer = "mpv.desktop";
 in {
   options.custom.software.common = {
     enable = lib.mkEnableOption "Enable common software";
@@ -25,19 +28,19 @@ in {
       enable = true;
       defaultApplications = {
         # Images
-        "image/jpeg" = ["eog.desktop"];
-        "image/png" = ["eog.desktop"];
-        "image/gif" = ["eog.desktop"];
-        "image/webp" = ["eog.desktop"];
-        "image/tiff" = ["eog.desktop"];
-        "image/bmp" = ["eog.desktop"];
+        "image/jpeg" = [imageViewer];
+        "image/png" = [imageViewer];
+        "image/gif" = [imageViewer];
+        "image/webp" = [imageViewer];
+        "image/tiff" = [imageViewer];
+        "image/bmp" = [imageViewer];
 
         # Videos
-        "video/mp4" = ["mpv.desktop"];
-        "video/x-matroska" = ["mpv.desktop"]; # mkv
-        "video/webm" = ["mpv.desktop"];
-        "video/x-msvideo" = ["mpv.desktop"]; # avi
-        "video/quicktime" = ["mpv.desktop"]; # mov
+        "video/mp4" = [videoPlayer];
+        "video/x-matroska" = [videoPlayer]; # mkv
+        "video/webm" = [videoPlayer];
+        "video/x-msvideo" = [videoPlayer]; # avi
+        "video/quicktime" = [videoPlayer]; # mov
       };
     };
   };
