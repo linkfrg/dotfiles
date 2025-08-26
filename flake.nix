@@ -48,7 +48,7 @@
 
     homeManagerModules = {
       default = import ./modules/home-manager;
-      public = import ./modules/public {inherit self inputs;};
+      public = import ./public-modules/home-manager {inherit self inputs;};
     };
     nixosModules.default = import ./modules/nixos;
 
