@@ -14,6 +14,10 @@
     hyprlock.enable = true;
     ignis.enable = true;
     kitty.enable = true;
+
+    cursorTheme.enable = true;
+    fonts.enable = true;
+    iconTheme.enable = true;
   };
 
   custom = {
@@ -46,12 +50,6 @@
       fish.enable = true;
       git.enable = true;
       starship.enable = true;
-    };
-
-    theming = {
-      cursorTheme.enable = true;
-      fonts.enable = true;
-      iconTheme.enable = true;
     };
   };
 

@@ -4,10 +4,10 @@
   lib,
   ...
 }: let
-  cfg = config.custom.theming.iconTheme;
+  cfg = config.linkfrg-dotfiles.iconTheme;
 in {
-  options.custom.theming.iconTheme = {
-    enable = lib.mkEnableOption "Enable icon theme";
+  options.linkfrg-dotfiles.iconTheme = {
+    enable = lib.mkEnableOption "Enable Papirus icon theme";
   };
 
   config = lib.mkIf cfg.enable {

@@ -4,10 +4,10 @@
   lib,
   ...
 }: let
-  cfg = config.custom.theming.cursorTheme;
+  cfg = config.linkfrg-dotfiles.cursorTheme;
 in {
-  options.custom.theming.cursorTheme = {
-    enable = lib.mkEnableOption "Enable cursor theme";
+  options.linkfrg-dotfiles.cursorTheme = {
+    enable = lib.mkEnableOption "Enable Adwaita cursor theme";
   };
 
   config = lib.mkIf cfg.enable {

@@ -4,10 +4,10 @@
   lib,
   ...
 }: let
-  cfg = config.custom.theming.fonts;
+  cfg = config.linkfrg-dotfiles.fonts;
 in {
-  options.custom.theming.fonts = {
-    enable = lib.mkEnableOption "Enable fonts";
+  options.linkfrg-dotfiles.fonts = {
+    enable = lib.mkEnableOption "Enable JetBrains fonts";
   };
 
   config = lib.mkIf cfg.enable {

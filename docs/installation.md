@@ -35,7 +35,7 @@ However, you can reuse some of my configs in your own setup. This flake exports 
 }
 ```
 
-3. Enable modules you want
+3. Enable modules you want:
 
 ```nix
 # home.nix
@@ -45,6 +45,10 @@ However, you can reuse some of my configs in your own setup. This flake exports 
     hyprlock.enable = true;
     ignis.enable = true;
     kitty.enable = true;
+
+    cursorTheme.enable = true;
+    fonts.enable = true;
+    iconTheme.enable = true;
   };
 }
 ```
