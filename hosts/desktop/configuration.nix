@@ -1,10 +1,17 @@
 {
+  outputs,
+  inputs,
+  ...
+}: {
   imports = [
     ./hardware-configuration.nix
-    ../common/nixos.nix
+    outputs.nixosModules.default
+    inputs.dotfiles-private.nixosModules.default
   ];
 
   custom = {
+    bundles.general-desktop.enable = true;
+
     core = {
       networking = {
         hostName = "desktop";

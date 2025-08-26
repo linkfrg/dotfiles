@@ -1,9 +1,17 @@
 {
+  inputs,
+  outputs,
+  ...
+}: {
   imports = [
-    ../common/home.nix
+    outputs.homeManagerModules.default
+    outputs.homeManagerModules.public
+    inputs.dotfiles-private.homeManagerModules.default
   ];
 
   custom = {
+    bundles.general-desktop.enable = true;
+
     terminal = {
       nvtop = {
         enable = true;

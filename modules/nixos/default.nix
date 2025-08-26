@@ -1,5 +1,6 @@
 {
   imports = [
+    ./bundles
     ./core
     ./desktop
     ./hardware
