@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: let
   cfg = config.custom.programs.virt-manager;
@@ -10,7 +11,10 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    virtualisation.libvirtd.enable = true;
+    virtualisation.libvirtd = {
+      enable = true;
+      qemu.vhostUserPackages = with pkgs; [virtiofsd];
+    };
     programs.virt-manager.enable = true;
 
     users.users.${config.custom.core.users.username}.extraGroups = [
