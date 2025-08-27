@@ -14,4 +14,6 @@
   OverridePostUpdatePage = "";
   DontCheckDefaultBrowser = true;
   DisplayBookmarksToolbar = "always";
+  OfferToSaveLogins = false;
+  PasswordManagerEnabled = false;
 }
