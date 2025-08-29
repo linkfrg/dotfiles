@@ -7,9 +7,24 @@
 in {
   options.custom.bundles.general-desktop = {
     enable = lib.mkEnableOption "Enable General Desktop HM bundle";
+    username = lib.mkOption {
+      type = lib.types.str;
+      description = "The username";
+    };
   };
 
   config = lib.mkIf cfg.enable {
+    home = {
+      username = cfg.username;
+      homeDirectory = "/home/${cfg.username}";
+    };
+
+    nixpkgs.config.allowUnfree = true;
+
+    programs.home-manager.enable = true;
+
+    home.stateVersion = "25.05";
+
     linkfrg-dotfiles = {
       hyprland.enable = true;
       hyprlock.enable = true;
@@ -22,11 +37,6 @@ in {
     };
 
     custom = {
-      core = {
-        enable = true;
-        username = "link";
-      };
-
       services = {
         easyeffects.enable = true;
         xdgPortal.enable = true;

@@ -4,6 +4,5 @@
     ./services
     ./software
     ./terminal
-    ./core.nix
   ];
 }

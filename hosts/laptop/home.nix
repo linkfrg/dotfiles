@@ -10,7 +10,10 @@
   ];
 
   custom = {
-    bundles.general-desktop.enable = true;
+    bundles.general-desktop = {
+      enable = true;
+      username = "link";
+    };
 
     terminal = {
       nvtop = {
