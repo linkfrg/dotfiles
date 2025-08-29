@@ -5,7 +5,7 @@ It's a minimal starter Home Manager config which utilizies my dotfiles.
 You can init it using:
 
 ```bash
-nix flake init --template path:github:linkfrg/dotfiles#minimal
+nix flake init --template github:linkfrg/dotfiles#starter
 ```
 
 Remember to replace the placeholder parts of this flake with your own data.
