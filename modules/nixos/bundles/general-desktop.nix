@@ -19,23 +19,7 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    nixpkgs.config.allowUnfree = true;
-
-    nix = {
-      settings = {
-        experimental-features = "nix-command flakes";
-        flake-registry = "";
-        nix-path = "";
-      };
-      channel.enable = false;
-    };
-
     networking.hostName = cfg.hostName;
-
-    boot.loader = {
-      systemd-boot.enable = true;
-      efi.canTouchEfiVariables = true;
-    };
 
     time.timeZone = "Asia/Almaty";
     i18n.defaultLocale = "en_US.UTF-8";
@@ -67,6 +51,11 @@ in {
     system.stateVersion = "25.05";
 
     custom = {
+      core = {
+        nix.enable = true;
+        systemd-boot.enable = true;
+      };
+
       desktop = {
         hyprland.enable = true;
       };
