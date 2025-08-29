@@ -57,4 +57,13 @@
       };
     };
   };
+
+  inlay_hints = {
+    enabled = true;
+    show_type_hints = true;
+    show_parameter_hints = true;
+    show_other_hints = true;
+    edit_debounce_ms = 700;
+    scroll_debounce_ms = 50;
+  };
 }

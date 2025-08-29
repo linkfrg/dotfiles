@@ -17,6 +17,7 @@ in {
       extraPackages = with pkgs; [
         nil
         alejandra
+        rust-analyzer
       ];
 
       extensions = import ./extensions.nix;
