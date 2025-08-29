@@ -3,10 +3,10 @@
   lib,
   ...
 }: let
-  cfg = config.custom.core.gc;
+  cfg = config.custom.services.gc;
 in {
-  options.custom.core.gc = {
-    enable = lib.mkEnableOption "Enable garbage collection";
+  options.custom.services.gc = {
+    enable = lib.mkEnableOption "Enable Nix garbage collection";
   };
 
   config = lib.mkIf cfg.enable {

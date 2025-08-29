@@ -14,7 +14,6 @@ in {
       core = {
         enable = true;
         bootloader.enable = true;
-        gc.enable = true;
         locale.enable = true;
         networking = {
           enable = true;
@@ -48,6 +47,7 @@ in {
         zram.enable = true;
         docker.enable = true;
         networkmanager.enable = true;
+        gc.enable = true;
       };
 
       terminal = {

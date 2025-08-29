@@ -7,7 +7,6 @@
 in {
   imports = [
     ./bootloader.nix
-    ./gc.nix
     ./locale.nix
     ./networking.nix
     ./users.nix
