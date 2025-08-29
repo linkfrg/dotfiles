@@ -21,6 +21,9 @@ in {
       extraGroups = [
         "wheel"
         "input"
+        "libvirtd"
+        "docker"
+        "networkmanager"
       ];
     };
   };

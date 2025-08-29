@@ -16,9 +16,5 @@ in {
       qemu.vhostUserPackages = with pkgs; [virtiofsd];
     };
     programs.virt-manager.enable = true;
-
-    users.users.${config.custom.core.users.username}.extraGroups = [
-      "libvirtd"
-    ];
   };
 }
