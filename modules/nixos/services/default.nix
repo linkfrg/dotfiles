@@ -2,6 +2,7 @@
   imports = [
     ./avahi.nix
     ./docker.nix
+    ./firewall.nix
     ./gc.nix
     ./flatpak.nix
     ./gitea.nix

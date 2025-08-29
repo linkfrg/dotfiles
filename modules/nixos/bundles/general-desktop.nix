@@ -48,6 +48,7 @@ in {
         docker.enable = true;
         networkmanager.enable = true;
         gc.enable = true;
+        firewall.enable = true;
       };
 
       terminal = {
