@@ -72,6 +72,15 @@
           ./hosts/laptop/configuration.nix
         ];
       };
+
+      # build with:
+      # nix build .#nixosConfigurations.installer.config.system.build.isoImage
+      installer = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs outputs;};
+        modules = [
+          ./hosts/installer/configuration.nix
+        ];
+      };
     };
 
     homeConfigurations = {
