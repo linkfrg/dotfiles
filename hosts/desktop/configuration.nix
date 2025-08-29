@@ -10,12 +10,10 @@
   ];
 
   custom = {
-    bundles.general-desktop.enable = true;
-
-    core = {
-      networking = {
-        hostName = "desktop";
-      };
+    bundles.general-desktop = {
+      enable = true;
+      hostName = "desktop";
+      username = "link";
     };
 
     hardware = {
