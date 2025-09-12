@@ -17,6 +17,11 @@ in {
       type = lib.types.str;
       description = "The filesystem type";
     };
+
+    fsOptions = lib.mkOption {
+      type = lib.types.listOf lib.types.str;
+      description = "Filesystem mount options";
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -27,6 +32,7 @@ in {
     fileSystems."/data" = {
       device = "/dev/disk/by-uuid/${cfg.uuid}";
       fsType = cfg.fsType;
+      options = cfg.fsOptions;
     };
   };
 }

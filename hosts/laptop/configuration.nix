@@ -21,6 +21,7 @@
         enable = true;
         uuid = "f086eeb3-5866-48ab-a320-daf9ee96fe03";
         fsType = "btrfs";
+        fsOptions = ["compress=zstd:3"];
       };
     };
 
