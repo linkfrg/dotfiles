@@ -8,11 +8,11 @@
         "sops-nix": "sops-nix"
       },
       "locked": {
-        "lastModified": 1755701835,
-        "narHash": "sha256-+9blVSgxy7pgHZgxdhRMPSJ1FKFNJEOja6I1JQODsHk=",
+        "lastModified": 1757691185,
+        "narHash": "sha256-lgOmE+yFO9uZSePhQU90zrPQ6OZqNXAtViO+Cn6QugI=",
         "ref": "refs/heads/main",
-        "rev": "d0debf83b6a13701bcb310db0172ba5f83221822",
-        "revCount": 1,
+        "rev": "4d6c8051b3515971961ad7ccc89566a625cbefa4",
+        "revCount": 2,
         "type": "git",
         "url": "ssh://git@github.com/linkfrg/dotfiles-private.git"
       },
