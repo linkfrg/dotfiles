@@ -19,8 +19,8 @@
     hardware = {
       dataDisk = {
         enable = true;
-        uuid = "12beb1b5-0f4f-4b0c-8c86-988d3868d2b1";
-        fsType = "xfs";
+        uuid = "f086eeb3-5866-48ab-a320-daf9ee96fe03";
+        fsType = "btrfs";
       };
     };
 
