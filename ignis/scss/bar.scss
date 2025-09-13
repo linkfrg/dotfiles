@@ -140,3 +140,14 @@
     color: $onSurface;
     margin-right: 0.3rem;
 }
+
+.tasklist-item {
+    margin: 0 0.25rem;
+    transition: 0.3s;
+    padding: 0 0.1rem;
+    border-radius: 0.25rem;
+}
+
+.tasklist-item:hover {
+    background-color: rgba(white, 0.2);
+}
