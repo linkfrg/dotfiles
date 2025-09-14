@@ -1,6 +1,7 @@
 {
   inputs,
   outputs,
+  lib,
   ...
 }: {
   imports = [
@@ -30,6 +31,24 @@
 
     xwayland = {
       force_zero_scaling = true;
+    };
+
+    input = {
+      touchpad = {
+        scroll_factor = 0.75;
+      };
+    };
+
+    gestures = {
+      workspace_swipe = true;
+    };
+
+    # battery saving
+    decoration.blur.enabled = lib.mkForce false;
+    decoration.shadow.enabled = lib.mkForce false;
+
+    misc = {
+      vfr = true;
     };
   };
 }

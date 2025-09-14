@@ -9,6 +9,7 @@
     ./networkmanager.nix
     ./imobiledevice.nix
     ./pipewire.nix
+    ./power-profiles.nix
     ./upower.nix
     ./zram.nix
   ];

@@ -27,6 +27,7 @@
 
     services = {
       upower.enable = true;
+      power-profiles.enable = true;
     };
   };
 }
