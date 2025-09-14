@@ -17,13 +17,6 @@ class BatteryItem(widgets.Box):
                     label=device.bind("percent", lambda x: f"{int(x)}%"),
                     css_classes=["battery-percent"],
                 ),
-                widgets.Scale(
-                    min=0,
-                    max=100,
-                    value=device.bind("percent"),
-                    sensitive=False,
-                    css_classes=["battery-scale"],
-                ),
             ],
         )
 
