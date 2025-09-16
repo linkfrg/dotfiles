@@ -11,6 +11,7 @@ in {
 
   config = lib.mkIf cfg.enable {
     networking.firewall = {
+      enable = false;
       # make wireguard work
       checkReversePath = false;
 

@@ -1,6 +1,7 @@
 {
   inputs,
   outputs,
+  lib,
   ...
 }: {
   imports = [
@@ -16,6 +17,13 @@
       username = "link";
     };
 
+    core = {
+      systemd-boot.enable = lib.mkForce false;
+      grub = {
+        enable = true;
+      };
+    };
+
     hardware = {
       dataDisk = {
         enable = true;
@@ -28,6 +36,7 @@
     services = {
       upower.enable = true;
       power-profiles.enable = true;
+      zram.enable = lib.mkForce false;
     };
   };
 }

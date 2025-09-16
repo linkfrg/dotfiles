@@ -22,6 +22,10 @@
         intel = true;
       };
     };
+
+    services = {
+      hypridle.enable = true;
+    };
   };
 
   wayland.windowManager.hyprland.settings = {

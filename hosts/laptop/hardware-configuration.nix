@@ -16,5 +16,9 @@
     options = ["fmask=0022" "dmask=0022"];
   };
 
+  swapDevices = [
+    {device = "/dev/disk/by-uuid/ac8cf728-5d20-4517-800e-32836cce333a";}
+  ];
+
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 }

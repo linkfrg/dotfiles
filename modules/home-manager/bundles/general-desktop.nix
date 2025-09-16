@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }: let
   cfg = config.custom.bundles.general-desktop;
@@ -71,14 +70,9 @@ in {
       "file:///data/dotfiles"
     ];
 
-    home.packages = with pkgs; [
-      wlsunset
-    ];
-
     wayland.windowManager.hyprland.settings = {
       exec-once = [
         "Telegram -startintray"
-        "wlsunset -S 19:00 -s 6:00"
       ];
 
       input = {
