@@ -42,7 +42,6 @@ in {
 
             extensions.packages = import ./extensions.nix {inherit firefox-addons;};
             settings = import ./settings.nix;
-            bookmarks = import ./bookmarks.nix;
           };
         };
       }

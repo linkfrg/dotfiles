@@ -2,12 +2,17 @@
   inputs,
   outputs,
   lib,
+  pkgs,
   ...
 }: {
   imports = [
     outputs.homeManagerModules.default
     outputs.homeManagerModules.public
     inputs.dotfiles-private.homeManagerModules.default
+  ];
+
+  home.packages = with pkgs; [
+    prismlauncher
   ];
 
   custom = {
@@ -54,5 +59,13 @@
     misc = {
       vfr = true;
     };
+
+    device = [
+      {
+        name = "elan0528:00-04f3:321b-touchpad";
+        accel_profile = "adaptive";
+        sensitivity = 0.15;
+      }
+    ];
   };
 }

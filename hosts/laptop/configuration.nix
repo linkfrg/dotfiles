@@ -37,6 +37,9 @@
       upower.enable = true;
       power-profiles.enable = true;
       zram.enable = lib.mkForce false;
+      docker.enable = lib.mkForce false;
     };
   };
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
 }
