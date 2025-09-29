@@ -27,10 +27,11 @@
     hardware = {
       dataDisk = {
         enable = true;
-        uuid = "f086eeb3-5866-48ab-a320-daf9ee96fe03";
-        fsType = "btrfs";
-        fsOptions = ["compress=zstd:3"];
+        uuid = "41a66293-775b-41ea-8ea0-06a976587cae";
+        fsType = "f2fs";
+        fsOptions = ["defaults" "noatime" "compress_algorithm=zstd" "discard"];
       };
+      intel-graphics.enable = true;
     };
 
     services = {

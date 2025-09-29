@@ -33,7 +33,6 @@ in {
       device = "/dev/disk/by-uuid/${cfg.uuid}";
       fsType = cfg.fsType;
       options = cfg.fsOptions;
-      neededForBoot = true;
     };
   };
 }

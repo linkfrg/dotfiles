@@ -4,5 +4,6 @@
     ./services
     ./software
     ./terminal
+    ./games.nix
   ];
 }

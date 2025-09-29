@@ -2,7 +2,6 @@
   inputs,
   outputs,
   lib,
-  pkgs,
   ...
 }: {
   imports = [
@@ -11,15 +10,13 @@
     inputs.dotfiles-private.homeManagerModules.default
   ];
 
-  home.packages = with pkgs; [
-    prismlauncher
-  ];
-
   custom = {
     bundles.general-desktop = {
       enable = true;
       username = "link";
     };
+
+    games.enable = true;
 
     terminal = {
       nvtop = {
@@ -48,10 +45,9 @@
       };
     };
 
-    gestures = {
-      workspace_swipe = true;
-    };
-
+    gesture = [
+      "3, horizontal, workspace"
+    ];
     # battery saving
     decoration.blur.enabled = lib.mkForce false;
     decoration.shadow.enabled = lib.mkForce false;
