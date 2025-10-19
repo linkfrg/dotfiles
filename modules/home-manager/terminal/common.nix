@@ -1,5 +1,6 @@
 {
   config,
+  pkgs,
   lib,
   ...
 }: let
@@ -10,8 +11,12 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    home.packages = [
-      # For the future
+    home.packages = with pkgs; [
+      cmatrix
+      cava
+      gh
+      speedtest-cli
+      yazi
     ];
   };
 }

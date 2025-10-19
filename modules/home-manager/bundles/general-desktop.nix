@@ -54,6 +54,7 @@ in {
       };
 
       terminal = {
+        common.enable = true;
         btop.enable = true;
         develop.enable = true;
         direnv.enable = true;

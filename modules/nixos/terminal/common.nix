@@ -16,6 +16,8 @@ in {
       libva-utils
       tree
       file
+      f2fs-tools
+      gnome-disk-utility
     ];
   };
 }

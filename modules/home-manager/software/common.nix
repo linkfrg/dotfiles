@@ -22,7 +22,14 @@ in {
       transmission_4-gtk
       xorg.xeyes
       uxplay
+      pinta
+      gnome-calculator
+      linux-wifi-hotspot
+      snapshot
+      pavucontrol
     ];
+
+    programs.onlyoffice.enable = true;
 
     xdg.mimeApps = {
       enable = true;

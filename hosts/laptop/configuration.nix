@@ -10,6 +10,8 @@
     inputs.dotfiles-private.nixosModules.default
   ];
 
+  services.logind.settings.Login.HandlePowerKey = "ignore";
+
   custom = {
     bundles.general-desktop = {
       enable = true;
