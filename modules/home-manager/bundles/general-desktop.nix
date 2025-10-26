@@ -53,6 +53,8 @@ in {
         gtk.enable = true;
       };
 
+      games.enable = true;
+
       terminal = {
         common.enable = true;
         btop.enable = true;

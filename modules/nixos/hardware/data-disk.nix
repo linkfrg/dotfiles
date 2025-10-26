@@ -19,8 +19,9 @@ in {
     };
 
     fsOptions = lib.mkOption {
-      type = lib.types.listOf lib.types.str;
+      type = with lib.types; listOf str;
       description = "Filesystem mount options";
+      default = ["defaults"];
     };
   };
 

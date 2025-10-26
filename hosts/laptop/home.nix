@@ -16,8 +16,6 @@
       username = "link";
     };
 
-    games.enable = true;
-
     terminal = {
       nvtop = {
         enable = true;

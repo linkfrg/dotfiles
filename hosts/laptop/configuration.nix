@@ -6,7 +6,9 @@
 }: {
   imports = [
     ./hardware-configuration.nix
+    ./disk-config.nix
     outputs.nixosModules.default
+    inputs.disko.nixosModules.disko
     inputs.dotfiles-private.nixosModules.default
   ];
 
@@ -27,12 +29,12 @@
     };
 
     hardware = {
-      dataDisk = {
-        enable = true;
-        uuid = "41a66293-775b-41ea-8ea0-06a976587cae";
-        fsType = "f2fs";
-        fsOptions = ["defaults" "noatime" "compress_algorithm=zstd" "discard"];
-      };
+      # dataDisk = {
+      #   enable = true;
+      #   uuid = "41a66293-775b-41ea-8ea0-06a976587cae";
+      #   fsType = "f2fs";
+      #   fsOptions = ["defaults" "noatime" "compress_algorithm=zstd" "discard"];
+      # };
       intel-graphics.enable = true;
     };
 
