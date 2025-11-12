@@ -11,6 +11,9 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
+    home.packages = with pkgs; [
+      nil
+    ];
     programs.zed-editor = {
       enable = true;
 

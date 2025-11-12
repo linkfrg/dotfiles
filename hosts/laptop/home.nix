@@ -16,6 +16,8 @@
       username = "link";
     };
 
+    desktop.niri.enable = true;
+
     terminal = {
       nvtop = {
         enable = true;

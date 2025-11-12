@@ -1,6 +1,7 @@
 {
   imports = [
     ./bundles
+    ./desktop
     ./services
     ./software
     ./terminal

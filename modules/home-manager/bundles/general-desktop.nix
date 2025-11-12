@@ -75,7 +75,7 @@ in {
 
     wayland.windowManager.hyprland.settings = {
       exec-once = [
-        "Telegram -startintray"
+        "AyuGram -startintray"
       ];
 
       input = {

@@ -16,6 +16,8 @@ in {
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
       telegram-desktop
+      ayugram-desktop
+      vesktop
       protonvpn-gui
       eog
       mpv

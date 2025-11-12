@@ -13,6 +13,8 @@
   ];
 
   services.logind.settings.Login.HandlePowerKey = "ignore";
+  services.gnome.gnome-keyring.enable = true;
+  services.displayManager.gdm.enable = true;
 
   custom = {
     bundles.general-desktop = {
@@ -27,6 +29,8 @@
         enable = true;
       };
     };
+
+    desktop.niri.enable = true;
 
     hardware = {
       # dataDisk = {
