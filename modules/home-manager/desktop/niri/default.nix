@@ -19,6 +19,7 @@ in {
     home.packages = with pkgs; [
       xwayland-satellite
       sway-contrib.grimshot
+      nautilus # make open dialog work
     ];
 
     xdg.portal.extraPortals = with pkgs; [
