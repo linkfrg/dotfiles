@@ -10,6 +10,8 @@
     inputs.dotfiles-private.homeManagerModules.default
   ];
 
+  programs.obsidian.enable = true;
+
   custom = {
     bundles.general-desktop = {
       enable = true;
