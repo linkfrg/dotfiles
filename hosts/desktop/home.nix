@@ -1,33 +1,18 @@
-{
-  inputs,
-  outputs,
-  ...
-}: {
+{inputs, ...}: {
   imports = [
-    outputs.homeManagerModules.default
-    outputs.homeManagerModules.public
+    ../../home/main.nix
+    ../../home/games.nix
+    ../../home/terminal
+    ../../home/software
+    ../../home/software/firefox-nvidia.nix
+    ../../home/services
+    ../../home/desktop/niri
+    ../../home/desktop/hyprlock
+    ../../home/desktop/ignis.nix
+    ../../home/desktop/fonts.nix
+    ../../home/desktop/pointer-cursor.nix
     inputs.dotfiles-private.homeManagerModules.default
   ];
-
-  custom = {
-    bundles.general-desktop = {
-      enable = true;
-      username = "link";
-    };
-
-    software = {
-      firefox = {
-        nvidia = true;
-      };
-    };
-
-    terminal = {
-      nvtop = {
-        enable = true;
-        nvidia = true;
-      };
-    };
-  };
 
   wayland.windowManager.hyprland.settings = {
     monitor = [

@@ -1,0 +1,3 @@
+{
+  services.flatpak.enable = true;
+}

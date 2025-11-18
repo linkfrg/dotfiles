@@ -1,4 +1,13 @@
 {
+  lib,
+  config,
+  modulesPath,
+  ...
+}: {
+  imports = [
+    (modulesPath + "/installer/scan/not-detected.nix")
+  ];
+
   boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod"];
   boot.initrd.kernelModules = [];
   boot.kernelModules = ["kvm-intel"];
@@ -15,5 +24,15 @@
     options = ["fmask=0022" "dmask=0022"];
   };
 
+  systemd.tmpfiles.rules = [
+    "d /data 777 root root -"
+  ];
+
+  fileSystems."/data" = {
+    device = "/dev/disk/by-uuid/878866d6-3892-4b13-a265-37b96aae8345";
+    fsType = "ext4";
+  };
+
   nixpkgs.hostPlatform = "x86_64-linux";
+  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

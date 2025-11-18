@@ -1,54 +1,36 @@
-{
-  inputs,
-  outputs,
-  lib,
-  ...
-}: {
+{inputs, ...}: {
   imports = [
     ./hardware-configuration.nix
     ./disk-config.nix
-    outputs.nixosModules.default
+    ../../system/core/nix.nix
+    ../../system/core/grub.nix
+    ../../system/core/locale.nix
+    ../../system/core/users.nix
+    ../../system/desktop/niri.nix
+    ../../system/hardware/intel-graphics.nix
+    ../../system/hardware/vxe-mouse.nix
+    ../../system/services/firewall.nix
+    ../../system/services/flatpak.nix
+    ../../system/services/gc.nix
+    ../../system/services/networkmanager.nix
+    ../../system/services/pipewire.nix
+    ../../system/services/power-profiles.nix
+    ../../system/services/upower.nix
+    ../../system/software
+    ../../system/terminal.nix
+
     inputs.disko.nixosModules.disko
     inputs.dotfiles-private.nixosModules.default
   ];
+
+  networking.hostName = "laptop";
 
   services.logind.settings.Login.HandlePowerKey = "ignore";
   services.gnome.gnome-keyring.enable = true;
   services.displayManager.gdm.enable = true;
 
-  custom = {
-    bundles.general-desktop = {
-      enable = true;
-      hostName = "laptop";
-      username = "link";
-    };
-
-    core = {
-      systemd-boot.enable = lib.mkForce false;
-      grub = {
-        enable = true;
-      };
-    };
-
-    desktop.niri.enable = true;
-
-    hardware = {
-      # dataDisk = {
-      #   enable = true;
-      #   uuid = "41a66293-775b-41ea-8ea0-06a976587cae";
-      #   fsType = "f2fs";
-      #   fsOptions = ["defaults" "noatime" "compress_algorithm=zstd" "discard"];
-      # };
-      intel-graphics.enable = true;
-    };
-
-    services = {
-      upower.enable = true;
-      power-profiles.enable = true;
-      zram.enable = lib.mkForce false;
-      docker.enable = lib.mkForce false;
-    };
-  };
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
+
+  system.stateVersion = "25.05";
 }

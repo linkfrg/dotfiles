@@ -1,33 +1,25 @@
-{
-  outputs,
-  inputs,
-  ...
-}: {
+{inputs, ...}: {
   imports = [
     ./hardware-configuration.nix
-    outputs.nixosModules.default
+    ../../system/core/nix.nix
+    ../../system/core/grub.nix
+    ../../system/core/locale.nix
+    ../../system/core/users.nix
+    ../../system/desktop/niri.nix
+    ../../system/hardware/intel-graphics.nix
+    ../../system/hardware/vxe-mouse.nix
+    ../../system/services/firewall.nix
+    ../../system/services/flatpak.nix
+    ../../system/services/gc.nix
+    ../../system/services/networkmanager.nix
+    ../../system/services/pipewire.nix
+    ../../system/services/power-profiles.nix
+    ../../system/services/upower.nix
+    ../../system/software
+    ../../system/terminal.nix
     inputs.dotfiles-private.nixosModules.default
   ];
 
-  custom = {
-    bundles.general-desktop = {
-      enable = true;
-      hostName = "desktop";
-      username = "link";
-    };
-
-    hardware = {
-      nvidia.enable = true;
-
-      dataDisk = {
-        enable = true;
-        uuid = "878866d6-3892-4b13-a265-37b96aae8345";
-        fsType = "ext4";
-      };
-    };
-
-    programs = {
-      virt-manager.enable = true;
-    };
-  };
+  networking.hostName = "desktop";
+  system.stateVersion = "25.05";
 }

@@ -1,28 +1,15 @@
 {
   pkgs,
   modulesPath,
-  outputs,
   ...
 }: {
   imports = [
+    ../../system/core/nix.nix
+    ../../system/services/imobiledevice.nix
+    ../../system/services/networkmanager.nix
+    ../../system/terminal.nix
     "${modulesPath}/installer/cd-dvd/installation-cd-minimal.nix"
-    outputs.nixosModules.default
   ];
-
-  custom = {
-    core = {
-      nix.enable = true;
-    };
-
-    services = {
-      imobiledevice.enable = true;
-      networkmanager.enable = true;
-    };
-    terminal = {
-      fish.enable = true;
-      micro.enable = true;
-    };
-  };
 
   users.users.nixos.shell = pkgs.fish;
 

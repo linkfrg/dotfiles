@@ -55,18 +55,8 @@
     forAllSystems = nixpkgs.lib.genAttrs systems;
   in {
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
-    nixpkgs.overlays = [inputs.niri.overlays.niri];
-    homeManagerModules = {
-      default = import ./modules/home-manager;
-      public = import ./public-modules/home-manager {inherit self inputs;};
-    };
-    nixosModules.default = import ./modules/nixos;
 
-    templates = {
-      starter = {
-        path = ./templates/starter;
-      };
-    };
+    nixpkgs.overlays = [inputs.niri.overlays.niri];
 
     nixosConfigurations = {
       desktop = nixpkgs.lib.nixosSystem {
