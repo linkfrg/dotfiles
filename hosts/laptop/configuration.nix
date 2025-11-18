@@ -9,6 +9,7 @@
     ../../system/desktop/niri.nix
     ../../system/hardware/intel-graphics.nix
     ../../system/hardware/vxe-mouse.nix
+    ../../system/hardware/bluetooth.nix
     ../../system/services/firewall.nix
     ../../system/services/flatpak.nix
     ../../system/services/gc.nix
@@ -28,9 +29,6 @@
   services.logind.settings.Login.HandlePowerKey = "ignore";
   services.gnome.gnome-keyring.enable = true;
   services.displayManager.gdm.enable = true;
-
-  hardware.bluetooth.enable = true;
-  services.blueman.enable = true;
 
   system.stateVersion = "25.05";
 }
