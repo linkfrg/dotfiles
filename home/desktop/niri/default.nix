@@ -1,14 +1,9 @@
 {
-  inputs,
   pkgs,
   lib,
   config,
   ...
 }: {
-  imports = [
-    inputs.niri-flake.homeModules.niri
-  ];
-
   home.packages = with pkgs; [
     xwayland-satellite
     sway-contrib.grimshot
@@ -22,8 +17,8 @@
   services.polkit-gnome.enable = true;
 
   programs.niri = {
-    enable = true;
-    package = pkgs.niri;
+    # enable = true;
+    # package = pkgs.niri;
     settings = lib.mkMerge [
       (import ./binds.nix {inherit config;})
       ./input.nix

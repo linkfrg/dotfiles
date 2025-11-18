@@ -62,6 +62,7 @@
       desktop = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
+          home-manager.nixosModules.home-manager
           ./hosts/desktop/configuration.nix
         ];
       };
@@ -69,6 +70,7 @@
       laptop = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
+          home-manager.nixosModules.home-manager
           ./hosts/laptop/configuration.nix
         ];
       };
@@ -79,24 +81,6 @@
         specialArgs = {inherit inputs outputs;};
         modules = [
           ./hosts/installer/configuration.nix
-        ];
-      };
-    };
-
-    homeConfigurations = {
-      "link@desktop" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        extraSpecialArgs = {inherit self inputs outputs;};
-        modules = [
-          ./hosts/desktop/home.nix
-        ];
-      };
-
-      "link@laptop" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        extraSpecialArgs = {inherit self inputs outputs;};
-        modules = [
-          ./hosts/laptop/home.nix
         ];
       };
     };

@@ -1,5 +1,4 @@
 {
-  self,
   inputs,
   pkgs,
   ...
@@ -14,14 +13,14 @@
   ];
 
   home.file = {
-    ".local/share/themes/Material".source = "${self}/Material";
+    ".local/share/themes/Material".source = ../../Material;
   };
 
   programs.ignis = {
     enable = true;
 
     addToPythonEnv = true;
-    configDir = "${self}/ignis";
+    configDir = ../../ignis;
 
     services = {
       bluetooth.enable = true;
