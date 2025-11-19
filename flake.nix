@@ -44,6 +44,9 @@
     self,
     nixpkgs,
     home-manager,
+    disko,
+    dotfiles-private,
+    niri-flake,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -63,6 +66,8 @@
         specialArgs = {inherit inputs outputs;};
         modules = [
           home-manager.nixosModules.home-manager
+          dotfiles-private.nixosModules.default
+          niri-flake.nixosModules.niri
           ./hosts/desktop/configuration.nix
         ];
       };
@@ -71,6 +76,9 @@
         specialArgs = {inherit inputs outputs;};
         modules = [
           home-manager.nixosModules.home-manager
+          dotfiles-private.nixosModules.default
+          disko.nixosModules.disko
+          niri-flake.nixosModules.niri
           ./hosts/laptop/configuration.nix
         ];
       };

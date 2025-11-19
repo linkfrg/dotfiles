@@ -1,11 +1,4 @@
-{
-  inputs,
-  pkgs,
-  ...
-}: {
-  imports = [
-    inputs.niri-flake.nixosModules.niri
-  ];
+{pkgs, ...}: {
   programs.niri = {
     enable = true;
     package = pkgs.niri;

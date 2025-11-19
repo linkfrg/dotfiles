@@ -1,4 +1,4 @@
-{inputs, ...}: {
+{
   imports = [
     ./hardware-configuration.nix
     ../../system/core/nix.nix
@@ -17,7 +17,6 @@
     ../../system/services/upower.nix
     ../../system/software
     ../../system/terminal.nix
-    inputs.dotfiles-private.nixosModules.default
   ];
 
   networking.hostName = "desktop";

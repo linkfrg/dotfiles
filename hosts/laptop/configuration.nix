@@ -1,8 +1,4 @@
-{
-  inputs,
-  lib,
-  ...
-}: {
+{lib, ...}: {
   imports = [
     ./hardware-configuration.nix
     ./disk-config.nix
@@ -24,9 +20,6 @@
     ../../system/software
     ../../system/terminal.nix
     ../../system/home-manager.nix
-
-    inputs.disko.nixosModules.disko
-    inputs.dotfiles-private.nixosModules.default
   ];
 
   networking.hostName = "laptop";

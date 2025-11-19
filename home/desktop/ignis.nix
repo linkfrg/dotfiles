@@ -3,10 +3,6 @@
   pkgs,
   ...
 }: {
-  imports = [
-    inputs.ignis.homeManagerModules.default
-  ];
-
   home.packages = with pkgs; [
     pamixer
     inputs.ignisctl-rs.packages.${system}.ignisctl-rs
