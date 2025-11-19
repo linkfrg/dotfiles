@@ -8,6 +8,7 @@
     yazi
     cloc
     act
+    wl-clipboard
   ];
 
   programs.direnv = {
