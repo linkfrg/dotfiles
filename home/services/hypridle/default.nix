@@ -23,7 +23,7 @@ in {
           on-resume = on_cmd;
         }
         {
-          timeout = 600;
+          timeout = 300;
           on-timeout = "hyprlock";
         }
       ];
