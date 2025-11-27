@@ -29,6 +29,9 @@
   services.displayManager.gdm.enable = true;
 
   home-manager.users.link = {
+    imports = [
+      ../../home/services/hypridle
+    ];
     programs.niri.settings.outputs = {
       "eDP-1" = {
         mode = {
