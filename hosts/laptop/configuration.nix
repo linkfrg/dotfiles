@@ -17,6 +17,7 @@
     ../../system/services/pipewire.nix
     ../../system/services/power-profiles.nix
     ../../system/services/upower.nix
+    ../../system/services/navidrome.nix
     ../../system/software
     ../../system/terminal.nix
     ../../system/home-manager.nix
