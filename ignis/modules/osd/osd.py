@@ -6,7 +6,7 @@ from ..shared_widgets import MaterialVolumeSlider
 audio = AudioService.get_default()
 
 
-class OSD(widgets.Window):
+class VolumeOsd(widgets.Window):
     def __init__(self):
         super().__init__(
             layer="overlay",
@@ -27,12 +27,22 @@ class OSD(widgets.Window):
             ),
         )
 
-    def set_property(self, property_name, value):
-        if property_name == "visible":
-            self.__update_visible()
-
-        super().set_property(property_name, value)
+    def toggle(self) -> None:
+        self.visible = True
+        self.__hide()
 
     @utils.debounce(3000)
-    def __update_visible(self) -> None:
-        super().set_property("visible", False)
+    def __hide(self) -> None:
+        self.visible = False
+
+    def increase_volume(self) -> None:
+        self.toggle()
+        audio.speaker.set_volume(min(audio.speaker.volume + 5, 100))
+
+    def decrease_volume(self) -> None:
+        self.toggle()
+        audio.speaker.set_volume(max(audio.speaker.volume - 5, 0))
+
+    def toggle_mute(self) -> None:
+        self.toggle()
+        audio.speaker.is_muted = not audio.speaker.is_muted

@@ -129,14 +129,15 @@
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
-        ]
+        ],
+        "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1754058301,
-        "narHash": "sha256-irXuwCfCvIqJwyH8xkMCkBT+eUs/lTCg0pm087Bh0Us=",
+        "lastModified": 1764344461,
+        "narHash": "sha256-6nusQWZ99LyA9MCtnOEGUvoHBEfkO3LberP+dWdPm/4=",
         "owner": "linkfrg",
         "repo": "ignisctl-rs",
-        "rev": "99a03a6ce8d1f1f85836b895d5b584ee2b73b27c",
+        "rev": "65133c3381526c9d0d55c4fe44a25901f9b8ecd4",
         "type": "github"
       },
       "original": {
@@ -245,6 +246,27 @@
         "ignisctl-rs": "ignisctl-rs",
         "niri-flake": "niri-flake",
         "nixpkgs": "nixpkgs"
+      }
+    },
+    "rust-overlay": {
+      "inputs": {
+        "nixpkgs": [
+          "ignisctl-rs",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1764297505,
+        "narHash": "sha256-qrLpVu2/hA9Cu6IovMEsgh9YRyvmmWS+bSx7C1JGChA=",
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "9623580f8ce09ec444b9aca107566ec5db110e62",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "type": "github"
       }
     },
     "sops-nix": {

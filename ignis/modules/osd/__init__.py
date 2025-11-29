@@ -1,3 +1,3 @@
-from .osd import OSD
+from .osd import VolumeOsd
 
-__all__ = ["OSD"]
+__all__ = ["VolumeOsd"]

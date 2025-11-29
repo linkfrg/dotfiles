@@ -6,16 +6,18 @@ from modules import (
     ControlCenter,
     Launcher,
     NotificationPopup,
-    OSD,
+    VolumeOsd,
     Powermenu,
     Settings,
 )
 from ignis.css_manager import CssManager, CssInfoPath
 from ignis.icon_manager import IconManager
 from user_options import user_options
+from ignis.command_manager import CommandManager
 
 icon_manager = IconManager.get_default()
 css_manager = CssManager.get_default()
+command_manager = CommandManager.get_default()
 WallpaperService.get_default()
 
 
@@ -63,6 +65,10 @@ for monitor in range(utils.get_n_monitors()):
 
 Launcher()
 Powermenu()
-OSD()
+volume_osd = VolumeOsd()
+
+command_manager.add_command("volume-osd-increase", lambda *_: volume_osd.increase_volume())
+command_manager.add_command("volume-osd-decrease", lambda *_: volume_osd.decrease_volume())
+command_manager.add_command("volume-osd-toggle-mute", lambda *_: volume_osd.toggle_mute())
 
 Settings()

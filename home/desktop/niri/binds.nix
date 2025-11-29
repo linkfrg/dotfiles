@@ -7,15 +7,15 @@
 
     XF86AudioRaiseVolume = {
       allow-when-locked = true;
-      action = spawn "pamixer" "-i" "5";
+      action = spawn "ignisctl-rs" "run-command" "volume-osd-increase";
     };
     XF86AudioLowerVolume = {
       allow-when-locked = true;
-      action = spawn "pamixer" "-d" "5";
+      action = spawn "ignisctl-rs" "run-command" "volume-osd-decrease";
     };
     XF86AudioMute = {
       allow-when-locked = true;
-      action = spawn "pamixer" "-t";
+      action = spawn "ignisctl-rs" "run-command" "volume-osd-toggle-mute";
     };
     # XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
 
