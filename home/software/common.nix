@@ -8,7 +8,6 @@ in {
     vesktop
     protonvpn-gui
     eog
-    mpv
     transmission_4-gtk
     xorg.xeyes
     uxplay
@@ -22,6 +21,13 @@ in {
   programs.onlyoffice.enable = true;
   programs.chromium.enable = true;
   programs.obsidian.enable = true;
+
+  programs.mpv = {
+    enable = true;
+    config = {
+      audio-file-auto = "fuzzy";
+    };
+  };
 
   xdg.mimeApps = {
     enable = true;
