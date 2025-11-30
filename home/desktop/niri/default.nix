@@ -10,9 +10,16 @@
     nautilus # make open dialog work
   ];
 
-  xdg.portal.extraPortals = with pkgs; [
-    xdg-desktop-portal-gnome
-  ];
+  xdg.portal = {
+    config = {
+      niri = {
+        default = ["gnome" "gtk"];
+      };
+    };
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gnome
+    ];
+  };
 
   services.polkit-gnome.enable = true;
 
