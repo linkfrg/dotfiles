@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: let
-  firefox-addons = inputs.firefox-addons.packages.${pkgs.system};
+  firefox-addons = inputs.firefox-addons.packages.${pkgs.stdenv.hostPlatform.system};
 in {
   xdg.mimeApps = {
     enable = true;

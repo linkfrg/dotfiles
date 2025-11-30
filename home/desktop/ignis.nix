@@ -5,7 +5,7 @@
 }: {
   home.packages = with pkgs; [
     pamixer
-    inputs.ignisctl-rs.packages.${system}.ignisctl-rs
+    inputs.ignisctl-rs.packages.${stdenv.hostPlatform.system}.ignisctl-rs
   ];
 
   home.file = {
