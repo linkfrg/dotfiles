@@ -1,10 +1,13 @@
 {
   programs.git = {
     enable = true;
-    userName = "Link";
-    userEmail = "linkfrg.dev@proton.me";
 
-    extraConfig = {
+    settings = {
+      user = {
+        name = "Link";
+        email = "linkfrg.dev@proton.me";
+      };
+
       init.defaultBranch = "main";
     };
   };
