@@ -26,6 +26,10 @@ in {
           timeout = 300;
           on-timeout = "hyprlock";
         }
+        {
+          timeout = 1200;
+          on-timeout = "systemctl suspend-then-hibernate";
+        }
       ];
     };
   };
