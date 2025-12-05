@@ -28,7 +28,6 @@
 
   services.logind.settings.Login.HandlePowerKey = "ignore";
 
-  services.gnome.gnome-keyring.enable = true;
   services.displayManager.gdm.enable = true;
 
   home-manager.users.link = {
