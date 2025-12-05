@@ -28,8 +28,6 @@
 
   services.logind.settings.Login.HandlePowerKey = "ignore";
 
-  services.displayManager.gdm.enable = true;
-
   home-manager.users.link = {
     imports = [
       ../../home/services/hypridle
