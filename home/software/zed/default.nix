@@ -9,6 +9,7 @@
       nil
       alejandra
       rust-analyzer
+      ruff
     ];
 
     extensions = import ./extensions.nix;
