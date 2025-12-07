@@ -7,21 +7,29 @@
   home.packages = with pkgs; [
     xwayland-satellite
     sway-contrib.grimshot
-    nautilus # make open dialog work
   ];
 
   xdg.portal = {
+    enable = true;
+    xdgOpenUsePortal = true;
     config = {
+      common = {
+        default = [
+          "gtk"
+          "gnome"
+        ];
+      };
       niri = {
-        default = ["gnome" "gtk"];
+        default = [
+          "gtk"
+          "gnome"
+        ];
       };
     };
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-gnome
-    ];
   };
-
-  services.polkit-gnome.enable = true;
+  xdg.portal.extraPortals = [
+    pkgs.xdg-desktop-portal-gtk
+  ];
 
   programs.niri = {
     # enable = true;
