@@ -1,6 +1,8 @@
 {pkgs, ...}: let
   imageViewer = "org.gnome.eog.desktop";
   videoPlayer = "mpv.desktop";
+  browser = "firefox";
+  archiver = "org.gnome.FileRoller";
 in {
   home.packages = with pkgs; [
     telegram-desktop
@@ -46,6 +48,14 @@ in {
       "video/webm" = [videoPlayer];
       "video/x-msvideo" = [videoPlayer]; # avi
       "video/quicktime" = [videoPlayer]; # mov
+
+      "text/html" = [browser];
+      "application/pdf" = [browser];
+      "application/zip" = [archiver];
+      "application/x-7z-compressed" = [archiver];
+      "application/x-rar-compressed" = [archiver];
+      "application/x-tar" = [archiver];
+      "application/gzip" = [archiver];
     };
   };
 }
