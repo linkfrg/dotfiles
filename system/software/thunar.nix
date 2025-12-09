@@ -6,7 +6,10 @@
     ];
   };
 
-  programs.file-roller.enable = true;
+  environment.systemPackages = with pkgs; [
+    file-roller
+  ];
+
   services.gvfs.enable = true;
   services.tumbler.enable = true;
 }
