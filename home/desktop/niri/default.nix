@@ -28,12 +28,13 @@
     };
   };
   xdg.portal.extraPortals = [
+    pkgs.xdg-desktop-portal-gnome
     pkgs.xdg-desktop-portal-gtk
   ];
 
+  services.polkit-gnome.enable = true;
+
   programs.niri = {
-    # enable = true;
-    # package = pkgs.niri;
     settings = lib.mkMerge [
       (import ./binds.nix {inherit config;})
       ./input.nix
