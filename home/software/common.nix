@@ -18,11 +18,11 @@ in {
     linux-wifi-hotspot
     snapshot
     pavucontrol
+    obsidian
   ];
 
   programs.onlyoffice.enable = true;
   programs.chromium.enable = true;
-  programs.obsidian.enable = true;
 
   programs.mpv = {
     enable = true;
