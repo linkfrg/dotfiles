@@ -1,8 +1,8 @@
 {pkgs, ...}: let
   imageViewer = "org.gnome.eog.desktop";
   videoPlayer = "mpv.desktop";
-  browser = "firefox";
-  archiver = "org.gnome.FileRoller";
+  browser = "firefox.desktop";
+  archiver = "org.gnome.FileRoller.desktop";
 in {
   home.packages = with pkgs; [
     telegram-desktop
