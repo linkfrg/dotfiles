@@ -29,6 +29,18 @@
 
   services.logind.settings.Login.HandlePowerKey = "ignore";
 
+  # One of the usb ports is dead and kernel stucks in a loop trying to power-manage it
+  # leading to kworker loading CPU up to 10% overall and 100% on one core
+  # So, this disables Power Management on usb3
+  #
+  # To debug use btop and
+  # $ sudo -s
+  # $ echo l > /proc/sysrq-trigger
+  # $ dmesg -w
+  services.udev.extraRules = ''
+    ACTION=="add", SUBSYSTEM=="usb", KERNEL=="usb3", ATTR{power/control}="on"
+  '';
+
   home-manager.users.link = {
     imports = [
       ../../home/services/hypridle
