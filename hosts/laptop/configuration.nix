@@ -19,7 +19,7 @@
     ../../system/services/power-profiles.nix
     ../../system/services/upower.nix
     ../../system/services/navidrome.nix
-    ../../system/services/ly.nix
+    ../../system/desktop/gdm.nix
     ../../system/software
     ../../system/terminal.nix
     ../../system/home-manager.nix
