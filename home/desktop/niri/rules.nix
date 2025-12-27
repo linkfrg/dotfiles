@@ -19,4 +19,15 @@
       open-floating = true;
     }
   ];
+
+  layer-rules = [
+    {
+      matches = [
+        {
+          namespace = "^ignis_wallpaper_service.*$";
+        }
+      ];
+      place-within-backdrop = true;
+    }
+  ];
 }

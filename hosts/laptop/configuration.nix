@@ -8,7 +8,6 @@
     ../../system/core/latest-kernel.nix
     ../../system/core/locale.nix
     ../../system/core/users.nix
-    ../../system/core/suspend-then-hibernate.nix
     ../../system/desktop/niri.nix
     ../../system/hardware/intel-graphics.nix
     ../../system/hardware/vxe-mouse.nix

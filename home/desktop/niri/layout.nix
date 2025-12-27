@@ -3,6 +3,7 @@
     gaps = 16;
 
     center-focused-column = "never";
+    background-color = "transparent";
 
     preset-column-widths = [
       {proportion = 0.33333;}
