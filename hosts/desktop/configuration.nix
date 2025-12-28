@@ -2,26 +2,60 @@
   imports = [
     ./hardware-configuration.nix
     ../../system/core/nix.nix
-    ../../system/core/grub.nix
+    ../../system/core/systemd-boot.nix
     ../../system/core/locale.nix
     ../../system/core/users.nix
     ../../system/desktop/niri.nix
-    ../../system/hardware/intel-graphics.nix
+    ../../system/hardware/nvidia.nix
     ../../system/hardware/vxe-mouse.nix
+    ../../system/hardware/bluetooth.nix
     ../../system/services/firewall.nix
     ../../system/services/flatpak.nix
     ../../system/services/gc.nix
     ../../system/services/networkmanager.nix
     ../../system/services/pipewire.nix
-    ../../system/services/power-profiles.nix
-    ../../system/services/upower.nix
+    ../../system/services/imobiledevice.nix
+    ../../system/services/navidrome.nix
+    ../../system/services/distrobox.nix
+    ../../system/services/cloudflare-warp.nix
+    ../../system/services/nix-ld.nix
+    ../../system/desktop/gdm.nix
     ../../system/software
     ../../system/terminal.nix
+    ../../system/home-manager.nix
   ];
 
   networking.hostName = "desktop";
 
   home-manager.users.link = {
+    programs.niri.settings.outputs = {
+      "DP-1" = {
+        mode = {
+          height = 1080;
+          width = 1920;
+          refresh = 144.0;
+        };
+        position = {
+          x = 1920;
+          y = 0;
+        };
+        scale = 1;
+      };
+
+      "HDMI-A-1" = {
+        mode = {
+          height = 1080;
+          width = 1920;
+          refresh = 75.0;
+        };
+        position = {
+          x = 0;
+          y = 0;
+        };
+        scale = 1;
+      };
+    };
+
     wayland.windowManager.hyprland.settings = {
       monitor = [
         "DP-1, 1920x1080@144, 1920x0, 1"
