@@ -1,6 +1,5 @@
 {
   imports = [
-    ./easyeffects
     ./xdg.nix
   ];
 }
