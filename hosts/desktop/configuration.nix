@@ -14,11 +14,13 @@
     ../../system/services/gc.nix
     ../../system/services/networkmanager.nix
     ../../system/services/pipewire.nix
+    ../../system/services/power-profiles.nix
     ../../system/services/imobiledevice.nix
     ../../system/services/navidrome.nix
     ../../system/services/distrobox.nix
     ../../system/services/cloudflare-warp.nix
     ../../system/services/nix-ld.nix
+    ../../system/services/docker.nix
     ../../system/desktop/gdm.nix
     ../../system/software
     ../../system/terminal.nix
