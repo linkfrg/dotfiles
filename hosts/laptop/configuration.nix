@@ -2,10 +2,10 @@
   imports = [
     ./hardware-configuration.nix
     ./disk-config.nix
-    ./dead-usb.nix
     ../../system/core/nix.nix
     ../../system/core/grub.nix
     ../../system/core/latest-kernel.nix
+    ../../system/core/suspend-then-hibernate.nix
     ../../system/core/locale.nix
     ../../system/core/users.nix
     ../../system/desktop/niri.nix
