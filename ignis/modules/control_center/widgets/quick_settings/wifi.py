@@ -1,10 +1,12 @@
 import asyncio
-from ignis import widgets
-from ignis import utils
-from ...qs_button import QSButton
-from ...menu import Menu
-from ....shared_widgets import ToggleBox
+
 from ignis.services.network import NetworkService, WifiAccessPoint, WifiDevice
+
+from ignis import utils, widgets
+
+from ....shared_widgets import ToggleBox
+from ...menu import Menu
+from ...qs_button import QSButton
 
 network = NetworkService.get_default()
 
@@ -57,7 +59,9 @@ class WifiMenu(Menu):
                 widgets.Separator(),
                 widgets.Button(
                     css_classes=["network-item", "unset"],
-                    on_click=lambda x: asyncio.create_task(utils.exec_sh_async("nm-connection-editor")),
+                    on_click=lambda x: asyncio.create_task(
+                        utils.exec_sh_async("nm-connection-editor")
+                    ),
                     style="margin-bottom: 0;",
                     child=widgets.Box(
                         child=[
@@ -77,12 +81,6 @@ class WifiButton(QSButton):
     def __init__(self, device: WifiDevice):
         menu = WifiMenu(device)
 
-        def get_label(ssid: str) -> str:
-            if ssid:
-                return ssid
-            else:
-                return "Wi-Fi"
-
         def get_icon(icon_name: str) -> str:
             if device.ap.is_connected:
                 return icon_name
@@ -94,7 +92,7 @@ class WifiButton(QSButton):
             menu.toggle()
 
         super().__init__(
-            label=device.ap.bind("ssid", get_label),
+            label="Wi-Fi",
             icon_name=device.ap.bind("icon-name", get_icon),
             on_activate=toggle_list,
             on_deactivate=toggle_list,

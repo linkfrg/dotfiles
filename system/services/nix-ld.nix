@@ -19,18 +19,18 @@
     mesa
 
     # X11
-    xorg.libX11
-    xorg.libXcursor
-    xorg.libXrandr
-    xorg.libXinerama
-    xorg.libXrender
-    xorg.libXext
-    xorg.libXi
-    xorg.libXfixes
-    xorg.libXdamage
-    xorg.libXScrnSaver
-    xorg.libXcomposite
-    xorg.libXxf86vm
+    libX11
+    libXcursor
+    libXrandr
+    libXinerama
+    libXrender
+    libXext
+    libXi
+    libXfixes
+    libXdamage
+    libXScrnSaver
+    libXcomposite
+    libXxf86vm
 
     # Wayland
     wayland

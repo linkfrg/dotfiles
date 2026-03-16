@@ -7,6 +7,7 @@
       # For modern Intel CPU's
       intel-media-driver # Enable Hardware Acceleration
       vpl-gpu-rt # Enable QSV
+      intel-compute-runtime
     ];
   };
   environment.sessionVariables = {LIBVA_DRIVER_NAME = "iHD";};

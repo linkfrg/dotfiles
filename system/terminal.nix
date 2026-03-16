@@ -17,7 +17,7 @@
     '';
   };
 
-  documentation.man.generateCaches = false; # speed up building
+  documentation.man.cache.enable = false; # speed up building
 
   environment.variables.EDITOR = "micro";
 }

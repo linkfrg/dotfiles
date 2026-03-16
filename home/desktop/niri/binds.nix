@@ -2,7 +2,7 @@
   binds = with config.lib.niri.actions; {
     "Mod+Q".action = spawn "kitty";
     "Mod+X".action = spawn "ignisctl-rs" "open-window" "ignis_LAUNCHER";
-    "Mod+L".action = spawn "hyprlock";
+    "Mod+B".action = spawn "hyprlock";
     "Mod+E".action = spawn "thunar";
 
     XF86AudioRaiseVolume = {
@@ -30,32 +30,32 @@
       repeat = false;
     };
 
-    "Mod+W".action = focus-window-or-workspace-up;
-    "Mod+A".action = focus-column-left;
-    "Mod+S".action = focus-window-or-workspace-down;
-    "Mod+D".action = focus-column-right;
+    "Mod+K".action = focus-window-or-workspace-up;
+    "Mod+H".action = focus-column-left;
+    "Mod+J".action = focus-window-or-workspace-down;
+    "Mod+L".action = focus-column-right;
 
-    "Mod+Ctrl+W".action = move-column-to-workspace-up;
-    "Mod+Ctrl+A".action = move-column-left;
-    "Mod+Ctrl+S".action = move-column-to-workspace-down;
-    "Mod+Ctrl+D".action = move-column-right;
+    "Mod+Shift+K".action = move-column-to-workspace-up;
+    "Mod+Shift+H".action = move-column-left;
+    "Mod+Shift+J".action = move-column-to-workspace-down;
+    "Mod+Shift+L".action = move-column-right;
 
-    "Mod+Alt+W".action = focus-monitor-up;
-    "Mod+Alt+A".action = focus-monitor-left;
-    "Mod+Alt+S".action = focus-monitor-down;
-    "Mod+Alt+D".action = focus-monitor-right;
+    "Mod+Alt+K".action = focus-monitor-up;
+    "Mod+Alt+H".action = focus-monitor-left;
+    "Mod+Alt+J".action = focus-monitor-down;
+    "Mod+Alt+L".action = focus-monitor-right;
 
-    "Mod+Alt+Ctrl+W".action = move-column-to-monitor-up;
-    "Mod+Alt+Ctrl+A".action = move-column-to-monitor-left;
-    "Mod+Alt+Ctrl+S".action = move-column-to-monitor-down;
-    "Mod+Alt+Ctrl+D".action = move-column-to-monitor-right;
+    "Mod+Alt+Shift+K".action = move-column-to-monitor-up;
+    "Mod+Alt+Shift+H".action = move-column-to-monitor-left;
+    "Mod+Alt+Shift+J".action = move-column-to-monitor-down;
+    "Mod+Alt+Shift+L".action = move-column-to-monitor-right;
 
     "Mod+grave".action = toggle-overview;
-    "Mod+G".action = consume-or-expel-window-left;
-    "Mod+H".action = consume-or-expel-window-right;
+    # "Mod+G".action = consume-or-expel-window-left;
+    # "Mod+H".action = consume-or-expel-window-right;
 
-    "Mod+Shift+G".action = consume-window-into-column;
-    "Mod+Shift+H".action = expel-window-from-column;
+    # "Mod+Shift+G".action = consume-window-into-column;
+    # "Mod+Shift+H".action = expel-window-from-column;
 
     "Mod+R".action = switch-preset-column-width;
     "Mod+Shift+R".action = switch-preset-window-height;

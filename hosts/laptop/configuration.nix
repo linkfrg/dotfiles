@@ -13,13 +13,13 @@
     ../../system/hardware/vxe-mouse.nix
     ../../system/hardware/bluetooth.nix
     ../../system/services/firewall.nix
+    ../../system/services/docker.nix
     ../../system/services/flatpak.nix
     ../../system/services/gc.nix
     ../../system/services/networkmanager.nix
     ../../system/services/pipewire.nix
     ../../system/services/power-profiles.nix
     ../../system/services/upower.nix
-    ../../system/services/navidrome.nix
     ../../system/services/distrobox.nix
     ../../system/services/cloudflare-warp.nix
     ../../system/services/nix-ld.nix
@@ -32,7 +32,6 @@
   networking.hostName = "laptop";
 
   services.logind.settings.Login.HandlePowerKey = "ignore";
-
   home-manager.users.link = {
     imports = [
       ../../home/services/hypridle
@@ -48,6 +47,18 @@
         variable-refresh-rate = true;
       };
     };
+
+    programs.niri.settings.spawn-at-startup = [
+      {
+        argv = ["obsidian"];
+      }
+      {
+        argv = ["ferdium"];
+      }
+      {
+        argv = ["super-productivity"];
+      }
+    ];
 
     wayland.windowManager.hyprland.settings = {
       monitor = [
@@ -84,6 +95,5 @@
       ];
     };
   };
-
   system.stateVersion = "25.05";
 }

@@ -4,4 +4,5 @@
     qemu.vhostUserPackages = with pkgs; [virtiofsd];
   };
   programs.virt-manager.enable = true;
+  virtualisation.spiceUSBRedirection.enable = true;
 }

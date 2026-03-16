@@ -42,6 +42,7 @@
       ./misc.nix
       ./rules.nix
       ./spawn.nix
+      ./env.nix
     ];
   };
 }

@@ -11,7 +11,7 @@ in {
     protonvpn-gui
     eog
     transmission_4-gtk
-    xorg.xeyes
+    xeyes
     uxplay
     pinta
     gnome-calculator
@@ -19,6 +19,9 @@ in {
     snapshot
     pavucontrol
     obsidian
+    ferdium
+    gapless
+    super-productivity
   ];
 
   programs.onlyoffice.enable = true;
