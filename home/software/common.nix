@@ -1,7 +1,6 @@
 {pkgs, ...}: let
   imageViewer = "org.gnome.eog.desktop";
   videoPlayer = "mpv.desktop";
-  browser = "firefox.desktop";
   archiver = "org.gnome.FileRoller.desktop";
 in {
   home.packages = with pkgs; [
@@ -22,10 +21,8 @@ in {
     ferdium
     gapless
     super-productivity
+    libreoffice
   ];
-
-  programs.onlyoffice.enable = true;
-  programs.chromium.enable = true;
 
   programs.mpv = {
     enable = true;
@@ -52,8 +49,6 @@ in {
       "video/x-msvideo" = [videoPlayer]; # avi
       "video/quicktime" = [videoPlayer]; # mov
 
-      "text/html" = [browser];
-      "application/pdf" = [browser];
       "application/zip" = [archiver];
       "application/x-7z-compressed" = [archiver];
       "application/x-rar-compressed" = [archiver];

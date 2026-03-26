@@ -5,6 +5,7 @@
     ../../system/core/systemd-boot.nix
     ../../system/core/locale.nix
     ../../system/core/users.nix
+    ../../system/core/dns.nix
     ../../system/desktop/niri.nix
     ../../system/hardware/nvidia.nix
     ../../system/hardware/vxe-mouse.nix
@@ -16,7 +17,6 @@
     ../../system/services/pipewire.nix
     ../../system/services/power-profiles.nix
     ../../system/services/imobiledevice.nix
-    ../../system/services/navidrome.nix
     ../../system/services/distrobox.nix
     ../../system/services/cloudflare-warp.nix
     ../../system/services/nix-ld.nix
