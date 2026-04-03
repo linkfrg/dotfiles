@@ -5,6 +5,6 @@
   };
 
   systemd.sleep.settings.Sleep = {
-    HibernateDelaySec = 1;
+    HibernateDelaySec = "1h";
   };
 }

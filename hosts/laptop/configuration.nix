@@ -31,7 +31,6 @@
   ];
 
   networking.hostName = "laptop";
-
   services.logind.settings.Login.HandlePowerKey = "ignore";
   home-manager.users.link = {
     imports = [

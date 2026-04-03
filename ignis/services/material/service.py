@@ -123,4 +123,4 @@ class MaterialService(BaseService):
             ...
         options.wallpaper.set_wallpaper_path(image_path)
         css_manager.reload_all_css()
-        await self.__reload_gtk_theme()
+        # await self.__reload_gtk_theme()
