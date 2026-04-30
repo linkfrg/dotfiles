@@ -1,9 +1,11 @@
-{config, ...}: {
+{ config, ... }:
+{
   binds = with config.lib.niri.actions; {
-    "Mod+Q".action = spawn "kitty";
+    "Mod+Return".action = spawn "kitty";
     "Mod+X".action = spawn "ignisctl-rs" "open-window" "ignis_LAUNCHER";
     "Mod+B".action = spawn "hyprlock";
     "Mod+E".action = spawn "thunar";
+    "Mod+G".action = spawn "firefox";
 
     XF86AudioRaiseVolume = {
       allow-when-locked = true;

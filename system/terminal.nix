@@ -1,11 +1,11 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   environment.systemPackages = with pkgs; [
     usbutils
     libva-utils
     tree
     file
     f2fs-tools
-    micro
     gnome-disk-utility
   ];
 
@@ -19,5 +19,5 @@
 
   documentation.man.cache.enable = false; # speed up building
 
-  environment.variables.EDITOR = "micro";
+  environment.variables.EDITOR = "nvim";
 }

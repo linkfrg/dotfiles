@@ -1,4 +1,8 @@
-{lib, ...}: {
+{
+  lib,
+  ...
+}:
+{
   imports = [
     ./hardware-configuration.nix
     ./disk-config.nix
@@ -24,7 +28,7 @@
     ../../system/services/distrobox.nix
     ../../system/services/cloudflare-warp.nix
     ../../system/services/nix-ld.nix
-    ../../system/desktop/gdm.nix
+    ../../system/services/keyd.nix
     ../../system/software
     ../../system/terminal.nix
     ../../system/home-manager.nix
@@ -50,13 +54,13 @@
 
     programs.niri.settings.spawn-at-startup = [
       {
-        argv = ["obsidian"];
+        argv = [ "obsidian" ];
       }
       {
-        argv = ["ferdium"];
+        argv = [ "ferdium" ];
       }
       {
-        argv = ["super-productivity"];
+        argv = [ "super-productivity" ];
       }
     ];
 

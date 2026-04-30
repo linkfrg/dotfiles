@@ -18,7 +18,7 @@
       name = "Papirus";
       package = pkgs.papirus-icon-theme;
     };
-
+    gtk4.theme = config.gtk.theme;
     gtk3.bookmarks = [
       "file:///${config.xdg.userDirs.documents}"
       "file:///${config.xdg.userDirs.pictures}"
