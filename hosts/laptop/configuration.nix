@@ -38,7 +38,7 @@
   services.logind.settings.Login.HandlePowerKey = "ignore";
   home-manager.users.link = {
     imports = [
-      ../../home/services/hypridle
+      ../../home/desktop/hypridle
     ];
     programs.niri.settings.outputs = {
       "eDP-1" = {
