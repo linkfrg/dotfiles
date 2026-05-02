@@ -99,5 +99,16 @@
       ];
     };
   };
+
+  systemd.tmpfiles.rules = [
+    "d /sdcard 777 root root -"
+  ];
+
+  fileSystems."/sdcard" = {
+    device = "/dev/disk/by-uuid/c72ba4c3-48c3-497f-8fdd-3cc2eac6f6aa";
+    fsType = "btrfs";
+    options = ["noatime" "compress=zstd" "ssd" "discard=async"];
+  };
+
   system.stateVersion = "25.05";
 }

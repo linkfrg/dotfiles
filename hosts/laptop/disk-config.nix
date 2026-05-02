@@ -40,7 +40,7 @@
         type = "lvm_vg";
         lvs = {
           root = {
-            size = "100G";
+            size = "100%";
             content = {
               type = "filesystem";
               format = "ext4";
@@ -52,15 +52,6 @@
             size = "12G";
             content = {
               type = "swap";
-            };
-          };
-          data = {
-            size = "100%";
-            content = {
-              type = "filesystem";
-              format = "ext4";
-              mountpoint = "/data";
-              mountOptions = ["defaults"];
             };
           };
         };
