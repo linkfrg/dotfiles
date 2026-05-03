@@ -29,6 +29,7 @@
     ../../system/services/cloudflare-warp.nix
     ../../system/services/nix-ld.nix
     ../../system/services/keyd.nix
+    ../../system/services/sops.nix
     ../../system/software
     ../../system/terminal.nix
     ../../system/home-manager.nix

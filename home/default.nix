@@ -6,12 +6,12 @@ in
 {
   imports = [
     inputs.ignis.homeManagerModules.default
-    inputs.dotfiles-private.homeManagerModules.default
     ./desktop/niri
     ./desktop/hyprlock
     ./desktop/ignis.nix
     ./desktop/appearance.nix
     ./services/xdg.nix
+    ./services/wlsunset.nix
     ./terminal
     ./software
     ./games.nix

@@ -20,27 +20,6 @@
         "type": "github"
       }
     },
-    "dotfiles-private": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "sops-nix": "sops-nix"
-      },
-      "locked": {
-        "lastModified": 1776154024,
-        "narHash": "sha256-P7O/MvEVJ5DEl6tIOQboMerzoR/aoT3dDliKypgkKsY=",
-        "ref": "refs/heads/main",
-        "rev": "03fedfe6ffc05ee4bbceb75162df00742a5a7c88",
-        "revCount": 9,
-        "type": "git",
-        "url": "ssh://git@github.com/linkfrg/dotfiles-private.git"
-      },
-      "original": {
-        "type": "git",
-        "url": "ssh://git@github.com/linkfrg/dotfiles-private.git"
-      }
-    },
     "firefox-addons": {
       "inputs": {
         "nixpkgs": [
@@ -239,13 +218,13 @@
     "root": {
       "inputs": {
         "disko": "disko",
-        "dotfiles-private": "dotfiles-private",
         "firefox-addons": "firefox-addons",
         "home-manager": "home-manager",
         "ignis": "ignis",
         "ignisctl-rs": "ignisctl-rs",
         "niri-flake": "niri-flake",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "sops-nix": "sops-nix"
       }
     },
     "rust-overlay": {
@@ -272,16 +251,15 @@
     "sops-nix": {
       "inputs": {
         "nixpkgs": [
-          "dotfiles-private",
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1776771786,
-        "narHash": "sha256-DRFGPfFV6hbrfO9a1PH1FkCi7qR5FgjSqsQGGvk1rdI=",
+        "lastModified": 1777338324,
+        "narHash": "sha256-bc+ZZCmOTNq86/svGnw0tVpH7vJaLYvGLLKFYP08Q8E=",
         "owner": "Mic92",
         "repo": "sops-nix",
-        "rev": "bef289e2248991f7afeb95965c82fbcd8ff72598",
+        "rev": "8eaee5c45428b28b8c47a83e4c09dccec5f279b5",
         "type": "github"
       },
       "original": {

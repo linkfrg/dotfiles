@@ -34,8 +34,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    dotfiles-private = {
-      url = "git+ssh://git@github.com/linkfrg/dotfiles-private.git";
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -45,7 +45,7 @@
     nixpkgs,
     home-manager,
     disko,
-    dotfiles-private,
+    sops-nix,
     niri-flake,
     ...
   } @ inputs: let
@@ -66,8 +66,8 @@
         specialArgs = {inherit inputs outputs;};
         modules = [
           home-manager.nixosModules.home-manager
-          dotfiles-private.nixosModules.default
           niri-flake.nixosModules.niri
+          sops-nix.nixosModules.sops
           ./hosts/desktop/configuration.nix
         ];
       };
@@ -76,9 +76,9 @@
         specialArgs = {inherit inputs outputs;};
         modules = [
           home-manager.nixosModules.home-manager
-          dotfiles-private.nixosModules.default
           disko.nixosModules.disko
           niri-flake.nixosModules.niri
+          sops-nix.nixosModules.sops
           ./hosts/laptop/configuration.nix
         ];
       };
