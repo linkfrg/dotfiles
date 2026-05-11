@@ -1,5 +1,0 @@
-{pkgs, config, ...}: {
-    home.packages = [
-    ];
-
-}

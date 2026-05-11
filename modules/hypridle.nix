@@ -1,0 +1,38 @@
+{
+  flake.homeModules.hypridle = let
+    on_cmd = "~/.config/hypr/monitor-switch.sh on";
+    off_cmd = "~/.config/hypr/monitor-switch.sh off";
+  in {
+    home.file = {
+      ".config/hypr/monitor-switch.sh".source = ../config/hypridle/monitor-switch.sh;
+    };
+
+    services.hypridle = {
+      enable = true;
+
+      settings = {
+        general = {
+          lock_cmd = "hyprlock";
+
+          before_sleep_cmd = "hyprlock";
+          after_sleep_cmd = on_cmd;
+        };
+        listener = [
+          {
+            timeout = 180;
+            on-timeout = off_cmd;
+            on-resume = on_cmd;
+          }
+          {
+            timeout = 300;
+            on-timeout = "hyprlock";
+          }
+          {
+            timeout = 1200;
+            on-timeout = "systemctl suspend";
+          }
+        ];
+      };
+    };
+  };
+}

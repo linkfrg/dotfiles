@@ -38,59 +38,10 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    import-tree.url = "github:denful/import-tree";
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    home-manager,
-    disko,
-    sops-nix,
-    niri-flake,
-    ...
-  } @ inputs: let
-    inherit (self) outputs;
-
-    systems = [
-      "aarch64-linux"
-      "x86_64-linux"
-    ];
-    forAllSystems = nixpkgs.lib.genAttrs systems;
-  in {
-    formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
-
-    nixpkgs.overlays = [inputs.niri.overlays.niri];
-
-    nixosConfigurations = {
-      desktop = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
-        modules = [
-          home-manager.nixosModules.home-manager
-          niri-flake.nixosModules.niri
-          sops-nix.nixosModules.sops
-          ./hosts/desktop/configuration.nix
-        ];
-      };
-
-      laptop = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
-        modules = [
-          home-manager.nixosModules.home-manager
-          disko.nixosModules.disko
-          niri-flake.nixosModules.niri
-          sops-nix.nixosModules.sops
-          ./hosts/laptop/configuration.nix
-        ];
-      };
-
-      # build with:
-      # nix build .#nixosConfigurations.installer.config.system.build.isoImage
-      installer = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
-        modules = [
-          ./hosts/installer/configuration.nix
-        ];
-      };
-    };
-  };
+  outputs = inputs: inputs.flake-parts.lib.mkFlake {inherit inputs;} (inputs.import-tree ./modules);
 }
