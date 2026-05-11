@@ -1,0 +1,141 @@
+include "device-specific.kdl"
+
+// SPAWN
+spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP"
+spawn-at-startup "ignis" "init"
+spawn-at-startup "AyuGram" "-startintray"
+
+// ENVIRONMENT
+environment {
+    "NIXOS_OZONE_WL" "1"
+    "QT_QPA_PLATFORM" "wayland"
+    "QT_QPA_PLATFORMTHEME" "qt5ct"
+}
+
+// INPUT
+input {
+    keyboard {
+        xkb {
+            layout "us,ru"
+            model ""
+            rules ""
+            variant ""
+            options "grp:win_space_toggle"
+        }
+        repeat-delay 600
+        repeat-rate 25
+        track-layout "global"
+    }
+    touchpad {
+        tap
+        natural-scroll
+    }
+    mouse { accel-profile "flat"; }
+}
+
+
+// LAYOUT
+layout {
+    gaps 16
+    struts {
+        left 0
+        right 0
+        top 0
+        bottom 0
+    }
+    focus-ring {
+        width 2
+        active-color "#7fc8ff"
+        inactive-color "#505050"
+    }
+    border { off; }
+    background-color "transparent"
+    shadow {
+        on
+        offset x=0.000000 y=5.000000
+        softness 30
+        spread 4
+        draw-behind-window false
+        color "#00000070"
+    }
+    default-column-width { proportion 0.500000; }
+    preset-column-widths {
+        proportion 0.333330
+        proportion 0.500000
+        proportion 0.666670
+    }
+    center-focused-column "never"
+}
+
+
+// WINDOW/LAYER RULES
+window-rule {
+    match app-id="firefox$" title="^Picture-in-Picture$"
+    open-floating true
+}
+
+window-rule {
+    geometry-corner-radius 15.000000 15.000000 15.000000 15.000000
+    clip-to-geometry true
+}
+
+layer-rule {
+    match namespace="^ignis_wallpaper_service.*$"
+    place-within-backdrop true
+}
+
+// CURSOR
+cursor {
+    xcursor-theme "default"
+    xcursor-size 24
+}
+
+// MISC
+hotkey-overlay { skip-at-startup; }
+
+prefer-no-csd
+overview { workspace-shadow { off; }; }
+
+// BINDS
+binds {
+    Ctrl+Alt+Delete { quit; }
+    Mod+Alt+H { focus-monitor-left; }
+    Mod+Alt+J { focus-monitor-down; }
+    Mod+Alt+K { focus-monitor-up; }
+    Mod+Alt+L { focus-monitor-right; }
+    Mod+Alt+Shift+H { move-column-to-monitor-left; }
+    Mod+Alt+Shift+J { move-column-to-monitor-down; }
+    Mod+Alt+Shift+K { move-column-to-monitor-up; }
+    Mod+Alt+Shift+L { move-column-to-monitor-right; }
+    Mod+B { spawn "hyprlock"; }
+    Mod+C repeat=false { close-window; }
+    Mod+Ctrl+F { expand-column-to-available-width; }
+    Mod+Ctrl+R { reset-window-height; }
+    Mod+E { spawn "thunar"; }
+    Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+    Mod+F { maximize-column; }
+    Mod+G { spawn "firefox"; }
+    Mod+H { focus-column-left; }
+    Mod+J { focus-window-or-workspace-down; }
+    Mod+K { focus-window-or-workspace-up; }
+    Mod+L { focus-column-right; }
+    Mod+R { switch-preset-column-width; }
+    Mod+Return { spawn "kitty"; }
+    Mod+Shift+Equal { set-window-height "+10%"; }
+    Mod+Shift+F { fullscreen-window; }
+    Mod+Shift+H { move-column-left; }
+    Mod+Shift+J { move-column-to-workspace-down; }
+    Mod+Shift+K { move-column-to-workspace-up; }
+    Mod+Shift+L { move-column-right; }
+    Mod+Shift+Minus { set-window-height "-10%"; }
+    Mod+Shift+R { switch-preset-window-height; }
+    Mod+Shift+S { spawn "grimshot" "--notify" "savecopy" "area"; }
+    Mod+Shift+V { switch-focus-between-floating-and-tiling; }
+    Mod+V { toggle-window-floating; }
+    Mod+X { spawn "ignisctl-rs" "open-window" "ignis_LAUNCHER"; }
+    Mod+grave { toggle-overview; }
+    Print { spawn "grimshot" "--notify" "savecopy" "output"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn "ignisctl-rs" "run-command" "volume-osd-decrease"; }
+    XF86AudioMute allow-when-locked=true { spawn "ignisctl-rs" "run-command" "volume-osd-toggle-mute"; }
+    XF86AudioRaiseVolume allow-when-locked=true { spawn "ignisctl-rs" "run-command" "volume-osd-increase"; }
+}

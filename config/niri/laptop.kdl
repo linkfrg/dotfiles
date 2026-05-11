@@ -1,0 +1,8 @@
+output "eDP-1" {
+    scale 1.200000
+    transform "normal"
+    mode "1920x1080@60.000000"
+    variable-refresh-rate on-demand=false
+}
+
+spawn-at-startup "ferdium"

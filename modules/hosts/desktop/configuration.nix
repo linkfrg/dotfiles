@@ -38,33 +38,7 @@
     networking.hostName = "desktop";
 
     home-manager.users.link = {
-      programs.niri.settings.outputs = {
-        "DP-1" = {
-          mode = {
-            height = 1080;
-            width = 1920;
-            refresh = 144.0;
-          };
-          position = {
-            x = 1920;
-            y = 0;
-          };
-          scale = 1;
-        };
-
-        "HDMI-A-1" = {
-          mode = {
-            height = 1080;
-            width = 1920;
-            refresh = 75.0;
-          };
-          position = {
-            x = 0;
-            y = 0;
-          };
-          scale = 1;
-        };
-      };
+      xdg.configFile."niri/device-specific.kdl".source = ../../../config/niri/desktop.kdl;
     };
 
     system.stateVersion = "25.05";
