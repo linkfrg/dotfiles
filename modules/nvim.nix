@@ -1,4 +1,5 @@
-{self, ...}: {
+{ self, ... }:
+{
   perSystem =
     { pkgs, lib, ... }:
     let
@@ -30,11 +31,18 @@
     };
 
   flake.homeModules.nvim =
-    { pkgs, ... }:
+    {
+      pkgs,
+      config,
+      ...
+    }:
     {
       home.packages = [
         self.packages.${pkgs.system}.mynvim
       ];
+
+      xdg.configFile."nvim".source =
+        config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Projects/dotfiles/config/nvim";
 
       home.sessionVariables."EDITOR" = "nvim";
     };
