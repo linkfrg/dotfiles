@@ -12,14 +12,12 @@
         enableFishIntegration = true;
         shellWrapperName = "y";
         plugins = {
-            inherit (pkgs.yaziPlugins) mount;
-            inherit (pkgs.yaziPlugins) wl-clipboard;
+          inherit (pkgs.yaziPlugins) mount;
+          inherit (pkgs.yaziPlugins) wl-clipboard;
         };
 
-        settings = {
-          theme = lib.importTOML ../config/yazi/theme.toml;
-          keymap = lib.importTOML ../config/yazi/keymap.toml;
-        };
+        theme = lib.importTOML ../config/yazi/theme.toml;
+        keymap = lib.importTOML ../config/yazi/keymap.toml;
       };
     };
 }
