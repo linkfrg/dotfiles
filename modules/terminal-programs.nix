@@ -108,7 +108,6 @@
       cava
       gh
       speedtest-cli
-      yazi
       cloc
       act
       wl-clipboard

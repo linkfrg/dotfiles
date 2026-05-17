@@ -9,6 +9,7 @@
 
     security.rtkit.enable = true;
   };
+
   flake.nixosModules.powerProfilesDaemon = {
     services.power-profiles-daemon.enable = true;
   };
@@ -34,13 +35,15 @@
     services.flatpak.enable = true;
   };
 
-  flake.nixosModules.imobiledevice = {pkgs, ...}: {
-    environment.systemPackages = with pkgs; [
-      libimobiledevice
-    ];
+  flake.nixosModules.imobiledevice =
+    { pkgs, ... }:
+    {
+      environment.systemPackages = with pkgs; [
+        libimobiledevice
+      ];
 
-    services.usbmuxd.enable = true;
-  };
+      services.usbmuxd.enable = true;
+    };
 
   flake.nixosModules.avahi = {
     services.avahi = {
@@ -55,17 +58,22 @@
     };
   };
 
+  flake.nixosModules.udisks = {
+    services.udisks2.enable = true;
+  };
+
   flake.nixosModules.cloudflareWarp = {
     services.cloudflare-warp = {
       enable = true;
     };
   };
+
   flake.nixosModules.keyd = {
     services.keyd = {
       enable = true;
       keyboards = {
         default = {
-          ids = ["*"];
+          ids = [ "*" ];
           settings = {
             main = {
               capslock = "overload(control, esc)";

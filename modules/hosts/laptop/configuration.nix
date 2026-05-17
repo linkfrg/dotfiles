@@ -33,6 +33,7 @@
       self.nixosModules.nixLd
       self.nixosModules.keyd
       self.nixosModules.sops
+      self.nixosModules.udisks
 
       self.nixosModules.steam
       self.nixosModules.terminalPrograms

@@ -25,6 +25,7 @@
       self.homeModules.shell
       self.homeModules.tmux
       self.homeModules.nvim
+      self.homeModules.yazi
       self.homeModules.userDirs
       self.homeModules.mimeApps
     ];
