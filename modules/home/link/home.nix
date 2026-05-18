@@ -23,6 +23,7 @@
       self.homeModules.graphicalPrograms
       self.homeModules.terminalPrograms
       self.homeModules.shell
+      self.homeModules.ssh
       self.homeModules.tmux
       self.homeModules.nvim
       self.homeModules.yazi
