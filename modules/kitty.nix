@@ -1,18 +1,19 @@
 {
   flake.homeModules.kitty = {pkgs, ...}: {
-    programs.kitty = {
-      enable = true;
-      font = {
-        package = pkgs.nerd-fonts.jetbrains-mono;
-        size = 12;
-        name = "JetBrainsMono Nerd Font Mono";
-      };
-      settings = {
-        include = "~/.cache/ignis/material/dark_colors-kitty.conf";
-        window_margin_width = 15;
-        remember_window_size = "no";
-        background_opacity = 1;
-      };
-    };
+    
+    home.packages = with pkgs; [
+        kitty
+        nerd-fonts.jetbrains-mono
+    ];
+
+    xdg.configFile."kitty".source = ../config/kitty;
+
+    programs.fish.interactiveShellInit = ''
+        if set -q KITTY_INSTALLATION_DIR
+            set --global KITTY_SHELL_INTEGRATION enabled
+            source "$KITTY_INSTALLATION_DIR/shell-integration/fish/vendor_conf.d/kitty-shell-integration.fish"
+            set --prepend fish_complete_path "$KITTY_INSTALLATION_DIR/shell-integration/fish/vendor_completions.d"
+        end
+    '';
   };
 }
