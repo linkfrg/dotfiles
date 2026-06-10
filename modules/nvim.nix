@@ -18,6 +18,7 @@
         rust-analyzer
         ruff
         nil
+        mesonlsp
       ];
     in
     {

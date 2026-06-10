@@ -30,7 +30,7 @@
       self.nixosModules.pipewire
       self.nixosModules.powerProfilesDaemon
       self.nixosModules.cloudflareWarp
-      self.nixosModules.nixLd
+      # self.nixosModules.nixLd
       self.nixosModules.keyd
       self.nixosModules.sops
       self.nixosModules.udisks
@@ -52,6 +52,8 @@
 
     networking.hostName = "laptop";
     services.logind.settings.Login.HandlePowerKey = "ignore";
+
+    networking.networkmanager.wifi.backend = "iwd";
 
     home-manager.users.link = {
       imports = [

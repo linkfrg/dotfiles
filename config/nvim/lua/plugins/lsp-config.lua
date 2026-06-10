@@ -9,6 +9,7 @@ local servers = {
   pyright = {},
   rust_analyzer = {},
   nil_ls = {},
+  mesonlsp = {},
 
   stylua = {},
   lua_ls = {

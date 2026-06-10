@@ -5,4 +5,3 @@ output "eDP-1" {
     variable-refresh-rate on-demand=false
 }
 
-spawn-at-startup "ferdium"
