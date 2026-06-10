@@ -19,6 +19,9 @@
         ruff
         nil
         mesonlsp
+        marksman
+        prettier
+        cbfmt
       ];
     in
     {

@@ -10,6 +10,7 @@ local servers = {
   rust_analyzer = {},
   nil_ls = {},
   mesonlsp = {},
+  marksman = {},
 
   stylua = {},
   lua_ls = {
