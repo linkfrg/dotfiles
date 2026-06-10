@@ -11,6 +11,7 @@
       self.nixosModules.niri
 
       self.nixosModules.vxeMouse
+      self.nixosModules.imobiledevice
       self.nixosModules.docker
       self.nixosModules.flatpak
       self.nixosModules.gc
@@ -26,10 +27,6 @@
       self.nixosModules.terminalPrograms
 
       self.nixosModules.homeManager
-      self.nixosModules.laptopHardware
-      self.nixosModules.laptopDisk
-
-      self.nixosModules.suspendThenHibernate
 
       self.nixosModules.nvidia
       self.nixosModules.desktopHardware
