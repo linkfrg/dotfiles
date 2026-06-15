@@ -75,6 +75,7 @@
         "compress=zstd"
         "ssd"
         "discard=async"
+        "nofail"
       ];
     };
 

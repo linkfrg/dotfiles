@@ -111,6 +111,7 @@
       cloc
       act
       wl-clipboard
+      lazygit
     ];
   };
 }

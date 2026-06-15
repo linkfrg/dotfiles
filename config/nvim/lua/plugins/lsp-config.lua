@@ -7,6 +7,7 @@ require("fidget").setup({})
 
 local servers = {
   pyright = {},
+  ruff = {},
   rust_analyzer = {},
   nil_ls = {},
   mesonlsp = {},

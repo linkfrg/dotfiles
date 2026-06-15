@@ -35,15 +35,13 @@
     services.flatpak.enable = true;
   };
 
-  flake.nixosModules.imobiledevice =
-    { pkgs, ... }:
-    {
-      environment.systemPackages = with pkgs; [
-        libimobiledevice
-      ];
+  flake.nixosModules.imobiledevice = {pkgs, ...}: {
+    environment.systemPackages = with pkgs; [
+      libimobiledevice
+    ];
 
-      services.usbmuxd.enable = true;
-    };
+    services.usbmuxd.enable = true;
+  };
 
   flake.nixosModules.avahi = {
     services.avahi = {
@@ -73,7 +71,7 @@
       enable = true;
       keyboards = {
         default = {
-          ids = [ "*" ];
+          ids = ["*"];
           settings = {
             main = {
               capslock = "overload(control, esc)";

@@ -21,6 +21,12 @@
     };
     programs.virt-manager.enable = true;
     virtualisation.spiceUSBRedirection.enable = true;
+
+    environment.systemPackages = with pkgs; [
+      dnsmasq
+    ];
+
+    networking.firewall.trustedInterfaces = ["virbr0"];
   };
 
   flake.homeModules.graphicalPrograms = {pkgs, ...}: {
