@@ -1,16 +1,18 @@
 from ignis import widgets
 from ignis.window_manager import WindowManager
+
+from .menu import opened_menu
 from .widgets import (
-    QuickSettings,
     Brightness,
-    VolumeSlider,
-    User,
     Media,
     NotificationCenter,
+    QuickSettings,
+    User,
+    VolumeSlider,
 )
-from .menu import opened_menu
 
 window_manager = WindowManager.get_default()
+
 
 class ControlCenter(widgets.RevealerWindow):
     def __init__(self):
@@ -53,7 +55,9 @@ class ControlCenter(widgets.RevealerWindow):
                         vexpand=True,
                         hexpand=True,
                         css_classes=["unset"],
-                        on_click=lambda x: window_manager.close_window("ignis_CONTROL_CENTER"),
+                        on_click=lambda x: window_manager.close_window(
+                            "ignis_CONTROL_CENTER"
+                        ),
                     ),
                     revealer,
                 ],

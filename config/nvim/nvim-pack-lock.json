@@ -69,6 +69,10 @@
       "rev": "bb025308a45c67c7c8f0763ba37bc2ee3f534df0",
       "src": "https://github.com/dhruvasagar/vim-table-mode"
     },
+    "vim-wakatime": {
+      "rev": "2a856d0b7863dc34ffc80647cb52fbd1319fe144",
+      "src": "https://github.com/wakatime/vim-wakatime"
+    },
     "which-key": {
       "rev": "3aab2147e74890957785941f0c1ad87d0a44c15a",
       "src": "https://github.com/folke/which-key.nvim"

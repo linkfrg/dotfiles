@@ -53,6 +53,7 @@
       gapless
       super-productivity
       libreoffice
+      gnome-clocks
     ];
   };
 }

@@ -1,32 +1,44 @@
-from ignis import widgets
-from ignis import utils
-from ignis.services.notifications import Notification, NotificationService
+from gi.repository import IgnisNotificationsGLib
+from ignis import utils, widgets
+
+from setup import get_notification_service
+
 from ..shared_widgets import NotificationWidget
 
+service = get_notification_service()
 
-
-notifications = NotificationService.get_default()
+POPUPS = []
 
 
 class Popup(widgets.Box):
     def __init__(
-        self, box: "PopupBox", window: "NotificationPopup", notification: Notification
+        self,
+        box: "PopupBox",
+        window: "NotificationPopup",
+        notification: IgnisNotificationsGLib.Notification,
     ):
         self._box = box
         self._window = window
 
         widget = NotificationWidget(notification)
         widget.css_classes = ["notification-popup"]
+
         self._inner = widgets.Revealer(transition_type="slide_left", child=widget)
         self._outer = widgets.Revealer(transition_type="slide_down", child=self._inner)
+
         super().__init__(child=[self._outer], halign="end")
 
-        notification.connect("dismissed", lambda x: self.destroy())
+        notification.connect("closed", lambda x, reason: self.destroy())
+        utils.Timeout(3000, self.destroy)
 
     def destroy(self):
         def box_destroy():
             self.unparent()
-            if len(notifications.popups) == 0:
+
+            if self in POPUPS:
+                POPUPS.remove(self)
+
+            if len(POPUPS) == 0:
                 self._window.visible = False
 
         def outer_close():
@@ -46,17 +58,25 @@ class PopupBox(widgets.Box):
         super().__init__(
             vertical=True,
             valign="start",
-            setup=lambda self: notifications.connect(
-                "new_popup",
-                lambda x, notification: self.__on_notified(notification),
-            ),
         )
 
-    def __on_notified(self, notification: Notification) -> None:
-        self._window.visible = True
+        service.connect(
+            "notified",
+            lambda x, id, notification, replace: self.__on_notified(notification),
+        )
+
+    def __on_notified(
+        self,
+        notification: IgnisNotificationsGLib.Notification,
+    ) -> None:
         popup = Popup(box=self, window=self._window, notification=notification)
+
         self.prepend(popup)
+        POPUPS.append(popup)
+
+        self._window.visible = True
         popup._outer.reveal_child = True
+
         utils.Timeout(
             popup._outer.transition_duration, popup._inner.set_reveal_child, True
         )

@@ -1,19 +1,20 @@
 import os
+
 from ignis import utils
+from ignis.command_manager import CommandManager
+from ignis.css_manager import CssInfoPath, CssManager
+from ignis.icon_manager import IconManager
 from ignis.services.wallpaper import WallpaperService
+
 from modules import (
     Bar,
     ControlCenter,
     Launcher,
     NotificationPopup,
-    VolumeOsd,
     Powermenu,
-    Settings,
+    VolumeOsd,
 )
-from ignis.css_manager import CssManager, CssInfoPath
-from ignis.icon_manager import IconManager
 from user_options import user_options
-from ignis.command_manager import CommandManager
 
 icon_manager = IconManager.get_default()
 css_manager = CssManager.get_default()
@@ -67,8 +68,12 @@ Launcher()
 Powermenu()
 volume_osd = VolumeOsd()
 
-command_manager.add_command("volume-osd-increase", lambda *_: volume_osd.increase_volume())
-command_manager.add_command("volume-osd-decrease", lambda *_: volume_osd.decrease_volume())
-command_manager.add_command("volume-osd-toggle-mute", lambda *_: volume_osd.toggle_mute())
-
-Settings()
+command_manager.add_command(
+    "volume-osd-increase", lambda *_: volume_osd.increase_volume()
+)
+command_manager.add_command(
+    "volume-osd-decrease", lambda *_: volume_osd.decrease_volume()
+)
+command_manager.add_command(
+    "volume-osd-toggle-mute", lambda *_: volume_osd.toggle_mute()
+)

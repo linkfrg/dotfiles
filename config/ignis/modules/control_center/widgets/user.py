@@ -1,12 +1,14 @@
 import os
-from ignis import widgets
-from ignis import utils
-from ignis.window_manager import WindowManager
+
+from ignis import utils, widgets
 from ignis.services.fetch import FetchService
+from ignis.window_manager import WindowManager
+
 from user_options import user_options
 
 fetch = FetchService.get_default()
 window_manager = WindowManager.get_default()
+
 
 def format_uptime(value: tuple[int, int, int, int]) -> str:
     days, hours, minutes, seconds = value
@@ -46,25 +48,14 @@ class User(widgets.Box):
             css_classes=["user-name-box"],
         )
 
-        settings_button = widgets.Button(
-            child=widgets.Icon(image="emblem-system-symbolic", pixel_size=20),
-            halign="end",
-            hexpand=True,
-            css_classes=["user-settings", "unset"],
-            on_click=lambda x: self.__on_settings_button_click(),
-        )
-
         power_button = widgets.Button(
             child=widgets.Icon(image="system-shutdown-symbolic", pixel_size=20),
             halign="end",
+            hexpand=True,
             css_classes=["user-power", "unset"],
             on_click=lambda x: window_manager.toggle_window("ignis_POWERMENU"),
         )
         super().__init__(
-            child=[user_image, username, settings_button, power_button],
+            child=[user_image, username, power_button],
             css_classes=["user"],
         )
-
-    def __on_settings_button_click(self) -> None:
-        window = window_manager.get_window("ignis_SETTINGS")
-        window.visible = not window.visible  # type: ignore

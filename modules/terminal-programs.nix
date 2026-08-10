@@ -112,6 +112,7 @@
       act
       wl-clipboard
       lazygit
+      wakatime-cli
     ];
   };
 }

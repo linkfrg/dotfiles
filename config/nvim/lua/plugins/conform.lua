@@ -15,8 +15,10 @@ require("conform").setup({
       -- To organize the imports.
       "ruff_organize_imports",
     },
-    markdown = { "prettier", "cbfmt" },
+    markdown = { "prettier" },
     nix = { "alejandra" },
+    rust = { "rustfmt" },
+    yaml = { "prettier" },
   },
 })
 

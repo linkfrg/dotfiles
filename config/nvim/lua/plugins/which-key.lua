@@ -6,6 +6,7 @@ require("which-key").setup({
 
   spec = {
     { "<leader>s", group = "[S]earch", mode = { "n", "v" } },
-    { "gr", group = "LSP Actions", mode = { "n" } },
+    { "<leader>y", group = "[Y]azi", mode = { "n", "v" } },
+    { "<leader>a", group = "LSP [A]ctions", mode = { "n" } },
   },
 })

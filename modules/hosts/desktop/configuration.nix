@@ -1,5 +1,9 @@
 {self, ...}: {
   flake.nixosModules.desktopConfiguration = {
+    pkgs,
+    config,
+    ...
+  }: {
     imports = [
       self.nixosModules.nixSettings
       self.nixosModules.systemdBoot
@@ -36,6 +40,7 @@
     ];
 
     networking.hostName = "desktop";
+    networking.firewall.enable = false;
 
     home-manager.users.link = {
       xdg.configFile."niri/device-specific.kdl".source = ../../../config/niri/desktop.kdl;

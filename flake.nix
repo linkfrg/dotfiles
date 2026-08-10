@@ -15,7 +15,7 @@
     };
 
     ignis = {
-      url = "github:ignis-sh/ignis";
+      url = "github:ignis-sh/ignis/rust-rewrite";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

@@ -4,7 +4,6 @@ from .launcher import Launcher
 from .notification_popup import NotificationPopup
 from .osd import VolumeOsd
 from .powermenu import Powermenu
-from .settings import Settings
 
 __all__ = [
     "Bar",
@@ -13,5 +12,4 @@ __all__ = [
     "NotificationPopup",
     "VolumeOsd",
     "Powermenu",
-    "Settings",
 ]

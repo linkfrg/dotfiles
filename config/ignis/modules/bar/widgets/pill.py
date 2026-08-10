@@ -1,17 +1,16 @@
 import datetime
-from ignis import widgets
-from ignis.window_manager import WindowManager
-from ignis import utils
-from ignis.variable import Variable
-from ignis.services.network import NetworkService
-from ignis.services.notifications import NotificationService
-from ignis.services.recorder import RecorderService
+
+from ignis import utils, widgets
 from ignis.services.audio import AudioService
+from ignis.services.network import NetworkService
+from ignis.services.recorder import RecorderService
+from ignis.variable import Variable
+from ignis.window_manager import WindowManager
+
 from ..indicator_icon import IndicatorIcon, NetworkIndicatorIcon
-from ignis.options import options
 
 network = NetworkService.get_default()
-notifications = NotificationService.get_default()
+# notifications = NotificationService.get_default()
 recorder = RecorderService.get_default()
 audio = AudioService.get_default()
 
@@ -46,7 +45,8 @@ class DNDIcon(IndicatorIcon):
     def __init__(self):
         super().__init__(
             image="notification-disabled-symbolic",
-            visible=options.notifications.bind("dnd"),
+            visible=False,
+            # visible=options.notifications.bind("dnd"),
         )
 
 
@@ -96,9 +96,9 @@ class StatusPill(widgets.Button):
             ),
             css_classes=self._window.bind(
                 "visible",
-                lambda value: ["clock", "unset", "active"]
-                if value
-                else ["clock", "unset"],
+                lambda value: (
+                    ["clock", "unset", "active"] if value else ["clock", "unset"]
+                ),
             ),
             on_click=self.__on_click,
         )

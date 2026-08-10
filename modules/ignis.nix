@@ -16,7 +16,7 @@
     programs.ignis = {
       enable = true;
 
-      addToPythonEnv = true;
+      addToPythonEnv = false;
       configDir = ../config/ignis;
 
       services = {
@@ -31,11 +31,15 @@
         useDartSass = true;
       };
 
-      extraPackages = with pkgs.python313Packages; [
-        jinja2
-        materialyoucolor
-        pillow
-      ];
+      extraPackages = with pkgs.python313Packages;
+        [
+          jinja2
+          materialyoucolor
+          pillow
+        ]
+        ++ [
+          inputs.ignis.packages.${pkgs.system}.ignis-notifications-glib
+        ];
     };
 
     home.sessionVariables = {

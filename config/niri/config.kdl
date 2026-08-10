@@ -121,6 +121,7 @@ binds {
     Mod+L { focus-column-right; }
     Mod+R { switch-preset-column-width; }
     Mod+Return { spawn "kitty"; }
+    Mod+Q { spawn "kitty"; }
     Mod+Shift+Equal { set-window-height "+10%"; }
     Mod+Shift+F { fullscreen-window; }
     Mod+Shift+H { move-column-left; }

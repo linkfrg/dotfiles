@@ -13,6 +13,13 @@
     videoPlayer = "mpv.desktop";
     archiver = "org.gnome.FileRoller.desktop";
   in {
+    xdg.terminal-exec = {
+      enable = true;
+      settings = {
+        default = ["kitty.desktop"];
+      };
+    };
+
     xdg.mimeApps = {
       enable = true;
       defaultApplications = {

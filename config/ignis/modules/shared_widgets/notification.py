@@ -1,11 +1,11 @@
 import asyncio
-from ignis import widgets
-from ignis.services.notifications import Notification
-from ignis import utils
+
+from gi.repository import IgnisNotificationsGLib
+from ignis import utils, widgets
 
 
 class ScreenshotLayout(widgets.Box):
-    def __init__(self, notification: Notification) -> None:
+    def __init__(self, notification: IgnisNotificationsGLib.Notification) -> None:
         super().__init__(
             vertical=True,
             hexpand=True,
@@ -13,7 +13,7 @@ class ScreenshotLayout(widgets.Box):
                 widgets.Box(
                     child=[
                         widgets.Picture(
-                            image=notification.icon,
+                            image=notification.props.icon,
                             content_fit="cover",
                             width=1920 // 7,
                             height=1080 // 7,
@@ -59,7 +59,7 @@ class ScreenshotLayout(widgets.Box):
 
 
 class NormalLayout(widgets.Box):
-    def __init__(self, notification: Notification) -> None:
+    def __init__(self, notification: IgnisNotificationsGLib.Notification) -> None:
         super().__init__(
             vertical=True,
             hexpand=True,
@@ -67,8 +67,8 @@ class NormalLayout(widgets.Box):
                 widgets.Box(
                     child=[
                         widgets.Icon(
-                            image=notification.icon
-                            if notification.icon
+                            image=notification.props.icon
+                            if notification.props.icon
                             else "dialog-information-symbolic",
                             pixel_size=48,
                             halign="start",
@@ -80,17 +80,17 @@ class NormalLayout(widgets.Box):
                             child=[
                                 widgets.Label(
                                     ellipsize="end",
-                                    label=notification.summary,
+                                    label=notification.props.summary,
                                     halign="start",
-                                    visible=notification.summary != "",
+                                    visible=notification.props.summary != "",
                                     css_classes=["notification-summary"],
                                 ),
                                 widgets.Label(
-                                    label=notification.body,
+                                    label=notification.props.body,
                                     ellipsize="end",
                                     halign="start",
                                     css_classes=["notification-body"],
-                                    visible=notification.body != "",
+                                    visible=notification.props.body != "",
                                 ),
                             ],
                         ),
@@ -102,21 +102,25 @@ class NormalLayout(widgets.Box):
                             valign="start",
                             hexpand=True,
                             css_classes=["notification-close"],
-                            on_click=lambda x: notification.close(),
+                            on_click=lambda x: notification.dismiss_async(
+                                None, lambda x, res: x.dismiss_finish(res)
+                            ),
                         ),
                     ],
                 ),
                 widgets.Box(
                     child=[
                         widgets.Button(
-                            child=widgets.Label(label=action.label),
-                            on_click=lambda x, action=action: action.invoke(),
+                            child=widgets.Label(label=action.props.label),
+                            on_click=lambda x, action=action: action.invoke_async(
+                                None, lambda x, res: x.invoke_finish(res)
+                            ),
                             css_classes=["notification-action"],
                         )
-                        for action in notification.actions
+                        for action in notification.props.actions
                     ],
                     homogeneous=True,
-                    style="margin-top: 0.75rem;" if notification.actions else "",
+                    style="margin-top: 0.75rem;" if notification.props.actions else "",
                     spacing=10,
                 ),
             ],
@@ -124,10 +128,10 @@ class NormalLayout(widgets.Box):
 
 
 class NotificationWidget(widgets.Box):
-    def __init__(self, notification: Notification) -> None:
+    def __init__(self, notification: IgnisNotificationsGLib.Notification) -> None:
         layout: NormalLayout | ScreenshotLayout
 
-        if notification.app_name == "grimblast":
+        if notification.props.app_name == "grimblast":
             layout = ScreenshotLayout(notification)
         else:
             layout = NormalLayout(notification)
