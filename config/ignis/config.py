@@ -5,6 +5,7 @@ from ignis.command_manager import CommandManager
 from ignis.css_manager import CssInfoPath, CssManager
 from ignis.icon_manager import IconManager
 from ignis.services.wallpaper import WallpaperService
+from user_options import user_options
 
 from modules import (
     Bar,
@@ -14,7 +15,6 @@ from modules import (
     Powermenu,
     VolumeOsd,
 )
-from user_options import user_options
 
 icon_manager = IconManager.get_default()
 css_manager = CssManager.get_default()
