@@ -39,8 +39,6 @@
       self.nixosModules.terminalPrograms
 
       self.nixosModules.homeManager
-      self.nixosModules.laptopHardware
-      self.nixosModules.laptopDisk
 
       self.nixosModules.suspendThenHibernate
 
@@ -48,6 +46,7 @@
       self.nixosModules.bluetooth
       self.nixosModules.powerProfilesDaemon
       self.nixosModules.upower
+      ./_hardware-configuration.nix
     ];
 
     networking.hostName = "laptop";
